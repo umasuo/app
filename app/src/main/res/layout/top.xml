@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_top_height"
+    android:background="@color/topBgColor"
+    android:gravity="center_vertical"
+    >
+
+    <ImageView
+        android:background="@drawable/first"
+        android:layout_width="@dimen/activity_top_icon_width"
+        android:layout_height="@dimen/activity_top_icon_height"
+        android:layout_marginLeft="@dimen/activity_top_icon_marginleft"
+        android:layout_alignParentLeft="true"
+        />
+
+
+    <ImageView
+        android:layout_width="@dimen/activity_top_icon_width"
+        android:layout_height="@dimen/activity_top_icon_height"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/activity_top_icon_marginright"
+        android:background="@drawable/add"
+        />
+</RelativeLayout>

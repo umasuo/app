@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="@color/settingItemBgColor"
+    android:layout_height="@dimen/setting_item_height">
+
+    <ImageView
+        android:id="@+id/imgLeft"
+        android:layout_width="@dimen/setting_item_icon_widht"
+        android:layout_height="@dimen/setting_item_icon_height"
+        android:layout_marginLeft="@dimen/setting_item_icon_left"
+        />
+    <TextView
+        android:id="@+id/text_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/setting_item_icon_left"
+        android:layout_weight="1"
+        android:text="空调"
+        android:textColor="@color/settingItemColor"
+        />
+    <ImageView
+        android:id="@+id/imgRight"
+        android:layout_width="@dimen/setting_item_icon_widht"
+        android:layout_height="@dimen/setting_item_icon_height"
+        android:background="@drawable/setting_item_arrow"
+        android:layout_marginRight="@dimen/setting_item_icon_right"
+        />
+
+</LinearLayout>

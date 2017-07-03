@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EvaApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="devices">我的设备</string>
+    <string name="intelligent_sceen">智能场景</string>
+    <string name="personal_center">个人中心</string>
 </resources>
