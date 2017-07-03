@@ -9,22 +9,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.evaapp.R;
+import com.umasuo.eva.evaapp.SettingsActivity;
+import com.umasuo.eva.evaapp.SettingsFragmentOne;
+import com.umasuo.eva.evaapp.log.LogControl;
 
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liubin8095 on 2017/7/2.
- */
 
 public class SettingAdapter extends BaseAdapter {
+    private String TAG = "SettingAdapter";
 
     private LayoutInflater mInflater;
     private List<Map<String,Object>> mdata;
+    private Context mcontext;
 
     public SettingAdapter(Context context,List<Map<String,Object>> data){
         mInflater = LayoutInflater.from(context);
         mdata = data;
+        mcontext = context;
     }
 
     @Override
@@ -51,6 +54,8 @@ public class SettingAdapter extends BaseAdapter {
             holder.img_left = (ImageView) view.findViewById(R.id.imgLeft);
             holder.text = (TextView) view.findViewById(R.id.text_center);
             holder.img_right = (ImageView) view.findViewById(R.id.imgRight);
+            holder.postion = i;
+            holder.img_right.setOnClickListener(new MyOnClickListener(holder));
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -61,10 +66,26 @@ public class SettingAdapter extends BaseAdapter {
         return view;
     }
 
-    static class ViewHolder{
+    public static class ViewHolder{
         public ImageView img_left;
         public TextView text;
         public ImageView img_right;
+        public int postion;
+    }
+
+
+    public class MyOnClickListener implements View.OnClickListener{
+        private ViewHolder mviewHolder;
+
+        public MyOnClickListener(SettingAdapter.ViewHolder viewHolder){
+            mviewHolder = viewHolder;
+        }
+
+        @Override
+        public void onClick(View view) {
+            LogControl.Print_D(TAG,"position = "+mviewHolder.postion);
+            ((SettingsActivity)mcontext).changeCurrentItem(mviewHolder.postion);
+        }
     }
 }
 

@@ -1,5 +1,7 @@
 package com.umasuo.eva.evaapp;
 
+import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,19 +10,20 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.umasuo.eva.evaapp.adapter.SettingAdapter;
+import com.umasuo.eva.evaapp.log.LogControl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liubin8095 on 2017/7/2.
- */
 
 public class SettingsFragmentOne extends Fragment {
+    private String TAG = "SettingsFragmentOne";
+
     private ListView msetting_list;
     public List<Map<String ,Object>> mdata;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +34,7 @@ public class SettingsFragmentOne extends Fragment {
         mdata = getData();
         SettingAdapter sadapter = new SettingAdapter(getContext(),mdata);
         msetting_list.setAdapter(sadapter);
+
 
 
         return view;
@@ -59,4 +63,6 @@ public class SettingsFragmentOne extends Fragment {
 
         return list;
     }
+
+
 }

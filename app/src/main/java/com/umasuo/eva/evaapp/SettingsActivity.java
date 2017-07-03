@@ -11,26 +11,28 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.umasuo.eva.evaapp.log.LogControl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liubin8095 on 2017/7/2.
- */
 
 public class SettingsActivity extends FragmentActivity implements View.OnClickListener{
 
     private String TAG = "SettingsActivity1";
-    private ImageView back;
+    private ImageView settings_back;
+    private TextView settings_title;
+    private ImageView settings_devices;
     private SettingsViewPager msettingsViewPager;
     private FragmentPagerAdapter mSettingsAdapter;
     private List<Fragment> mSettingsFragments = new ArrayList<Fragment>();
     Fragment mSettings_one;
     Fragment mSettings_two;
     Fragment mSettings_three;
+
+
 
 
     @Override
@@ -45,6 +47,14 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
 
     private void initView(){
         msettingsViewPager = (SettingsViewPager) findViewById(R.id.settingsViewPager);
+        settings_back = (ImageView) findViewById(R.id.settings_back);
+        settings_title = (TextView) findViewById(R.id.settings_title);
+        settings_devices = (ImageView) findViewById(R.id.settings_devices);
+
+        settings_back.setOnClickListener(this);
+        settings_title.setOnClickListener(this);
+        settings_devices.setOnClickListener(this);
+
         mSettings_one = new SettingsFragmentOne();
         mSettings_two = new SettingsFragmentTwo();
 
@@ -84,28 +94,29 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
                 LogControl.Print_D(TAG,"onPageScrollStateChanged int state ="+state);
             }
 
-
         });
 
-
-        msettingsViewPager.setCurrentItem(0);
+        changeCurrentItem(0);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.choose_back:
+            case R.id.settings_back:
                 System.out.println("liubin 333 onClick");
                 this.finish();
+                break;
+            case R.id.settings_devices:
+                changeCurrentItem(1);
                 break;
         }
 
     }
-    private void startMainActivity(){
-        Intent intent = new Intent();
-        intent.setClassName(this,"com.umasuo.eva.evaapp.MainActivity");//打开一个activity
-        this.startActivity(intent);
-        this.overridePendingTransition(R.anim.choose_close,0);
+
+    public void changeCurrentItem(int i){
+        if (msettingsViewPager != null){
+            msettingsViewPager.setCurrentItem(i);
+        }
     }
 
     @Override

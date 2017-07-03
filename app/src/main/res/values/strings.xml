@@ -4,4 +4,6 @@
     <string name="devices">我的设备</string>
     <string name="intelligent_sceen">智能场景</string>
     <string name="personal_center">个人中心</string>
+
+    <string name="chooseDevicesType">选择设备类型</string>
 </resources>
