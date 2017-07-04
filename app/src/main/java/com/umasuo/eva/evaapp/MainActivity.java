@@ -1,5 +1,6 @@
 package com.umasuo.eva.evaapp;
 
+import android.media.Image;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -8,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private String TAG = "MainActivity";
 
-    private ViewPager viewPager;
+    private MainViewPager viewPager;
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mFragments = new ArrayList<Fragment>();
 
@@ -28,6 +31,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ImageButton devicesImage;
     private ImageButton sceneImage;
     private ImageButton persoanlImage;
+
+
 
     Fragment devicesFragment;
     Fragment sceneFragement;
@@ -43,7 +48,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void initView() {
-        viewPager = (ViewPager)findViewById(R.id.container);
+        viewPager = (MainViewPager)findViewById(R.id.container);
 
         devicesLayout = (LinearLayout)findViewById(R.id.devices_layout);
         sceneLayout = (LinearLayout)findViewById(R.id.scene_layout);

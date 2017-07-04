@@ -57,9 +57,11 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
 
         mSettings_one = new SettingsFragmentOne();
         mSettings_two = new SettingsFragmentTwo();
+        mSettings_three = new SettingsFragmentThree();
 
         mSettingsFragments.add(mSettings_one);
         mSettingsFragments.add(mSettings_two);
+        mSettingsFragments.add(mSettings_three);
 
         mSettingsAdapter = new FragmentPagerAdapter( getSupportFragmentManager()) {
             @Override
@@ -103,11 +105,11 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.settings_back:
-                System.out.println("liubin 333 onClick");
-                this.finish();
+                changeCurrentItem(getCurrentItem() -1);
+
                 break;
             case R.id.settings_devices:
-                changeCurrentItem(1);
+                changeCurrentItem(2);
                 break;
         }
 
@@ -117,6 +119,13 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
         if (msettingsViewPager != null){
             msettingsViewPager.setCurrentItem(i);
         }
+    }
+
+    public int getCurrentItem(){
+        if(msettingsViewPager != null){
+            return msettingsViewPager.getCurrentItem();
+        }
+        return 0;
     }
 
     @Override

@@ -34,7 +34,6 @@ public class DevicesFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.devices_add:
-                System.out.println("liubin 333 DevicesFragment onClick");
                 startChooseDevicesActivity();
                 break;
         }

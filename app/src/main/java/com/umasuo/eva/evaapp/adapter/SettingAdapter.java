@@ -84,7 +84,7 @@ public class SettingAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             LogControl.Print_D(TAG,"position = "+mviewHolder.postion);
-            ((SettingsActivity)mcontext).changeCurrentItem(mviewHolder.postion);
+            ((SettingsActivity)mcontext).changeCurrentItem(1);
         }
     }
 }

@@ -40,6 +40,10 @@ public class SettingsFragmentOne extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     private List<Map<String, Object>> getData()
     {

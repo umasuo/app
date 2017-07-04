@@ -6,7 +6,7 @@
 
     <!--<include layout="@layout/top"/>-->
 
-    <android.support.v4.view.ViewPager
+    <com.umasuo.eva.evaapp.MainViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"

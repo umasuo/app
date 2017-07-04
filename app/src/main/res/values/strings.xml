@@ -6,4 +6,5 @@
     <string name="personal_center">个人中心</string>
 
     <string name="chooseDevicesType">选择设备类型</string>
+    <string name="settings">设置</string>
 </resources>

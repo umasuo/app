@@ -12,6 +12,6 @@ public class SettingsFragmentThree extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        return inflater.inflate(R.layout.settings_two_layout, container,false);
+        return inflater.inflate(R.layout.settings_three_layout, container,false);
     }
 }
