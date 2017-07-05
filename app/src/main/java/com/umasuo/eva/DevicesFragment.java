@@ -1,4 +1,4 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 /**
@@ -41,7 +40,7 @@ public class DevicesFragment extends Fragment implements View.OnClickListener{
 
     private void startChooseDevicesActivity(){
         Intent intent = new Intent();
-        intent.setClassName(this.getContext(),"com.umasuo.eva.evaapp.SettingsActivity");//打开一个activity
+        intent.setClassName(this.getContext(),"com.umasuo.evaapp.SettingsActivity");//打开一个activity
         this.getContext().startActivity(intent);
         this.getActivity().overridePendingTransition(R.anim.choose_open,R.anim.choose_close);
     }

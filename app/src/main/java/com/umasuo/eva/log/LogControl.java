@@ -1,4 +1,4 @@
-package com.umasuo.eva.evaapp.log;
+package com.umasuo.eva.log;
 
 import android.util.Log;
 

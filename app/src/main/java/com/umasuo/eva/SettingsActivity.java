@@ -1,19 +1,15 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.umasuo.eva.evaapp.log.LogControl;
+import com.umasuo.eva.log.LogControl;
 
 import java.util.ArrayList;
 import java.util.List;

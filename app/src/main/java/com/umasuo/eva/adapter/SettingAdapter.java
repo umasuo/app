@@ -1,4 +1,4 @@
-package com.umasuo.eva.evaapp.adapter;
+package com.umasuo.eva.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.umasuo.eva.evaapp.R;
-import com.umasuo.eva.evaapp.SettingsActivity;
-import com.umasuo.eva.evaapp.SettingsFragmentOne;
-import com.umasuo.eva.evaapp.log.LogControl;
+import com.umasuo.eva.R;
+import com.umasuo.eva.SettingsActivity;
+import com.umasuo.eva.log.LogControl;
 
 import java.util.List;
 import java.util.Map;

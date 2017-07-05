@@ -1,4 +1,4 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
 import org.junit.Test;
 

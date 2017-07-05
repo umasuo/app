@@ -1,4 +1,4 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.umasuo.eva.evaapp", appContext.getPackageName());
+        assertEquals("com.umasuo.evaapp", appContext.getPackageName());
     }
 }

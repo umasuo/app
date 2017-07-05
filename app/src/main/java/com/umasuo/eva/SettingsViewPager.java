@@ -1,20 +1,18 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-/**
- * Created by liubin8095 on 2017/7/4.
- */
 
-public class MainViewPager extends ViewPager {
-    public MainViewPager(Context context) {
+
+public class SettingsViewPager extends ViewPager {
+    public SettingsViewPager(Context context) {
         super(context);
     }
 
-    public MainViewPager(Context context, AttributeSet attrs) {
+    public SettingsViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

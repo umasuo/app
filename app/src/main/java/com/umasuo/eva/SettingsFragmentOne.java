@@ -1,7 +1,5 @@
-package com.umasuo.eva.evaapp;
+package com.umasuo.eva;
 
-import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,8 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.umasuo.eva.evaapp.adapter.SettingAdapter;
-import com.umasuo.eva.evaapp.log.LogControl;
+import com.umasuo.eva.adapter.SettingAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
