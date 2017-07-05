@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Eva智能</string>
+    <string name="appName">Eva智能</string>
 
     <string name="devices">我的设备</string>
-    <string name="intelligent_sceen">智能场景</string>
-    <string name="personal_center">个人中心</string>
+    <string name="intelligentScene">智能场景</string>
+    <string name="personalCenter">个人中心</string>
 
     <string name="chooseDevicesType">选择设备类型</string>
     <string name="settings">设置</string>

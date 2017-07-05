@@ -26,7 +26,7 @@ public class PersonalFragment extends Fragment {
         main_title_icon.setVisibility(View.GONE);
 
         main_title = (TextView)view.findViewById(R.id.main_title);
-        main_title.setText(R.string.personal_center);
+        main_title.setText(R.string.personalCenter);
 
         main_add = (ImageView) view.findViewById(R.id.devices_add);
         main_add.setVisibility(View.GONE);

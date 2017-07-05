@@ -29,7 +29,7 @@ public class SceneFragment extends Fragment {
         main_title_icon.setVisibility(View.GONE);
 
         main_title = (TextView)view.findViewById(R.id.main_title);
-        main_title.setText(R.string.intelligent_sceen);
+        main_title.setText(R.string.intelligentScene);
 
 
         return view;

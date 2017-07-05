@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.umasuo.eva.device.DevicesFragment;
 import com.umasuo.eva.personal.PersonalFragment;
@@ -17,7 +18,7 @@ import com.umasuo.eva.scene.SceneFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener{
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private String TAG = "MainActivity";
 
@@ -31,12 +32,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private ImageButton devicesImage;
     private ImageButton sceneImage;
-    private ImageButton persoanlImage;
+    private ImageButton personalImage;
 
+    private TextView devicesText;
+    private TextView sceneText;
+    private TextView personalText;
 
 
     Fragment devicesFragment;
-    Fragment sceneFragement;
+    Fragment sceneFragment;
     Fragment personalFragment;
 
     @Override
@@ -49,26 +53,30 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void initView() {
-        viewPager = (MainViewPager)findViewById(R.id.container);
+        viewPager = (MainViewPager) findViewById(R.id.container);
 
-        devicesLayout = (LinearLayout)findViewById(R.id.devices_layout);
-        sceneLayout = (LinearLayout)findViewById(R.id.scene_layout);
-        personalLayout = (LinearLayout)findViewById(R.id.personal_layout);
+        devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
+        sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
+        personalLayout = (LinearLayout) findViewById(R.id.personalLayout);
 
-        devicesImage = (ImageButton)findViewById(R.id.devices_imagbtn);
-        sceneImage = (ImageButton)findViewById(R.id.scene_imgbtn);
-        persoanlImage = (ImageButton)findViewById(R.id.personal_imgbtn);
+        devicesImage = (ImageButton) findViewById(R.id.devicesImgbtn);
+        sceneImage = (ImageButton) findViewById(R.id.sceneImgBtn);
+        personalImage = (ImageButton) findViewById(R.id.personalImgBtn);
+
+        devicesText = (TextView) findViewById(R.id.devicesTextBtn);
+        sceneText = (TextView) findViewById(R.id.sceneTextBtn);
+        personalText = (TextView) findViewById(R.id.personalTextBtn);
 
         devicesFragment = new DevicesFragment();
-        sceneFragement = new SceneFragment();
+        sceneFragment = new SceneFragment();
         personalFragment = new PersonalFragment();
 
         mFragments.add(devicesFragment);
-        mFragments.add(sceneFragement);
+        mFragments.add(sceneFragment);
         mFragments.add(personalFragment);
 
 
-        mAdapter = new FragmentPagerAdapter( getSupportFragmentManager()) {
+        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
             @Override
             public int getCount() {
@@ -82,11 +90,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         };
         viewPager.setAdapter(mAdapter);
     }
+
     private void initEvent() {
         // 设置事件
+        devicesLayout.setOnClickListener(this);
         devicesImage.setOnClickListener(this);
+        devicesText.setOnClickListener(this);
+
         sceneImage.setOnClickListener(this);
-        persoanlImage.setOnClickListener(this);
+        sceneLayout.setOnClickListener(this);
+        sceneText.setOnClickListener(this);
+
+        personalImage.setOnClickListener(this);
+        personalLayout.setOnClickListener(this);
+        personalText.setOnClickListener(this);
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -104,7 +121,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         sceneImage.setBackgroundResource(R.drawable.second);
                         break;
                     case 2:
-                        persoanlImage.setBackgroundResource(R.drawable.three);
+                        personalImage.setBackgroundResource(R.drawable.three);
                         break;
 
                     default:
@@ -128,21 +145,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onClick(View v) {
         resetImg();
         switch (v.getId()) {
-            case R.id.devices_imagbtn:
+            case R.id.devicesLayout:
+            case R.id.devicesImgbtn:
+            case R.id.devicesTextBtn:
                 setSelect(0);
                 break;
-            case R.id.scene_imgbtn:
+            case R.id.sceneLayout:
+            case R.id.sceneImgBtn:
+            case R.id.sceneTextBtn:
                 setSelect(1);
                 break;
-            case R.id.personal_imgbtn:
+            case R.id.personalLayout:
+            case R.id.personalImgBtn:
+            case R.id.personalTextBtn:
                 setSelect(2);
                 break;
             default:
                 break;
         }
     }
-    private void setSelect(int i){
-        System.out.println("liubin 111 MainActivity setSelect i ="+i);
+
+    private void setSelect(int i) {
+        System.out.println("liubin 111 MainActivity setSelect i =" + i);
         //改变内容区域，把图片设置为亮的
         switch (i) {
             case 0:
@@ -152,19 +176,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 sceneImage.setBackgroundResource(R.drawable.second);
                 break;
             case 2:
-                persoanlImage.setBackgroundResource(R.drawable.three);
+                personalImage.setBackgroundResource(R.drawable.three);
                 break;
-
             default:
                 break;
         }
         //切换Fragment
         viewPager.setCurrentItem(i);
     }
+
     //将所有的图片都变暗
-    private void resetImg(){
+    private void resetImg() {
         devicesImage.setBackgroundResource(R.drawable.first);
         sceneImage.setBackgroundResource(R.drawable.second);
-        persoanlImage.setBackgroundResource(R.drawable.three);
+        personalImage.setBackgroundResource(R.drawable.three);
     }
 }

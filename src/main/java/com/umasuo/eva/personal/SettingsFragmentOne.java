@@ -33,8 +33,6 @@ public class SettingsFragmentOne extends Fragment {
         SettingAdapter sadapter = new SettingAdapter(getContext(),mdata);
         msetting_list.setAdapter(sadapter);
 
-
-
         return view;
     }
 

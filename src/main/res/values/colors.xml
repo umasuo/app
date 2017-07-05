@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="topBgColor">#BFEFFF</color>
+    <color name="topBgColor">#FEFEFE</color>
     <color name="bottomTextColor">#030303</color>
     <color name="chooseDevicesBgColor">#FFF8DC</color>
     <color name="settingItemColor">#030303</color>
