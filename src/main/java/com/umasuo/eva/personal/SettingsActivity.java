@@ -127,7 +127,6 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     public void finish() {
-        System.out.println("liubin 333 choose finish");
         super.finish();
         this.overridePendingTransition(0,R.anim.choose_close);
     }

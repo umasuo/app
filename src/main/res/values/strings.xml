@@ -7,4 +7,6 @@
 
     <string name="chooseDevicesType">选择设备类型</string>
     <string name="settings">设置</string>
+    <string name="save">保存</string>
+    <string name="editScene">编辑场景</string>
 </resources>

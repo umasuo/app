@@ -22,4 +22,5 @@
     <dimen name="setting_item_icon_right">30px</dimen>
 
     <dimen name="setting_title_size">40px</dimen>
+    <dimen name="scene_item_height">120px</dimen>
 </resources>

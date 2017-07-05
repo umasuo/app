@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.umasuo.eva.device.DevicesFragment;
 import com.umasuo.eva.personal.PersonalFragment;
+import com.umasuo.eva.scene.EditSceneFragment;
 import com.umasuo.eva.scene.SceneFragment;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Fragment devicesFragment;
     Fragment sceneFragment;
     Fragment personalFragment;
+    Fragment editSceneFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +72,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         devicesFragment = new DevicesFragment();
         sceneFragment = new SceneFragment();
         personalFragment = new PersonalFragment();
+        editSceneFragment = new EditSceneFragment();
 
         mFragments.add(devicesFragment);
         mFragments.add(sceneFragment);
         mFragments.add(personalFragment);
+        mFragments.add(editSceneFragment);
 
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -165,7 +169,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    private void setSelect(int i) {
+    public void setSelect(int i) {
         System.out.println("liubin 111 MainActivity setSelect i =" + i);
         //改变内容区域，把图片设置为亮的
         switch (i) {
