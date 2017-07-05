@@ -54,17 +54,17 @@ public class SceneFragment extends Fragment {
 
         map = new HashMap<String, Object>();
         map.put("img_left", R.drawable.home);
-        map.put("title", "µ½¼Ò");
+        map.put("title", "åˆ°å®¶");
         list.add(map);
 
         map = new HashMap<String, Object>();
         map.put("img_left", R.drawable.leavehome);
-        map.put("title", "Àë¼Ò");
+        map.put("title", "ç¦»å®¶");
         list.add(map);
 
         map = new HashMap<String, Object>();
         map.put("img_left", R.drawable.getup);
-        map.put("title", "Æð´²");
+        map.put("title", "èµ·åºŠ");
         list.add(map);
 
         return list;
