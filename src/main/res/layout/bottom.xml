@@ -57,7 +57,7 @@
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
             android:clickable="false"
-            android:background="@drawable/three"
+            android:background="@drawable/personal_center"
             />
         <TextView
             android:text="@string/personal_center"

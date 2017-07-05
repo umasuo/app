@@ -10,6 +10,10 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.umasuo.eva.device.DevicesFragment;
+import com.umasuo.eva.personal.PersonalFragment;
+import com.umasuo.eva.scene.SceneFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

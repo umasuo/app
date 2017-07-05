@@ -1,4 +1,4 @@
-package com.umasuo.eva;
+package com.umasuo.eva.personal;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.umasuo.eva.log.LogControl;
+import com.umasuo.eva.R;
+import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-        LogControl.Print_D(TAG,"SettingsActivity onCreate >>");
+        LogControl.debug(TAG,"SettingsActivity onCreate >>");
         initView();
         initEvent();
 
@@ -78,18 +79,18 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
         msettingsViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LogControl.Print_D(TAG,"onPageScrolled position ="+position + " positionOffset ="+positionOffset+" positionOffsetPixels="+positionOffsetPixels);
+                LogControl.debug(TAG,"onPageScrolled position ="+position + " positionOffset ="+positionOffset+" positionOffsetPixels="+positionOffsetPixels);
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                LogControl.Print_D(TAG,"onPageSelected position ="+position);
+                LogControl.debug(TAG,"onPageSelected position ="+position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                LogControl.Print_D(TAG,"onPageScrollStateChanged int state ="+state);
+                LogControl.debug(TAG,"onPageScrollStateChanged int state ="+state);
             }
 
         });

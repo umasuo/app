@@ -1,4 +1,4 @@
-package com.umasuo.eva.adapter;
+package com.umasuo.eva.tools.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
-import com.umasuo.eva.SettingsActivity;
-import com.umasuo.eva.log.LogControl;
+import com.umasuo.eva.personal.SettingsActivity;
+import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.List;
 import java.util.Map;
@@ -82,7 +82,7 @@ public class SettingAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View view) {
-            LogControl.Print_D(TAG,"position = "+mviewHolder.postion);
+            LogControl.debug(TAG,"position = "+mviewHolder.postion);
             ((SettingsActivity)mcontext).changeCurrentItem(1);
         }
     }

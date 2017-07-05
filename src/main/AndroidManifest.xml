@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.umasuo.eva.SettingsActivity"
+        <activity android:name="com.umasuo.eva.personal.SettingsActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             ></activity>
     </application>

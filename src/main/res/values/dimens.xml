@@ -10,8 +10,8 @@
     <dimen name="activity_top_icon_marginleft">20px</dimen>
 
 
-    <dimen name="activity_bottom_icon_width">90px</dimen>
-    <dimen name="activity_bottom_icon_height">90px</dimen>
+    <dimen name="activity_bottom_icon_width">60px</dimen>
+    <dimen name="activity_bottom_icon_height">60px</dimen>
     <dimen name="activity_bottom_height">180px</dimen>
     <dimen name="activity_bottom_text_size">28px</dimen>
 

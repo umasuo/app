@@ -1,4 +1,4 @@
-package com.umasuo.eva;
+package com.umasuo.eva.device;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.umasuo.eva.R;
 
 /**
  * Created by liubin8095 on 2017/7/1.

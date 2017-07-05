@@ -1,4 +1,4 @@
-package com.umasuo.eva;
+package com.umasuo.eva.personal;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.umasuo.eva.adapter.SettingAdapter;
+import com.umasuo.eva.R;
+import com.umasuo.eva.tools.adapter.SettingAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
