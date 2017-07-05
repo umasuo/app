@@ -1,0 +1,10 @@
+<resources>
+    <string name="appName">Eva Smart</string>
+
+    <string name="devices">Device</string>
+    <string name="intelligentScene">Scene</string>
+    <string name="personalCenter">Personal</string>
+
+    <string name="chooseDevicesType">Choose Device</string>
+    <string name="settings">Settings</string>
+</resources>
