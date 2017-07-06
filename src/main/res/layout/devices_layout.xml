@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
-    android:orientation="horizontal">
+    android:background="@color/deviceTypeItemBgColor"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/personal_top_layout"
@@ -30,7 +31,43 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_top_icon_margin"
             android:background="@drawable/add" />
-
-
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/device_commons"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:layout_margin="40px"
+        android:background="@drawable/corners_panel"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/device_common_icon"
+            android:layout_width="240px"
+            android:layout_height="240px"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:background="@drawable/device_xy" />
+
+        <TextView
+            android:id="@+id/device_common_content"
+            android:layout_width="250px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20px"
+            android:layout_weight="1"
+            android:text="欢迎使用Eva"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/device_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:divider="@color/deviceTypeItemBgColor"
+        android:dividerHeight="10px" />
 </LinearLayout>

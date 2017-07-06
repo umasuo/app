@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200px"
+    android:layout_marginBottom="20px"
+    android:layout_marginTop="20px"
+    android:background="@drawable/corners_panel"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/device_icon"
+        android:layout_width="240px"
+        android:layout_height="240px"
+        android:layout_gravity="center"
+        android:layout_margin="20px"
+        android:background="@drawable/device_kg" />
+
+    <TextView
+        android:id="@+id/device_name"
+        android:layout_width="250px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="20px"
+        android:layout_weight="1"
+        android:text="卧室的开关"
+        android:textSize="@dimen/setting_title_size"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+</LinearLayout>

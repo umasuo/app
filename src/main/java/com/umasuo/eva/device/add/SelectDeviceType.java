@@ -35,7 +35,7 @@ public class SelectDeviceType extends Fragment implements AdapterView.OnItemClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.device_type_selector, container, false);
+        View view = inflater.inflate(R.layout.device_add_selector, container, false);
 
         backBtn = (ImageView) view.findViewById(R.id.device_select_back);
         backBtn.setOnClickListener(this);
