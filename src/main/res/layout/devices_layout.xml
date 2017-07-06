@@ -28,8 +28,7 @@
             android:layout_width="@dimen/activity_top_icon_width"
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_top_marginLeft"
-            android:layout_marginRight="@dimen/activity_top_marginRight"
+            android:layout_margin="@dimen/activity_top_icon_margin"
             android:background="@drawable/add" />
 
 
