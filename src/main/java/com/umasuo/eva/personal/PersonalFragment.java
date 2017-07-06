@@ -12,28 +12,12 @@ import com.umasuo.eva.R;
 
 
 public class PersonalFragment extends Fragment {
-    private ImageView main_title_icon;
-    private TextView main_title;
-    private ImageView main_add;
-    private TextView main_title_right;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.devices_layout, container,false);
-        main_title_icon = (ImageView) view.findViewById(R.id.main_title_icon);
-        main_title_icon.setVisibility(View.GONE);
-
-        main_title = (TextView)view.findViewById(R.id.main_title);
-        main_title.setText(R.string.personalCenter);
-
-        main_add = (ImageView) view.findViewById(R.id.devices_add);
-        main_add.setVisibility(View.GONE);
-
-        main_title_right = (TextView) view.findViewById(R.id.main_title_right);
-        main_title_right.setVisibility(View.VISIBLE);
-
+        View view = inflater.inflate(R.layout.personal_layout, container, false);
 
         return view;
     }
