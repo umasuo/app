@@ -42,7 +42,7 @@ public class DevicesFragment extends Fragment implements View.OnClickListener{
 
     private void startChooseDevicesActivity(){
         Intent intent = new Intent();
-        intent.setClassName(this.getContext(),"com.umasuo.eva.personal.SettingsActivity");//打开一个activity
+        intent.setClassName(this.getContext(),"com.umasuo.eva.device.add.AddDeviceActivity");//打开一个activity
         this.getContext().startActivity(intent);
         this.getActivity().overridePendingTransition(R.anim.choose_open,R.anim.choose_close);
     }

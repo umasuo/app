@@ -1,4 +1,4 @@
-package com.umasuo.eva.personal;
+package com.umasuo.eva.device.add;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,8 +16,11 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SettingsFragmentOne extends Fragment {
-    private String TAG = "SettingsFragmentOne";
+/**
+ * 添加设备第一步：选择设备类型
+ */
+public class SelectDeviceType extends Fragment {
+    private String TAG = "SelectDeviceType";
 
     private ListView msetting_list;
     public List<Map<String ,Object>> mdata;
@@ -47,17 +50,17 @@ public class SettingsFragmentOne extends Fragment {
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.xyj);
+        map.put("img_left", R.drawable.device_xy);
         map.put("title", "洗衣机");
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.kt);
+        map.put("img_left", R.drawable.device_kt);
         map.put("title", "空调");
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.wbl);
+        map.put("img_left", R.drawable.device_wb);
         map.put("title", "微波炉");
         list.add(map);
 

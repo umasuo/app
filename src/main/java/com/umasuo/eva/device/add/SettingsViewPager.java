@@ -1,4 +1,4 @@
-package com.umasuo.eva.personal;
+package com.umasuo.eva.device.add;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

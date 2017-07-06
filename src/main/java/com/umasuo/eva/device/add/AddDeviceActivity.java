@@ -1,4 +1,4 @@
-package com.umasuo.eva.personal;
+package com.umasuo.eva.device.add;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SettingsActivity extends FragmentActivity implements View.OnClickListener{
+public class AddDeviceActivity extends FragmentActivity implements View.OnClickListener{
 
     private String TAG = "SettingsActivity1";
     private ImageView settings_back;
@@ -36,7 +36,7 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-        LogControl.debug(TAG,"SettingsActivity onCreate >>");
+        LogControl.debug(TAG,"AddDeviceActivity onCreate >>");
         initView();
         initEvent();
 
@@ -52,9 +52,9 @@ public class SettingsActivity extends FragmentActivity implements View.OnClickLi
         settings_title.setOnClickListener(this);
         settings_devices.setOnClickListener(this);
 
-        mSettings_one = new SettingsFragmentOne();
-        mSettings_two = new SettingsFragmentTwo();
-        mSettings_three = new SettingsFragmentThree();
+        mSettings_one = new SelectDeviceType();
+        mSettings_two = new PowerUpDevice();
+        mSettings_three = new InputWifiPassword();
 
         mSettingsFragments.add(mSettings_one);
         mSettingsFragments.add(mSettings_two);

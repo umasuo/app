@@ -1,4 +1,4 @@
-package com.umasuo.eva.personal;
+package com.umasuo.eva.device.add;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 import com.umasuo.eva.R;
 
 /**
- * Created by liubin8095 on 2017/7/2.
+ * 添加设备第三步：输入连接的Wi-Fi密码.
  */
-
-public class SettingsFragmentTwo extends Fragment {
+public class InputWifiPassword extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        return inflater.inflate(R.layout.settings_two_layout, container,false);
+        return inflater.inflate(R.layout.settings_three_layout, container,false);
     }
 }

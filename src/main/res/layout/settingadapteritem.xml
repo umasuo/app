@@ -23,7 +23,7 @@
         android:id="@+id/imgRight"
         android:layout_width="@dimen/setting_item_icon_width"
         android:layout_height="@dimen/setting_item_icon_height"
-        android:background="@drawable/setting_item_arrow"
+        android:background="@drawable/right_arrow"
         android:layout_marginRight="@dimen/setting_item_icon_right"
         />
 

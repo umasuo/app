@@ -17,7 +17,7 @@
                 android:layout_width="@dimen/activity_top_icon_width"
                 android:layout_height="@dimen/activity_top_icon_height"
                 android:layout_gravity="center"
-                android:background="@drawable/back" />
+                android:background="@drawable/left_arrow" />
 
             <TextView
                 android:id="@+id/settings_title"
@@ -40,7 +40,7 @@
         </LinearLayout>
 
 
-        <com.umasuo.eva.personal.SettingsViewPager
+        <com.umasuo.eva.device.add.SettingsViewPager
             android:id="@+id/settingsViewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"

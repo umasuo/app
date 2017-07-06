@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
-import com.umasuo.eva.personal.SettingsActivity;
+import com.umasuo.eva.device.add.AddDeviceActivity;
 import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.List;
@@ -83,7 +83,7 @@ public class SettingAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             LogControl.debug(TAG,"position = "+mviewHolder.postion);
-            ((SettingsActivity)mcontext).changeCurrentItem(1);
+            ((AddDeviceActivity)mcontext).changeCurrentItem(1);
         }
     }
 }
