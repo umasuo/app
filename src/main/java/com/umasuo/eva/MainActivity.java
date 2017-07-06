@@ -193,6 +193,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void resetImg() {
         devicesImage.setBackgroundResource(R.drawable.first);
         sceneImage.setBackgroundResource(R.drawable.second);
-        personalImage.setBackgroundResource(R.drawable.three);
+        personalImage.setBackgroundResource(R.drawable.personal_center);
     }
 }

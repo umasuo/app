@@ -34,11 +34,6 @@ public class SceneFragment extends Fragment {
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.scene, container,false);
-//        main_title_icon = (ImageView) view.findViewById(R.id.main_title_icon);
-//        main_title_icon.setVisibility(View.GONE);
-
-        main_title = (TextView)view.findViewById(R.id.main_title);
-//        main_title.setText(R.string.intelligentScene);
 
         scene_list = (ListView)view.findViewById(R.id.scene_list);
         SceneAdapter sAdapter = new SceneAdapter(getContext(),getData());
