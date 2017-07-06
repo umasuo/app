@@ -1,10 +1,10 @@
 package com.umasuo.eva;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -109,7 +109,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalLayout.setOnClickListener(this);
         personalText.setOnClickListener(this);
 
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int arg0) {

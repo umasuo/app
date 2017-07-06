@@ -10,7 +10,7 @@
         android:background="@drawable/first"
         android:layout_width="@dimen/activity_top_icon_width"
         android:layout_height="@dimen/activity_top_icon_height"
-        android:layout_marginLeft="@dimen/activity_top_icon_marginleft"
+        android:layout_marginLeft="@dimen/activity_top_marginLeft"
         android:layout_alignParentLeft="true"
         />
 
@@ -19,7 +19,7 @@
         android:layout_width="@dimen/activity_top_icon_width"
         android:layout_height="@dimen/activity_top_icon_height"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/activity_top_icon_marginright"
+        android:layout_marginRight="@dimen/activity_top_marginRight"
         android:background="@drawable/add"
         />
 </RelativeLayout>

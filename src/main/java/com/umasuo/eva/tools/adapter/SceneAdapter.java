@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
-import com.umasuo.eva.personal.SettingsActivity;
 import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.List;
@@ -57,7 +56,7 @@ public class SceneAdapter extends BaseAdapter {
             holder.img_left = (ImageView) view.findViewById(R.id.imgLeft);
             holder.text = (TextView) view.findViewById(R.id.text_center);
             holder.img_right = (ImageView) view.findViewById(R.id.imgRight);
-            holder.postion = i;
+            holder.position = i;
             holder.img_right.setOnClickListener(new SceneAdapter.MyOnClickListener(holder));
             view.setTag(holder);
         } else {
@@ -73,7 +72,7 @@ public class SceneAdapter extends BaseAdapter {
         public ImageView img_left;
         public TextView text;
         public ImageView img_right;
-        public int postion;
+        public int position;
     }
 
 
@@ -86,7 +85,7 @@ public class SceneAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View view) {
-            LogControl.debug(TAG, "position = " + mviewHolder.postion);
+            LogControl.debug(TAG, "position = " + mviewHolder.position);
             ((MainActivity) mcontext).setSelect(3);
         }
     }
