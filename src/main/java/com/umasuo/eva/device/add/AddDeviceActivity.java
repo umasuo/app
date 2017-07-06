@@ -15,10 +15,13 @@ import java.util.List;
 
 /**
  * 添加设备的activity.
+ * todo 这个其实也可以换成fragment
  */
 public class AddDeviceActivity extends FragmentActivity {
 
     private String TAG = "AddDeviceActivity";
+
+    private String selectedDeviceName = "";
 
     private AddDeviceViewPager addDeviceViewPager;
     private FragmentPagerAdapter addDeviceAdapter;
@@ -61,19 +64,11 @@ public class AddDeviceActivity extends FragmentActivity {
     }
 
     /**
-     * 替换当前的片段
+     * 切换片段.
      *
      * @param i
      */
-    public void replaceFragment(int i, String value) {
-        //用户选择了某个设备，这里进入下一步
-        // Create fragment and give it an argument specifying the article it should show
-
-        Bundle args = new Bundle();
-        args.putString("name", value);
-        powerUpDevice.setArguments(args);
-
-        LogControl.debug(TAG, value);
+    public void replaceFragment(int i) {
         addDeviceViewPager.setCurrentItem(i);
     }
 
@@ -108,5 +103,13 @@ public class AddDeviceActivity extends FragmentActivity {
     public void finish() {
         super.finish();
         this.overridePendingTransition(0, R.anim.choose_close);
+    }
+
+    public String getSelectedDeviceName() {
+        return selectedDeviceName;
+    }
+
+    public void setSelectedDeviceName(String name) {
+        this.selectedDeviceName = name;
     }
 }

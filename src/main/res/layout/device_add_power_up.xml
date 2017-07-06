@@ -37,7 +37,16 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/dv_welcome"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/eva" />
+
     <TextView
+        android:id="@+id/device_power_up_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="确定启动设备"

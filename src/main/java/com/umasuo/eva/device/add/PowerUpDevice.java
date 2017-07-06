@@ -1,13 +1,18 @@
 package com.umasuo.eva.device.add;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.log.LogControl;
 
@@ -19,21 +24,26 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
 
     private String TAG = "PowerUpDevice";
     private ImageView backBtn;
+    private TextView textView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        // TODO Auto-generated method stub
+        Fresco.initialize(this.getContext());//放在加载布局之前
+
+
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
         backBtn = (ImageView) view.findViewById(R.id.device_power_up_back);
         backBtn.setOnClickListener(this);
+        textView = (TextView) view.findViewById(R.id.device_power_up_content);
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        ((AddDeviceActivity) this.getContext()).replaceFragment(0, "null");
+        ((AddDeviceActivity) this.getContext()).replaceFragment(0);
     }
 
     @Override
@@ -45,23 +55,25 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            LogControl.debug(TAG, String.valueOf(bundle.get("name")));
-        }
-        LogControl.debug(TAG, "resume");
+        AddDeviceActivity activity = (AddDeviceActivity) getContext();
+        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
+        LogControl.debug(TAG, "resume: " + activity.getSelectedDeviceName());
 
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LogControl.debug(TAG, "pause");
+        AddDeviceActivity activity = (AddDeviceActivity) getContext();
+        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
+        LogControl.debug(TAG, "pause: " + activity.getSelectedDeviceName());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogControl.debug(TAG, "destroy");
+        AddDeviceActivity activity = (AddDeviceActivity) getContext();
+        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
+        LogControl.debug(TAG, "destroy: " + activity.getSelectedDeviceName());
     }
 }

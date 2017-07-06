@@ -57,11 +57,22 @@ public class SelectDeviceType extends Fragment implements AdapterView.OnItemClic
         this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
     }
 
+    /**
+     * 设备列表中的一项被选中
+     *
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Map<String, Object> item = data.get(i);
         LogControl.debug(TAG, "click: " + i + ", name: " + item.get("title"));
-        ((AddDeviceActivity) this.getContext()).replaceFragment(1, item.get("title").toString());
+        AddDeviceActivity activity = (AddDeviceActivity) this.getContext();
+        // 设置选中了的设备
+        activity.setSelectedDeviceName(item.get("title").toString());
+        activity.replaceFragment(1);//切换到下一步
     }
 
     @Override
