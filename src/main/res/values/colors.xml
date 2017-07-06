@@ -7,9 +7,9 @@
     <color name="topBgColor">#FEFEFE</color>
     <color name="bottomTextColor">#030303</color>
     <color name="chooseDevicesBgColor">#FFF8DC</color>
-    <color name="settingItemColor">#030303</color>
-    <color name="settingItemBgColor">#F7F7F7</color>
-
+    <color name="deviceTypeItemColor">#030303</color>
+    <color name="deviceTypeItemBgColor">#F7F7F7</color>
+    <color name="itemDividerColor">#a7a7a7</color>
 
 
 

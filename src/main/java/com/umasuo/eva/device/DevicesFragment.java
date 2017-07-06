@@ -13,8 +13,8 @@ import com.umasuo.eva.tools.log.LogControl;
 
 /**
  * Created by liubin8095 on 2017/7/1.
+ * 我饿的设备界面，用于显示用户已经添加的设备，以及提供一个设备控制的入口.
  */
-
 public class DevicesFragment extends Fragment implements View.OnClickListener {
 
     private ImageView devices_add;

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.log.LogControl;
@@ -15,25 +13,24 @@ import com.umasuo.eva.tools.log.LogControl;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 添加设备的activity.
+ */
+public class AddDeviceActivity extends FragmentActivity {
 
-public class AddDeviceActivity extends FragmentActivity implements View.OnClickListener {
+    private String TAG = "AddDeviceActivity";
 
-    private String TAG = "SettingsActivity1";
-    private ImageView settings_back;
-    private TextView settings_title;
-    private ImageView settings_devices;
-    private AddDeviceViewPager msettingsViewPager;
-    private FragmentPagerAdapter mSettingsAdapter;
-    private List<Fragment> mSettingsFragments = new ArrayList<Fragment>();
-    Fragment mSettings_one;
-    Fragment mSettings_two;
-    Fragment mSettings_three;
+    private AddDeviceViewPager addDeviceViewPager;
+    private FragmentPagerAdapter addDeviceAdapter;
+    private List<Fragment> addDeviceFragments = new ArrayList<Fragment>();
+    private PowerUpDevice powerUpDevice;
 
+    private SelectDeviceType selectDeviceType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_device_type);
+        setContentView(R.layout.device_add);
         LogControl.debug(TAG, "AddDeviceActivity onCreate >>");
         initView();
         initEvent();
@@ -41,85 +38,70 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
     }
 
     private void initView() {
-        msettingsViewPager = (AddDeviceViewPager) findViewById(R.id.settingsViewPager);
-        settings_back = (ImageView) findViewById(R.id.device_add_back);
-        settings_title = (TextView) findViewById(R.id.device_add_title);
-        settings_devices = (ImageView) findViewById(R.id.device_add_scan);
+        addDeviceViewPager = (AddDeviceViewPager) findViewById(R.id.addDeviceViewPager);
 
-        settings_back.setOnClickListener(this);
-        settings_title.setOnClickListener(this);
-        settings_devices.setOnClickListener(this);
+        selectDeviceType = new SelectDeviceType();
+        powerUpDevice = new PowerUpDevice();
 
-        mSettings_one = new SelectDeviceType();
-        mSettings_two = new PowerUpDevice();
-        mSettings_three = new InputWifiPassword();
+        addDeviceFragments.add(selectDeviceType);
+        addDeviceFragments.add(powerUpDevice);
 
-        mSettingsFragments.add(mSettings_one);
-        mSettingsFragments.add(mSettings_two);
-        mSettingsFragments.add(mSettings_three);
-
-        mSettingsAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+        addDeviceAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return mSettingsFragments.get(position);
+                return addDeviceFragments.get(position);
             }
 
             @Override
             public int getCount() {
-                return mSettingsFragments.size();
+                return addDeviceFragments.size();
             }
         };
-        msettingsViewPager.setAdapter(mSettingsAdapter);
+        addDeviceViewPager.setAdapter(addDeviceAdapter);
     }
 
+    /**
+     * 替换当前的片段
+     *
+     * @param i
+     */
+    public void replaceFragment(int i, String value) {
+        //用户选择了某个设备，这里进入下一步
+        // Create fragment and give it an argument specifying the article it should show
+
+        Bundle args = new Bundle();
+        args.putString("name", value);
+        powerUpDevice.setArguments(args);
+
+        LogControl.debug(TAG, value);
+        addDeviceViewPager.setCurrentItem(i);
+    }
+
+    /**
+     * 初始化事件监听.
+     */
     private void initEvent() {
 
-        msettingsViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        addDeviceViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LogControl.debug(TAG, "onPageScrolled position =" + position + " positionOffset =" + positionOffset + " positionOffsetPixels=" + positionOffsetPixels);
-
+//                LogControl.debug(TAG, "onPageScrolled position =" + position + " positionOffset =" + positionOffset + " positionOffsetPixels=" + positionOffsetPixels);
             }
 
             @Override
             public void onPageSelected(int position) {
-                LogControl.debug(TAG, "onPageSelected position =" + position);
+//                LogControl.debug(TAG, "onPageSelected position =" + position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                LogControl.debug(TAG, "onPageScrollStateChanged int state =" + state);
+//                LogControl.debug(TAG, "onPageScrollStateChanged int state =" + state);
             }
 
         });
 
-        changeCurrentItem(0);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.device_add_back:
-                changeCurrentItem(getCurrentItem() - 1);
-                break;
-            case R.id.device_add_title:
-                changeCurrentItem(2);
-                break;
-        }
-
-    }
-
-    public void changeCurrentItem(int i) {
-        if (msettingsViewPager != null) {
-            msettingsViewPager.setCurrentItem(i);
-        }
-    }
-
-    public int getCurrentItem() {
-        if (msettingsViewPager != null) {
-            return msettingsViewPager.getCurrentItem();
-        }
-        return 0;
+        addDeviceViewPager.setCurrentItem(0);
     }
 
     @Override

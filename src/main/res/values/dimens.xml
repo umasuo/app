@@ -24,12 +24,31 @@
     <dimen name="activity_bottom_height">180px</dimen>
     <dimen name="activity_bottom_text_size">36px</dimen>
 
-    <dimen name="setting_item_height">200px</dimen>
-    <dimen name="setting_item_icon_width">90px</dimen>
-    <dimen name="setting_item_icon_height">120px</dimen>
-    <dimen name="setting_item_icon_left">30px</dimen>
-    <dimen name="setting_item_icon_right">30px</dimen>
+    <dimen name="device_type_height">200px</dimen>
+    <dimen name="device_type_icon_width">180px</dimen>
+    <dimen name="device_type_icon_height">180px</dimen>
+    <dimen name="device_type_icon_marginLeft">30px</dimen>
+    <dimen name="device_type_icon_marginRight">30px</dimen>
+    <dimen name="device_type_arrow_height">60px</dimen>
+    <dimen name="device_type_arrow_width">40px</dimen>
+    <dimen name="device_type_arrow_marginLeft">20px</dimen>
+    <dimen name="device_type_arrow_marginRight">40px</dimen>
+    <dimen name="device_type_arrow_marginTop">40px</dimen>
+    <dimen name="device_type_arrow_marginBot">40px</dimen>
+
 
     <dimen name="setting_title_size">50px</dimen>
-    <dimen name="scene_item_height">120px</dimen>
+
+    <!-- todo 这个应该可以与设备类型选择的item 合并，保持同一种风格-->
+    <dimen name="scene_item_height">200px</dimen>
+    <dimen name="scene_item_icon_width">100px</dimen>
+    <dimen name="scene_item_icon_height">100px</dimen>
+    <dimen name="scene_item_icon_marginLeft">30px</dimen>
+    <dimen name="scene_item_icon_marginRight">30px</dimen>
+    <dimen name="scene_item_arrow_height">60px</dimen>
+    <dimen name="scene_item_arrow_width">40px</dimen>
+    <dimen name="scene_item_arrow_marginLeft">20px</dimen>
+    <dimen name="scene_item_arrow_marginRight">20px</dimen>
+    <dimen name="scene_item_arrow_marginTop">40px</dimen>
+    <dimen name="scene_item_arrow_marginBot">40px</dimen>
 </resources>

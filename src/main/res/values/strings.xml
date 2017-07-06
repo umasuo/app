@@ -6,8 +6,24 @@
     <string name="personalCenter">个人中心</string>
 
     <string name="chooseDevicesType">选择设备类型</string>
+    <string name="powerUpDevice">启动设备</string>
     <string name="settings">设置</string>
     <string name="save">保存</string>
     <string name="editScene">编辑场景</string>
+
+    <!--下面是目前支持的设备种类，待完善-->
+    <string name="device_cz">插座</string>
+    <string name="device_kg">开关</string>
+    <string name="device_xy">洗衣机</string>
+    <string name="device_bx">冰箱</string>
+    <string name="device_cl">窗帘</string>
+    <string name="device_df">电饭煲</string>
+    <string name="device_dp">电灯</string>
+    <string name="device_fdq">防丢器</string>
+    <string name="device_fs">风扇</string>
+    <string name="device_js">加湿器</string>
+    <string name="device_kt">空调</string>
+    <string name="device_ms">门锁</string>
+    <string name="device_qt">其他</string>
 
 </resources>

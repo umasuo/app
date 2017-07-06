@@ -6,7 +6,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 
-
+/**
+ * 添加设备时用的 view page
+ */
 public class AddDeviceViewPager extends ViewPager {
     public AddDeviceViewPager(Context context) {
         super(context);
