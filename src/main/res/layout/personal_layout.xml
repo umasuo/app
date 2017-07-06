@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/personal_top_layout"
@@ -24,4 +24,62 @@
             android:typeface="monospace" />
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/scene_item_icon_marginRight"
+        android:orientation="horizontal"
+        android:background="@drawable/corners_panel"
+        >
+
+        <ImageView
+            android:id="@+id/personal_head_portrait"
+            android:layout_width="@dimen/head_portrait_width"
+            android:layout_height="@dimen/head_portrait_height"
+            android:layout_margin="@dimen/head_portrait_margin"
+            android:background="@drawable/eva"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/setup_head_portrait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setup_head_portrait"
+                />
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/scene_item_arrow_width"
+            android:layout_height="@dimen/scene_item_arrow_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+            android:background="@drawable/right_arrow"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/personal_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_panel"
+        android:layout_margin="@dimen/scene_item_icon_marginRight"
+        >
+    </ListView>
+
 </LinearLayout>

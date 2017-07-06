@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.umasuo.eva.device.DevicesFragment;
 import com.umasuo.eva.personal.PersonalFragment;
+import com.umasuo.eva.personal.PersonalSettingsFragment;
 import com.umasuo.eva.scene.EditSceneFragment;
 import com.umasuo.eva.scene.SceneFragment;
 
@@ -44,6 +45,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Fragment sceneFragment;
     Fragment personalFragment;
     Fragment editSceneFragment;
+    Fragment personalSettingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +75,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         sceneFragment = new SceneFragment();
         personalFragment = new PersonalFragment();
         editSceneFragment = new EditSceneFragment();
+        personalSettingsFragment = new PersonalSettingsFragment();
 
-        mFragments.add(devicesFragment);
-        mFragments.add(sceneFragment);
-        mFragments.add(personalFragment);
-        mFragments.add(editSceneFragment);
+        mFragments.add(devicesFragment);//0
+        mFragments.add(sceneFragment);//1
+        mFragments.add(personalFragment);//2
+        mFragments.add(editSceneFragment);//3
+        mFragments.add(personalSettingsFragment);//4
 
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -93,6 +97,21 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
         };
         viewPager.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int currentPage = viewPager.getCurrentItem();
+        if(currentPage == 4){//4 当前界面是个人中心的下一层
+            setSelect(2);
+            return;
+        }else if(currentPage == 3){//4 当前界面是智能场景下一层
+            setSelect(1);
+            return;
+        }
+        super.onBackPressed();
+
     }
 
     private void initEvent() {

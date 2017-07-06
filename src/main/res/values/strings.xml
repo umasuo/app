@@ -12,6 +12,9 @@
     <string name="settings">设置</string>
     <string name="save">保存</string>
     <string name="editScene">编辑场景</string>
+    <string name="setup_head_portrait">点击此次可设置头像</string>
+    <string name="about">关于</string>
+    <string name="phone_number">123456789</string>
 
     <!--下面是目前支持的设备种类，待完善-->
     <string name="device_cz">插座</string>
