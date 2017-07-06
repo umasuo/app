@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.log.LogControl;
 
@@ -27,8 +26,6 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        Fresco.initialize(this.getContext());//放在加载布局之前
-
 
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
         backBtn = (ImageView) view.findViewById(R.id.device_power_up_back);
