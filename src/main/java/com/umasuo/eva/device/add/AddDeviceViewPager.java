@@ -7,12 +7,12 @@ import android.view.MotionEvent;
 
 
 
-public class SettingsViewPager extends ViewPager {
-    public SettingsViewPager(Context context) {
+public class AddDeviceViewPager extends ViewPager {
+    public AddDeviceViewPager(Context context) {
         super(context);
     }
 
-    public SettingsViewPager(Context context, AttributeSet attrs) {
+    public AddDeviceViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

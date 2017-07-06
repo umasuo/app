@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.umasuo.eva.R;
-import com.umasuo.eva.tools.adapter.SettingAdapter;
+import com.umasuo.eva.tools.adapter.AddDeviceAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class SelectDeviceType extends Fragment {
         View view = inflater.inflate(R.layout.settings_one_layout, container,false);
         msetting_list = view.findViewById(R.id.settings_list);
         mdata = getData();
-        SettingAdapter sadapter = new SettingAdapter(getContext(),mdata);
+        AddDeviceAdapter sadapter = new AddDeviceAdapter(getContext(),mdata);
         msetting_list.setAdapter(sadapter);
 
         return view;

@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SettingAdapter extends BaseAdapter {
-    private String TAG = "SettingAdapter";
+public class AddDeviceAdapter extends BaseAdapter {
+    private String TAG = "AddDeviceAdapter";
 
     private LayoutInflater mInflater;
     private List<Map<String,Object>> mdata;
     private Context mcontext;
 
-    public SettingAdapter(Context context,List<Map<String,Object>> data){
+    public AddDeviceAdapter(Context context, List<Map<String,Object>> data){
         mInflater = LayoutInflater.from(context);
         mdata = data;
         mcontext = context;
@@ -76,7 +76,7 @@ public class SettingAdapter extends BaseAdapter {
     public class MyOnClickListener implements View.OnClickListener{
         private ViewHolder mviewHolder;
 
-        public MyOnClickListener(SettingAdapter.ViewHolder viewHolder){
+        public MyOnClickListener(AddDeviceAdapter.ViewHolder viewHolder){
             mviewHolder = viewHolder;
         }
 

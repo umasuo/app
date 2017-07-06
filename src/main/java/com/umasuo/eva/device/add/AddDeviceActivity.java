@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddDeviceActivity extends FragmentActivity implements View.OnClickListener{
+public class AddDeviceActivity extends FragmentActivity implements View.OnClickListener {
 
     private String TAG = "SettingsActivity1";
     private ImageView settings_back;
     private TextView settings_title;
     private ImageView settings_devices;
-    private SettingsViewPager msettingsViewPager;
+    private AddDeviceViewPager msettingsViewPager;
     private FragmentPagerAdapter mSettingsAdapter;
     private List<Fragment> mSettingsFragments = new ArrayList<Fragment>();
     Fragment mSettings_one;
@@ -30,23 +30,21 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
     Fragment mSettings_three;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-        LogControl.debug(TAG,"AddDeviceActivity onCreate >>");
+        setContentView(R.layout.select_device_type);
+        LogControl.debug(TAG, "AddDeviceActivity onCreate >>");
         initView();
         initEvent();
 
     }
 
-    private void initView(){
-        msettingsViewPager = (SettingsViewPager) findViewById(R.id.settingsViewPager);
-        settings_back = (ImageView) findViewById(R.id.settings_back);
-        settings_title = (TextView) findViewById(R.id.settings_title);
-        settings_devices = (ImageView) findViewById(R.id.settings_devices);
+    private void initView() {
+        msettingsViewPager = (AddDeviceViewPager) findViewById(R.id.settingsViewPager);
+        settings_back = (ImageView) findViewById(R.id.device_add_back);
+        settings_title = (TextView) findViewById(R.id.device_add_title);
+        settings_devices = (ImageView) findViewById(R.id.device_add_scan);
 
         settings_back.setOnClickListener(this);
         settings_title.setOnClickListener(this);
@@ -60,7 +58,7 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
         mSettingsFragments.add(mSettings_two);
         mSettingsFragments.add(mSettings_three);
 
-        mSettingsAdapter = new FragmentPagerAdapter( getSupportFragmentManager()) {
+        mSettingsAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return mSettingsFragments.get(position);
@@ -74,23 +72,23 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
         msettingsViewPager.setAdapter(mSettingsAdapter);
     }
 
-    private void initEvent(){
+    private void initEvent() {
 
         msettingsViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LogControl.debug(TAG,"onPageScrolled position ="+position + " positionOffset ="+positionOffset+" positionOffsetPixels="+positionOffsetPixels);
+                LogControl.debug(TAG, "onPageScrolled position =" + position + " positionOffset =" + positionOffset + " positionOffsetPixels=" + positionOffsetPixels);
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                LogControl.debug(TAG,"onPageSelected position ="+position);
+                LogControl.debug(TAG, "onPageSelected position =" + position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                LogControl.debug(TAG,"onPageScrollStateChanged int state ="+state);
+                LogControl.debug(TAG, "onPageScrollStateChanged int state =" + state);
             }
 
         });
@@ -100,26 +98,25 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.settings_back:
-                changeCurrentItem(getCurrentItem() -1);
-
+        switch (view.getId()) {
+            case R.id.device_add_back:
+                changeCurrentItem(getCurrentItem() - 1);
                 break;
-            case R.id.settings_devices:
+            case R.id.device_add_title:
                 changeCurrentItem(2);
                 break;
         }
 
     }
 
-    public void changeCurrentItem(int i){
-        if (msettingsViewPager != null){
+    public void changeCurrentItem(int i) {
+        if (msettingsViewPager != null) {
             msettingsViewPager.setCurrentItem(i);
         }
     }
 
-    public int getCurrentItem(){
-        if(msettingsViewPager != null){
+    public int getCurrentItem() {
+        if (msettingsViewPager != null) {
             return msettingsViewPager.getCurrentItem();
         }
         return 0;
@@ -128,6 +125,6 @@ public class AddDeviceActivity extends FragmentActivity implements View.OnClickL
     @Override
     public void finish() {
         super.finish();
-        this.overridePendingTransition(0,R.anim.choose_close);
+        this.overridePendingTransition(0, R.anim.choose_close);
     }
 }

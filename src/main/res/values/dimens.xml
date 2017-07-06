@@ -7,6 +7,14 @@
     <dimen name="activity_top_icon_width">60px</dimen>
     <dimen name="activity_top_icon_height">60px</dimen>
     <dimen name="activity_top_icon_margin">40px</dimen>
+
+    <dimen name="top_left_arrow_height">60px</dimen>
+    <dimen name="top_left_arrow_width">40px</dimen>
+    <dimen name="top_left_arrow_marginLeft">20px</dimen>
+    <dimen name="top_left_arrow_marginRight">20px</dimen>
+    <dimen name="top_left_arrow_marginTop">40px</dimen>
+    <dimen name="top_left_arrow_marginBot">40px</dimen>
+
     <dimen name="activity_top_marginRight">20px</dimen>
     <dimen name="activity_top_marginLeft">20px</dimen>
 
