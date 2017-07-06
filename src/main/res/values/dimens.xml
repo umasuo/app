@@ -51,4 +51,13 @@
     <dimen name="scene_item_arrow_marginRight">20px</dimen>
     <dimen name="scene_item_arrow_marginTop">40px</dimen>
     <dimen name="scene_item_arrow_marginBot">40px</dimen>
+
+    <!--添加设备时，确认设备指示灯-->
+    <dimen name="device_power_up_pic_height">400px</dimen>
+    <dimen name="device_power_up_pic_width">400px</dimen>
+    <dimen name="device_power_up_pic_margin">20px</dimen>
+    <dimen name="device_power_up_btn_height">160px</dimen>
+    <dimen name="device_power_up_btn_marginSide">80px</dimen>
+
+    <dimen name="ok_button_height">160px</dimen>
 </resources>

@@ -26,9 +26,11 @@ public class AddDeviceActivity extends FragmentActivity {
     private AddDeviceViewPager addDeviceViewPager;
     private FragmentPagerAdapter addDeviceAdapter;
     private List<Fragment> addDeviceFragments = new ArrayList<Fragment>();
-    private PowerUpDevice powerUpDevice;
+
 
     private SelectDeviceType selectDeviceType;
+    private PowerUpDevice powerUpDevice;
+    private InputWifiPassword inputWifiPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,11 @@ public class AddDeviceActivity extends FragmentActivity {
 
         selectDeviceType = new SelectDeviceType();
         powerUpDevice = new PowerUpDevice();
+        inputWifiPassword = new InputWifiPassword();
 
         addDeviceFragments.add(selectDeviceType);
         addDeviceFragments.add(powerUpDevice);
+        addDeviceFragments.add(inputWifiPassword);
 
         addDeviceAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

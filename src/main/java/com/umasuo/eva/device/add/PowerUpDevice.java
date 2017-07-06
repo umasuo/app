@@ -1,18 +1,15 @@
 package com.umasuo.eva.device.add;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.log.LogControl;
 
@@ -24,7 +21,7 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
 
     private String TAG = "PowerUpDevice";
     private ImageView backBtn;
-    private TextView textView;
+    private Button nextBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,14 +33,24 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
         backBtn = (ImageView) view.findViewById(R.id.device_power_up_back);
         backBtn.setOnClickListener(this);
-        textView = (TextView) view.findViewById(R.id.device_power_up_content);
 
+        nextBtn = (Button) view.findViewById(R.id.device_power_up_next);
+        nextBtn.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        ((AddDeviceActivity) this.getContext()).replaceFragment(0);
+        switch (view.getId()) {
+            case R.id.device_power_up_back:
+                // 回退
+                ((AddDeviceActivity) this.getContext()).replaceFragment(0);
+                break;
+            case R.id.device_power_up_next:
+                //下一步
+                ((AddDeviceActivity) this.getContext()).replaceFragment(2);
+        }
+
     }
 
     @Override
@@ -56,7 +63,6 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         AddDeviceActivity activity = (AddDeviceActivity) getContext();
-        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
         LogControl.debug(TAG, "resume: " + activity.getSelectedDeviceName());
 
     }
@@ -65,7 +71,6 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
         AddDeviceActivity activity = (AddDeviceActivity) getContext();
-        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
         LogControl.debug(TAG, "pause: " + activity.getSelectedDeviceName());
     }
 
@@ -73,7 +78,6 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
     public void onDestroy() {
         super.onDestroy();
         AddDeviceActivity activity = (AddDeviceActivity) getContext();
-        textView.setText(textView.getText() + " : " + activity.getSelectedDeviceName());
         LogControl.debug(TAG, "destroy: " + activity.getSelectedDeviceName());
     }
 }

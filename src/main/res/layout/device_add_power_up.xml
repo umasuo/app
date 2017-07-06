@@ -38,18 +38,21 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/dv_welcome"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:id="@+id/device_light"
+        android:layout_width="@dimen/device_power_up_pic_width"
+        android:layout_height="@dimen/device_power_up_pic_height"
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
         android:background="@drawable/eva" />
 
-    <TextView
-        android:id="@+id/device_power_up_content"
+    <Button
+        android:id="@+id/device_power_up_next"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="确定启动设备"
-        android:textColor="@color/bottomTextColor" />
+        android:layout_height="@dimen/device_power_up_btn_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/device_power_up_btn_marginSide"
+        android:layout_marginRight="@dimen/device_power_up_btn_marginSide"
+        android:background="@color/button"
+        android:text="确定已经启动设备" />
 
 </LinearLayout>
