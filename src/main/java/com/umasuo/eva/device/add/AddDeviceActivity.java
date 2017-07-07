@@ -104,6 +104,12 @@ public class AddDeviceActivity extends FragmentActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        LogControl.debug(TAG, "pressed back button");
+        // TODO: 17/7/7 根据现在的状态显示不同的片段
+    }
+
+    @Override
     public void finish() {
         super.finish();
         this.overridePendingTransition(0, R.anim.choose_close);
