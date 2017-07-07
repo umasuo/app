@@ -20,5 +20,9 @@
             android:name="com.umasuo.eva.device.add.AddDeviceActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
     </application>
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
 </manifest>

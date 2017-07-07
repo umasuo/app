@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_top_height"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/personal_top_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_top_height"
-        android:orientation="vertical">
+        android:background="@color/topBgColor"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/personal_top_layout"
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/activity_top_icon_width"
+            android:layout_height="@dimen/activity_top_icon_height"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_top_icon_margin"
+            android:background="@drawable/left_arrow" />
+
+        <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_top_height"
-            android:background="@color/topBgColor"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/editScene"
+            android:textSize="@dimen/setting_title_size" />
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="@dimen/activity_top_icon_width"
-                android:layout_height="@dimen/activity_top_icon_height"
-                android:layout_gravity="center"
-                android:background="@drawable/left_arrow"
-                />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/setting_title_size"
-                android:layout_gravity="center_vertical"
-                android:text="@string/editScene"
-                android:layout_weight="1" />
-
-
-            <TextView
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/activity_top_icon_height"
-                android:layout_gravity="center"
-                android:text="@string/save" />
-
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_top_icon_height"
+            android:layout_gravity="center"
+            android:layout_marginRight="40px"
+            android:text="@string/save" />
 
     </LinearLayout>
+
+
+</LinearLayout>

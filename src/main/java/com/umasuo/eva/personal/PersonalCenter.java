@@ -11,9 +11,9 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
-import com.umasuo.eva.tools.adapter.MainPageAdapter;
 import com.umasuo.eva.tools.adapter.PersonalAdapter;
 import com.umasuo.eva.tools.log.LogControl;
+import com.umasuo.eva.tools.server.UserService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +25,7 @@ import java.util.Map;
  */
 
 public class PersonalCenter extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+    private static final String TAG = "personal";
 
     private ListView personal_listview;
     private LinearLayout piSummary;
@@ -97,12 +98,21 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
      */
     @Override
     public void onClick(View view) {
+        LogControl.debug(TAG, "click");
+        final UserService service = new UserService();
+        new Thread() {
+            @Override
+            public void run() {
+                service.getSmsCode("17017515600");
+            }
+        }.start();
 
-        if (personalInfo == null) {
-            personalInfo = new PersonalInfo();
-            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
-        }
-        ((MainActivity) getContext()).showFragment(piIndex);
+
+//        if (personalInfo == null) {
+//            personalInfo = new PersonalInfo();
+//            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
+//        }
+//        ((MainActivity) getContext()).showFragment(piIndex);
     }
 
     /**
