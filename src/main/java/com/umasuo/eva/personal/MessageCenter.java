@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import com.umasuo.eva.R;
 
 /**
- * Created on 2017/7/7.
- * 个人中心设置界面
+ * Created by umasuo on 17/7/7.
+ * 个人消息中心
  */
-public class PersonalSettingsFragment extends Fragment {
+public class MessageCenter extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.personal_settings,container,false);
+        View view = inflater.inflate(R.layout.message, container, false);
         return view;
     }
 }

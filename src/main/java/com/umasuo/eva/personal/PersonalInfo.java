@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import com.umasuo.eva.R;
 
 /**
- * Created by umasuo on 17/7/7.
- * 软件的关于界面.
+ * Created on 2017/7/7.
+ * 个人信息设置界面
  */
-public class About extends Fragment {
+public class PersonalInfo extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.about, container, false);
+        View view = inflater.inflate(R.layout.personal_info, container, false);
         return view;
     }
 }

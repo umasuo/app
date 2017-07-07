@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.tools.adapter.MainPageAdapter;
 import com.umasuo.eva.tools.adapter.PersonalAdapter;
+import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,12 +24,23 @@ import java.util.Map;
  * 个人中心界面
  */
 
-public class PersonalCenter extends Fragment implements AdapterView.OnItemClickListener {
+public class PersonalCenter extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private ListView personal_listview;
+    private LinearLayout piSummary;
     public List<Map<String, Object>> mdata;
-    Fragment personalSettingsFragment;
+    PersonalSettings personalSettings;
     private int psIndex = 2;
+    PersonalInfo personalInfo;
+    private int piIndex = 2;
+    Feedback feedback;
+    private int fbIndex = 2;
+    FAQ faq;
+    private int faqIndex = 2;
+    About about;
+    private int aboutIndex = 2;
+    MessageCenter messageCenter;
+    private int mcIndex = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +52,8 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
         personal_listview.setAdapter(pAdapter);
         personal_listview.setOnItemClickListener(this);
 
+        piSummary = view.findViewById(R.id.personal_info_summary);
+        piSummary.setOnClickListener(this);
 
         return view;
     }
@@ -49,11 +65,6 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
         map = new HashMap<String, Object>();
         map.put("icon", R.drawable.home);
         map.put("name", "消息中心");
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.leavehome);
-        map.put("name", "扫一扫");
         list.add(map);
 
         map = new HashMap<String, Object>();
@@ -71,16 +82,85 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
         map.put("name", "关于");
         list.add(map);
 
+        map = new HashMap<String, Object>();
+        map.put("icon", R.drawable.leavehome);
+        map.put("name", "设置");
+        list.add(map);
+
         return list;
     }
 
+    /**
+     * 点击用户信息是，显示用户信息界面.
+     *
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+
+        if (personalInfo == null) {
+            personalInfo = new PersonalInfo();
+            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
+        }
+        ((MainActivity) getContext()).showFragment(piIndex);
+    }
+
+    /**
+     * 用户信息下面各个功能点的点击事件.
+     *
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        if (personalSettingsFragment == null) {
-            personalSettingsFragment = new PersonalSettingsFragment();
-            psIndex = ((MainActivity) getContext()).addFragment(personalSettingsFragment);
+        MainActivity activity = (MainActivity) getContext();
+        switch (i) {
+            case 0: {
+                if (messageCenter == null) {
+                    messageCenter = new MessageCenter();
+                    mcIndex = activity.addFragment(messageCenter);
+                }
+                activity.showFragment(mcIndex);
+                break;
+            }
+            case 1: {
+                if (faq == null) {
+                    faq = new FAQ();
+                    faqIndex = activity.addFragment(faq);
+                }
+                activity.showFragment(faqIndex);
+                break;
+            }
+            case 2: {
+                if (feedback == null) {
+                    feedback = new Feedback();
+                    fbIndex = activity.addFragment(feedback);
+                }
+                activity.showFragment(fbIndex);
+                break;
+            }
+            case 3: {
+                if (about == null) {
+                    about = new About();
+                    aboutIndex = activity.addFragment(about);
+                }
+                activity.showFragment(aboutIndex);
+                break;
+            }
+            case 4: {
+                if (personalSettings == null) {
+                    personalSettings = new PersonalSettings();
+                    psIndex = ((MainActivity) getContext()).addFragment(personalSettings);
+                }
+                activity.showFragment(psIndex);
+                break;
+            }
+            default:
+                activity.showFragment(2);//个人中心主界面
+                break;
         }
-        ((MainActivity) getContext()).showFragment(psIndex);
     }
 }

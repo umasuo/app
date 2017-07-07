@@ -27,6 +27,7 @@
 
 
     <LinearLayout
+        android:id="@+id/personal_info_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/scene_item_icon_marginRight"
@@ -61,12 +62,6 @@
                 android:text="@string/phone_number" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="@dimen/personal_item_right_arrow_width"
-            android:layout_height="@dimen/personal_item_right_arrow_height"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="@dimen/device_type_arrow_marginRight"
-            android:background="@drawable/right_arrow" />
     </LinearLayout>
 
     <ListView

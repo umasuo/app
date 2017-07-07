@@ -9,12 +9,21 @@
     <string name="powerUpDevice">启动设备</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
+
+
+    <!--用户中心的信息-->
     <string name="settings">设置</string>
     <string name="save">保存</string>
     <string name="editScene">编辑场景</string>
     <string name="setup_head_portrait">点击此次可设置头像</string>
     <string name="about">关于</string>
+    <string name="personal_settings">个人设置</string>
+    <string name="personal_info">个人信息</string>
+    <string name="feedback">意见反馈</string>
+    <string name="faq">常见问题</string>
+    <string name="message">消息中心</string>
     <string name="phone_number">123456789</string>
+
 
     <!--下面是目前支持的设备种类，待完善-->
     <string name="device_cz">插座</string>

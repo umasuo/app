@@ -22,9 +22,9 @@ import java.util.Map;
 /**
  * Created by liubin8095 on 2017/7/1.
  */
-public class Scene extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class SceneCenter extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
-    private static final String TAG = "Scene";
+    private static final String TAG = "SceneCenter";
 
     private ImageView main_title_icon;
     private ImageView sceneAddBtn;

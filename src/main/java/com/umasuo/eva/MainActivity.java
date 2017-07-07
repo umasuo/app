@@ -10,9 +10,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.umasuo.eva.device.DevicesFragment;
+import com.umasuo.eva.device.DeviceCenter;
 import com.umasuo.eva.personal.PersonalCenter;
-import com.umasuo.eva.scene.Scene;
+import com.umasuo.eva.scene.SceneCenter;
 import com.umasuo.eva.tools.adapter.MainPageAdapter;
 import com.umasuo.eva.tools.log.LogControl;
 
@@ -71,8 +71,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         sceneText = (TextView) findViewById(R.id.sceneTextBtn);
         personalText = (TextView) findViewById(R.id.personalTextBtn);
 
-        devicesFragment = new DevicesFragment();
-        sceneFragment = new Scene();
+        devicesFragment = new DeviceCenter();
+        sceneFragment = new SceneCenter();
         personalFragment = new PersonalCenter();
 
         adapter = new MainPageAdapter(getSupportFragmentManager());
