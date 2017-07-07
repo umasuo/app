@@ -52,7 +52,7 @@ public class SceneAdapter extends BaseAdapter {
         SceneAdapter.ViewHolder holder;
         if (view == null) {
             holder = new SceneAdapter.ViewHolder();
-            view = mInflater.inflate(R.layout.scene_adapter_item, null);
+            view = mInflater.inflate(R.layout.scene_item, null);
             holder.img_left = (ImageView) view.findViewById(R.id.imgLeft);
             holder.text = (TextView) view.findViewById(R.id.text_center);
             holder.img_right = (ImageView) view.findViewById(R.id.imgRight);

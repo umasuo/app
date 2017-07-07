@@ -14,12 +14,12 @@ import com.umasuo.eva.R;
  * 智能场景中的编辑场景和新建场景界面
  */
 
-public class EditSceneFragment extends Fragment{
+public class SceneEditorFragment extends Fragment{
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.edit_scene, container,false);
+        View view = inflater.inflate(R.layout.scene_editor, container,false);
 
 
 

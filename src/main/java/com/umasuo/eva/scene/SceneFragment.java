@@ -5,10 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.adapter.SceneAdapter;
 
@@ -20,30 +22,33 @@ import java.util.Map;
 /**
  * Created by liubin8095 on 2017/7/1.
  */
-
-public class SceneFragment extends Fragment {
+public class SceneFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ImageView main_title_icon;
     private TextView main_title;
     private ImageView main_add;
     private ListView scene_list;
-    public List<Map<String ,Object>> mdata;
+    public List<Map<String, Object>> mdata;
+
+    private SceneEditorFragment editorFragment;
+    private int editorIndex;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.scene, container,false);
+        View view = inflater.inflate(R.layout.scene, container, false);
 
-        scene_list = (ListView)view.findViewById(R.id.scene_list);
-        SceneAdapter sAdapter = new SceneAdapter(getContext(),getData());
+        scene_list = (ListView) view.findViewById(R.id.scene_list);
+        SceneAdapter sAdapter = new SceneAdapter(getContext(), getData());
         scene_list.setAdapter(sAdapter);
+        scene_list.setOnItemClickListener(this);
 
         return view;
     }
 
-    private List<Map<String, Object>> getData()
-    {
+    private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map;
 
@@ -65,4 +70,10 @@ public class SceneFragment extends Fragment {
         return list;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        editorFragment = new SceneEditorFragment();
+        editorIndex = ((MainActivity) getContext()).addAndShowFragment(editorFragment);
+    }
 }

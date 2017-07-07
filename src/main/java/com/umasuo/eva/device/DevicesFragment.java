@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.tools.adapter.DeviceListAdapter;
-import com.umasuo.eva.tools.adapter.SelectDeviceAdapter;
 import com.umasuo.eva.tools.log.LogControl;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class DevicesFragment extends Fragment implements View.OnClickListener, A
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         LogControl.debug("DeviceFragment", "on create.");
-        View view = inflater.inflate(R.layout.devices_layout, container, false);
+        View view = inflater.inflate(R.layout.devices, container, false);
 
         devices_add = (ImageView) view.findViewById(R.id.devices_add);
         devices_add.setOnClickListener(this);

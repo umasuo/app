@@ -1,7 +1,6 @@
 package com.umasuo.eva.tools.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class PersonalAdapter extends BaseAdapter {
         PersonalAdapter.ViewHolder holder;
         if (view == null) {
             holder = new PersonalAdapter.ViewHolder();
-            view = inflater.inflate(R.layout.personal_type_item, null);
+            view = inflater.inflate(R.layout.personal_item, null);
             holder.img_left = (ImageView) view.findViewById(R.id.personal_left_icon);
             holder.name = (TextView) view.findViewById(R.id.personal_name);
             holder.img_right = (ImageView) view.findViewById(R.id.personal_right_arrow);

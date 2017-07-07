@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
@@ -23,19 +21,20 @@ import java.util.Map;
  * 个人中心界面
  */
 
-public class PersonalFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class PersonalFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView personal_listview;
-    public List<Map<String ,Object>> mdata;
-
+    public List<Map<String, Object>> mdata;
+    Fragment personalSettingsFragment = new PersonalSettingsFragment();
+    private int psIndex = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.personal_layout, container, false);
+        View view = inflater.inflate(R.layout.personal, container, false);
         personal_listview = view.findViewById(R.id.personal_listview);
-        PersonalAdapter pAdapter = new PersonalAdapter(getContext(),getData());
+        PersonalAdapter pAdapter = new PersonalAdapter(getContext(), getData());
         personal_listview.setAdapter(pAdapter);
         personal_listview.setOnItemClickListener(this);
 
@@ -43,8 +42,7 @@ public class PersonalFragment extends Fragment implements AdapterView.OnItemClic
         return view;
     }
 
-    private List<Map<String, Object>> getData()
-    {
+    private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map;
 
@@ -78,7 +76,9 @@ public class PersonalFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ((MainActivity)getContext()).setSelect(4);
+        switch (i){
 
+        }
+        int index = ((MainActivity) getContext()).addAndShowFragment(personalSettingsFragment);
     }
 }

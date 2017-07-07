@@ -60,9 +60,18 @@
     <dimen name="device_power_up_btn_marginSide">80px</dimen>
 
     <dimen name="ok_button_height">160px</dimen>
+
+    <!--个人中心的界面设置-->
     <dimen name="head_portrait_width">180px</dimen>
     <dimen name="head_portrait_height">180px</dimen>
     <dimen name="head_portrait_margin">40px</dimen>
     <dimen name="personal_type_item_height">120px</dimen>
+
+    <dimen name="personal_item_icon_height">120px</dimen>
+    <dimen name="personal_item_icon_width">120px</dimen>
+    <dimen name="personal_item_icon_margin">40px</dimen>
+    <dimen name="personal_item_name_size">50px</dimen>
+    <dimen name="personal_item_right_arrow_height">60px</dimen>
+    <dimen name="personal_item_right_arrow_width">40px</dimen>
 
 </resources>

@@ -12,7 +12,6 @@ import com.umasuo.eva.R;
  * Created on 2017/7/7.
  * 个人中心设置界面
  */
-
 public class PersonalSettingsFragment extends Fragment {
 
     @Override
@@ -20,6 +19,5 @@ public class PersonalSettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.personal_settings,container,false);
         return view;
-
     }
 }

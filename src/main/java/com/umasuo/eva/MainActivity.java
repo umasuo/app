@@ -3,7 +3,6 @@ package com.umasuo.eva;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
@@ -13,21 +12,20 @@ import android.widget.TextView;
 
 import com.umasuo.eva.device.DevicesFragment;
 import com.umasuo.eva.personal.PersonalFragment;
-import com.umasuo.eva.personal.PersonalSettingsFragment;
-import com.umasuo.eva.scene.EditSceneFragment;
 import com.umasuo.eva.scene.SceneFragment;
+import com.umasuo.eva.tools.adapter.MainPageAdapter;
+import com.umasuo.eva.tools.log.LogControl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * 主界面activity，需要保持干净、清晰.
+ */
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private String TAG = "MainActivity";
 
     private MainViewPager viewPager;
-    private FragmentPagerAdapter mAdapter;
-    private List<Fragment> mFragments = new ArrayList<Fragment>();
 
+    // 底部菜单的组件
     private LinearLayout devicesLayout;
     private LinearLayout sceneLayout;
     private LinearLayout personalLayout;
@@ -41,11 +39,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private TextView personalText;
 
 
-    Fragment devicesFragment;
-    Fragment sceneFragment;
-    Fragment personalFragment;
-    Fragment editSceneFragment;
-    Fragment personalSettingsFragment;
+    // 这个类里面只显示三个主入口，其他的入口交由不同的主入口去控制显示
+    Fragment devicesFragment; // 0 保持不变
+    Fragment sceneFragment; // 1 保持不变
+    Fragment personalFragment; // 2 保持不变
+
+
+    MainPageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,39 +74,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         devicesFragment = new DevicesFragment();
         sceneFragment = new SceneFragment();
         personalFragment = new PersonalFragment();
-        editSceneFragment = new EditSceneFragment();
-        personalSettingsFragment = new PersonalSettingsFragment();
 
-        mFragments.add(devicesFragment);//0
-        mFragments.add(sceneFragment);//1
-        mFragments.add(personalFragment);//2
-        mFragments.add(editSceneFragment);//3
-        mFragments.add(personalSettingsFragment);//4
+        adapter = new MainPageAdapter(getSupportFragmentManager());
 
+        adapter.add(devicesFragment);
+        adapter.add(sceneFragment);
+        adapter.add(personalFragment);
 
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            @Override
-            public int getCount() {
-                return mFragments.size();
-            }
-
-            @Override
-            public Fragment getItem(int arg0) {
-                return mFragments.get(arg0);
-            }
-        };
-        viewPager.setAdapter(mAdapter);
+        viewPager.setAdapter(adapter);
     }
 
     @Override
     public void onBackPressed() {
 
         int currentPage = viewPager.getCurrentItem();
-        if(currentPage == 4){//4 当前界面是个人中心的下一层
+        if (currentPage == 4) {//4 当前界面是个人中心的下一层
             setSelect(2);
             return;
-        }else if(currentPage == 3){//4 当前界面是智能场景下一层
+        } else if (currentPage == 3) {//4 当前界面是智能场景下一层
             setSelect(1);
             return;
         }
@@ -115,7 +100,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void initEvent() {
-        // 设置事件
+
+        // 设置底部主菜单事件
         devicesLayout.setOnClickListener(this);
         devicesImage.setOnClickListener(this);
         devicesText.setOnClickListener(this);
@@ -134,8 +120,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             public void onPageSelected(int arg0) {
                 //当前选中的Fragment 下标
                 int currentItem = viewPager.getCurrentItem();
-                //把图片全设置为暗的
-                resetImg();
+                //只有点击底部菜单时才会变更菜单的图片
                 switch (currentItem) {
                     case 0:
                         devicesImage.setBackgroundResource(R.drawable.first);
@@ -164,6 +149,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         });
     }
 
+    /**
+     * 底部button的点击事件用来更改主界面以及菜单图片
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         resetImg();
@@ -189,7 +179,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     public void setSelect(int i) {
-        System.out.println("liubin 111 MainActivity setSelect i =" + i);
+        LogControl.debug(TAG, "MainActivity setSelect i: " + i);
         //改变内容区域，把图片设置为亮的
         switch (i) {
             case 0:
@@ -205,10 +195,25 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
         //切换Fragment
-        viewPager.setCurrentItem(i);
+        viewPager.setCurrentItem(i, true);
     }
 
-    //将所有的图片都变暗
+    /**
+     * 新添加并直接显示添加的片段.
+     *
+     * @param fragment
+     */
+    public int addAndShowFragment(Fragment fragment) {
+        int index = adapter.add(fragment);
+        adapter.notifyDataSetChanged();
+        viewPager.setCurrentItem(index);
+
+        return index;
+    }
+
+    /**
+     * 将所有菜单图片还原.
+     */
     private void resetImg() {
         devicesImage.setBackgroundResource(R.drawable.first);
         sceneImage.setBackgroundResource(R.drawable.second);
