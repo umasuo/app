@@ -90,29 +90,29 @@ public class SelectDeviceType extends Fragment implements AdapterView.OnItemClic
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.device_cz);
+        map.put("icon", R.drawable.device_cz);
         map.put("title", getString(R.string.device_cz));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.device_kg);
+        map.put("icon", R.drawable.device_kg);
         map.put("title", getString(R.string.device_kg));
         list.add(map);
 
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.device_xy);
+        map.put("icon", R.drawable.device_xy);
         map.put("title", getString(R.string.device_xy));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.device_bx);
+        map.put("icon", R.drawable.device_bx);
         map.put("title", getString(R.string.device_bx));
         list.add(map);
 
 
         map = new HashMap<String, Object>();
-        map.put("img_left", R.drawable.device_qt);
+        map.put("icon", R.drawable.device_qt);
         map.put("title", getString(R.string.device_qt));
         list.add(map);
 

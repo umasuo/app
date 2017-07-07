@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/personal_top_layout"
+        android:id="@+id/scene_top_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_top_height"
         android:background="@color/topBgColor"
@@ -24,7 +24,7 @@
             android:typeface="monospace" />
 
         <ImageView
-            android:id="@+id/devices_add"
+            android:id="@+id/scene_add_btn"
             android:layout_width="@dimen/activity_top_icon_width"
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"

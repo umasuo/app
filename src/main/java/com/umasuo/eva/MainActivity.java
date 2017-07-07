@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.umasuo.eva.device.DevicesFragment;
-import com.umasuo.eva.personal.PersonalFragment;
-import com.umasuo.eva.scene.SceneFragment;
+import com.umasuo.eva.personal.PersonalCenter;
+import com.umasuo.eva.scene.Scene;
 import com.umasuo.eva.tools.adapter.MainPageAdapter;
 import com.umasuo.eva.tools.log.LogControl;
 
@@ -72,8 +72,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalText = (TextView) findViewById(R.id.personalTextBtn);
 
         devicesFragment = new DevicesFragment();
-        sceneFragment = new SceneFragment();
-        personalFragment = new PersonalFragment();
+        sceneFragment = new Scene();
+        personalFragment = new PersonalCenter();
 
         adapter = new MainPageAdapter(getSupportFragmentManager());
 
@@ -89,10 +89,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         int currentPage = viewPager.getCurrentItem();
         if (currentPage == 4) {//4 当前界面是个人中心的下一层
-            setSelect(2);
+            showFragment(2);
             return;
         } else if (currentPage == 3) {//4 当前界面是智能场景下一层
-            setSelect(1);
+            showFragment(1);
             return;
         }
         super.onBackPressed();
@@ -161,25 +161,25 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.devicesLayout:
             case R.id.devicesImgbtn:
             case R.id.devicesTextBtn:
-                setSelect(0);
+                showFragment(0);
                 break;
             case R.id.sceneLayout:
             case R.id.sceneImgBtn:
             case R.id.sceneTextBtn:
-                setSelect(1);
+                showFragment(1);
                 break;
             case R.id.personalLayout:
             case R.id.personalImgBtn:
             case R.id.personalTextBtn:
-                setSelect(2);
+                showFragment(2);
                 break;
             default:
                 break;
         }
     }
 
-    public void setSelect(int i) {
-        LogControl.debug(TAG, "MainActivity setSelect i: " + i);
+    public void showFragment(int i) {
+        LogControl.debug(TAG, "MainActivity showFragment i: " + i);
         //改变内容区域，把图片设置为亮的
         switch (i) {
             case 0:
@@ -203,11 +203,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      *
      * @param fragment
      */
-    public int addAndShowFragment(Fragment fragment) {
+    public int addFragment(Fragment fragment) {
         int index = adapter.add(fragment);
         adapter.notifyDataSetChanged();
-        viewPager.setCurrentItem(index);
-
         return index;
     }
 

@@ -62,8 +62,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/scene_item_arrow_width"
-            android:layout_height="@dimen/scene_item_arrow_height"
+            android:layout_width="@dimen/personal_item_right_arrow_width"
+            android:layout_height="@dimen/personal_item_right_arrow_height"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="@dimen/device_type_arrow_marginRight"
             android:background="@drawable/right_arrow" />

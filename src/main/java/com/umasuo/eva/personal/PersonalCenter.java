@@ -21,11 +21,11 @@ import java.util.Map;
  * 个人中心界面
  */
 
-public class PersonalFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class PersonalCenter extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView personal_listview;
     public List<Map<String, Object>> mdata;
-    Fragment personalSettingsFragment = new PersonalSettingsFragment();
+    Fragment personalSettingsFragment;
     private int psIndex = 2;
 
     @Override
@@ -76,9 +76,11 @@ public class PersonalFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (i){
 
+        if (personalSettingsFragment == null) {
+            personalSettingsFragment = new PersonalSettingsFragment();
+            psIndex = ((MainActivity) getContext()).addFragment(personalSettingsFragment);
         }
-        int index = ((MainActivity) getContext()).addAndShowFragment(personalSettingsFragment);
+        ((MainActivity) getContext()).showFragment(psIndex);
     }
 }

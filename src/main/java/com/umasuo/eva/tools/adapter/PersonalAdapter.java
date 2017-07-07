@@ -85,7 +85,7 @@ public class PersonalAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             LogControl.debug(TAG, "position = " + mviewHolder.position);
-            ((MainActivity) mcontext).setSelect(3);
+            ((MainActivity) mcontext).showFragment(3);
         }
     }
 }

@@ -54,12 +54,12 @@ public class SelectDeviceAdapter extends BaseAdapter {
             holder.text = (TextView) view.findViewById(R.id.device_type_name);
             holder.img_right = (ImageView) view.findViewById(R.id.device_type_arrow);
             holder.position = i;
-//            holder.img_right.setOnClickListener(new MyOnClickListener(holder));
+//            holder.actionBtn.setOnClickListener(new MyOnClickListener(holder));
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.img_left.setBackgroundResource((Integer) mdata.get(i).get("img_left"));
+        holder.img_left.setBackgroundResource((Integer) mdata.get(i).get("icon"));
         holder.text.setText((String) mdata.get(i).get("title"));
         return view;
     }

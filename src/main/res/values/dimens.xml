@@ -15,7 +15,7 @@
     <dimen name="top_left_arrow_marginTop">40px</dimen>
     <dimen name="top_left_arrow_marginBot">40px</dimen>
 
-    <dimen name="activity_top_marginRight">20px</dimen>
+    <dimen name="activity_top_marginRight">40px</dimen>
     <dimen name="activity_top_marginLeft">20px</dimen>
 
 
@@ -40,17 +40,11 @@
     <dimen name="setting_title_size">50px</dimen>
 
     <!-- todo 这个应该可以与设备类型选择的item 合并，保持同一种风格-->
-    <dimen name="scene_item_height">200px</dimen>
+    <dimen name="scene_item_height">240px</dimen>
     <dimen name="scene_item_icon_width">100px</dimen>
     <dimen name="scene_item_icon_height">100px</dimen>
     <dimen name="scene_item_icon_marginLeft">30px</dimen>
     <dimen name="scene_item_icon_marginRight">30px</dimen>
-    <dimen name="scene_item_arrow_height">60px</dimen>
-    <dimen name="scene_item_arrow_width">40px</dimen>
-    <dimen name="scene_item_arrow_marginLeft">20px</dimen>
-    <dimen name="scene_item_arrow_marginRight">20px</dimen>
-    <dimen name="scene_item_arrow_marginTop">40px</dimen>
-    <dimen name="scene_item_arrow_marginBot">40px</dimen>
 
     <!--添加设备时，确认设备指示灯-->
     <dimen name="device_power_up_pic_height">400px</dimen>
