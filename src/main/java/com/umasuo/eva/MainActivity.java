@@ -44,7 +44,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Fragment sceneFragment; // 1 保持不变
     Fragment personalFragment; // 2 保持不变
 
-
     MainPageAdapter adapter;
 
     @Override

@@ -9,18 +9,18 @@ public class SignInResult implements Serializable {
     /**
      * Customer for view.
      */
-    private UserView userView;
+    private UserModel userView;
 
     /**
      * String token.
      */
     private String token;
 
-    public UserView getUserView() {
+    public UserModel getUserView() {
         return userView;
     }
 
-    public void setUserView(UserView userView) {
+    public void setUserView(UserModel userView) {
         this.userView = userView;
     }
 

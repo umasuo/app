@@ -1,4 +1,4 @@
-package com.umasuo.eva.ui.personal;
+package com.umasuo.eva.ui.sign;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +12,7 @@ import com.umasuo.eva.R;
  * Created on 2017/7/7.
  * 用户登录界面
  */
-public class PersonalSignin extends Fragment {
+public class SigninWithPassword extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

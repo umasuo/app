@@ -2,7 +2,7 @@ package com.umasuo.eva.domain.user.dto;
 
 import java.io.Serializable;
 
-public class UserView implements Serializable {
+public class UserModel implements Serializable {
 
 
     private static final long serialVersionUID = -3792465250729122435L;
@@ -138,7 +138,7 @@ public class UserView implements Serializable {
 
     @Override
     public String toString() {
-        return "UserView{" +
+        return "UserModel{" +
                 "userId='" + userId + '\'' +
                 ", developerId='" + developerId + '\'' +
                 ", deviceDefinitionId='" + deviceDefinitionId + '\'' +

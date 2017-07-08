@@ -13,6 +13,9 @@ import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.adapter.PersonalAdapter;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.ui.sign.SigninWithPassword;
+import com.umasuo.eva.ui.sign.SigninWithSms;
+import com.umasuo.eva.ui.sign.SigninStarter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,9 +36,9 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
     private int psIndex = 2;
     PersonalInfo personalInfo;
     private int piIndex = 2;
-    PersonalSignin signin;
+    SigninWithPassword signin;
     private int signinIndex = 2;
-    PersonalSigninWithSms smsSignin;
+    SigninWithSms smsSignin;
     private int smsSigninIndex = 2;
     Feedback feedback;
     private int fbIndex = 2;
@@ -104,16 +107,20 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
         LogControl.debug(TAG, "click");
 
 //        if (smsSignin == null) {
-//            smsSignin = new PersonalSigninWithSms();
+//            smsSignin = new SigninWithSms();
 //            smsSigninIndex = ((MainActivity) getContext()).addFragment(smsSignin);
 //        }
 //        ((MainActivity) getContext()).showFragment(smsSigninIndex);
 
-        if (personalInfo == null) {
-            personalInfo = new PersonalInfo();
-            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
-        }
-        ((MainActivity) getContext()).showFragment(piIndex);
+//        if (personalInfo == null) {
+//            personalInfo = new PersonalInfo();
+//            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
+//        }
+//        ((MainActivity) getContext()).showFragment(piIndex);
+
+        SigninStarter signinStarter = new SigninStarter();
+        int index = ((MainActivity) getContext()).addFragment(signinStarter);
+        ((MainActivity) getContext()).showFragment(index);
     }
 
     /**

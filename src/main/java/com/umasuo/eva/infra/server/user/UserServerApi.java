@@ -2,7 +2,7 @@ package com.umasuo.eva.infra.server.user;
 
 import com.umasuo.eva.domain.user.dto.QuickSignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
-import com.umasuo.eva.domain.user.dto.UserView;
+import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.ServiceCaller;
 
@@ -19,11 +19,11 @@ import retrofit2.http.Query;
  * Created by umasuo on 17/7/7.
  * 用户相关的API请求.
  */
-public class UserService extends ServiceCaller {
+public class UserServerApi extends ServiceCaller {
 
     private Service service;
 
-    public UserService() {
+    public UserServerApi() {
         service = retrofit.create(Service.class);
     }
 
@@ -41,13 +41,13 @@ public class UserService extends ServiceCaller {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         //请求成功
-                        LogControl.debug("UserService", "Success");
+                        LogControl.debug("UserServerApi", "Success");
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         //请求失败
-                        LogControl.debug("UserService", "Success");
+                        LogControl.debug("UserServerApi", "Success");
                         // TODO: 17/7/8 显示错误信息
                     }
                 }
@@ -74,14 +74,14 @@ public class UserService extends ServiceCaller {
                     @Override
                     public void onResponse(Call<SignInResult> call, Response<SignInResult> response) {
                         //请求成功
-                        LogControl.debug("UserService", " signin Success");
+                        LogControl.debug("UserServerApi", " signin Success");
                         SignInResult result = response.body();
                     }
 
                     @Override
                     public void onFailure(Call<SignInResult> call, Throwable t) {
                         //请求失败
-                        LogControl.debug("UserService", "Success");
+                        LogControl.debug("UserServerApi", "Success");
                         // TODO: 17/7/8 显示错误信息
                     }
                 }
@@ -101,7 +101,7 @@ public class UserService extends ServiceCaller {
     private interface Service {
 
         @GET("/v1/users/{id}")
-        Call<UserView> getUserInfo(@Path("id") String id);
+        Call<UserModel> getUserInfo(@Path("id") String id);
 
         @POST("/v1/users/validationCodes")
         Call<Void> getSmsCode(@Query("phoneNumber") String phone);
