@@ -10,11 +10,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.umasuo.eva.device.DeviceCenter;
-import com.umasuo.eva.personal.PersonalCenter;
-import com.umasuo.eva.scene.SceneCenter;
-import com.umasuo.eva.tools.adapter.MainPageAdapter;
-import com.umasuo.eva.tools.log.LogControl;
+import com.umasuo.eva.ui.device.DeviceCenter;
+import com.umasuo.eva.ui.personal.PersonalCenter;
+import com.umasuo.eva.ui.scene.SceneCenter;
+import com.umasuo.eva.infra.adapter.MainPageAdapter;
+import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * 主界面activity，需要保持干净、清晰.

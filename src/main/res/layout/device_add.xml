@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <!--添加device的几个步骤由这里显示-->
-    <com.umasuo.eva.device.add.AddDeviceViewPager
+    <com.umasuo.eva.ui.device.add.AddDeviceViewPager
         android:id="@+id/addDeviceViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
