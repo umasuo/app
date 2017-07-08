@@ -8,10 +8,12 @@
         android:label="@string/appName"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.umasuo.eva.MainActivity">
+
+        <activity
+            android:name=".LauncherActivity"
+            android:theme="@style/AppTheme.Full">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -19,8 +21,11 @@
         <activity
             android:name=".ui.device.add.AddDeviceActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity
+            android:name="com.umasuo.eva.MainActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
     </application>
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
