@@ -8,8 +8,6 @@ import java.net.HttpURLConnection;
 
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -24,13 +22,6 @@ public class UserService extends ServiceCaller {
     private Service service;
 
     public UserService() {
-
-//        String API_URL = "http://192.168.1.19:8809";
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(API_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
         service = retrofit.create(Service.class);
     }
 
