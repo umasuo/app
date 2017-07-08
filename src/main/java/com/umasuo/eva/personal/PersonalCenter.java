@@ -35,6 +35,10 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
     private int psIndex = 2;
     PersonalInfo personalInfo;
     private int piIndex = 2;
+    PersonalSignin signin;
+    private int signinIndex = 2;
+    PersonalSigninWithSms smsSignin;
+    private int smsSigninIndex = 2;
     Feedback feedback;
     private int fbIndex = 2;
     FAQ faq;
@@ -100,17 +104,18 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onClick(View view) {
         LogControl.debug(TAG, "click");
-        DBTester test = new DBTester(this.getContext());
-//        test.insert();
-//        test.get();
-//        new UserService().getSmsCode("17017515600");
 
-        new UserService().signIn("17017515600", "developer1", "123");
-//        if (personalInfo == null) {
-//            personalInfo = new PersonalInfo();
-//            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
+//        if (smsSignin == null) {
+//            smsSignin = new PersonalSigninWithSms();
+//            smsSigninIndex = ((MainActivity) getContext()).addFragment(smsSignin);
 //        }
-//        ((MainActivity) getContext()).showFragment(piIndex);
+//        ((MainActivity) getContext()).showFragment(smsSigninIndex);
+
+        if (personalInfo == null) {
+            personalInfo = new PersonalInfo();
+            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
+        }
+        ((MainActivity) getContext()).showFragment(piIndex);
     }
 
     /**

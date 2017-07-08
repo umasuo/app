@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_height"
+        android:background="@color/topBgColor"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/personal_signin_back"
+            android:layout_width="@dimen/top_left_arrow_width"
+            android:layout_height="@dimen/top_left_arrow_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/top_left_arrow_marginBot"
+            android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"
+            android:layout_marginRight="@dimen/top_left_arrow_marginRight"
+            android:layout_marginTop="@dimen/top_left_arrow_marginTop"
+            android:background="@drawable/left_arrow" />
+
+        <TextView
+            android:id="@+id/personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_top_marginLeft"
+            android:layout_weight="1"
+            android:text="@string/personal_signin"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/personal_signin_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:hint="＋86"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/personal_signin_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:hint="手机号"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/personal_signin_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:hint="password"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/personal_signin_okBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:text="登录" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff0000"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/personal_sms_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_top_marginLeft"
+                android:text="通过短信验证码登录"
+                android:textSize="40px"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/personal_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_top_marginLeft"
+                android:background="#00ff00"
+                android:gravity="right"
+                android:text="忘记密码"
+                android:textSize="40px"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
