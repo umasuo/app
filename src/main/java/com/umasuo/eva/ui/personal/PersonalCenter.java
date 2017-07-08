@@ -49,6 +49,8 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
     MessageCenter messageCenter;
     private int mcIndex = 2;
 
+    MainActivity mactivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,8 +63,19 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 
         piSummary = view.findViewById(R.id.personal_info_summary);
         piSummary.setOnClickListener(this);
-
+        mactivity = (MainActivity) getContext();
         return view;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            mactivity.hideBottom();
+        }else{
+            mactivity.showBottom();
+        }
     }
 
     private List<Map<String, Object>> getData() {
@@ -134,51 +147,55 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        MainActivity activity = (MainActivity) getContext();
         switch (i) {
             case 0: {
                 if (messageCenter == null) {
                     messageCenter = new MessageCenter();
-                    mcIndex = activity.addFragment(messageCenter);
+//                    mcIndex = activity.addFragment(messageCenter);
                 }
-                activity.showFragment(mcIndex);
+//                activity.showFragment(mcIndex);
+                mactivity.showFragment(this,messageCenter);
                 break;
             }
             case 1: {
                 if (faq == null) {
                     faq = new FAQ();
-                    faqIndex = activity.addFragment(faq);
+//                    faqIndex = activity.addFragment(faq);
                 }
-                activity.showFragment(faqIndex);
+//                activity.showFragment(faqIndex);
+                mactivity.showFragment(this,faq);
                 break;
             }
             case 2: {
                 if (feedback == null) {
                     feedback = new Feedback();
-                    fbIndex = activity.addFragment(feedback);
+//                    fbIndex = activity.addFragment(feedback);
                 }
-                activity.showFragment(fbIndex);
+//                activity.showFragment(fbIndex);
+                mactivity.showFragment(this,feedback);
                 break;
             }
             case 3: {
                 if (about == null) {
                     about = new About();
-                    aboutIndex = activity.addFragment(about);
+//                    aboutIndex = activity.addFragment(about);
                 }
-                activity.showFragment(aboutIndex);
+//                activity.showFragment(aboutIndex);
+                mactivity.showFragment(this,about);
                 break;
             }
             case 4: {
                 if (personalSettings == null) {
                     personalSettings = new PersonalSettings();
-                    psIndex = ((MainActivity) getContext()).addFragment(personalSettings);
+//                    psIndex = ((MainActivity) getContext()).addFragment(personalSettings);
                 }
-                activity.showFragment(psIndex);
+//                activity.showFragment(psIndex);
+                mactivity.showFragment(this,personalSettings);
                 break;
             }
             default:
-                activity.showFragment(2);//个人中心主界面
-                break;
+//                activity.showFragment(2);//个人中心主界面
+//                break;
         }
     }
 }

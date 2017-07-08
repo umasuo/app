@@ -1,11 +1,13 @@
 package com.umasuo.eva;
 
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private String TAG = "MainActivity";
 
     private MainViewPager viewPager;
+    private LinearLayout bottoom_main;
 
     // 底部菜单的组件
     private LinearLayout devicesLayout;
@@ -57,6 +60,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initView() {
         viewPager = (MainViewPager) findViewById(R.id.container);
+        bottoom_main = (LinearLayout) findViewById(R.id.bottoom_main);
 
         devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
         sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
@@ -87,13 +91,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onBackPressed() {
 
         int currentPage = viewPager.getCurrentItem();
-        if (currentPage == 4) {//4 当前界面是个人中心的下一层
-            showFragment(2);
-            return;
-        } else if (currentPage == 3) {//4 当前界面是智能场景下一层
-            showFragment(1);
-            return;
-        }
+//        switch (currentPage) {//4 当前界面是个人中心的下一层
+//            case 4:
+//                showFragment(2);
+//                break;
+//            case 3://4 当前界面是智能场景下一层
+//                showFragment(1);
+//                break;
+//        }
         super.onBackPressed();
 
     }
@@ -195,6 +200,48 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         //切换Fragment
         viewPager.setCurrentItem(i, true);
+    }
+
+    /**
+     * 使用FragmentTransaction 来管理Fragment 跳转顺序和回退顺序
+     * @param firstFragment
+     * @param secondfragment
+     */
+    public void showFragment(Fragment firstFragment,Fragment secondfragment){
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (!secondfragment.isAdded()){
+            transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+        }else{
+            transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commitAllowingStateLoss();
+        }
+    }
+
+    /**
+     * SHOW BOTTOM
+     */
+    public void showBottom(){
+        if(bottoom_main != null){
+            bottoom_main.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideBottom(){
+        if (bottoom_main != null){
+            bottoom_main.setVisibility(View.GONE);
+        }
+    }
+
+    public Fragment getCurrentFragment(){
+        switch (viewPager.getCurrentItem()){
+            case 0:
+                return devicesFragment;
+            case 1:
+                return sceneFragment;
+            case 2:
+                return personalFragment;
+        }
+        return devicesFragment;
     }
 
     /**

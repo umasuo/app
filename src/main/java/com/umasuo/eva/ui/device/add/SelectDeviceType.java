@@ -51,10 +51,11 @@ public class SelectDeviceType extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent();
-        intent.setClassName(this.getContext(), "com.umasuo.eva.MainActivity");
-        this.getContext().startActivity(intent);
-        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
+//        Intent intent = new Intent();
+//        intent.setClassName(this.getContext(), "com.umasuo.eva.MainActivity");
+//        this.getContext().startActivity(intent);
+//        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
+        this.getActivity().finish();
     }
 
     /**

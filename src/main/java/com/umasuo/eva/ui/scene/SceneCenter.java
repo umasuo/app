@@ -1,5 +1,8 @@
 package com.umasuo.eva.ui.scene;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,6 +36,7 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
 
     private SceneEditor editorFragment;
     private int editorIndex;
+    MainActivity mactivity;
 
 
     @Override
@@ -49,7 +53,32 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
 
         sceneAddBtn = (ImageView) view.findViewById(R.id.scene_add_btn);
         sceneAddBtn.setOnClickListener(this);
+
+        mactivity = (MainActivity) getContext();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        LogControl.debug(TAG,"onResume");
+        super.onResume();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        LogControl.debug(TAG,"onAttach");
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            mactivity.hideBottom();
+        }else{
+            mactivity.showBottom();
+        }
     }
 
     /**
@@ -96,16 +125,17 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        MainActivity activity = (MainActivity) getContext();
 
         LogControl.debug(TAG, "item: " + i + ", id: " + view.findViewById(R.id.scene_left_icon).getId());
 
         if (editorFragment == null) {
             editorFragment = new SceneEditor();
-            editorIndex = activity.addFragment(editorFragment);
+//            editorIndex = activity.addFragment(editorFragment);
         }
+//
+//        editorFragment.setCurSceneId(mdata.get(i).get("sceneIcon").toString());
+//        activity.showFragment(editorIndex);
+        mactivity.showFragment(this,editorFragment);
 
-        editorFragment.setCurSceneId(mdata.get(i).get("sceneIcon").toString());
-        activity.showFragment(editorIndex);
     }
 }

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottoom_main"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_bottom_height"
     android:background="@color/topBgColor"
+    android:layout_gravity="bottom"
     android:orientation="horizontal" >
     <LinearLayout
         android:id="@+id/devicesLayout"

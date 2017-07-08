@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.adapter.DeviceListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
@@ -29,6 +30,7 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
     private ImageView devices_add;
     private ListView deviceItemList;
     private List<Map<String, Object>> data;
+    MainActivity mactivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +49,19 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
         DeviceListAdapter adapter = new DeviceListAdapter(getContext(), data);
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
+        mactivity = (MainActivity) getContext();
         return view;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            mactivity.hideBottom();
+        }else{
+            mactivity.showBottom();
+        }
     }
 
     @Override
