@@ -54,7 +54,7 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
                 if(inputWifiPassword == null){
                     inputWifiPassword = new InputWifiPassword();
                 }
-                mActivity.showFragment(this,inputWifiPassword);
+                mActivity.showFragmentLeftToRight(this,inputWifiPassword);
 
         }
 

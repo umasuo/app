@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -204,16 +203,35 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     /**
      * 使用FragmentTransaction 来管理Fragment 跳转顺序和回退顺序
+     * 添加从下往上的动画
      * @param firstFragment
      * @param secondfragment
      */
-    public void showFragment(Fragment firstFragment,Fragment secondfragment){
+    public void showFragmentBottomToUp(Fragment firstFragment,Fragment secondfragment){
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.choose_open,R.anim.choose_close,0,R.anim.choose_close);
-//        transaction.setCustomAnimations(R.anim.choose_left_to_right,R.anim.choose_right_to_left,0,R.anim.choose_right_to_left);
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.setCustomAnimations(R.anim.choose_open,0,0,R.anim.choose_close);
         if (!secondfragment.isAdded()){
             transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+        }else{
+            transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commitAllowingStateLoss();
+        }
+    }
+
+    /**
+     * 使用FragmentTransaction 来管理Fragment 跳转顺序和回退顺序
+     * 添加从左向右的动画
+     * @param firstFragment
+     * @param secondfragment
+     */
+    public void showFragmentLeftToRight(Fragment firstFragment,Fragment secondfragment){
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.left_to_right_enter,0,0,R.anim.right_to_left_popexit);
+        if (!secondfragment.isAdded()){
+            transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+//            transaction.replace(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
         }else{
             transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commitAllowingStateLoss();
         }

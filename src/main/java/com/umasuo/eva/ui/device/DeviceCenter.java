@@ -75,12 +75,12 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.devices_add:
-                startChooseDevicesActivity();
+                startSelecDevice();
                 break;
         }
     }
 
-    private void startChooseDevicesActivity() {
+    private void startSelecDevice() {
 //        Intent intent = new Intent();
 //        intent.setClassName(this.getContext(), "com.umasuo.eva.ui.device.add.AddDeviceActivity");//打开一个activity
 //        this.getContext().startActivity(intent);
@@ -88,7 +88,7 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
         if(selectDeviceType == null){
             selectDeviceType = new SelectDeviceType();
         }
-        mactivity.showFragment(this,selectDeviceType);
+        mactivity.showFragmentBottomToUp(this,selectDeviceType);
 
     }
 

@@ -135,7 +135,7 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
 //
 //        editorFragment.setCurSceneId(mdata.get(i).get("sceneIcon").toString());
 //        activity.showFragment(editorIndex);
-        mactivity.showFragment(this,editorFragment);
+        mactivity.showFragmentLeftToRight(this,editorFragment);
 
     }
 }

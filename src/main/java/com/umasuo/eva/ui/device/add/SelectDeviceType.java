@@ -81,7 +81,7 @@ public class SelectDeviceType extends Fragment implements AdapterView.OnItemClic
         if(powerUpDevice == null){
             powerUpDevice = new PowerUpDevice();
         }
-        mActivity.showFragment(this,powerUpDevice);//切换到下一步
+        mActivity.showFragmentLeftToRight(this,powerUpDevice);//切换到下一步
     }
 
     @Override
