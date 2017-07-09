@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.dto.SceneModel;
 import com.umasuo.eva.infra.log.LogControl;
 
 /**
@@ -49,6 +50,10 @@ public class SceneEditor extends Fragment implements View.OnClickListener{
         editor_back.setOnClickListener(this);
 
         mActivity = (MainActivity) getActivity();
+
+        Bundle bundle = getArguments();
+        SceneModel sModel = (SceneModel) bundle.get("model");
+        LogControl.debug(TAG,sModel.getmSceneName());
 
 
         return view;

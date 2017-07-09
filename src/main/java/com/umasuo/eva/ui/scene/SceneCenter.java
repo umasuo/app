@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.dto.SceneModel;
 import com.umasuo.eva.infra.adapter.SceneListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
 
@@ -106,18 +107,21 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("sceneIcon", R.drawable.home);
-        map.put("name", "到家");
+//        map.put("sceneIcon", R.drawable.home);
+//        map.put("name", "到家");
+        map.put("model",new SceneModel("到家",R.drawable.home));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("sceneIcon", R.drawable.leavehome);
-        map.put("name", "离家");
+//        map.put("sceneIcon", R.drawable.leavehome);
+//        map.put("name", "离家");
+        map.put("model",new SceneModel("离家",R.drawable.leavehome));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("sceneIcon", R.drawable.getup);
-        map.put("name", "起床");
+//        map.put("sceneIcon", R.drawable.getup);
+//        map.put("name", "起床");
+        map.put("model",new SceneModel("起床",R.drawable.getup));
         list.add(map);
 
         return list;
@@ -130,6 +134,11 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
 
         if (editorFragment == null) {
             editorFragment = new SceneEditor();
+            Bundle bundle = new Bundle();
+
+            HashMap<String,Object> item = (HashMap<String, Object>) mdata.get(i);
+            bundle.putSerializable("model",(SceneModel)item.get("model"));
+            editorFragment.setArguments(bundle);
 //            editorIndex = activity.addFragment(editorFragment);
         }
 //
