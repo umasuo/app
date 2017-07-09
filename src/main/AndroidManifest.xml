@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity
+        <!--<activity
             android:name=".ui.device.add.AddDeviceActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>-->
         <activity
             android:name="com.umasuo.eva.MainActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>

@@ -210,6 +210,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void showFragment(Fragment firstFragment,Fragment secondfragment){
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.choose_open,R.anim.choose_close,0,R.anim.choose_close);
+//        transaction.setCustomAnimations(R.anim.choose_left_to_right,R.anim.choose_right_to_left,0,R.anim.choose_right_to_left);
         if (!secondfragment.isAdded()){
             transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
         }else{
