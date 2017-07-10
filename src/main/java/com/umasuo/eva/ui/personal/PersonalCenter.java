@@ -48,6 +48,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     ImageView headIcon;
     TextView userName;
     TextView userSignature;
+    TextView userSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +66,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         headIcon = (ImageView) view.findViewById(R.id.personal_head_portrait);
         userName = (TextView) view.findViewById(R.id.personal_info_summary_name);
         userSignature = (TextView) view.findViewById(R.id.personal_info_summary_signature);
+        userSettings = (TextView) view.findViewById(R.id.personal_settings);
+        userSettings.setOnClickListener(this);
 
         activity = (MainActivity) getContext();
 
@@ -104,11 +107,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         map.put("name", "关于");
         list.add(map);
 
-        map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.leavehome);
-        map.put("name", "设置");
-        list.add(map);
-
         return list;
     }
 
@@ -138,13 +136,25 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     @Override
     public void onClick(View view) {
         LogControl.debug(TAG, "click");
-        if (view.getId() == R.id.personal_info_summary) {
-            if (personalInfo == null) {
-                personalInfo = new PersonalInfo();
-                personalInfo.setPreIndex(index);
-                personalInfo.setIndex(activity.addFragment(personalInfo));
+        switch (view.getId()) {
+            case R.id.personal_info_summary: {
+                if (personalInfo == null) {
+                    personalInfo = new PersonalInfo();
+                    personalInfo.setPreIndex(index);
+                    personalInfo.setIndex(activity.addFragment(personalInfo));
+                }
+                activity.showPage(personalInfo.getIndex());
+                break;
             }
-            activity.showPage(personalInfo.getIndex());
+            case R.id.personal_settings: {
+                if (personalSettings == null) {
+                    personalSettings = new PersonalSettings();
+                    personalSettings.setPreIndex(index);
+                    personalSettings.setIndex(activity.addFragment(personalSettings));
+                }
+                activity.showPage(personalSettings.getIndex());
+                break;
+            }
         }
     }
 
@@ -194,15 +204,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                     about.setIndex(activity.addFragment(about));
                 }
                 activity.showPage(about.getIndex());
-                break;
-            }
-            case 4: {
-                if (personalSettings == null) {
-                    personalSettings = new PersonalSettings();
-                    personalSettings.setPreIndex(index);
-                    personalSettings.setIndex(activity.addFragment(personalSettings));
-                }
-                activity.showPage(personalSettings.getIndex());
                 break;
             }
             default:
