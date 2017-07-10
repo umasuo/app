@@ -64,12 +64,14 @@ public class UserService {
     public void saveUser(UserModel user) {
 
         // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(UserEntity.TOKEN, "SDJXCVBNMTYUI");
-        values.put(UserEntity.USER_ID, "user1");
-        values.put(UserEntity.NAME, "name");
-        values.put(UserEntity.SIGNATURE, "signature");
+        ContentValues values = UserMapper.toEntity(user);
+        String whereClause = UserEntity.USER_ID + " = ?";
+        String[] whereArgs = {user.getUserId()};
+        //todo 待优化
+        db.execSQL(UserEntity.DELETE_TABLE_SQL);
+        db.execSQL(UserEntity.CREATE_TABLE_SQL);
         // Insert the new row, returning the primary key value of the new row
+        db.update(UserEntity.TABLE_NAME, values, whereClause, whereArgs);
         long newRowId = db.insert(UserEntity.TABLE_NAME, null, values);
     }
 
@@ -104,7 +106,7 @@ public class UserService {
      * @param code
      */
     public void signinWithSmsCode(String phone, String developerId, String code) {
-        userServerApi.signIn(phone, code, developerId, new UserSigninCallback(context));
+        userServerApi.signIn(phone, code, developerId, new UserSigninCallback(context, this));
     }
 
     /**

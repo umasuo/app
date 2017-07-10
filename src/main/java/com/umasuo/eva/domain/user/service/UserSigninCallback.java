@@ -28,9 +28,11 @@ public class UserSigninCallback implements Callback<SignInResult> {
 
     private static final String TAG = "UserSigninCallback";
     private Context context;
+    private UserService userService;
 
-    public UserSigninCallback(Context context) {
+    public UserSigninCallback(Context context, UserService userService) {
         this.context = context;
+        this.userService = userService;
     }
 
     @Override
@@ -39,6 +41,8 @@ public class UserSigninCallback implements Callback<SignInResult> {
         LogControl.debug("UserServerApi", " signin Success");
         SignInResult result = response.body();
         UserModel userModel = UserMapper.toModel(result);
+        // 保存数据到数据库
+        userService.saveUser(userModel);
         LogControl.debug(TAG, "userModel: " + userModel.toString());
         // 存起来，然后返回到主界面
         final Activity activity = (Activity) context;

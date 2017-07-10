@@ -3,6 +3,7 @@
     android:id="@+id/add_device_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/deviceTypeItemBgColor"
     android:orientation="vertical">
 
     <!--添加device的几个步骤由这里显示-->

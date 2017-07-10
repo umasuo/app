@@ -1,5 +1,6 @@
 package com.umasuo.eva.domain.user.dto.mapper;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.umasuo.eva.domain.user.dto.SignInResult;
@@ -44,5 +45,20 @@ public final class UserMapper {
 
         result.getUserView().setToken(result.getToken());
         return result.getUserView();
+    }
+
+    public static ContentValues toEntity(UserModel model) {
+        ContentValues values = new ContentValues();
+        values.put(UserEntity.USER_ID, model.getUserId());
+        values.put(UserEntity.TOKEN, model.getToken());
+        values.put(UserEntity.DEVELOPER_ID, model.getDeveloperId());
+        values.put(UserEntity.EMAIL, model.getEmail());
+        values.put(UserEntity.PHONE, model.getPhone());
+        values.put(UserEntity.EXTERNAL_ID, model.getExternalId());
+        values.put(UserEntity.ICON, model.getIcon());
+        values.put(UserEntity.AGE, model.getAge());
+        values.put(UserEntity.NAME, model.getName());
+        values.put(UserEntity.SIGNATURE, model.getSignature());
+        return values;
     }
 }

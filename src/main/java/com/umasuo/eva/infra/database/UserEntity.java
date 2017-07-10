@@ -21,8 +21,7 @@ public final class UserEntity {
     // table creator sql
     public static final String CREATE_TABLE_SQL =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                    "_id" + " INTEGER PRIMARY KEY," +
-                    USER_ID + " TEXT," +
+                    USER_ID + " TEXT PRIMARY KEY," +
                     TOKEN + " TEXT," +
                     DEVELOPER_ID + " TEXT," +
                     EMAIL + " TEXT," +
