@@ -34,21 +34,21 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     private ListView personalList;
     private LinearLayout piSummary;
 
-    PersonalSettings personalSettings;
-    PersonalInfo personalInfo;
-    Feedback feedback;
-    FAQ faq;
-    About about;
-    MessageCenter messageCenter;
+    private PersonalSettings personalSettings;
+    private PersonalInfo personalInfo;
+    private Feedback feedback;
+    private FAQ faq;
+    private About about;
+    private MessageCenter messageCenter;
 
-    MainActivity activity;
-    UserService userService;
+    private MainActivity activity;
+    private UserService userService;
 
     // 登录的用户概要信息
-    ImageView headIcon;
-    TextView userName;
-    TextView userSignature;
-    TextView userSettings;
+    private ImageView headIcon;
+    protected TextView userName;
+    private TextView userSignature;
+    private TextView userSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +70,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         userSettings.setOnClickListener(this);
 
         activity = (MainActivity) getContext();
-
+        userService = UserService.getInstance(activity);
         //init data
         initUserData();
         return view;
@@ -114,7 +114,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
      * 初始化界面上显示的数据.
      */
     private void initUserData() {
-        userService = new UserService(getContext());
+
         UserModel userModel = userService.getUser();
         // TODO: 17/7/10 设置头像
         if (userModel.getName() == null) {
