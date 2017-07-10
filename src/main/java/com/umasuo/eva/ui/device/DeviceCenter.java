@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.DeviceListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.ui.device.add.SelectDeviceType;
@@ -25,7 +26,7 @@ import java.util.Map;
  * Created by liubin8095 on 2017/7/1.
  * 我饿的设备界面，用于显示用户已经添加的设备，以及提供一个设备控制的入口.
  */
-public class DeviceCenter extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class DeviceCenter extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private static final String TAG = "DeviceFragment";
     private ImageView devices_add;
@@ -57,11 +58,11 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
         super.onHiddenChanged(hidden);
-        if(hidden){
+        if (hidden) {
             mactivity.hideBottom();
-        }else{
+        } else {
             mactivity.showBottom();
         }
     }
@@ -85,10 +86,10 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
 //        intent.setClassName(this.getContext(), "com.umasuo.eva.ui.device.add.AddDeviceActivity");//打开一个activity
 //        this.getContext().startActivity(intent);
 //        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
-        if(selectDeviceType == null){
+        if (selectDeviceType == null) {
             selectDeviceType = new SelectDeviceType();
         }
-        mactivity.showFragmentBottomToUp(this,selectDeviceType);
+//        mactivity.showFragmentBottomToUp(this,selectDeviceType);
 
     }
 

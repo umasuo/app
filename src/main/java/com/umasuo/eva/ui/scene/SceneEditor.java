@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.dto.SceneModel;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 
 /**
@@ -21,7 +22,7 @@ import com.umasuo.eva.infra.log.LogControl;
  * 智能场景中的编辑场景和新建场景界面
  */
 
-public class SceneEditor extends Fragment implements View.OnClickListener{
+public class SceneEditor extends FragmentRoot implements View.OnClickListener{
     private String TAG="SceneEditor";
 
     /**

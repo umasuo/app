@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.infra.FragmentRoot;
 
 /**
  * Created by umasuo on 17/7/7.
  * 意见反馈.
  */
-public class Feedback extends Fragment {
+public class Feedback extends FragmentRoot {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -1,7 +1,6 @@
 package com.umasuo.eva.ui.personal;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +10,9 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.PersonalAdapter;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.ui.sign.SigninWithPassword;
-import com.umasuo.eva.ui.sign.SigninWithSms;
 import com.umasuo.eva.ui.sign.SigninStarter;
 
 import java.util.ArrayList;
@@ -26,55 +24,47 @@ import java.util.Map;
  * 个人中心界面
  */
 
-public class PersonalCenter extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemClickListener, View.OnClickListener {
     private static final String TAG = "personal";
 
-    private ListView personal_listview;
+    private ListView personalList;
     private LinearLayout piSummary;
     public List<Map<String, Object>> mdata;
     PersonalSettings personalSettings;
-    private int psIndex = 2;
     PersonalInfo personalInfo;
-    private int piIndex = 2;
-    SigninWithPassword signin;
-    private int signinIndex = 2;
-    SigninWithSms smsSignin;
-    private int smsSigninIndex = 2;
     Feedback feedback;
-    private int fbIndex = 2;
     FAQ faq;
-    private int faqIndex = 2;
     About about;
-    private int aboutIndex = 2;
     MessageCenter messageCenter;
-    private int mcIndex = 2;
 
-    MainActivity mactivity;
+    MainActivity activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.personal, container, false);
-        personal_listview = view.findViewById(R.id.personal_listview);
+        personalList = view.findViewById(R.id.personal_listview);
         PersonalAdapter pAdapter = new PersonalAdapter(getContext(), getData());
-        personal_listview.setAdapter(pAdapter);
-        personal_listview.setOnItemClickListener(this);
+        personalList.setAdapter(pAdapter);
+        personalList.setOnItemClickListener(this);
 
         piSummary = view.findViewById(R.id.personal_info_summary);
         piSummary.setOnClickListener(this);
-        mactivity = (MainActivity) getContext();
+        activity = (MainActivity) getContext();
+
+        //init data
         return view;
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
         super.onHiddenChanged(hidden);
-        if(hidden){
-            mactivity.hideBottom();
-        }else{
-            mactivity.showBottom();
+        if (hidden) {
+            activity.hideBottom();
+        } else {
+            activity.showBottom();
         }
     }
 
@@ -133,7 +123,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 
         SigninStarter signinStarter = new SigninStarter();
         int index = ((MainActivity) getContext()).addFragment(signinStarter);
-        ((MainActivity) getContext()).showFragment(index);
+        ((MainActivity) getContext()).showPage(index);
     }
 
     /**
@@ -151,51 +141,51 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
             case 0: {
                 if (messageCenter == null) {
                     messageCenter = new MessageCenter();
-//                    mcIndex = activity.addFragment(messageCenter);
+                    messageCenter.setPreIndex(index);
                 }
-//                activity.showFragment(mcIndex);
-                mactivity.showFragmentLeftToRight(this,messageCenter);
+
+                messageCenter.setIndex(activity.addFragment(messageCenter));
+                activity.showPage(messageCenter.getIndex());
                 break;
             }
             case 1: {
                 if (faq == null) {
                     faq = new FAQ();
-//                    faqIndex = activity.addFragment(faq);
+                    faq.setPreIndex(index);
                 }
-//                activity.showFragment(faqIndex);
-                mactivity.showFragmentLeftToRight(this,faq);
+                faq.setIndex(activity.addFragment(faq));
+                activity.showPage(faq.getIndex());
                 break;
             }
             case 2: {
                 if (feedback == null) {
                     feedback = new Feedback();
-//                    fbIndex = activity.addFragment(feedback);
+                    feedback.setPreIndex(index);
                 }
-//                activity.showFragment(fbIndex);
-                mactivity.showFragmentLeftToRight(this,feedback);
+                feedback.setIndex(activity.addFragment(feedback));
+                activity.showPage(feedback.getIndex());
                 break;
             }
             case 3: {
                 if (about == null) {
                     about = new About();
-//                    aboutIndex = activity.addFragment(about);
+                    about.setPreIndex(index);
                 }
-//                activity.showFragment(aboutIndex);
-                mactivity.showFragmentLeftToRight(this,about);
+                about.setIndex(activity.addFragment(about));
+                activity.showPage(about.getIndex());
                 break;
             }
             case 4: {
                 if (personalSettings == null) {
                     personalSettings = new PersonalSettings();
-//                    psIndex = ((MainActivity) getContext()).addFragment(personalSettings);
+                    personalSettings.setPreIndex(index);
                 }
-//                activity.showFragment(psIndex);
-                mactivity.showFragmentLeftToRight(this,personalSettings);
+                personalSettings.setIndex(activity.addFragment(personalSettings));
+                activity.showPage(personalSettings.getIndex());
                 break;
             }
             default:
-//                activity.showFragment(2);//个人中心主界面
-//                break;
+                break;
         }
     }
 }

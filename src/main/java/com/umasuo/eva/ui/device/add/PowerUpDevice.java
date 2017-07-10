@@ -2,7 +2,6 @@ package com.umasuo.eva.ui.device.add;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,14 @@ import android.widget.ImageView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created by liubin8095 on 2017/7/2.
  * 添加设备第二步：提醒用户确认设备已经开启，相关指示灯已经亮起.
  */
-public class PowerUpDevice extends Fragment implements View.OnClickListener {
+public class PowerUpDevice extends FragmentRoot implements View.OnClickListener {
 
     private String TAG = "PowerUpDevice";
     private ImageView backBtn;
@@ -45,17 +45,17 @@ public class PowerUpDevice extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.device_power_up_back:
                 // 回退
-//                ((AddDeviceActivity) this.getContext()).replaceFragment(0);
-                mActivity.getSupportFragmentManager().popBackStack();
+//                ((AddDeviceActivity) this.getContext()).showPage(0);
+                mActivity.showPage(preIndex);
                 break;
             case R.id.device_power_up_next:
                 //下一步
-//                ((AddDeviceActivity) this.getContext()).replaceFragment(2);
-                if(inputWifiPassword == null){
+//                ((AddDeviceActivity) this.getContext()).showPage(2);
+                if (inputWifiPassword == null) {
                     inputWifiPassword = new InputWifiPassword();
+                    inputWifiPassword.setPreIndex(index);
                 }
-                mActivity.showFragmentLeftToRight(this,inputWifiPassword);
-
+                inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
         }
 
     }

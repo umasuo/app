@@ -1,10 +1,7 @@
 package com.umasuo.eva.ui.scene;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +12,7 @@ import android.widget.ListView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.dto.SceneModel;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.SceneListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
 
@@ -26,18 +24,16 @@ import java.util.Map;
 /**
  * Created by liubin8095 on 2017/7/1.
  */
-public class SceneCenter extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private static final String TAG = "SceneCenter";
 
-    private ImageView main_title_icon;
     private ImageView sceneAddBtn;
     private ListView sceneList;
     public List<Map<String, Object>> mdata;
 
     private SceneEditor editorFragment;
-    private int editorIndex;
-    MainActivity mactivity;
+    MainActivity activity;
 
 
     @Override
@@ -55,30 +51,30 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
         sceneAddBtn = (ImageView) view.findViewById(R.id.scene_add_btn);
         sceneAddBtn.setOnClickListener(this);
 
-        mactivity = (MainActivity) getContext();
+        activity = (MainActivity) getContext();
         return view;
     }
 
     @Override
     public void onResume() {
-        LogControl.debug(TAG,"onResume");
+        LogControl.debug(TAG, "onResume");
         super.onResume();
     }
 
     @Override
     public void onAttach(Context context) {
-        LogControl.debug(TAG,"onAttach");
+        LogControl.debug(TAG, "onAttach");
         super.onAttach(context);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        LogControl.debug(TAG,"onHiddenChanged hidden = "+hidden);
+        LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
         super.onHiddenChanged(hidden);
-        if(hidden){
-            mactivity.hideBottom();
-        }else{
-            mactivity.showBottom();
+        if (hidden) {
+            activity.hideBottom();
+        } else {
+            activity.showBottom();
         }
     }
 
@@ -109,19 +105,19 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.home);
 //        map.put("name", "到家");
-        map.put("model",new SceneModel("到家",R.drawable.home));
+        map.put("model", new SceneModel("到家", R.drawable.home));
         list.add(map);
 
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.leavehome);
 //        map.put("name", "离家");
-        map.put("model",new SceneModel("离家",R.drawable.leavehome));
+        map.put("model", new SceneModel("离家", R.drawable.leavehome));
         list.add(map);
 
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.getup);
 //        map.put("name", "起床");
-        map.put("model",new SceneModel("起床",R.drawable.getup));
+        map.put("model", new SceneModel("起床", R.drawable.getup));
         list.add(map);
 
         return list;
@@ -136,15 +132,14 @@ public class SceneCenter extends Fragment implements AdapterView.OnItemClickList
             editorFragment = new SceneEditor();
             Bundle bundle = new Bundle();
 
-            HashMap<String,Object> item = (HashMap<String, Object>) mdata.get(i);
-            bundle.putSerializable("model",(SceneModel)item.get("model"));
+            HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
+            bundle.putSerializable("model", (SceneModel) item.get("model"));
             editorFragment.setArguments(bundle);
-//            editorIndex = activity.addFragment(editorFragment);
+            editorFragment.setPreIndex(index);
+            editorFragment.setIndex(activity.addFragment(editorFragment));
         }
-//
-//        editorFragment.setCurSceneId(mdata.get(i).get("sceneIcon").toString());
-//        activity.showFragment(editorIndex);
-        mactivity.showFragmentLeftToRight(this,editorFragment);
+
+        activity.showPage(editorFragment.getIndex());
 
     }
 }

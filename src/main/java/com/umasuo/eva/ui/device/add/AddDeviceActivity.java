@@ -125,10 +125,10 @@ public class AddDeviceActivity extends FragmentActivity {
 //        // TODO: 17/7/7 根据现在的状态显示不同的片段
 ////        switch (getCurrentFragment()){
 ////            case 2:
-////                replaceFragment(1);
+////                showPage(1);
 ////                break;
 ////            case 1:
-////                replaceFragment(0);
+////                showPage(0);
 ////                break;
 ////            case 0:
 ////                this.finish();

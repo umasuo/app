@@ -26,12 +26,12 @@ public class PersonalAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private List<Map<String, Object>> data;
-    private Context mcontext;
+    private Context context;
 
     public PersonalAdapter(Context context, List<Map<String, Object>> data) {
         this.inflater = LayoutInflater.from(context);
         this.data = data;
-        this.mcontext = context;
+        this.context = context;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PersonalAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             LogControl.debug(TAG, "position = " + mviewHolder.position);
-            ((MainActivity) mcontext).showFragment(3);
+            ((MainActivity) context).showPage(3);
         }
     }
 }

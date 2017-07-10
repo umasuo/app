@@ -1,21 +1,23 @@
 package com.umasuo.eva;
 
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.ui.device.DeviceCenter;
 import com.umasuo.eva.ui.personal.PersonalCenter;
 import com.umasuo.eva.ui.scene.SceneCenter;
-import com.umasuo.eva.infra.adapter.MainPageAdapter;
-import com.umasuo.eva.infra.log.LogControl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 主界面activity，需要保持干净、清晰.
@@ -25,7 +27,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private String TAG = "MainActivity";
 
     private MainViewPager viewPager;
-    private LinearLayout bottoom_main;
+    private LinearLayout bottomBtn;
 
     // 底部菜单的组件
     private LinearLayout devicesLayout;
@@ -42,11 +44,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
 
     // 这个类里面只显示三个主入口，其他的入口交由不同的主入口去控制显示
-    Fragment devicesFragment; // 0 保持不变
-    Fragment sceneFragment; // 1 保持不变
-    Fragment personalFragment; // 2 保持不变
+    FragmentRoot devicesFragment; // 0 保持不变
+    FragmentRoot sceneFragment; // 1 保持不变
+    FragmentRoot personalFragment; // 2 保持不变
 
-    MainPageAdapter adapter;
+    private List<FragmentRoot> pages = new ArrayList<>();
+
+    FragmentPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initView() {
         viewPager = (MainViewPager) findViewById(R.id.container);
-        bottoom_main = (LinearLayout) findViewById(R.id.bottoom_main);
+        bottomBtn = (LinearLayout) findViewById(R.id.bottoom_main);
 
         devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
         sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
@@ -74,32 +78,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalText = (TextView) findViewById(R.id.personalTextBtn);
 
         devicesFragment = new DeviceCenter();
+        devicesFragment.setIndex(0);
         sceneFragment = new SceneCenter();
+        sceneFragment.setIndex(1);
         personalFragment = new PersonalCenter();
+        personalFragment.setIndex(2);
+        pages.add(devicesFragment);
+        pages.add(sceneFragment);
+        pages.add(personalFragment);
 
-        adapter = new MainPageAdapter(getSupportFragmentManager());
+        adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return pages.get(position);
+            }
 
-        adapter.add(devicesFragment);
-        adapter.add(sceneFragment);
-        adapter.add(personalFragment);
+            @Override
+            public int getCount() {
+                return pages.size();
+            }
+        };
 
         viewPager.setAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        int currentPage = viewPager.getCurrentItem();
-//        switch (currentPage) {//4 当前界面是个人中心的下一层
-//            case 4:
-//                showFragment(2);
-//                break;
-//            case 3://4 当前界面是智能场景下一层
-//                showFragment(1);
-//                break;
-//        }
-        super.onBackPressed();
-
     }
 
     private void initEvent() {
@@ -117,39 +117,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalLayout.setOnClickListener(this);
         personalText.setOnClickListener(this);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int arg0) {
-                //当前选中的Fragment 下标
-                int currentItem = viewPager.getCurrentItem();
-                //只有点击底部菜单时才会变更菜单的图片
-                switch (currentItem) {
-                    case 0:
-                        devicesImage.setBackgroundResource(R.drawable.first);
-                        break;
-                    case 1:
-                        sceneImage.setBackgroundResource(R.drawable.second);
-                        break;
-                    case 2:
-                        personalImage.setBackgroundResource(R.drawable.three);
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-
-            }
-        });
     }
 
     /**
@@ -164,115 +131,56 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.devicesLayout:
             case R.id.devicesImgbtn:
             case R.id.devicesTextBtn:
-                showFragment(0);
+                showPage(0);
                 break;
             case R.id.sceneLayout:
             case R.id.sceneImgBtn:
             case R.id.sceneTextBtn:
-                showFragment(1);
+                showPage(1);
                 break;
             case R.id.personalLayout:
             case R.id.personalImgBtn:
             case R.id.personalTextBtn:
-                showFragment(2);
+                showPage(2);
                 break;
             default:
                 break;
         }
     }
 
-    public void showFragment(int i) {
-        LogControl.debug(TAG, "MainActivity showFragment i: " + i);
-        //改变内容区域，把图片设置为亮的
-        switch (i) {
-            case 0:
-                devicesImage.setBackgroundResource(R.drawable.first);
-                break;
-            case 1:
-                sceneImage.setBackgroundResource(R.drawable.second);
-                break;
-            case 2:
-                personalImage.setBackgroundResource(R.drawable.three);
-                break;
-            default:
-                break;
-        }
-        //切换Fragment
-        viewPager.setCurrentItem(i, true);
-    }
-
     /**
-     * 使用FragmentTransaction 来管理Fragment 跳转顺序和回退顺序
-     * 添加从下往上的动画
-     * @param firstFragment
-     * @param secondfragment
-     */
-    public void showFragmentBottomToUp(Fragment firstFragment,Fragment secondfragment){
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.setCustomAnimations(R.anim.choose_open,0,0,R.anim.choose_close);
-        if (!secondfragment.isAdded()){
-            transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
-        }else{
-            transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commitAllowingStateLoss();
-        }
-    }
-
-    /**
-     * 使用FragmentTransaction 来管理Fragment 跳转顺序和回退顺序
-     * 添加从左向右的动画
-     * @param firstFragment
-     * @param secondfragment
-     */
-    public void showFragmentLeftToRight(Fragment firstFragment,Fragment secondfragment){
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.left_to_right_enter,0,0,R.anim.right_to_left_popexit);
-        if (!secondfragment.isAdded()){
-            transaction.add(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
-//            transaction.replace(R.id.main,secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
-        }else{
-            transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commitAllowingStateLoss();
-        }
-    }
-
-    /**
-     * SHOW BOTTOM
-     */
-    public void showBottom(){
-        if(bottoom_main != null){
-            bottoom_main.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public void hideBottom(){
-        if (bottoom_main != null){
-            bottoom_main.setVisibility(View.GONE);
-        }
-    }
-
-    public Fragment getCurrentFragment(){
-        switch (viewPager.getCurrentItem()){
-            case 0:
-                return devicesFragment;
-            case 1:
-                return sceneFragment;
-            case 2:
-                return personalFragment;
-        }
-        return devicesFragment;
-    }
-
-    /**
-     * 新添加并直接显示添加的片段.
+     * 切换片段.
      *
-     * @param fragment
+     * @param i
      */
-    public int addFragment(Fragment fragment) {
-        int index = adapter.add(fragment);
+    public void showPage(int i) {
+        //显示登录初始界面
+        viewPager.setCurrentItem(i);
+    }
+
+    /**
+     * 添加一个新页,只有添加，没有删除.
+     *
+     * @param fragment Fragment
+     * @return 当前fragment在列表中的index
+     */
+    public int addFragment(FragmentRoot fragment) {
+        int index = this.pages.size();
+        pages.add(fragment);
         adapter.notifyDataSetChanged();
         return index;
+    }
+
+    /**
+     * 响应菜单的回退点击事件.
+     */
+    @Override
+    public void onBackPressed() {
+        LogControl.debug(TAG, "pressed back button");
+        int curIndex = viewPager.getCurrentItem();
+        FragmentRoot curFrag = pages.get(curIndex);
+        viewPager.setCurrentItem(curFrag.getPreIndex());
+        // TODO: 17/7/10 如果是最开始的界面了，那么就关闭程序
     }
 
     /**
@@ -282,5 +190,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         devicesImage.setBackgroundResource(R.drawable.first);
         sceneImage.setBackgroundResource(R.drawable.second);
         personalImage.setBackgroundResource(R.drawable.personal_center);
+    }
+
+    /**
+     * SHOW BOTTOM
+     */
+    public void showBottom() {
+        if (bottomBtn != null) {
+            bottomBtn.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideBottom() {
+        if (bottomBtn != null) {
+            bottomBtn.setVisibility(View.GONE);
+        }
     }
 }
