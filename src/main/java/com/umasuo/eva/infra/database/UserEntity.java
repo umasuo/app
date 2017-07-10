@@ -17,6 +17,7 @@ public final class UserEntity {
     public static final String ICON = "icon";
     public static final String AGE = "age";
     public static final String SIGNATURE = "signature";
+    public static final String COUNTRY = "country";
 
     // table creator sql
     public static final String CREATE_TABLE_SQL =
@@ -30,6 +31,7 @@ public final class UserEntity {
                     NAME + " TEXT," +
                     ICON + " TEXT," +
                     AGE + " TEXT," +
+                    COUNTRY + " TEXT," +
                     SIGNATURE + " TEXT )";
     public static final String DELETE_TABLE_SQL =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -44,6 +46,7 @@ public final class UserEntity {
             NAME,
             ICON,
             AGE,
+            COUNTRY,
             SIGNATURE
     };
 

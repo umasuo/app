@@ -96,7 +96,6 @@ public class UserService {
         user = UserMapper.toModel(cursor);
 
         LogControl.debug(TAG, user.toString());
-
         return user;
     }
 
@@ -116,6 +115,25 @@ public class UserService {
      */
     public void signinWithSmsCode(String phone, String developerId, String code) {
         userServerApi.signIn(phone, code, developerId, new UserSigninCallback(context, this));
+    }
+
+    /**
+     * 更新用户信息.
+     */
+    public void updateUser(String email, String phone, int age, String country, String name, String signature) {
+        UserModel newModel = new UserModel();
+
+        newModel.setUserId(user.getUserId());
+        newModel.setSignature(signature);
+        newModel.setName(name);
+        newModel.setPhone(phone);
+        newModel.setAge(age);
+        newModel.setEmail(email);
+        newModel.setIcon(user.getIcon());
+        newModel.setCountry(country);
+
+        userServerApi.updateUserInfo(newModel, new UserModelCallback(context, this));
+
     }
 
     /**

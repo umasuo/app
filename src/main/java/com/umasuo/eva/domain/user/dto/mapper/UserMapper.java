@@ -58,7 +58,9 @@ public final class UserMapper {
         values.put(UserEntity.ICON, model.getIcon());
         values.put(UserEntity.AGE, model.getAge());
         values.put(UserEntity.NAME, model.getName());
+        values.put(UserEntity.COUNTRY, model.getCountry());
         values.put(UserEntity.SIGNATURE, model.getSignature());
         return values;
     }
+
 }

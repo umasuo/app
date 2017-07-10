@@ -56,6 +56,25 @@ public class UserModel implements Serializable {
      */
     private String signature;
 
+    private String country;
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "userId='" + userId + '\'' +
+                ", token='" + token + '\'' +
+                ", developerId='" + developerId + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", externalId='" + externalId + '\'' +
+                ", name='" + name + '\'' +
+                ", icon='" + icon + '\'' +
+                ", age=" + age +
+                ", signature='" + signature + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -136,19 +155,11 @@ public class UserModel implements Serializable {
         this.signature = signature;
     }
 
-    @Override
-    public String toString() {
-        return "UserModel{" +
-                "userId='" + userId + '\'' +
-                ", token='" + token + '\'' +
-                ", developerId='" + developerId + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", externalId='" + externalId + '\'' +
-                ", name='" + name + '\'' +
-                ", icon='" + icon + '\'' +
-                ", age=" + age +
-                ", signature='" + signature + '\'' +
-                '}';
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

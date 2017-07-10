@@ -124,7 +124,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         }
 
         if (userModel.getSignature() != null) {
-            userSignature.setText(userModel.getPhone());
+            userSignature.setText(userModel.getSignature());
         }
     }
 

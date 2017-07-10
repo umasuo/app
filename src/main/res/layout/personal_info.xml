@@ -74,6 +74,30 @@
             android:typeface="monospace" />
 
         <EditText
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_top_marginLeft"
+            android:layout_weight="1"
+            android:hint="邮箱"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <EditText
+            android:id="@+id/user_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_top_marginLeft"
+            android:layout_weight="1"
+            android:hint="年龄"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <EditText
             android:id="@+id/user_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

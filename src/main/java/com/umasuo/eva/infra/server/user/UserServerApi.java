@@ -15,6 +15,7 @@ import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -31,6 +32,18 @@ public class UserServerApi extends ServiceCaller {
         service = retrofit.create(Service.class);
     }
 
+
+    /**
+     * 更新用户信息.
+     *
+     * @param userModel
+     */
+    public void updateUserInfo(UserModel userModel, Callback<UserModel> callback) {
+
+        Call<UserModel> caller = service.updateUserInfo(userModel.getUserId(), userModel);
+
+        caller.enqueue(callback);
+    }
 
     /**
      * 获取登录/注册手机验证码
@@ -91,6 +104,9 @@ public class UserServerApi extends ServiceCaller {
 
         @GET("/v1/users/{id}")
         Call<UserModel> getUserInfo(@Path("id") String id);
+
+        @PUT("/v1/users/{id}")
+        Call<UserModel> updateUserInfo(@Path("id") String id, @Body UserModel userModel);
 
         @POST("/v1/users/validationCodes")
         Call<Void> getSmsCode(@Query("phoneNumber") String phone);

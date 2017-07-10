@@ -29,6 +29,8 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     private ImageView headerIcon;
     private EditText userName;
     private EditText userPhone;
+    private EditText userEmail;
+    private EditText userAge;
     private EditText userCountry;
     private EditText userSignature;
     private Button userPassword;
@@ -44,6 +46,8 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         headerIcon = (ImageView) view.findViewById(R.id.user_head_icon);
         userName = (EditText) view.findViewById(R.id.user_name);
         userPhone = (EditText) view.findViewById(R.id.user_phone);
+        userEmail = (EditText) view.findViewById(R.id.user_email);
+        userAge = (EditText) view.findViewById(R.id.user_age);
         userCountry = (EditText) view.findViewById(R.id.user_country);
         userSignature = (EditText) view.findViewById(R.id.user_signature);
         userPassword = (Button) view.findViewById(R.id.user_password);
@@ -57,6 +61,8 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
 
         userName.addTextChangedListener(this);
         userPhone.addTextChangedListener(this);
+        userEmail.addTextChangedListener(this);
+        userAge.addTextChangedListener(this);
         userCountry.addTextChangedListener(this);
         userSignature.addTextChangedListener(this);
 
@@ -72,8 +78,10 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         if (userModel != null) {
             userName.setText(userModel.getName());
             userPhone.setText(userModel.getPhone());
-            userCountry.setText(userModel.getName());
-            userSignature.setText(userModel.getName());
+            userEmail.setText(userModel.getEmail());
+            userAge.setText(String.valueOf(userModel.getAge()));
+            userCountry.setText(userModel.getCountry());
+            userSignature.setText(userModel.getSignature());
         }
     }
 
@@ -94,6 +102,13 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
             case R.id.submit_btn: {
                 // 提交信息到服务器和数据库
                 LogControl.debug(TAG, "Submit change user info");
+                String email = userEmail.getText().toString();
+                String phone = userPhone.getText().toString();
+                int age = Integer.valueOf(userAge.getText().toString());
+                String country = userCountry.getText().toString();
+                String name = userName.getText().toString();
+                String signature = userSignature.getText().toString();
+                UserService.getInstance(getContext()).updateUser(email, phone, age, country, name, signature);
                 break;
             }
             case R.id.user_head_icon: {
