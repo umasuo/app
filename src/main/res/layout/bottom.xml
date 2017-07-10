@@ -1,72 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/bottoom_main"
+    android:id="@+id/bottom_main"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_bottom_height"
-    android:background="@color/topBgColor"
     android:layout_gravity="bottom"
-    android:orientation="horizontal" >
+    android:layout_weight="2"
+    android:background="@color/topBgColor"
+    android:orientation="horizontal">
+
     <LinearLayout
         android:id="@+id/devicesLayout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/devicesImgbtn"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
-            android:background="@drawable/devices_img_button"/>
+            android:background="@drawable/devices_img_button" />
+
         <TextView
             android:id="@+id/devicesTextBtn"
-            android:text="@string/devices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_bottom_text_size"
-            android:textColor="@color/bottomTextColor"/>
+            android:text="@string/devices"
+            android:textColor="@color/bottomTextColor"
+            android:textSize="@dimen/activity_bottom_text_size" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/sceneLayout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/sceneImgBtn"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
-            android:background="@drawable/second"
-            />
+            android:background="@drawable/second" />
+
         <TextView
             android:id="@+id/sceneTextBtn"
-            android:text="@string/intelligentScene"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_bottom_text_size"
-            android:textColor="@color/bottomTextColor"/>
+            android:text="@string/intelligentScene"
+            android:textColor="@color/bottomTextColor"
+            android:textSize="@dimen/activity_bottom_text_size" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/personalLayout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/personalImgBtn"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
-            android:background="@drawable/personal_center"
-            />
+            android:background="@drawable/personal_center" />
+
         <TextView
             android:id="@+id/personalTextBtn"
-            android:text="@string/personalCenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_bottom_text_size"
-            android:textColor="@color/bottomTextColor"/>
+            android:text="@string/personalCenter"
+            android:textColor="@color/bottomTextColor"
+            android:textSize="@dimen/activity_bottom_text_size" />
     </LinearLayout>
 
 </LinearLayout>

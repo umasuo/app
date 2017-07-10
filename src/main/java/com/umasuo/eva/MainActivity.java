@@ -63,7 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initView() {
         viewPager = (MainViewPager) findViewById(R.id.container);
-        bottomMenu = (LinearLayout) findViewById(R.id.bottoom_main);
+        bottomMenu = (LinearLayout) findViewById(R.id.bottom_main);
 
         devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
         sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
