@@ -31,6 +31,8 @@
     <!--手机、短信登录界面-->
     <string name="personal_signin_sms">短信验证码登录</string>
 
+    <string name="user_signature">我的个性签名</string>
+
     <!--下面是目前支持的设备种类，待完善-->
     <string name="device_cz">插座</string>
     <string name="device_kg">开关</string>

@@ -27,7 +27,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private String TAG = "MainActivity";
 
     private MainViewPager viewPager;
-    private LinearLayout bottomBtn;
+    private LinearLayout bottomMenu;
 
     // 底部菜单的组件
     private LinearLayout devicesLayout;
@@ -63,7 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void initView() {
         viewPager = (MainViewPager) findViewById(R.id.container);
-        bottomBtn = (LinearLayout) findViewById(R.id.bottoom_main);
+        bottomMenu = (LinearLayout) findViewById(R.id.bottoom_main);
 
         devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
         sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
@@ -154,8 +154,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
-        //显示登录初始界面
         viewPager.setCurrentItem(i);
+        //显示登录初始界面
+        pages.get(i).onShow();
     }
 
     /**
@@ -179,7 +180,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         LogControl.debug(TAG, "pressed back button");
         int curIndex = viewPager.getCurrentItem();
         FragmentRoot curFrag = pages.get(curIndex);
-        viewPager.setCurrentItem(curFrag.getPreIndex());
+        showPage(curFrag.getPreIndex());
 
         // TODO: 17/7/10 如果是最开始的界面了，那么就关闭程序
 
@@ -198,14 +199,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * SHOW BOTTOM
      */
     public void showBottom() {
-        if (bottomBtn != null) {
-            bottomBtn.setVisibility(View.VISIBLE);
+        if (bottomMenu != null) {
+            bottomMenu.setVisibility(View.VISIBLE);
         }
     }
 
     public void hideBottom() {
-        if (bottomBtn != null) {
-            bottomBtn.setVisibility(View.GONE);
+        if (bottomMenu != null) {
+            bottomMenu.setVisibility(View.GONE);
         }
     }
 }

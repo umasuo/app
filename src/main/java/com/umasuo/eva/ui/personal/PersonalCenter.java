@@ -5,15 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.dto.UserModel;
+import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.PersonalAdapter;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.ui.sign.SigninStarter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,11 +28,12 @@ import java.util.Map;
  */
 
 public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemClickListener, View.OnClickListener {
-    private static final String TAG = "personal";
+
+    private static final String TAG = "PersonalCenter";
 
     private ListView personalList;
     private LinearLayout piSummary;
-    public List<Map<String, Object>> mdata;
+
     PersonalSettings personalSettings;
     PersonalInfo personalInfo;
     Feedback feedback;
@@ -38,6 +42,12 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     MessageCenter messageCenter;
 
     MainActivity activity;
+    UserService userService;
+
+    // 登录的用户概要信息
+    ImageView headIcon;
+    TextView userName;
+    TextView userSignature;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,19 +61,21 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
 
         piSummary = view.findViewById(R.id.personal_info_summary);
         piSummary.setOnClickListener(this);
+
+        headIcon = (ImageView) view.findViewById(R.id.personal_head_portrait);
+        userName = (TextView) view.findViewById(R.id.personal_info_summary_name);
+        userSignature = (TextView) view.findViewById(R.id.personal_info_summary_signature);
+
         activity = (MainActivity) getContext();
 
         //init data
+        initUserData();
         return view;
     }
 
     @Override
-    public void onHiddenChanged(boolean hidden) {
-        LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
-        super.onHiddenChanged(hidden);
-        if (hidden) {
-            activity.hideBottom();
-        } else {
+    public void onShow() {
+        if (activity != null) {
             activity.showBottom();
         }
     }
@@ -101,6 +113,24 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     }
 
     /**
+     * 初始化界面上显示的数据.
+     */
+    private void initUserData() {
+        userService = new UserService(getContext());
+        UserModel userModel = userService.getUser();
+        // TODO: 17/7/10 设置头像
+        if (userModel.getName() == null) {
+            userName.setText(userModel.getPhone());//显示手机号
+        } else {
+            userName.setText(userModel.getName());//设置名字
+        }
+
+        if (userModel.getSignature() != null) {
+            userSignature.setText(userModel.getPhone());
+        }
+    }
+
+    /**
      * 点击用户信息是，显示用户信息界面.
      *
      * @param view
@@ -108,22 +138,14 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     @Override
     public void onClick(View view) {
         LogControl.debug(TAG, "click");
-
-//        if (smsSignin == null) {
-//            smsSignin = new SigninWithSms();
-//            smsSigninIndex = ((MainActivity) getContext()).addFragment(smsSignin);
-//        }
-//        ((MainActivity) getContext()).showFragment(smsSigninIndex);
-
-//        if (personalInfo == null) {
-//            personalInfo = new PersonalInfo();
-//            piIndex = ((MainActivity) getContext()).addFragment(personalInfo);
-//        }
-//        ((MainActivity) getContext()).showFragment(piIndex);
-
-        SigninStarter signinStarter = new SigninStarter();
-        int index = ((MainActivity) getContext()).addFragment(signinStarter);
-        ((MainActivity) getContext()).showPage(index);
+        if (view.getId() == R.id.personal_info_summary) {
+            if (personalInfo == null) {
+                personalInfo = new PersonalInfo();
+                personalInfo.setPreIndex(index);
+                personalInfo.setIndex(activity.addFragment(personalInfo));
+            }
+            activity.showPage(personalInfo.getIndex());
+        }
     }
 
     /**

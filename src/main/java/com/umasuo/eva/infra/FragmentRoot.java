@@ -18,6 +18,9 @@ public abstract class FragmentRoot extends Fragment {
      */
     public int index;
 
+    public void onShow() {
+    }
+
     public int getPreIndex() {
         return preIndex;
     }
