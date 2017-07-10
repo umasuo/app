@@ -13,21 +13,34 @@
 
         <TextView
             android:id="@+id/about"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_top_marginLeft"
-            android:layout_weight="1"
+            android:layout_weight="3"
+            android:gravity="left"
             android:text="@string/about"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
 
+        <TextView
+            android:id="@+id/close_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/activity_top_marginRight"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="关闭"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="关于界面" />
+    <WebView
+        android:id="@+id/web_content_viewer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
 
 </LinearLayout>

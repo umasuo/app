@@ -5,12 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.database.DatabaseHelper;
-import com.umasuo.eva.infra.database.FeedReaderContract;
-import com.umasuo.eva.infra.database.FeedReaderDbHelper;
 import com.umasuo.eva.infra.database.UserEntity;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.user.UserServerApi;
@@ -22,6 +19,8 @@ import com.umasuo.eva.infra.server.user.UserServerApi;
 public class UserService {
 
     private static final String TAG = "UserService";
+
+    private static UserService instance;
 
     /**
      * 服务器端的API.
@@ -45,6 +44,16 @@ public class UserService {
     private SQLiteDatabase db;
 
     private Context context;
+
+    public static UserService getInstance(Context context) {
+        if (instance == null) {
+            instance = new UserService(context);
+        } else if (!context.equals(instance.getContext())) {
+            //切换了context，需要重新加载, // TODO: 17/7/10 待优化
+            instance = new UserService(context);
+        }
+        return instance;
+    }
 
     /**
      * 初始化的时候读取数据库
@@ -116,4 +125,7 @@ public class UserService {
         db.execSQL(UserEntity.DELETE_TABLE_SQL);
     }
 
+    public Context getContext() {
+        return context;
+    }
 }
