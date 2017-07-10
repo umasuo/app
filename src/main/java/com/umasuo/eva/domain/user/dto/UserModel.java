@@ -2,24 +2,24 @@ package com.umasuo.eva.domain.user.dto;
 
 import java.io.Serializable;
 
+/**
+ * 用户信息。
+ */
 public class UserModel implements Serializable {
 
-
     private static final long serialVersionUID = -3792465250729122435L;
-    /**
-     * UserId of the developer user.
-     */
+
     private String userId;
+
+    /**
+     * 用户是否登录的标志
+     */
+    private String token;
 
     /**
      * Developer id.
      */
     private String developerId;
-
-    /**
-     * Which device this user from.
-     */
-    private String deviceDefinitionId;
 
     /**
      * User's email. unique on this platform.
@@ -64,20 +64,20 @@ public class UserModel implements Serializable {
         this.userId = userId;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getDeveloperId() {
         return developerId;
     }
 
     public void setDeveloperId(String developerId) {
         this.developerId = developerId;
-    }
-
-    public String getDeviceDefinitionId() {
-        return deviceDefinitionId;
-    }
-
-    public void setDeviceDefinitionId(String deviceDefinitionId) {
-        this.deviceDefinitionId = deviceDefinitionId;
     }
 
     public String getEmail() {
@@ -140,8 +140,8 @@ public class UserModel implements Serializable {
     public String toString() {
         return "UserModel{" +
                 "userId='" + userId + '\'' +
+                ", token='" + token + '\'' +
                 ", developerId='" + developerId + '\'' +
-                ", deviceDefinitionId='" + deviceDefinitionId + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", externalId='" + externalId + '\'' +

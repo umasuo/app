@@ -18,6 +18,7 @@ import retrofit2.http.Query;
 /**
  * Created by umasuo on 17/7/7.
  * 用户相关的API请求.
+ * todo 考虑使用单例.
  */
 public class UserServerApi extends ServiceCaller {
 
@@ -41,13 +42,15 @@ public class UserServerApi extends ServiceCaller {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         //请求成功
-                        LogControl.debug("UserServerApi", "Success");
+                        LogControl.debug("UserServerApi", "Get sms code success");
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         //请求失败
-                        LogControl.debug("UserServerApi", "Success");
+                        LogControl.debug("UserServerApi", "Get sms code failed");
+                        LogControl.debug("UserServerApi", "Get sms code failed: " + t.getMessage());
+                        t.printStackTrace();
                         // TODO: 17/7/8 显示错误信息
                     }
                 }

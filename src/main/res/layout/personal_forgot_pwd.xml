@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/personal_signin_sms_back"
+            android:id="@+id/personal_forgpt_pwd_back"
             android:layout_width="@dimen/top_left_arrow_width"
             android:layout_height="@dimen/top_left_arrow_height"
             android:layout_gravity="center"
@@ -27,7 +27,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_top_marginLeft"
             android:layout_weight="1"
-            android:text="@string/personal_signin_sms"
+            android:text="@string/personal_forgot_password"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
@@ -39,14 +39,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/personal_signin_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
-            android:hint="＋86"
-            android:inputType="text" />
 
         <EditText
             android:id="@+id/personal_signin_phone"
@@ -57,40 +49,15 @@
             android:hint="手机号"
             android:inputType="text" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/personal_signin_sms_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
-                android:layout_marginRight="50px"
-                android:layout_weight="4"
-                android:hint="验证码"
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/personal_signin_sms_get"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
-                android:layout_marginRight="50px"
-                android:layout_weight="2"
-                android:text="获取" />
-        </LinearLayout>
-
-
         <Button
-            android:id="@+id/personal_signin_ok"
+            android:id="@+id/personal_signin_okBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
-            android:text="登录" />
+            android:text="找回密码" />
 
+     
     </LinearLayout>
 
 

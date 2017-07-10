@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 
 import java.util.ArrayList;
@@ -16,18 +17,26 @@ import java.util.List;
  */
 public class SignActivity extends FragmentActivity {
 
-    private String TAG = "SignActivity";
+    private static final String TAG = "SignActivity";
 
     private SignPager signPager;
     private FragmentPagerAdapter signAdapter;
 
-    private List<Fragment> pages = new ArrayList<>();
+    //登录初始界面
+    SigninStarter signinStarter;
+
+    private List<FragmentRoot> pages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign);
         LogControl.debug(TAG, "SignActivity onCreate >>");
+
+        signinStarter = new SigninStarter();
+        signinStarter.setPreIndex(0);
+
+        pages.add(signinStarter);
 
         signAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -44,8 +53,7 @@ public class SignActivity extends FragmentActivity {
         signPager = (SignPager) findViewById(R.id.sign_pager);
         signPager.setAdapter(signAdapter);
 
-        SigninStarter signinStarter = new SigninStarter();
-        pages.add(signinStarter);
+        //显示登录初始界面
         signPager.setCurrentItem(0);
     }
 
@@ -55,13 +63,33 @@ public class SignActivity extends FragmentActivity {
      * @param i
      */
     public void replaceFragment(int i) {
-//        addDeviceViewPager.setCurrentItem(i);
+        //显示登录初始界面
+        signPager.setCurrentItem(i);
     }
 
+    /**
+     * 添加一个新页,只有添加，没有删除.
+     *
+     * @param fragment Fragment
+     * @return 当前fragment在列表中的index
+     */
+    public int addFragment(FragmentRoot fragment) {
+        int index = this.pages.size();
+        pages.add(fragment);
+        signAdapter.notifyDataSetChanged();
+        return index;
+    }
+
+    /**
+     * 响应菜单的回退点击事件.
+     */
     @Override
     public void onBackPressed() {
         LogControl.debug(TAG, "pressed back button");
-        // TODO: 17/7/7 根据现在的状态显示不同的片段
+        int curIndex = signPager.getCurrentItem();
+        FragmentRoot curFrag = pages.get(curIndex);
+        signPager.setCurrentItem(curFrag.getPreIndex());
+        // TODO: 17/7/10 如果是最开始的界面了，那么就关闭程序
     }
 
 }
