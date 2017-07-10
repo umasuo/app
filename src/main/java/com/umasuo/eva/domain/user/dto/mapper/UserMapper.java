@@ -2,6 +2,7 @@ package com.umasuo.eva.domain.user.dto.mapper;
 
 import android.database.Cursor;
 
+import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.infra.database.UserEntity;
 
@@ -31,5 +32,17 @@ public final class UserMapper {
             user.setSignature(cursor.getString(cursor.getColumnIndexOrThrow(UserEntity.SIGNATURE)));
         }
         return user;
+    }
+
+    /**
+     * 将登录的结果转变成user model.
+     *
+     * @param result
+     * @return
+     */
+    public static UserModel toModel(SignInResult result) {
+
+        result.getUserView().setToken(result.getToken());
+        return result.getUserView();
     }
 }

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.user.UserServerApi;
@@ -34,7 +35,7 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
 
     private EditText smsCode;
 
-    private UserServerApi userServerApi;
+    private UserService userService;
 
 
     @Override
@@ -54,7 +55,8 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
         phone = (EditText) view.findViewById(R.id.personal_signin_phone);
         smsCode = (EditText) view.findViewById(R.id.personal_signin_sms_code);
 
-        userServerApi = new UserServerApi();
+        userService = new UserService(getContext());
+
         return view;
     }
 
@@ -70,17 +72,16 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
             case R.id.personal_signin_ok: {
                 String phoneText = phone.getText().toString();
                 String smsCodeText = smsCode.getText().toString();
-                userServerApi.signIn(phoneText, "developer1", smsCodeText);
+                userService.signinWithSmsCode(phoneText, smsCodeText, "developer1");
                 break;
             }
             case R.id.personal_signin_sms_get: {
                 // 发起发送短信验证码请求
                 String phoneText = phone.getText().toString();
                 LogControl.debug(TAG, "Get sms code for: " + phoneText);
-                userServerApi.getSmsCode(phoneText);
+                userService.getSmsCode(phoneText);//调用业务逻辑服务，然后再在界面上进行更改.
                 getSmsCodeBtn.setText("发送成功");
                 getSmsCodeBtn.setEnabled(false);
-
                 new Thread() {
                     @Override
                     public void run() {

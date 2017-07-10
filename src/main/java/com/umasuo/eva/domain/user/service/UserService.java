@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.database.DatabaseHelper;
@@ -37,9 +38,13 @@ public class UserService {
      */
     private String token;
 
+    //todo  这个是否需要共享一个呢？
     private DatabaseHelper dbHelper;
 
+    //todo 这个是否需要共享一个呢？
     private SQLiteDatabase db;
+
+    private Context context;
 
     /**
      * 初始化的时候读取数据库
@@ -47,8 +52,10 @@ public class UserService {
     public UserService(Context context) {
         dbHelper = new DatabaseHelper(context);
         db = dbHelper.getReadableDatabase();
-        db.execSQL(UserEntity.DELETE_TABLE_SQL);
+        // 如果数据表不存在，则创建表
         db.execSQL(UserEntity.CREATE_TABLE_SQL);
+        userServerApi = new UserServerApi();
+        this.context = context;
     }
 
     /**
@@ -80,6 +87,24 @@ public class UserService {
         LogControl.debug(TAG, user.toString());
 
         return user;
+    }
+
+    /**
+     * 获取sms code.
+     */
+    public void getSmsCode(String phone) {
+        userServerApi.getSmsCode(phone);
+    }
+
+    /**
+     * 通过短信验证码的方式登录.
+     *
+     * @param phone
+     * @param developerId
+     * @param code
+     */
+    public void signinWithSmsCode(String phone, String developerId, String code) {
+        userServerApi.signIn(phone, code, developerId, new UserSigninCallback(context));
     }
 
     /**

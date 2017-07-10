@@ -1,8 +1,11 @@
 package com.umasuo.eva.infra.server.user;
 
+import android.content.Context;
+
 import com.umasuo.eva.domain.user.dto.QuickSignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
+import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.ServiceCaller;
 
@@ -64,31 +67,14 @@ public class UserServerApi extends ServiceCaller {
      * @param developerId 开发者ID
      * @param smsCode     收到的sms code
      */
-    public void signIn(String phone, String developerId, String smsCode) {
-
+    public void signIn(String phone, String developerId, String smsCode, Callback<SignInResult> callback) {
         //todo 检查各个参数的值
         QuickSignIn quickSignIn = new QuickSignIn(phone, developerId, smsCode);
 
         Call<SignInResult> caller = service.quickSignIn(quickSignIn);
 
         //异步发起请求，所有的网络请求都需要异步发起请求
-        caller.enqueue(
-                new Callback<SignInResult>() {
-                    @Override
-                    public void onResponse(Call<SignInResult> call, Response<SignInResult> response) {
-                        //请求成功
-                        LogControl.debug("UserServerApi", " signin Success");
-                        SignInResult result = response.body();
-                    }
-
-                    @Override
-                    public void onFailure(Call<SignInResult> call, Throwable t) {
-                        //请求失败
-                        LogControl.debug("UserServerApi", "Success");
-                        // TODO: 17/7/8 显示错误信息
-                    }
-                }
-        );
+        caller.enqueue(callback);
     }
 
     /**
