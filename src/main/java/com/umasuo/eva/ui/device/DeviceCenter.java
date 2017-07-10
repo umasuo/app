@@ -1,8 +1,6 @@
 package com.umasuo.eva.ui.device;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,7 @@ import java.util.Map;
 
 /**
  * Created by liubin8095 on 2017/7/1.
- * 我饿的设备界面，用于显示用户已经添加的设备，以及提供一个设备控制的入口.
+ * 我的设备界面，用于显示用户已经添加的设备，以及提供一个设备控制的入口.
  */
 public class DeviceCenter extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
 
@@ -32,7 +30,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     private ImageView devices_add;
     private ListView deviceItemList;
     private List<Map<String, Object>> data;
-    MainActivity mactivity;
+    MainActivity activity;
     private SelectDeviceType selectDeviceType;
 
     @Override
@@ -52,7 +50,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         DeviceListAdapter adapter = new DeviceListAdapter(getContext(), data);
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
-        mactivity = (MainActivity) getContext();
+        activity = (MainActivity) getContext();
         return view;
     }
 
@@ -61,9 +59,9 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
         super.onHiddenChanged(hidden);
         if (hidden) {
-            mactivity.hideBottom();
+            activity.hideBottom();
         } else {
-            mactivity.showBottom();
+            activity.showBottom();
         }
     }
 
@@ -76,20 +74,19 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.devices_add:
-                startSelecDevice();
+                startSelectDevice();
                 break;
         }
     }
 
-    private void startSelecDevice() {
-//        Intent intent = new Intent();
-//        intent.setClassName(this.getContext(), "com.umasuo.eva.ui.device.add.AddDeviceActivity");//打开一个activity
-//        this.getContext().startActivity(intent);
-//        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
+    private void startSelectDevice() {
+
         if (selectDeviceType == null) {
             selectDeviceType = new SelectDeviceType();
+            selectDeviceType.setPreIndex(index);
+            selectDeviceType.setIndex(activity.addFragment(selectDeviceType));
         }
-//        mactivity.showFragmentBottomToUp(this,selectDeviceType);
+        activity.showPage(selectDeviceType.getIndex());
 
     }
 

@@ -99,6 +99,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
         };
 
+        //todo 设置一下切换的动画，不要太快，调整得合适点
         viewPager.setAdapter(adapter);
     }
 
@@ -116,7 +117,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalImage.setOnClickListener(this);
         personalLayout.setOnClickListener(this);
         personalText.setOnClickListener(this);
-
     }
 
     /**
@@ -180,7 +180,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         int curIndex = viewPager.getCurrentItem();
         FragmentRoot curFrag = pages.get(curIndex);
         viewPager.setCurrentItem(curFrag.getPreIndex());
+
         // TODO: 17/7/10 如果是最开始的界面了，那么就关闭程序
+
     }
 
     /**

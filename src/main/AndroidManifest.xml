@@ -26,9 +26,6 @@
             android:name=".ui.sign.SignActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
 
-        <activity
-            android:name=".ui.device.add.AddDeviceActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

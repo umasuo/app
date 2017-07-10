@@ -142,9 +142,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (messageCenter == null) {
                     messageCenter = new MessageCenter();
                     messageCenter.setPreIndex(index);
+                    messageCenter.setIndex(activity.addFragment(messageCenter));
                 }
-
-                messageCenter.setIndex(activity.addFragment(messageCenter));
                 activity.showPage(messageCenter.getIndex());
                 break;
             }
@@ -152,8 +151,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (faq == null) {
                     faq = new FAQ();
                     faq.setPreIndex(index);
+                    faq.setIndex(activity.addFragment(faq));
                 }
-                faq.setIndex(activity.addFragment(faq));
                 activity.showPage(faq.getIndex());
                 break;
             }
@@ -161,8 +160,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (feedback == null) {
                     feedback = new Feedback();
                     feedback.setPreIndex(index);
+                    feedback.setIndex(activity.addFragment(feedback));
                 }
-                feedback.setIndex(activity.addFragment(feedback));
                 activity.showPage(feedback.getIndex());
                 break;
             }
@@ -170,8 +169,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (about == null) {
                     about = new About();
                     about.setPreIndex(index);
+                    about.setIndex(activity.addFragment(about));
                 }
-                about.setIndex(activity.addFragment(about));
                 activity.showPage(about.getIndex());
                 break;
             }
@@ -179,8 +178,8 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (personalSettings == null) {
                     personalSettings = new PersonalSettings();
                     personalSettings.setPreIndex(index);
+                    personalSettings.setIndex(activity.addFragment(personalSettings));
                 }
-                personalSettings.setIndex(activity.addFragment(personalSettings));
                 activity.showPage(personalSettings.getIndex());
                 break;
             }

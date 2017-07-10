@@ -80,8 +80,9 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         if (powerUpDevice == null) {
             powerUpDevice = new PowerUpDevice();
             powerUpDevice.setPreIndex(index);
+            powerUpDevice.setIndex(mActivity.addFragment(powerUpDevice));
         }
-        powerUpDevice.setIndex(mActivity.addFragment(powerUpDevice));
+        mActivity.showPage(powerUpDevice.getIndex());
     }
 
     /**

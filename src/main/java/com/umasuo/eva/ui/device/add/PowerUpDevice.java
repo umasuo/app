@@ -45,17 +45,16 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.device_power_up_back:
                 // 回退
-//                ((AddDeviceActivity) this.getContext()).showPage(0);
                 mActivity.showPage(preIndex);
                 break;
             case R.id.device_power_up_next:
                 //下一步
-//                ((AddDeviceActivity) this.getContext()).showPage(2);
                 if (inputWifiPassword == null) {
                     inputWifiPassword = new InputWifiPassword();
                     inputWifiPassword.setPreIndex(index);
+                    inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
                 }
-                inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
+                mActivity.showPage(inputWifiPassword.getIndex());
         }
 
     }
