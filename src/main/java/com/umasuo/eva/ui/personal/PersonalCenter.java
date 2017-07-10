@@ -154,7 +154,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 //                    mcIndex = activity.addFragment(messageCenter);
                 }
 //                activity.showFragment(mcIndex);
-                mactivity.showFragment(this,messageCenter);
+                mactivity.showFragmentLeftToRight(this,messageCenter);
                 break;
             }
             case 1: {
@@ -163,7 +163,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 //                    faqIndex = activity.addFragment(faq);
                 }
 //                activity.showFragment(faqIndex);
-                mactivity.showFragment(this,faq);
+                mactivity.showFragmentLeftToRight(this,faq);
                 break;
             }
             case 2: {
@@ -172,7 +172,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 //                    fbIndex = activity.addFragment(feedback);
                 }
 //                activity.showFragment(fbIndex);
-                mactivity.showFragment(this,feedback);
+                mactivity.showFragmentLeftToRight(this,feedback);
                 break;
             }
             case 3: {
@@ -181,7 +181,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 //                    aboutIndex = activity.addFragment(about);
                 }
 //                activity.showFragment(aboutIndex);
-                mactivity.showFragment(this,about);
+                mactivity.showFragmentLeftToRight(this,about);
                 break;
             }
             case 4: {
@@ -190,7 +190,7 @@ public class PersonalCenter extends Fragment implements AdapterView.OnItemClickL
 //                    psIndex = ((MainActivity) getContext()).addFragment(personalSettings);
                 }
 //                activity.showFragment(psIndex);
-                mactivity.showFragment(this,personalSettings);
+                mactivity.showFragmentLeftToRight(this,personalSettings);
                 break;
             }
             default:

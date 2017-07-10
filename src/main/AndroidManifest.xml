@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name="com.umasuo.eva.MainActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>

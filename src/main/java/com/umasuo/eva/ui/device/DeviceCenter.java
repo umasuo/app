@@ -14,6 +14,7 @@ import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.adapter.DeviceListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.ui.device.add.SelectDeviceType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
     private ListView deviceItemList;
     private List<Map<String, Object>> data;
     MainActivity mactivity;
+    private SelectDeviceType selectDeviceType;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,16 +75,21 @@ public class DeviceCenter extends Fragment implements View.OnClickListener, Adap
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.devices_add:
-                startChooseDevicesActivity();
+                startSelecDevice();
                 break;
         }
     }
 
-    private void startChooseDevicesActivity() {
-        Intent intent = new Intent();
-        intent.setClassName(this.getContext(), "com.umasuo.eva.ui.device.add.AddDeviceActivity");//打开一个activity
-        this.getContext().startActivity(intent);
-        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
+    private void startSelecDevice() {
+//        Intent intent = new Intent();
+//        intent.setClassName(this.getContext(), "com.umasuo.eva.ui.device.add.AddDeviceActivity");//打开一个activity
+//        this.getContext().startActivity(intent);
+//        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
+        if(selectDeviceType == null){
+            selectDeviceType = new SelectDeviceType();
+        }
+        mactivity.showFragmentBottomToUp(this,selectDeviceType);
+
     }
 
     /**

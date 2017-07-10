@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.dto.SceneModel;
 import com.umasuo.eva.infra.log.LogControl;
 
 import java.util.List;
@@ -69,9 +70,14 @@ public class SceneListAdapter extends BaseAdapter {
         } else {
             holder = (SceneListAdapter.ViewHolder) view.getTag();
         }
-        holder.sceneIcon.setBackgroundResource((Integer) mdata.get(i).get("sceneIcon"));
-        holder.name.setText((String) mdata.get(i).get("name"));
+//        holder.sceneIcon.setBackgroundResource((Integer) mdata.get(i).get("sceneIcon"));
+//        holder.name.setText((String) mdata.get(i).get("name"));
 
+        SceneModel sModel = (SceneModel)(mdata.get(i).get("model"));
+        if(sModel != null) {
+            holder.sceneIcon.setBackgroundResource(sModel.getmSceneIconId());
+            holder.name.setText(sModel.getmSceneName());
+        }
         return view;
     }
 
