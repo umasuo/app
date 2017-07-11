@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.ui.WaitingPage;
 import com.umasuo.eva.ui.device.DeviceCenter;
 import com.umasuo.eva.ui.personal.PersonalCenter;
 import com.umasuo.eva.ui.scene.SceneCenter;
@@ -47,6 +48,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     FragmentRoot devicesFragment; // 0 保持不变
     FragmentRoot sceneFragment; // 1 保持不变
     FragmentRoot personalFragment; // 2 保持不变
+    FragmentRoot waitingPage; // 3 等待界面
 
     private List<FragmentRoot> pages = new ArrayList<>();
 
@@ -83,9 +85,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         sceneFragment.setIndex(1);
         personalFragment = new PersonalCenter();
         personalFragment.setIndex(2);
+        waitingPage = new WaitingPage();
+        waitingPage.setIndex(3);
         pages.add(devicesFragment);
         pages.add(sceneFragment);
         pages.add(personalFragment);
+        pages.add(waitingPage);
 
         adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -101,6 +106,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         //todo 设置一下切换的动画，不要太快，调整得合适点
         viewPager.setAdapter(adapter);
+
     }
 
     private void initEvent() {

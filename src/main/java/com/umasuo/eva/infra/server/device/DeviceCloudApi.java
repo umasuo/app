@@ -1,9 +1,15 @@
 package com.umasuo.eva.infra.server.device;
 
+import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.ServiceCaller;
-import com.umasuo.eva.domain.device.dto.DeviceView;
+import com.umasuo.eva.domain.device.dto.DeviceModel;
 
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -14,14 +20,14 @@ import retrofit2.http.Path;
  * Created by umasuo on 17/7/8.
  */
 
-public class DeviceService extends ServiceCaller {
+public class DeviceCloudApi extends ServiceCaller {
 
     /**
      * 与云端API对应的接口
      */
     private Service service;
 
-    public DeviceService() {
+    public DeviceCloudApi() {
         service = retrofit.create(Service.class);
     }
 
@@ -51,7 +57,10 @@ public class DeviceService extends ServiceCaller {
      * @param userId 用户ID
      */
     public void getDeviceToken(String userId) {
+        Call<ResponseBody> caller = service.getDeviceToken(userId);
 
+        //异步发起请求，所有的网络请求都需要异步发起请求
+//        caller.enqueue(new Device);
     }
 
     /**
@@ -60,12 +69,12 @@ public class DeviceService extends ServiceCaller {
     private interface Service {
 
         @GET("/v1/devices")
-        Call<DeviceView> getAllDevice(@Header("userId") String userId);
+        Call<DeviceModel> getAllDevice(@Header("userId") String userId);
 
         @DELETE("/v1/devices/{id}")
         Call<Void> unbind(@Header("userId") String userId, @Path("id") String id);
 
         @POST("/v1/devices/tokens")
-        Call<String> getDeviceToken(@Header("userId") String userId);
+        Call<ResponseBody> getDeviceToken(@Header("userId") String userId);
     }
 }

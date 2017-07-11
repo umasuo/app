@@ -1,20 +1,13 @@
 package com.umasuo.eva.domain.user.service;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
-import com.umasuo.eva.infra.database.DatabaseHelper;
-import com.umasuo.eva.infra.database.UserEntity;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.user.UserServerApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +31,7 @@ public class UserSigninCallback implements Callback<SignInResult> {
     @Override
     public void onResponse(Call<SignInResult> call, Response<SignInResult> response) {
         //请求成功
-        LogControl.debug("UserServerApi", " signin Success");
+        LogControl.debug("UserCloudApi", " signin Success");
         SignInResult result = response.body();
         UserModel userModel = UserMapper.toModel(result);
         // 保存数据到数据库
@@ -62,7 +55,7 @@ public class UserSigninCallback implements Callback<SignInResult> {
     @Override
     public void onFailure(Call<SignInResult> call, Throwable t) {
         //请求失败
-        LogControl.debug("UserServerApi", "failed");
+        LogControl.debug("UserCloudApi", "failed");
         // TODO: 17/7/8 显示错误信息
     }
 }

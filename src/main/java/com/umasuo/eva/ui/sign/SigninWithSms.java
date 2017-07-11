@@ -1,21 +1,17 @@
 package com.umasuo.eva.ui.sign;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.user.UserServerApi;
 
 /**
  * Created on 2017/7/7.

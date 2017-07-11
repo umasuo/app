@@ -32,7 +32,7 @@ public class UserModelCallback implements Callback<UserModel> {
     @Override
     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
         //请求成功
-        LogControl.debug("UserServerApi", " signin Success");
+        LogControl.debug("UserCloudApi", " signin Success");
         UserModel userModel = response.body();
 
         // 保存数据到数据库
@@ -53,7 +53,7 @@ public class UserModelCallback implements Callback<UserModel> {
     @Override
     public void onFailure(Call<UserModel> call, Throwable t) {
         //请求失败
-        LogControl.debug("UserServerApi", "failed");
+        LogControl.debug("UserCloudApi", "failed");
         // TODO: 17/7/8 显示错误信息
     }
 }

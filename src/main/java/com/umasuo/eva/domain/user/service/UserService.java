@@ -10,7 +10,7 @@ import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.UserEntity;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.user.UserServerApi;
+import com.umasuo.eva.infra.server.user.UserCloudApi;
 
 /**
  * Created by umasuo on 17/7/8.
@@ -25,7 +25,7 @@ public class UserService {
     /**
      * 服务器端的API.
      */
-    private UserServerApi userServerApi;
+    private UserCloudApi userServerApi;
 
     /**
      * 当前登录的用户的信息.
@@ -63,7 +63,7 @@ public class UserService {
         db = dbHelper.getReadableDatabase();
         // 如果数据表不存在，则创建表
         db.execSQL(UserEntity.CREATE_TABLE_SQL);
-        userServerApi = new UserServerApi();
+        userServerApi = new UserCloudApi();
         this.context = context;
     }
 

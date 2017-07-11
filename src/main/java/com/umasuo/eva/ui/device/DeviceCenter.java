@@ -51,6 +51,8 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
         activity = (MainActivity) getContext();
+
+        // TODO: 17/7/11 读取数据库并发起网络请求去拉取最新的设备列表
         return view;
     }
 

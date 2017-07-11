@@ -2,7 +2,7 @@ package com.umasuo.eva.domain.device.dto;
 
 import java.io.Serializable;
 
-public class DeviceView implements Serializable {
+public class DeviceModel implements Serializable {
 
     /**
      * auto generated serial id.
