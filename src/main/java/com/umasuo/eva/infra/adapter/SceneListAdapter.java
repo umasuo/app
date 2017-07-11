@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
-import com.umasuo.eva.domain.user.dto.SceneModel;
+import com.umasuo.eva.domain.scene.dto.SceneModel;
 import com.umasuo.eva.infra.log.LogControl;
 
 import java.util.List;

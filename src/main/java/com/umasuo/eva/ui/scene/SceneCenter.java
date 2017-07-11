@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
-import com.umasuo.eva.domain.user.dto.SceneModel;
+import com.umasuo.eva.domain.scene.dto.SceneModel;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.SceneListAdapter;
 import com.umasuo.eva.infra.log.LogControl;

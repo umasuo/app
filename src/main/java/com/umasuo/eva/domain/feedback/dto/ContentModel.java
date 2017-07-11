@@ -2,7 +2,7 @@ package com.umasuo.eva.domain.feedback.dto;
 
 import java.io.Serializable;
 
-public class ContentView implements Serializable {
+public class ContentModel implements Serializable {
 
     private static final long serialVersionUID = -2895830947304347194L;
     /**

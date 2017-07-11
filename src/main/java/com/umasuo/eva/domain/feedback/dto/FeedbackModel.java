@@ -5,7 +5,7 @@ import com.umasuo.eva.infra.enums.FeedbackType;
 import java.io.Serializable;
 import java.util.List;
 
-public class FeedbackView implements Serializable{
+public class FeedbackModel implements Serializable{
 
     private static final long serialVersionUID = 8869700228132652929L;
     /**
@@ -45,7 +45,7 @@ public class FeedbackView implements Serializable{
      */
     private FeedbackType type;
 
-    private List<ContentView> contents;
+    private List<ContentModel> contents;
 
     private String title;
 
@@ -117,11 +117,11 @@ public class FeedbackView implements Serializable{
         this.type = type;
     }
 
-    public List<ContentView> getContents() {
+    public List<ContentModel> getContents() {
         return contents;
     }
 
-    public void setContents(List<ContentView> contents) {
+    public void setContents(List<ContentModel> contents) {
         this.contents = contents;
     }
 

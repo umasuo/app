@@ -1,23 +1,21 @@
-package com.umasuo.eva.domain.user.dto;
-
-import android.widget.ImageView;
+package com.umasuo.eva.domain.scene.dto;
 
 import java.io.Serializable;
 
 /**
  * Created on 2017/7/10.
  */
+public class SceneModel implements Serializable {
 
-public class SceneModel implements Serializable{
+    private static final long serialVersionUID = -3294439470132569152L;
 
     private String mSceneName;
     private int mSceneIconId;
 
-    public SceneModel(){
-
+    public SceneModel() {
     }
 
-    public SceneModel(String sceneName,int sceneIconId){
+    public SceneModel(String sceneName, int sceneIconId) {
         mSceneName = sceneName;
         mSceneIconId = sceneIconId;
     }
@@ -40,6 +38,9 @@ public class SceneModel implements Serializable{
 
     @Override
     public String toString() {
-        return "SceneModel {sceneName = "+mSceneName +" }";
+        return "SceneModel{" +
+                "mSceneName='" + mSceneName + '\'' +
+                ", mSceneIconId=" + mSceneIconId +
+                '}';
     }
 }

@@ -32,7 +32,7 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
     private ImageView backBtn;
 
     private PowerUpDevice powerUpDevice;
-    MainActivity mActivity;
+    private MainActivity mActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

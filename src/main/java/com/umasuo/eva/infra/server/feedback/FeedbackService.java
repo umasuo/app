@@ -1,7 +1,7 @@
 package com.umasuo.eva.infra.server.feedback;
 
 import com.umasuo.eva.infra.server.ServiceCaller;
-import com.umasuo.eva.domain.feedback.dto.FeedbackView;
+import com.umasuo.eva.domain.feedback.dto.FeedbackModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -49,7 +49,7 @@ public class FeedbackService extends ServiceCaller {
     private interface Service {
 
         @GET("/v1/feedbacks")
-        Call<FeedbackView> getAllFeedback(@Header("userId") String userId);
+        Call<FeedbackModel> getAllFeedback(@Header("userId") String userId);
 
         @POST("/v1/feedbacks")
         Call<Void> addNewFeedback(@Header("userId") String userId);
