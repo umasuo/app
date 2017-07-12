@@ -60,7 +60,7 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
 //        this.getContext().startActivity(intent);
 //        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
 //        this.getActivity().finish();
-        mActivity.getSupportFragmentManager().popBackStack();
+//        mActivity.getSupportFragmentManager().popBackStack();
     }
 
     /**

@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public class DeviceCenter extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    private static final String TAG = "DeviceFragment";
+    private static final String TAG = "DeviceCenter";
     private ImageView devices_add;
     private ListView deviceItemList;
     private List<Map<String, Object>> data;
@@ -37,7 +37,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        LogControl.debug("DeviceFragment", "on create.");
+        LogControl.debug(TAG, "on create.");
         View view = inflater.inflate(R.layout.devices, container, false);
 
         devices_add = (ImageView) view.findViewById(R.id.devices_add);
@@ -51,6 +51,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
         activity = (MainActivity) getContext();
+        activity.showBottom();
 
         // TODO: 17/7/11 读取数据库并发起网络请求去拉取最新的设备列表
         return view;
@@ -59,12 +60,12 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     @Override
     public void onHiddenChanged(boolean hidden) {
         LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
-        super.onHiddenChanged(hidden);
-        if (hidden) {
-            activity.hideBottom();
-        } else {
-            activity.showBottom();
-        }
+//        super.onHiddenChanged(hidden);
+//        if (hidden) {
+//            activity.hideBottom();
+//        } else {
+//            activity.showBottom();
+//        }
     }
 
     @Override
