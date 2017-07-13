@@ -12,6 +12,7 @@
     <color name="itemDividerColor">#a7a7a7</color>
 
     <color name="button">#006aff</color>
+    <color name="editorItemColor">#eeeeee</color>
 
 
     <color name="red">#FF0000</color>

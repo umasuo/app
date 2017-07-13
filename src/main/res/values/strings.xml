@@ -49,9 +49,9 @@
     <string name="device_qt">其他</string>
 
     <!--编辑场景界面-->
-    <string name="editor_add_condition">第一步：添加条件</string>
+    <string name="editor_add_condition">添加条件</string>
     <string name="editor_no_add_condition">未添加条件</string>
-    <string name="editor_add_task">第二步：添加任务</string>
+    <string name="editor_add_task">添加任务</string>
     <string name="editor_no_add_task">请添加任务</string>
 
 </resources>
