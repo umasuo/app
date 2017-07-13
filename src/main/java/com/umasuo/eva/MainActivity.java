@@ -185,6 +185,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onBackPressed() {
         LogControl.debug(TAG, "pressed back button");
         int curIndex = viewPager.getCurrentItem();
+        switch (curIndex){//如果是3个主界面则不能再往后退
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                return;
+            case 4:
+                showBottom();
+                break;
+        }
+
+        LogControl.debug(TAG,"onBackPressed curIndex ="+curIndex);
         FragmentRoot curFrag = pages.get(curIndex);
         showPage(curFrag.getPreIndex());
 
