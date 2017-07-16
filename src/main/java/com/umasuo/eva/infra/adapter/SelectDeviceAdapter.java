@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.ui.device.DeviceItem;
 
 import java.util.List;
 import java.util.Map;
@@ -59,8 +60,9 @@ public class SelectDeviceAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.img_left.setBackgroundResource((Integer) mdata.get(i).get("icon"));
-        holder.text.setText((String) mdata.get(i).get("title"));
+        DeviceItem item = (DeviceItem) mdata.get(i).get("model");
+        holder.img_left.setBackgroundResource(item.getmDeviceIconId());
+        holder.text.setText(item.getmDeviceName());
         return view;
     }
 

@@ -13,6 +13,7 @@ import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.SelectDeviceAdapter;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.ui.device.DeviceItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,6 +84,11 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
             powerUpDevice.setIndex(mActivity.getPagerSize());
             powerUpDevice.setIndex(mActivity.addFragment(powerUpDevice));
         }
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model",(DeviceItem)item.get("model"));
+        powerUpDevice.setArguments(bundle);
+
 //        mActivity.showPage(powerUpDevice.getIndex());
         mActivity.showFragment(this,powerUpDevice,true);
     }
@@ -97,30 +103,23 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_cz);
-        map.put("title", getString(R.string.device_cz));
+        map.put("model", new DeviceItem("开关", R.drawable.device_kg));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_kg);
-        map.put("title", getString(R.string.device_kg));
-        list.add(map);
-
-
-        map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_xy);
-        map.put("title", getString(R.string.device_xy));
+        map.put("model", new DeviceItem("洗衣机", R.drawable.device_xy));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_bx);
-        map.put("title", getString(R.string.device_bx));
+        map.put("model", new DeviceItem("冰箱", R.drawable.device_bx));
         list.add(map);
 
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("插座", R.drawable.device_cz));
+        list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_qt);
-        map.put("title", getString(R.string.device_qt));
+        map.put("model", new DeviceItem("其他", R.drawable.device_qt));
         list.add(map);
 
         return list;

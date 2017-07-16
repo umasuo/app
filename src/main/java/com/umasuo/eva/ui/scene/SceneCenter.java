@@ -135,15 +135,17 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
         LogControl.debug(TAG, "item: " + i + ", id: " + view.findViewById(R.id.scene_left_icon).getId());
-                editorFragment = new SceneEditor();
-                Bundle bundle = new Bundle();
-
-                HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
-                bundle.putSerializable("model", (SceneModel) item.get("model"));
-                editorFragment.setArguments(bundle);
-                editorFragment.setPreIndex(index);
+        if(editorFragment == null) {
+            editorFragment = new SceneEditor();
+            editorFragment.setPreIndex(index);
 //                editorFragment.setIndex(activity.addFragment(editorFragment));
-                editorFragment.setIndex(activity.getPagerSize());
+            editorFragment.setIndex(activity.getPagerSize());
+        }
+        Bundle bundle = new Bundle();
+        HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
+        bundle.putSerializable("model", (SceneModel) item.get("model"));
+        editorFragment.setArguments(bundle);
+
             activity.showFragment(this,editorFragment,true);
 //        activity.showPage(editorFragment.getIndex());
 

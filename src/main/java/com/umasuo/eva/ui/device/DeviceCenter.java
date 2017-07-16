@@ -29,7 +29,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     private static final String TAG = "DeviceCenter";
     private ImageView devices_add;
     private ListView deviceItemList;
-    private List<Map<String, Object>> data;
+    private List<Map<String, Object>> mdata;
     MainActivity activity;
     private SelectDeviceType selectDeviceType;
 
@@ -44,10 +44,10 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         devices_add.setOnClickListener(this);
 
         //从服务器或本地数据库拉取数据
-        data = getData();
+        mdata = getData();
 
         deviceItemList = (ListView) view.findViewById(R.id.device_list);
-        DeviceListAdapter adapter = new DeviceListAdapter(getContext(), data);
+        DeviceListAdapter adapter = new DeviceListAdapter(getContext(), mdata);
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
         activity = (MainActivity) getContext();
