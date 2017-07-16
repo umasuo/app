@@ -1,14 +1,18 @@
 package com.umasuo.eva;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
@@ -53,6 +57,17 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private List<FragmentRoot> pages = new ArrayList<>();
 
     FragmentPagerAdapter adapter;
+    FragmentTransaction transaction;
+    private boolean isExit = false;
+
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +175,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
-        viewPager.setCurrentItem(i);
+        if(i>=0 && i <3) {
+            viewPager.setCurrentItem(i);
+        }
         //显示登录初始界面
         pages.get(i).onShow();
     }
@@ -173,9 +190,43 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     public int addFragment(FragmentRoot fragment) {
         int index = this.pages.size();
+        LogControl.debug(TAG,"add Fragment index = "+index);
         pages.add(fragment);
         adapter.notifyDataSetChanged();
         return index;
+    }
+
+    /**
+     * 获得pages 个数
+     * @return
+     */
+    public int getPagerSize(){
+        return this.pages.size();
+    }
+
+    /**
+     * Fragment之间跳转
+     * @param firstFragment
+     * @param secondfragment
+     * @param inStack
+     */
+    public void showFragment(Fragment firstFragment,Fragment secondfragment,boolean inStack){
+        transaction = getSupportFragmentManager().beginTransaction();
+
+        if(inStack) {
+            if (!secondfragment.isAdded()) {
+                transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+            } else {
+                transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+            }
+        }else {//不用stack管理fragment
+            transaction = getSupportFragmentManager().beginTransaction();
+            if (!secondfragment.isAdded()) {
+                transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).commit();
+            } else {
+                transaction.hide(firstFragment).show(secondfragment).commitAllowingStateLoss();
+            }
+        }
     }
 
     /**
@@ -183,24 +234,25 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     @Override
     public void onBackPressed() {
-        LogControl.debug(TAG, "pressed back button");
-        int curIndex = viewPager.getCurrentItem();
-        switch (curIndex){//如果是3个主界面则不能再往后退
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-                return;
-            case 4:
-                showBottom();
-                break;
+//        int curIndex = viewPager.getCurrentItem();
+//        LogControl.debug(TAG,"onBackPressed curIndex ="+curIndex);
+
+
+//        FragmentRoot curFrag = pages.get(curIndex);
+//        showPage(curFrag.getPreIndex());
+
+
+
+        //后面再优化，哪些fragment在popBackStack 或者改变跳转方式 不被销毁
+        getSupportFragmentManager().popBackStack();
+
+        int popNum = getSupportFragmentManager().getBackStackEntryCount();
+        LogControl.debug(TAG,"popNum = "+popNum);
+        if(popNum == 0){
+            exit();
+        }else if(popNum == 1){
+            showBottom();
         }
-
-        LogControl.debug(TAG,"onBackPressed curIndex ="+curIndex);
-        FragmentRoot curFrag = pages.get(curIndex);
-        showPage(curFrag.getPreIndex());
-
-        // TODO: 17/7/10 如果是最开始的界面了，那么就关闭程序
 
     }
 
@@ -225,6 +277,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void hideBottom() {
         if (bottomMenu != null) {
             bottomMenu.setVisibility(View.GONE);
+        }
+    }
+
+    private void exit() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(getApplicationContext(), R.string.isexit,
+                    Toast.LENGTH_SHORT).show();
+            mHandler.sendEmptyMessageDelayed(0, 2000);
+        } else {
+            finish();
+            System.exit(0);
         }
     }
 }

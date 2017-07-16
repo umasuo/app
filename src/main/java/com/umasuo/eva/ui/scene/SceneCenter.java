@@ -2,6 +2,8 @@ package com.umasuo.eva.ui.scene;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +37,16 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     private SceneEditor editorFragment;
     MainActivity activity;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LogControl.debug(TAG,"onCreate >>>");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        LogControl.debug(TAG,"onCreateView >>>");
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.scene, container, false);
 
@@ -127,19 +135,17 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
         LogControl.debug(TAG, "item: " + i + ", id: " + view.findViewById(R.id.scene_left_icon).getId());
+                editorFragment = new SceneEditor();
+                Bundle bundle = new Bundle();
 
-        if (editorFragment == null) {
-            editorFragment = new SceneEditor();
-            Bundle bundle = new Bundle();
-
-            HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
-            bundle.putSerializable("model", (SceneModel) item.get("model"));
-            editorFragment.setArguments(bundle);
-            editorFragment.setPreIndex(index);
-            editorFragment.setIndex(activity.addFragment(editorFragment));
-        }
-
-        activity.showPage(editorFragment.getIndex());
+                HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
+                bundle.putSerializable("model", (SceneModel) item.get("model"));
+                editorFragment.setArguments(bundle);
+                editorFragment.setPreIndex(index);
+//                editorFragment.setIndex(activity.addFragment(editorFragment));
+                editorFragment.setIndex(activity.getPagerSize());
+            activity.showFragment(this,editorFragment,true);
+//        activity.showPage(editorFragment.getIndex());
 
     }
 }

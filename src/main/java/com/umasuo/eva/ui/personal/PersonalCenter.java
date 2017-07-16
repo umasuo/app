@@ -79,6 +79,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     @Override
     public void onShow() {
         if (activity != null) {
+            LogControl.debug(TAG,"onShow >>>");
             activity.showBottom();
         }
     }
@@ -135,24 +136,28 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
      */
     @Override
     public void onClick(View view) {
-        LogControl.debug(TAG, "click");
+        LogControl.debug(TAG, "onClick");
         switch (view.getId()) {
             case R.id.personal_info_summary: {
                 if (personalInfo == null) {
                     personalInfo = new PersonalInfo();
                     personalInfo.setPreIndex(index);
-                    personalInfo.setIndex(activity.addFragment(personalInfo));
+                    personalInfo.setIndex(activity.getPagerSize());
+//                    personalInfo.setIndex(activity.addFragment(personalInfo));
                 }
-                activity.showPage(personalInfo.getIndex());
+                activity.showFragment(this,personalInfo,true);
+//                activity.showPage(personalInfo.getIndex());
                 break;
             }
             case R.id.personal_settings: {
                 if (personalSettings == null) {
                     personalSettings = new PersonalSettings();
                     personalSettings.setPreIndex(index);
-                    personalSettings.setIndex(activity.addFragment(personalSettings));
+                    personalSettings.setIndex(activity.getPagerSize());
+//                    personalSettings.setIndex(activity.addFragment(personalSettings));
                 }
-                activity.showPage(personalSettings.getIndex());
+                activity.showFragment(this,personalSettings,true);
+//                activity.showPage(personalSettings.getIndex());
                 break;
             }
         }
@@ -174,36 +179,45 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                 if (messageCenter == null) {
                     messageCenter = new MessageCenter();
                     messageCenter.setPreIndex(index);
-                    messageCenter.setIndex(activity.addFragment(messageCenter));
+                    messageCenter.setIndex(activity.getPagerSize());
+//                    messageCenter.setIndex(activity.addFragment(messageCenter));
                 }
-                activity.showPage(messageCenter.getIndex());
+//                activity.showPage(messageCenter.getIndex());
+                activity.showFragment(this,messageCenter,true);
                 break;
             }
             case 1: {
                 if (faq == null) {
                     faq = new FAQ();
                     faq.setPreIndex(index);
-                    faq.setIndex(activity.addFragment(faq));
+                    faq.setIndex(activity.getPagerSize());
+//                    faq.setIndex(activity.addFragment(faq));
                 }
-                activity.showPage(faq.getIndex());
+//                activity.showPage(faq.getIndex());
+                activity.showFragment(this,faq,true);
                 break;
             }
             case 2: {
                 if (feedback == null) {
                     feedback = new Feedback();
                     feedback.setPreIndex(index);
-                    feedback.setIndex(activity.addFragment(feedback));
+                    feedback.setIndex(activity.getPagerSize());
+//                    feedback.setIndex(activity.addFragment(feedback));
                 }
-                activity.showPage(feedback.getIndex());
+                activity.showFragment(this,feedback,true);
+//                activity.showPage(feedback.getIndex());
                 break;
             }
             case 3: {
                 if (about == null) {
+                    LogControl.debug(TAG,"about");
                     about = new About();
                     about.setPreIndex(index);
-                    about.setIndex(activity.addFragment(about));
+                    about.setIndex(activity.getPagerSize());
+//                    about.setIndex(activity.addFragment(about));
                 }
-                activity.showPage(about.getIndex());
+                activity.showFragment(this,about,true);
+//                activity.showPage(about.getIndex());
                 break;
             }
             default:

@@ -1,5 +1,7 @@
 package com.umasuo.eva.ui.scene;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -44,28 +46,57 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener,Ad
 
     View view;
     private MainActivity mActivity;
+    Bundle bundle;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogControl.debug(TAG,"onCreate");
+        LogControl.debug(TAG,"onCreate >>>");
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        LogControl.debug(TAG,"onAttach >>>");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
+        super.onHiddenChanged(hidden);
+
+    }
+
+    int i = 0;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogControl.debug(TAG,"onCreateView");
+        LogControl.debug(TAG,"onCreateView >>> ");
 
-        Bundle bundle = getArguments();
+        bundle = getArguments();
         sModel = (SceneModel) bundle.get("model");
-        LogControl.debug(TAG,sModel.getmSceneName());
+        LogControl.debug(TAG,sModel.getmSceneName()+" i ="+i++);
 
         view = inflater.inflate(R.layout.scene_editor, container, false);
         initView(view);
         mActivity = (MainActivity) getActivity();
         return view;
+    }
+
+    @Override
+    public void onShow() {
+        if(mActivity != null){
+//            mActivity.hideBottom();
+        }
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogControl.debug(TAG,"onStart >>>");
     }
 
     private void initView(View view){
@@ -93,19 +124,44 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener,Ad
         editor_list_task= (ListView) view.findViewById(R.id.editor_list_task);
         editor_list_task.setOnItemClickListener(this);
 
-
+        onShow();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        LogControl.debug(TAG,"onResume");
+        LogControl.debug(TAG,"onResume >>>");
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        LogControl.debug(TAG,"onPause >>>");
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        LogControl.debug(TAG,"onStop >>>");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogControl.debug(TAG,"onDestroy >>>");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LogControl.debug(TAG,"onDestroyView >>>");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        LogControl.debug(TAG,"onDetach >>>");
     }
 
     @Override

@@ -52,9 +52,11 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
                 if (inputWifiPassword == null) {
                     inputWifiPassword = new InputWifiPassword();
                     inputWifiPassword.setPreIndex(index);
-                    inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
+                    inputWifiPassword.setIndex(mActivity.getPagerSize());
+//                    inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
                 }
-                mActivity.showPage(inputWifiPassword.getIndex());
+//                mActivity.showPage(inputWifiPassword.getIndex());
+                mActivity.showFragment(this,inputWifiPassword,true);
         }
 
     }

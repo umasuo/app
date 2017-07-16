@@ -9,6 +9,7 @@
     <string name="powerUpDevice">启动设备</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
+    <string name="isexit">再按一次退出</string>
 
 
     <!--用户中心的信息-->

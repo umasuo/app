@@ -29,7 +29,7 @@ public class FAQ extends FragmentRoot implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.faq, container, false);
 
-        webView = (WebView) view.findViewById(R.id.web_content_viewer);
+        webView = (WebView) view.findViewById(R.id.web_faq_content_viewer);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("http://www.umasuo.com");
 

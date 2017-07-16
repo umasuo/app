@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created on 2017/7/7.
@@ -16,6 +17,7 @@ import com.umasuo.eva.infra.FragmentRoot;
  */
 public class PersonalSettings extends FragmentRoot implements View.OnClickListener {
 
+    private String TAG = "PersonalSettings";
     private MainActivity activity;
     private TextView closeBtn;
 
@@ -34,6 +36,7 @@ public class PersonalSettings extends FragmentRoot implements View.OnClickListen
 
     @Override
     public void onShow() {
+        LogControl.debug(TAG,"onShow");
         activity.hideBottom();
     }
 

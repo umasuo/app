@@ -39,6 +39,7 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        LogControl.debug(TAG,"onCreateView >>>");
         View view = inflater.inflate(R.layout.personal_info, container, false);
         activity = (MainActivity) getContext();
 
@@ -88,6 +89,7 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     @Override
     public void onShow() {
         if (activity != null) {
+            LogControl.debug(TAG,"onShow >>>");
             activity.hideBottom();
         }
     }

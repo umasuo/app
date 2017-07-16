@@ -40,7 +40,7 @@
     </LinearLayout>
 
     <WebView
-        android:id="@+id/web_content_viewer"
+        android:id="@+id/web_faq_content_viewer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></WebView>
 
