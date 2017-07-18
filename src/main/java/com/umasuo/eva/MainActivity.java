@@ -37,14 +37,17 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     // 底部菜单的组件
     private LinearLayout devicesLayout;
     private LinearLayout sceneLayout;
+    private LinearLayout simulateLayout;
     private LinearLayout personalLayout;
 
     private ImageButton devicesImage;
     private ImageButton sceneImage;
+    private ImageButton simulateImage;
     private ImageButton personalImage;
 
     private TextView devicesText;
     private TextView sceneText;
+    private TextView simulateText;
     private TextView personalText;
 
 
@@ -58,9 +61,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     FragmentPagerAdapter adapter;
     FragmentTransaction transaction;
-    private boolean isExit = false;
 
-    Handler mHandler = new Handler() {
+    //用来双击退出
+    private boolean isExit = false;
+    Handler exitHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -84,15 +88,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         devicesLayout = (LinearLayout) findViewById(R.id.devicesLayout);
         sceneLayout = (LinearLayout) findViewById(R.id.sceneLayout);
+        simulateLayout = (LinearLayout) findViewById(R.id.simulate);
         personalLayout = (LinearLayout) findViewById(R.id.personalLayout);
 
-        devicesImage = (ImageButton) findViewById(R.id.devicesImgbtn);
-        sceneImage = (ImageButton) findViewById(R.id.sceneImgBtn);
-        personalImage = (ImageButton) findViewById(R.id.personalImgBtn);
+        devicesImage = (ImageButton) findViewById(R.id.devicesImg);
+        sceneImage = (ImageButton) findViewById(R.id.sceneImg);
+        simulateImage = (ImageButton) findViewById(R.id.simulateImg);
+        personalImage = (ImageButton) findViewById(R.id.personalImg);
 
-        devicesText = (TextView) findViewById(R.id.devicesTextBtn);
-        sceneText = (TextView) findViewById(R.id.sceneTextBtn);
-        personalText = (TextView) findViewById(R.id.personalTextBtn);
+        devicesText = (TextView) findViewById(R.id.devicesText);
+        sceneText = (TextView) findViewById(R.id.sceneText);
+        simulateText = (TextView) findViewById(R.id.simulateText);
+        personalText = (TextView) findViewById(R.id.personalText);
 
         devicesFragment = new DeviceCenter();
         devicesFragment.setIndex(0);
@@ -135,6 +142,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         sceneLayout.setOnClickListener(this);
         sceneText.setOnClickListener(this);
 
+        simulateImage.setOnClickListener(this);
+        simulateLayout.setOnClickListener(this);
+        simulateText.setOnClickListener(this);
+
         personalImage.setOnClickListener(this);
         personalLayout.setOnClickListener(this);
         personalText.setOnClickListener(this);
@@ -150,21 +161,27 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         resetImg();
         switch (v.getId()) {
             case R.id.devicesLayout:
-            case R.id.devicesImgbtn:
-            case R.id.devicesTextBtn:
+            case R.id.devicesImg:
+            case R.id.devicesText:
                 showPage(0);
                 break;
             case R.id.sceneLayout:
-            case R.id.sceneImgBtn:
-            case R.id.sceneTextBtn:
+            case R.id.sceneImg:
+            case R.id.sceneText:
                 showPage(1);
                 break;
+            case R.id.simulate:
+            case R.id.simulateImg:
+            case R.id.simulateText:
+                // TODO: 17/7/18 显示体验中心／模拟中心
+                break;
             case R.id.personalLayout:
-            case R.id.personalImgBtn:
-            case R.id.personalTextBtn:
+            case R.id.personalImg:
+            case R.id.personalText:
                 showPage(2);
                 break;
             default:
+
                 break;
         }
     }
@@ -175,7 +192,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
-        if(i>=0 && i <3) {
+        if (i >= 0 && i < 3) {
             viewPager.setCurrentItem(i);
         }
         //显示登录初始界面
@@ -190,7 +207,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     public int addFragment(FragmentRoot fragment) {
         int index = this.pages.size();
-        LogControl.debug(TAG,"add Fragment index = "+index);
+        LogControl.debug(TAG, "add Fragment index = " + index);
         pages.add(fragment);
         adapter.notifyDataSetChanged();
         return index;
@@ -198,28 +215,30 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     /**
      * 获得pages 个数
+     *
      * @return
      */
-    public int getPagerSize(){
+    public int getPagerSize() {
         return this.pages.size();
     }
 
     /**
      * Fragment之间跳转
+     *
      * @param firstFragment
      * @param secondfragment
      * @param inStack
      */
-    public void showFragment(Fragment firstFragment,Fragment secondfragment,boolean inStack){
+    public void showFragment(Fragment firstFragment, Fragment secondfragment, boolean inStack) {
         transaction = getSupportFragmentManager().beginTransaction();
 
-        if(inStack) {
+        if (inStack) {
             if (!secondfragment.isAdded()) {
                 transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
             } else {
                 transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
             }
-        }else {//不用stack管理fragment
+        } else {//不用stack管理fragment
             transaction = getSupportFragmentManager().beginTransaction();
             if (!secondfragment.isAdded()) {
                 transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).commit();
@@ -242,15 +261,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //        showPage(curFrag.getPreIndex());
 
 
-
         //后面再优化，哪些fragment在popBackStack 或者改变跳转方式 不被销毁
         getSupportFragmentManager().popBackStack();
 
         int popNum = getSupportFragmentManager().getBackStackEntryCount();
-        LogControl.debug(TAG,"popNum = "+popNum);
-        if(popNum == 0){
+        LogControl.debug(TAG, "popNum = " + popNum);
+        if (popNum == 0) {
             exit();
-        }else if(popNum == 1){
+        } else if (popNum == 1) {
             showBottom();
         }
 
@@ -285,7 +303,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             isExit = true;
             Toast.makeText(getApplicationContext(), R.string.isexit,
                     Toast.LENGTH_SHORT).show();
-            mHandler.sendEmptyMessageDelayed(0, 2000);
+            exitHandler.sendEmptyMessageDelayed(0, 2000);
         } else {
             finish();
             System.exit(0);

@@ -17,13 +17,13 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/devicesImgbtn"
+            android:id="@+id/devicesImg"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
             android:background="@drawable/devices_img_button" />
 
         <TextView
-            android:id="@+id/devicesTextBtn"
+            android:id="@+id/devicesText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/devices"
@@ -40,16 +40,39 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/sceneImgBtn"
+            android:id="@+id/sceneImg"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
             android:background="@drawable/second" />
 
         <TextView
-            android:id="@+id/sceneTextBtn"
+            android:id="@+id/sceneText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intelligentScene"
+            android:textColor="@color/bottomTextColor"
+            android:textSize="@dimen/activity_bottom_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/simulate"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/simulateImg"
+            android:layout_width="@dimen/activity_bottom_icon_width"
+            android:layout_height="@dimen/activity_bottom_icon_height"
+            android:background="@drawable/second" />
+
+        <TextView
+            android:id="@+id/simulateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/simulateCenter"
             android:textColor="@color/bottomTextColor"
             android:textSize="@dimen/activity_bottom_text_size" />
     </LinearLayout>
@@ -63,13 +86,13 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/personalImgBtn"
+            android:id="@+id/personalImg"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
             android:background="@drawable/personal_center" />
 
         <TextView
-            android:id="@+id/personalTextBtn"
+            android:id="@+id/personalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/personalCenter"
