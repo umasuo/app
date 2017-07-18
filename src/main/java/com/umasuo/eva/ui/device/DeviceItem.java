@@ -10,40 +10,39 @@ public class DeviceItem implements Serializable {
 
     private static final long serialVersionUID = -3294439470132569152L;
 
-    private String mDeviceName;
+    private String deviceName;
 
-    public int getmDeviceIconId() {
-        return mDeviceIconId;
-    }
-
-    public void setmDeviceIconId(int mDeviceIconId) {
-        this.mDeviceIconId = mDeviceIconId;
-    }
-
-    private int mDeviceIconId;
+    private int deviceIconId;
 
     public DeviceItem() {
     }
 
     public DeviceItem(String deviceName, int deviceIconId) {
-        mDeviceName = deviceName;
-        mDeviceIconId = deviceIconId;
+        this.deviceName = deviceName;
+        this.deviceIconId = deviceIconId;
     }
 
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public int getDeviceIconId() {
+        return deviceIconId;
+    }
+
+    public void setDeviceIconId(int deviceIconId) {
+        this.deviceIconId = deviceIconId;
+    }
 
     @Override
     public String toString() {
         return "DeviceItem{" +
-                "mDeviceName='" + mDeviceName + '\'' +
-                ", mDeviceIconId=" + mDeviceIconId +
+                "deviceName='" + deviceName + '\'' +
+                ", deviceIconId=" + deviceIconId +
                 '}';
-    }
-
-    public String getmDeviceName() {
-        return mDeviceName;
-    }
-
-    public void setmDeviceName(String mDeviceName) {
-        this.mDeviceName = mDeviceName;
     }
 }

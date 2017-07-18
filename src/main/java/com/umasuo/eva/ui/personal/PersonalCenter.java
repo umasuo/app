@@ -79,7 +79,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     @Override
     public void onShow() {
         if (activity != null) {
-            LogControl.debug(TAG,"onShow >>>");
+            LogControl.debug(TAG, "onShow >>>");
             activity.showBottom();
         }
     }
@@ -145,7 +145,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                     personalInfo.setIndex(activity.getPagerSize());
 //                    personalInfo.setIndex(activity.addFragment(personalInfo));
                 }
-                activity.showFragment(this,personalInfo,true);
+                activity.showFragment(this, personalInfo, true);
 //                activity.showPage(personalInfo.getIndex());
                 break;
             }
@@ -156,7 +156,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                     personalSettings.setIndex(activity.getPagerSize());
 //                    personalSettings.setIndex(activity.addFragment(personalSettings));
                 }
-                activity.showFragment(this,personalSettings,true);
+                activity.showFragment(this, personalSettings, true);
 //                activity.showPage(personalSettings.getIndex());
                 break;
             }
@@ -183,7 +183,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
 //                    messageCenter.setIndex(activity.addFragment(messageCenter));
                 }
 //                activity.showPage(messageCenter.getIndex());
-                activity.showFragment(this,messageCenter,true);
+                activity.showFragment(this, messageCenter, true);
                 break;
             }
             case 1: {
@@ -194,7 +194,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
 //                    faq.setIndex(activity.addFragment(faq));
                 }
 //                activity.showPage(faq.getIndex());
-                activity.showFragment(this,faq,true);
+                activity.showFragment(this, faq, true);
                 break;
             }
             case 2: {
@@ -204,19 +204,19 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                     feedback.setIndex(activity.getPagerSize());
 //                    feedback.setIndex(activity.addFragment(feedback));
                 }
-                activity.showFragment(this,feedback,true);
+                activity.showFragment(this, feedback, true);
 //                activity.showPage(feedback.getIndex());
                 break;
             }
             case 3: {
                 if (about == null) {
-                    LogControl.debug(TAG,"about");
+                    LogControl.debug(TAG, "about");
                     about = new About();
                     about.setPreIndex(index);
                     about.setIndex(activity.getPagerSize());
 //                    about.setIndex(activity.addFragment(about));
                 }
-                activity.showFragment(this,about,true);
+                activity.showFragment(this, about, true);
 //                activity.showPage(about.getIndex());
                 break;
             }

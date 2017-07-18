@@ -34,7 +34,7 @@ public class About extends FragmentRoot implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LogControl.debug(TAG,"onCreateView >>>");
+        LogControl.debug(TAG, "onCreateView >>>");
         View view = inflater.inflate(R.layout.about, container, false);
 
         webView = (WebView) view.findViewById(R.id.web_about_content_viewer);

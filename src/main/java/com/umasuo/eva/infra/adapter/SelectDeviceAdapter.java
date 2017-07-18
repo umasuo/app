@@ -20,19 +20,19 @@ import java.util.Map;
 public class SelectDeviceAdapter extends BaseAdapter {
     private String TAG = "SelectDeviceAdapter";
 
-    private LayoutInflater mInflater;
-    private List<Map<String, Object>> mdata;
-    private Context mcontext;
+    private LayoutInflater inflater;
+    private List<Map<String, Object>> data;
+    private Context context;
 
     public SelectDeviceAdapter(Context context, List<Map<String, Object>> data) {
-        mInflater = LayoutInflater.from(context);
-        mdata = data;
-        mcontext = context;
+        inflater = LayoutInflater.from(context);
+        this.data = data;
+        this.context = context;
     }
 
     @Override
     public int getCount() {
-        return mdata.size();
+        return data.size();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SelectDeviceAdapter extends BaseAdapter {
         ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = mInflater.inflate(R.layout.device_type_item, null);
+            view = inflater.inflate(R.layout.device_type_item, null);
             holder.img_left = (ImageView) view.findViewById(R.id.device_type_icon);
             holder.text = (TextView) view.findViewById(R.id.device_type_name);
             holder.img_right = (ImageView) view.findViewById(R.id.device_type_arrow);
@@ -60,9 +60,9 @@ public class SelectDeviceAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        DeviceItem item = (DeviceItem) mdata.get(i).get("model");
-        holder.img_left.setBackgroundResource(item.getmDeviceIconId());
-        holder.text.setText(item.getmDeviceName());
+        DeviceItem item = (DeviceItem) data.get(i).get("model");
+        holder.img_left.setBackgroundResource(item.getDeviceIconId());
+        holder.text.setText(item.getDeviceName());
         return view;
     }
 

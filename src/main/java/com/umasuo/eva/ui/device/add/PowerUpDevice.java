@@ -12,6 +12,7 @@ import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.ui.device.DeviceItem;
 
 /**
  * Created by liubin8095 on 2017/7/2.
