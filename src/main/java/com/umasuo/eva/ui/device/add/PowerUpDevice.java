@@ -35,7 +35,7 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
         mActivity = (MainActivity) getContext();
         bundle = getArguments();
         deviceItem = (DeviceItem) bundle.get("model");
-        LogControl.debug(TAG,"onCreateView name = "+deviceItem.getmDeviceName());
+        LogControl.debug(TAG,"onCreateView name = "+deviceItem.getDeviceName());
 
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
         backBtn = (ImageView) view.findViewById(R.id.device_power_up_back);

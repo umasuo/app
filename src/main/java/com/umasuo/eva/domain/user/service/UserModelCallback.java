@@ -2,12 +2,9 @@ package com.umasuo.eva.domain.user.service;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 
 import com.umasuo.eva.MainActivity;
-import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
-import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.log.LogControl;
 
 import retrofit2.Call;
@@ -31,23 +28,27 @@ public class UserModelCallback implements Callback<UserModel> {
 
     @Override
     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-        //请求成功
-        LogControl.debug("UserCloudApi", " signin Success");
-        UserModel userModel = response.body();
+        if (response.code() == 200) {
+            //请求成功
+            LogControl.debug("UserCloudApi", " signin Success");
+            UserModel userModel = response.body();
 
-        // 保存数据到数据库
-        userService.saveUser(userModel);
-        LogControl.debug(TAG, "userModel: " + userModel.toString());
-        // 存起来，然后返回到主界面
-        final Activity activity = (Activity) context;
-        activity.runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        ((MainActivity) context).showPage(2);
+            // 保存数据到数据库
+            userService.saveUser(userModel);
+            LogControl.debug(TAG, "userModel: " + userModel.toString());
+            // 存起来，然后返回到主界面
+            final Activity activity = (Activity) context;
+            activity.runOnUiThread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            ((MainActivity) context).showPage(2);
+                        }
                     }
-                }
-        );
+            );
+        } else {
+            // TODO: 17/7/18 处理请求失败的情况
+        }
     }
 
     @Override

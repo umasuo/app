@@ -52,4 +52,13 @@ public class QuickSignIn implements Serializable {
     public void setValidationCode(String validationCode) {
         this.validationCode = validationCode;
     }
+
+    @Override
+    public String toString() {
+        return "QuickSignIn{" +
+                "phone='" + phone + '\'' +
+                ", developerId='" + developerId + '\'' +
+                ", validationCode='" + validationCode + '\'' +
+                '}';
+    }
 }

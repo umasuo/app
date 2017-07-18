@@ -1,11 +1,8 @@
 package com.umasuo.eva.infra.server.user;
 
-import android.content.Context;
-
 import com.umasuo.eva.domain.user.dto.QuickSignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
-import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.server.ServiceCaller;
 
@@ -83,6 +80,7 @@ public class UserCloudApi extends ServiceCaller {
     public void signIn(String phone, String developerId, String smsCode, Callback<SignInResult> callback) {
         //todo 检查各个参数的值
         QuickSignIn quickSignIn = new QuickSignIn(phone, developerId, smsCode);
+        LogControl.debug("SignIn", quickSignIn.toString());
 
         Call<SignInResult> caller = service.quickSignIn(quickSignIn);
 

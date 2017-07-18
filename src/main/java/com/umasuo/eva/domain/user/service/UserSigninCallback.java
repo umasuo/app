@@ -31,25 +31,29 @@ public class UserSigninCallback implements Callback<SignInResult> {
     @Override
     public void onResponse(Call<SignInResult> call, Response<SignInResult> response) {
         //请求成功
-        LogControl.debug("UserCloudApi", " signin Success");
-        SignInResult result = response.body();
-        UserModel userModel = UserMapper.toModel(result);
-        // 保存数据到数据库
-        userService.saveUser(userModel);
-        LogControl.debug(TAG, "userModel: " + userModel.toString());
-        // 存起来，然后返回到主界面
-        final Activity activity = (Activity) context;
-        activity.runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent();
-                        intent.setClassName(activity, "com.umasuo.eva.MainActivity");//用户登录成功，显示主界面
-                        activity.startActivity(intent);
-                        activity.finish();
+        if (response.code() == 200) {
+            LogControl.debug("UserCloudApi", " signin Success");
+            SignInResult result = response.body();
+            UserModel userModel = UserMapper.toModel(result);
+            // 保存数据到数据库
+            userService.saveUser(userModel);
+            LogControl.debug(TAG, "userModel: " + userModel.toString());
+            // 存起来，然后返回到主界面
+            final Activity activity = (Activity) context;
+            activity.runOnUiThread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent();
+                            intent.setClassName(activity, "com.umasuo.eva.MainActivity");//用户登录成功，显示主界面
+                            activity.startActivity(intent);
+                            activity.finish();
+                        }
                     }
-                }
-        );
+            );
+        } else {
+            // TODO: 17/7/18 处理失败的情况
+        }
     }
 
     @Override
