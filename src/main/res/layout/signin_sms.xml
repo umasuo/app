@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/personal_signin_back"
+            android:id="@+id/back"
             android:layout_width="@dimen/top_left_arrow_width"
             android:layout_height="@dimen/top_left_arrow_height"
             android:layout_gravity="center"
@@ -23,13 +23,12 @@
             android:background="@drawable/left_arrow" />
 
         <TextView
-            android:id="@+id/personal_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_top_marginLeft"
             android:layout_weight="1"
-            android:text="@string/personal_signin"
+            android:text="@string/personal_signin_sms"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
@@ -41,17 +40,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/personal_signin_country"
+        <Spinner
+            android:id="@+id/sign_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
-            android:hint="＋86"
-            android:inputType="text" />
+            android:entries="@array/country_arrays" />
 
         <EditText
-            android:id="@+id/personal_signin_phone"
+            android:id="@+id/phone_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
@@ -59,52 +57,40 @@
             android:hint="手机号"
             android:inputType="text" />
 
-        <EditText
-            android:id="@+id/personal_signin_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
-            android:hint="password"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/sms_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50px"
+                android:layout_marginRight="50px"
+                android:layout_weight="4"
+                android:hint="验证码"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/sms_get_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50px"
+                android:layout_marginRight="50px"
+                android:layout_weight="2"
+                android:text="获取" />
+        </LinearLayout>
+
 
         <Button
-            android:id="@+id/personal_signin_okBtn"
+            android:id="@+id/submit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
             android:text="登录" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0000"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/personal_sms_signin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_top_marginLeft"
-                android:text="通过短信验证码登录"
-                android:textSize="40px"
-                android:textStyle="bold"
-                android:typeface="monospace" />
-
-            <TextView
-                android:id="@+id/personal_forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_top_marginLeft"
-                android:background="#00ff00"
-                android:gravity="right"
-                android:text="忘记密码"
-                android:textSize="40px"
-                android:textStyle="bold"
-                android:typeface="monospace" />
-
-        </LinearLayout>
     </LinearLayout>
 
 

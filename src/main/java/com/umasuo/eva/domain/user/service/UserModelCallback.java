@@ -30,7 +30,7 @@ public class UserModelCallback implements Callback<UserModel> {
     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
         if (response.code() == 200) {
             //请求成功
-            LogControl.debug("UserCloudApi", " signin Success");
+            LogControl.debug("UserCloudApi", " sign Success");
             UserModel userModel = response.body();
 
             // 保存数据到数据库

@@ -109,7 +109,7 @@ public class UserCloudApi extends ServiceCaller {
         @POST("/v1/users/validationCodes")
         Call<Void> getSmsCode(@Query("phoneNumber") String phone);
 
-        @POST("/v1/users/signin")
+        @POST("/v1/users/sign")
         Call<SignInResult> quickSignIn(@Body QuickSignIn quickSignIn);
     }
 }

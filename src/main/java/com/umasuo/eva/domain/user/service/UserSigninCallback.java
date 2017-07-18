@@ -32,7 +32,7 @@ public class UserSigninCallback implements Callback<SignInResult> {
     public void onResponse(Call<SignInResult> call, Response<SignInResult> response) {
         //请求成功
         if (response.code() == 200) {
-            LogControl.debug("UserCloudApi", " signin Success");
+            LogControl.debug("UserCloudApi", " sign Success");
             SignInResult result = response.body();
             UserModel userModel = UserMapper.toModel(result);
             // 保存数据到数据库

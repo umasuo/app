@@ -35,7 +35,7 @@ public class DeviceTokenCallback implements Callback<ResponseBody> {
     @Override
     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
         //请求成功
-        LogControl.debug("UserCloudApi", " signin Success");
+        LogControl.debug("UserCloudApi", " sign Success");
         ResponseBody result = response.body();
         String token = null;
         try {

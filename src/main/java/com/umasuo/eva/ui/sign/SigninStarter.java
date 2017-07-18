@@ -1,7 +1,6 @@
 package com.umasuo.eva.ui.sign;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +27,9 @@ public class SigninStarter extends FragmentRoot implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.personal_signin_starter, container, false);
-        signinBtn = (Button) view.findViewById(R.id.signin_starter_signin_btn);
-        signupBtn = (Button) view.findViewById(R.id.signin_starter_signup_btn);
+        View view = inflater.inflate(R.layout.signin_starter, container, false);
+        signinBtn = (Button) view.findViewById(R.id.signin_btn);
+        signupBtn = (Button) view.findViewById(R.id.register_btn);
 
         signinBtn.setOnClickListener(this);
         signupBtn.setOnClickListener(this);
@@ -46,9 +45,9 @@ public class SigninStarter extends FragmentRoot implements View.OnClickListener 
     public void onClick(View view) {
         LogControl.debug(TAG, String.valueOf(view.getId()));
         switch (view.getId()) {
-            case R.id.signin_starter_signin_btn: {
+            case R.id.signin_btn: {
                 //显示登录界面
-                LogControl.debug(TAG, "signin");
+                LogControl.debug(TAG, "sign");
                 if (signinWithPassword == null) {
                     signinWithPassword = new SigninWithPassword();
                     signinWithPassword.setPreIndex(0);
@@ -57,7 +56,7 @@ public class SigninStarter extends FragmentRoot implements View.OnClickListener 
                 ((SignActivity) this.getContext()).replaceFragment(signinWithPassword.getIndex());
                 break;
             }
-            case R.id.signin_starter_signup_btn: {
+            case R.id.register_btn: {
                 //显示注册界面
                 LogControl.debug(TAG, "register");
                 if (register == null) {

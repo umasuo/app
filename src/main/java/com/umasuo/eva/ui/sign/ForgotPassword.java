@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
@@ -24,7 +21,7 @@ public class ForgotPassword extends FragmentRoot implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.personal_forgot_pwd, container, false);
+        View view = inflater.inflate(R.layout.signin_forgot_pwd, container, false);
 
         return view;
     }

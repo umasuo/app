@@ -56,4 +56,10 @@
     <string name="editor_add_task">添加任务</string>
     <string name="editor_no_add_task">请添加任务</string>
 
+
+    <string-array name="country_arrays">
+        <item>+86 中国</item>
+        <item>+1  United States</item>
+    </string-array>
+
 </resources>

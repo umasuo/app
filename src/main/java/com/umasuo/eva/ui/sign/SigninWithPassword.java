@@ -30,14 +30,14 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.personal_signin, container, false);
+        View view = inflater.inflate(R.layout.signin_password, container, false);
 
         back = view.findViewById(R.id.personal_signin_back);
 
-        signin = view.findViewById(R.id.personal_signin_okBtn);
+        signin = view.findViewById(R.id.submit_btn);
 
-        smsSign = view.findViewById(R.id.personal_sms_signin);
-        forgetPwd = view.findViewById(R.id.personal_forgot_password);
+        smsSign = view.findViewById(R.id.signin_sms_text);
+        forgetPwd = view.findViewById(R.id.forgot_password_text);
 
         back.setOnClickListener(this);
         signin.setOnClickListener(this);
@@ -60,11 +60,11 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
                 activity.replaceFragment(preIndex);
                 break;
             }
-            case R.id.personal_signin_okBtn: {
+            case R.id.submit_btn: {
                 // TODO: 17/7/10 登录
                 break;
             }
-            case R.id.personal_sms_signin: {
+            case R.id.signin_sms_text: {
                 if (signinWithSms == null) {
                     signinWithSms = new SigninWithSms();
                     signinWithSms.setIndex(activity.addFragment(signinWithSms));
@@ -73,7 +73,7 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
                 activity.replaceFragment(signinWithSms.getIndex());
                 break;
             }
-            case R.id.personal_forgot_password: {
+            case R.id.forgot_password_text: {
                 if (forgotPassword == null) {
                     forgotPassword = new ForgotPassword();
                     forgotPassword.setIndex(activity.addFragment(forgotPassword));

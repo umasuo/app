@@ -37,19 +37,19 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.personal_signin_sms, container, false);
+        View view = inflater.inflate(R.layout.signin_sms, container, false);
 
-        backBtn = (ImageView) view.findViewById(R.id.personal_signin_sms_back);
+        backBtn = (ImageView) view.findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
-        getSmsCodeBtn = (Button) view.findViewById(R.id.personal_signin_sms_get);
+        getSmsCodeBtn = (Button) view.findViewById(R.id.sms_get_btn);
         getSmsCodeBtn.setOnClickListener(this);
 
-        signin = (Button) view.findViewById(R.id.personal_signin_ok);
+        signin = (Button) view.findViewById(R.id.submit_btn);
         signin.setOnClickListener(this);
 
-        phone = (EditText) view.findViewById(R.id.personal_signin_phone);
-        smsCode = (EditText) view.findViewById(R.id.personal_signin_sms_code);
+        phone = (EditText) view.findViewById(R.id.phone_text);
+        smsCode = (EditText) view.findViewById(R.id.sms_code);
 
         userService = new UserService(getContext());
 
@@ -60,18 +60,18 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
     public void onClick(View view) {
         final SignActivity activity = (SignActivity) this.getContext();
         switch (view.getId()) {
-            case R.id.personal_signin_sms_back: {
+            case R.id.back: {
                 //返回上一级页面
                 activity.replaceFragment(preIndex);
                 break;
             }
-            case R.id.personal_signin_ok: {
+            case R.id.submit_btn: {
                 String phoneText = phone.getText().toString();
                 String smsCodeText = smsCode.getText().toString();
                 userService.signinWithSmsCode(phoneText, smsCodeText, "developer1");
                 break;
             }
-            case R.id.personal_signin_sms_get: {
+            case R.id.sms_get_btn: {
                 // 发起发送短信验证码请求
                 String phoneText = phone.getText().toString();
                 LogControl.debug(TAG, "Get sms code for: " + phoneText);

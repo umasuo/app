@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/personal_signin_back"
+            android:id="@+id/back"
             android:layout_width="@dimen/top_left_arrow_width"
             android:layout_height="@dimen/top_left_arrow_height"
             android:layout_gravity="center"
@@ -23,13 +23,12 @@
             android:background="@drawable/left_arrow" />
 
         <TextView
-            android:id="@+id/personal_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_top_marginLeft"
             android:layout_weight="1"
-            android:text="@string/personal_register"
+            android:text="@string/personal_forgot_password"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
@@ -41,17 +40,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/personal_register_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
-            android:hint="＋86"
-            android:inputType="text" />
 
         <EditText
-            android:id="@+id/personal_register_phone"
+            android:id="@+id/phone_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
@@ -59,22 +50,15 @@
             android:hint="手机号"
             android:inputType="text" />
 
-        <EditText
-            android:id="@+id/personal_register_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50px"
-            android:layout_marginRight="50px"
-            android:hint="password"
-            android:inputType="text" />
-
         <Button
-            android:id="@+id/personal_register_okBtn"
+            android:id="@+id/submit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
-            android:text="注册" />
+            android:text="找回密码" />
+
+
     </LinearLayout>
 
 
