@@ -36,10 +36,11 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="200px"
+            android:layout_height="140px"
             android:layout_margin="40px"
             android:background="@drawable/corners_input"
-            android:drawableLeft="@drawable/lock" />
+            android:drawableLeft="@drawable/lock"
+            android:inputType="text" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,27 +48,32 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/current_wifi_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="40px"
+                android:layout_weight="2"
+                android:gravity="left"
                 android:text="现在连接的Wi-Fi是" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="40px"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:text="切换网络" />
         </LinearLayout>
 
 
         <Button
-            android:id="@+id/device_input_wifi_pwd_ok"
+            android:id="@+id/next_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/ok_button_height"
             android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/device_power_up_btn_marginSide"
             android:layout_marginLeft="@dimen/device_power_up_btn_marginSide"
             android:layout_marginRight="@dimen/device_power_up_btn_marginSide"
-            android:layout_marginBottom="@dimen/device_power_up_btn_marginSide"
             android:background="@drawable/corners_btn"
             android:text="@string/ok"
             android:textColor="@color/deviceTypeItemColor"

@@ -86,15 +86,15 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         }
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model",(DeviceItem)item.get("model"));
+        bundle.putSerializable("model", (DeviceItem) item.get("model"));
         powerUpDevice.setArguments(bundle);
 
 //        mActivity.showPage(powerUpDevice.getIndex());
-        mActivity.showFragment(this,powerUpDevice,true);
+        mActivity.showFragment(this, powerUpDevice, true);
     }
 
     /**
-     * 预先写死的数据，用于界面显示，后期可以部分写死，部分从服务器抓取.
+     * 系统预先定义20种设备, 另外再加一个其他选项.
      *
      * @return
      */
@@ -107,6 +107,26 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         list.add(map);
 
         map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("插座", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("照明", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("防丢器", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("窗帘", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("门锁", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
         map.put("model", new DeviceItem("洗衣机", R.drawable.device_xy));
         list.add(map);
 
@@ -115,7 +135,56 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("插座", R.drawable.device_cz));
+        map.put("model", new DeviceItem("空调", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("空调扇", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("风扇", R.drawable.device_cz));
+        list.add(map);
+
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("加湿器", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("除湿机", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("净水器", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("扫地机器人", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("微波炉", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("烤箱", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("电饭煲", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("热水器", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("取暖器", R.drawable.device_cz));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new DeviceItem("空气净化器", R.drawable.device_cz));
         list.add(map);
 
         map = new HashMap<String, Object>();

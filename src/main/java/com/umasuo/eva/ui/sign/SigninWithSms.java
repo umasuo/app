@@ -68,6 +68,7 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
             case R.id.submit_btn: {
                 String phoneText = phone.getText().toString();
                 String smsCodeText = smsCode.getText().toString();
+                // TODO: 17/7/18 更改开发者ID
                 userService.signinWithSmsCode(phoneText, smsCodeText, "developer1");
                 break;
             }

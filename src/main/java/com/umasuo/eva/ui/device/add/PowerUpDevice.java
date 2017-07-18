@@ -38,10 +38,10 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
         LogControl.debug(TAG,"onCreateView name = "+deviceItem.getDeviceName());
 
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
-        backBtn = (ImageView) view.findViewById(R.id.device_power_up_back);
+        backBtn = (ImageView) view.findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
-        nextBtn = (Button) view.findViewById(R.id.device_power_up_next);
+        nextBtn = (Button) view.findViewById(R.id.next_btn);
         nextBtn.setOnClickListener(this);
         return view;
     }
@@ -49,11 +49,11 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.device_power_up_back:
+            case R.id.back:
                 // 回退
                 mActivity.showPage(preIndex);
                 break;
-            case R.id.device_power_up_next:
+            case R.id.next_btn:
                 //下一步
                 if (inputWifiPassword == null) {
                     inputWifiPassword = new InputWifiPassword();
