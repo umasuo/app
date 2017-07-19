@@ -249,6 +249,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
+     * Fragment 退出Stack
+     */
+    public void popBackStack(){
+        getSupportFragmentManager().popBackStack();
+    }
+
+    /**
      * 响应菜单的回退点击事件.
      */
     @Override
@@ -262,7 +269,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
 
         //后面再优化，哪些fragment在popBackStack 或者改变跳转方式 不被销毁
-        getSupportFragmentManager().popBackStack();
+        popBackStack();
 
         int popNum = getSupportFragmentManager().getBackStackEntryCount();
         LogControl.debug(TAG, "popNum = " + popNum);
