@@ -18,6 +18,20 @@ public class MqttClient {
 
     BlockingConnection connection;
 
+    public MqttClient(String userId, String token) {
+        this.config = new MqttConfig();
+        config.setPassword(token);
+        config.setUsername(userId);
+        try {
+            mqtt = new MQTT();
+            mqtt.setHost(config.getHost(), config.getPort());
+            mqtt.setUserName(config.getUsername());
+            mqtt.setPassword(config.getPassword());
+        } catch (Exception e) {
+            LogControl.info("MQTT", "Connect to broker failed.");
+        }
+    }
+
     public MqttClient(MqttConfig config) {
         this.config = config;
         try {
@@ -43,6 +57,13 @@ public class MqttClient {
         return connection;
     }
 
+    /**
+     * 下发消息到某个topic.
+     *
+     * @param topic
+     * @param payload
+     * @return
+     */
     public boolean publish(final String topic, final byte[] payload) {
         try {
             getConnect().publish(topic, payload, QoS.AT_LEAST_ONCE, false);

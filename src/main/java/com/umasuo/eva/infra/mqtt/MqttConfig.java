@@ -5,9 +5,9 @@ package com.umasuo.eva.infra.mqtt;
  */
 public class MqttConfig {
 
-    private String host;
+    private String host = "broker.evacloud.cn";
 
-    private int port;
+    private int port = 1883;
 
     private String username;
 
