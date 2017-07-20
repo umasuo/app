@@ -20,6 +20,7 @@ import com.umasuo.eva.ui.WaitingPage;
 import com.umasuo.eva.ui.device.DeviceCenter;
 import com.umasuo.eva.ui.personal.PersonalCenter;
 import com.umasuo.eva.ui.scene.SceneCenter;
+import com.umasuo.eva.ui.simulator.SimulatorCenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     // 这个类里面只显示三个主入口，其他的入口交由不同的主入口去控制显示
     FragmentRoot devicesFragment; // 0 保持不变
     FragmentRoot sceneFragment; // 1 保持不变
+    FragmentRoot simulatorCenter; // 1 保持不变
     FragmentRoot personalFragment; // 2 保持不变
     FragmentRoot waitingPage; // 3 等待界面
 
@@ -105,12 +107,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         devicesFragment.setIndex(0);
         sceneFragment = new SceneCenter();
         sceneFragment.setIndex(1);
+        simulatorCenter = new SimulatorCenter();
+        simulatorCenter.setIndex(2);
         personalFragment = new PersonalCenter();
-        personalFragment.setIndex(2);
+        personalFragment.setIndex(3);
         waitingPage = new WaitingPage();
-        waitingPage.setIndex(3);
+        waitingPage.setIndex(4);
         pages.add(devicesFragment);
         pages.add(sceneFragment);
+        pages.add(simulatorCenter);
         pages.add(personalFragment);
         pages.add(waitingPage);
 
@@ -173,12 +178,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.simulate:
             case R.id.simulateImg:
             case R.id.simulateText:
-                // TODO: 17/7/18 显示体验中心／模拟中心
+                showPage(2);
                 break;
             case R.id.personalLayout:
             case R.id.personalImg:
             case R.id.personalText:
-                showPage(2);
+                showPage(3);
                 break;
             default:
 
@@ -192,7 +197,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
-        if (i >= 0 && i < 3) {
+        if (i >= 0 && i < 4) {
             viewPager.setCurrentItem(i);
         }
         //显示登录初始界面
@@ -251,7 +256,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     /**
      * Fragment 退出Stack
      */
-    public void popBackStack(){
+    public void popBackStack() {
         getSupportFragmentManager().popBackStack();
     }
 
