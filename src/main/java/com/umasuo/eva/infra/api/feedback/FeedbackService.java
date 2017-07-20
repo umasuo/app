@@ -1,6 +1,6 @@
-package com.umasuo.eva.infra.server.feedback;
+package com.umasuo.eva.infra.api.feedback;
 
-import com.umasuo.eva.infra.server.ServiceCaller;
+import com.umasuo.eva.infra.api.ServiceCaller;
 import com.umasuo.eva.domain.feedback.dto.FeedbackModel;
 
 import retrofit2.Call;

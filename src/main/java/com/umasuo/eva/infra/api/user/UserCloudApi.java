@@ -1,10 +1,10 @@
-package com.umasuo.eva.infra.server.user;
+package com.umasuo.eva.infra.api.user;
 
 import com.umasuo.eva.domain.user.dto.QuickSignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.ServiceCaller;
+import com.umasuo.eva.infra.api.ServiceCaller;
 
 import retrofit2.Call;
 import retrofit2.Callback;

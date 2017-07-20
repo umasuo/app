@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.umasuo.eva.domain.device.dto.DeviceModel;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.DeviceEntity;
-import com.umasuo.eva.infra.server.device.DeviceCloudApi;
+import com.umasuo.eva.infra.api.device.DeviceCloudApi;
 
 import java.util.List;
 

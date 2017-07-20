@@ -1,15 +1,10 @@
-package com.umasuo.eva.infra.server.device;
+package com.umasuo.eva.infra.api.device;
 
-import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.ServiceCaller;
+import com.umasuo.eva.infra.api.ServiceCaller;
 import com.umasuo.eva.domain.device.dto.DeviceModel;
-
-import java.io.IOException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

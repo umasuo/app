@@ -1,8 +1,4 @@
-package com.umasuo.eva.infra.server;
-
-import com.umasuo.eva.infra.converter.ToStringConverterFactory;
-
-import java.text.StringCharacterIterator;
+package com.umasuo.eva.infra.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

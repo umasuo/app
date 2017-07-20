@@ -10,7 +10,7 @@ import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.UserEntity;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.server.user.UserCloudApi;
+import com.umasuo.eva.infra.api.user.UserCloudApi;
 
 /**
  * Created by umasuo on 17/7/8.
