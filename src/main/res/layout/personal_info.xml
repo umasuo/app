@@ -47,7 +47,7 @@
             android:layout_height="@dimen/head_portrait_height"
             android:layout_gravity="center"
             android:layout_margin="@dimen/head_portrait_margin"
-            android:background="@drawable/eva" />
+            android:src="@drawable/eva" />
 
         <EditText
             android:id="@+id/user_name"

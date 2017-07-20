@@ -1,21 +1,16 @@
 package com.umasuo.eva.ui.device.add;
 
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
-import com.umasuo.eva.infra.log.LogControl;
 
 /**
- * 添加设备第三步：输入连接的Wi-Fi密码.
+ * 添加设备第四步：给设备发送网络包.
  */
 public class ConnectingDevice extends FragmentRoot implements View.OnClickListener {
 

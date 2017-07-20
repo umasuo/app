@@ -54,8 +54,9 @@
             android:id="@+id/personal_head_portrait"
             android:layout_width="@dimen/head_portrait_width"
             android:layout_height="@dimen/head_portrait_height"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/head_portrait_margin"
-            android:background="@drawable/eva" />
+            android:src="@drawable/eva" />
 
         <LinearLayout
             android:layout_width="wrap_content"
