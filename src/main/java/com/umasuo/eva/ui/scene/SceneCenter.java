@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liubin8095 on 2017/7/1.
+ * 智能场景
  */
 public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClickListener, View.OnClickListener {
 

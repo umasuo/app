@@ -56,6 +56,8 @@
     <string name="editor_add_task">添加任务</string>
     <string name="editor_no_add_task">请添加任务</string>
 
+    <!--选择条件-->
+    <string name="choose_condition">选择条件</string>
 
     <string-array name="country_arrays">
         <item>+86 中国</item>

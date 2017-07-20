@@ -1,6 +1,5 @@
 package com.umasuo.eva.ui.scene;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,6 +46,7 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener,Ad
     View view;
     private MainActivity mActivity;
     Bundle bundle;
+    private SceneCondition sceneAdd;
 
 
     @Override
@@ -171,6 +171,12 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener,Ad
                 mActivity.getSupportFragmentManager().popBackStack();
                 break;
             case R.id.editor_add_condition:
+                if(sceneAdd == null) {
+                    sceneAdd = new SceneCondition();
+                    sceneAdd.setPreIndex(index);
+                    sceneAdd.setIndex(mActivity.getPagerSize());
+                }
+                mActivity.showFragment(this,sceneAdd,true);
 
         }
     }
