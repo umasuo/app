@@ -11,10 +11,10 @@ import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created by umasuo on 17/7/6.
- * 开关控制器界面.
+ * 电源插排.
  */
-public class SwitchController extends FragmentRoot {
-    private static final String TAG = "SwitchController";
+public class PowerStripController extends FragmentRoot {
+    private static final String TAG = "PowerStripController";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

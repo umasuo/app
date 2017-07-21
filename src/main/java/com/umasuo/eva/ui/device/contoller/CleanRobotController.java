@@ -11,10 +11,10 @@ import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created by umasuo on 17/7/6.
- * 开关控制器界面.
+ * 清洁机器人，例如扫地机器人。
  */
-public class SwitchController extends FragmentRoot {
-    private static final String TAG = "SwitchController";
+public class CleanRobotController extends FragmentRoot {
+    private static final String TAG = "CleanRobotController";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

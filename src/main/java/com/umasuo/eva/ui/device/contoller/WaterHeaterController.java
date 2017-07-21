@@ -11,10 +11,10 @@ import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created by umasuo on 17/7/6.
- * 开关控制器界面.
+ * 热水器。
  */
-public class SwitchController extends FragmentRoot {
-    private static final String TAG = "SwitchController";
+public class WaterHeaterController extends FragmentRoot {
+    private static final String TAG = "WaterHeaterController";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

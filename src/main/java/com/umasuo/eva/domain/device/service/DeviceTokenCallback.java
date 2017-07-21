@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 /**
  * Created by umasuo on 17/7/8.
- * 获取设备配网token的结果.
+ * 获取设备配网token的结果.这个可能没有啥用了.
  */
 public class DeviceTokenCallback implements Callback<ResponseBody> {
 

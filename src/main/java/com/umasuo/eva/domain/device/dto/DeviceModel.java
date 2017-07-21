@@ -13,21 +13,6 @@ public class DeviceModel implements Serializable {
     private String id;
 
     /**
-     * The Created at.
-     */
-    protected Long createdAt;
-
-    /**
-     * The Last modified at.
-     */
-    protected Long lastModifiedAt;
-
-    /**
-     * version used for update date check.
-     */
-    private Integer version;
-
-    /**
      * 从系统批量获取的ID，用于唯一标志该设备。
      */
     private String unionId;
@@ -44,4 +29,54 @@ public class DeviceModel implements Serializable {
 
     private String deviceId;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getDeveloperId() {
+        return developerId;
+    }
+
+    public void setDeveloperId(String developerId) {
+        this.developerId = developerId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceModel{" +
+                "id='" + id + '\'' +
+                ", unionId='" + unionId + '\'' +
+                ", productId='" + productId + '\'' +
+                ", developerId='" + developerId + '\'' +
+                ", deviceId='" + deviceId + '\'' +
+                '}';
+    }
 }
