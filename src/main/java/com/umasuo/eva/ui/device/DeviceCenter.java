@@ -59,12 +59,6 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     @Override
     public void onHiddenChanged(boolean hidden) {
         LogControl.debug(TAG, "onHiddenChanged hidden = " + hidden);
-//        super.onHiddenChanged(hidden);
-//        if (hidden) {
-//            activity.hideBottom();
-//        } else {
-//            activity.showBottom();
-//        }
     }
 
     @Override
@@ -90,7 +84,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
 //            selectDeviceType.setIndex(activity.addFragment(selectDeviceType));
         }
 //        activity.showPage(selectDeviceType.getIndex());
-        activity.showFragment(this,selectDeviceType,true);
+        activity.showFragment(this, selectDeviceType, true);
 
     }
 
