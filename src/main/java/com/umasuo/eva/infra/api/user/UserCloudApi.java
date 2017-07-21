@@ -5,7 +5,6 @@ import com.umasuo.eva.domain.user.dto.RegisterModel;
 import com.umasuo.eva.domain.user.dto.SignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
-import com.umasuo.eva.domain.user.service.RegisterCallback;
 import com.umasuo.eva.infra.api.ServiceCaller;
 import com.umasuo.eva.infra.log.LogControl;
 
@@ -14,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -38,9 +38,9 @@ public class UserCloudApi extends ServiceCaller {
      *
      * @param userModel
      */
-    public void updateUserInfo(UserModel userModel, Callback<UserModel> callback) {
+    public void updateUserInfo(UserModel userModel, String token, String developerId, Callback<UserModel> callback) {
 
-        Call<UserModel> caller = service.updateUserInfo(userModel.getUserId(), userModel);
+        Call<UserModel> caller = service.updateUserInfo(userModel.getUserId(), token, userModel.getUserId(), developerId, userModel);
 
         caller.enqueue(callback);
     }
@@ -146,7 +146,7 @@ public class UserCloudApi extends ServiceCaller {
         Call<UserModel> getUserInfo(@Path("id") String id);
 
         @PUT("/v1/users/{id}")
-        Call<UserModel> updateUserInfo(@Path("id") String id, @Body UserModel userModel);
+        Call<UserModel> updateUserInfo(@Path("id") String id, @Header("authorization") String token, @Header("userId") String userId, @Header("developerId") String developerId, @Body UserModel userModel);
 
         @POST("/v1/users/validationCodes")
         Call<Void> getSmsCode(@Query("phoneNumber") String phone);

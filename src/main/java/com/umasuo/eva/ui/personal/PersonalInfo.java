@@ -39,7 +39,7 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LogControl.debug(TAG,"onCreateView >>>");
+        LogControl.debug(TAG, "onCreateView >>>");
         View view = inflater.inflate(R.layout.personal_info, container, false);
         activity = (MainActivity) getContext();
 
@@ -51,7 +51,7 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         userAge = (EditText) view.findViewById(R.id.user_age);
         userCountry = (EditText) view.findViewById(R.id.user_country);
         userSignature = (EditText) view.findViewById(R.id.user_signature);
-        userPassword = (Button) view.findViewById(R.id.user_password);
+        userPassword = (Button) view.findViewById(R.id.update_password_btn);
 
         submitBtn = (Button) view.findViewById(R.id.submit_btn);
 
@@ -89,7 +89,7 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     @Override
     public void onShow() {
         if (activity != null) {
-            LogControl.debug(TAG,"onShow >>>");
+            LogControl.debug(TAG, "onShow >>>");
             activity.hideBottom();
         }
     }
@@ -99,18 +99,13 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         switch (view.getId()) {
             case R.id.back_btn: {
                 activity.showPage(preIndex);
+                activity.onBackPressed();
                 break;
             }
             case R.id.submit_btn: {
                 // 提交信息到服务器和数据库
                 LogControl.debug(TAG, "Submit change user info");
-                String email = userEmail.getText().toString();
-                String phone = userPhone.getText().toString();
-                int age = Integer.valueOf(userAge.getText().toString());
-                String country = userCountry.getText().toString();
-                String name = userName.getText().toString();
-                String signature = userSignature.getText().toString();
-                UserService.getInstance(getContext()).updateUser(email, phone, age, country, name, signature);
+                updateUserInfo();
                 break;
             }
             case R.id.user_head_icon: {
@@ -118,12 +113,22 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
                 LogControl.debug(TAG, "Change user's icon ");
                 break;
             }
-            case R.id.user_password: {
+            case R.id.update_password_btn: {
                 //更改用户密码
                 LogControl.debug(TAG, "Change user's password ");
                 break;
             }
         }
+    }
+
+    private void updateUserInfo() {
+        String email = userEmail.getText().toString();
+        String phone = userPhone.getText().toString();
+        int age = Integer.valueOf(userAge.getText().toString());
+        String country = userCountry.getText().toString();
+        String name = userName.getText().toString();
+        String signature = userSignature.getText().toString();
+        UserService.getInstance(getContext()).updateUser(email, phone, age, country, name, signature);
     }
 
     /**

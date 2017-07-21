@@ -231,24 +231,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * Fragment之间跳转
      *
      * @param firstFragment
-     * @param secondfragment
+     * @param secondFragment
      * @param inStack
      */
-    public void showFragment(Fragment firstFragment, Fragment secondfragment, boolean inStack) {
+    public void showFragment(Fragment firstFragment, Fragment secondFragment, boolean inStack) {
         transaction = getSupportFragmentManager().beginTransaction();
 
         if (inStack) {
-            if (!secondfragment.isAdded()) {
-                transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+            if (!secondFragment.isAdded()) {
+                transaction.add(R.id.main, secondFragment).hide(firstFragment).show(secondFragment).addToBackStack(null).commit();
             } else {
-                transaction.hide(firstFragment).show(secondfragment).addToBackStack(null).commit();
+                transaction.hide(firstFragment).show(secondFragment).addToBackStack(null).commit();
             }
         } else {//不用stack管理fragment
             transaction = getSupportFragmentManager().beginTransaction();
-            if (!secondfragment.isAdded()) {
-                transaction.add(R.id.main, secondfragment).hide(firstFragment).show(secondfragment).commit();
+            if (!secondFragment.isAdded()) {
+                transaction.add(R.id.main, secondFragment).hide(firstFragment).show(secondFragment).commit();
             } else {
-                transaction.hide(firstFragment).show(secondfragment).commitAllowingStateLoss();
+                transaction.hide(firstFragment).show(secondFragment).commitAllowingStateLoss();
             }
         }
     }

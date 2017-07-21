@@ -99,6 +99,7 @@ public class UserService {
         Cursor cursor = db.query(UserEntity.TABLE_NAME, UserEntity.projection, null, null, null, null, null);
         cursor.moveToFirst();
         user = UserMapper.toModel(cursor);
+        token = "bearer " + user.getToken();
 
         LogControl.debug(TAG, user.toString());
         return user;
@@ -113,6 +114,7 @@ public class UserService {
 
     /**
      * 注册并自动登录.
+     *
      * @param phone
      * @param password
      * @param smsCode
@@ -161,7 +163,7 @@ public class UserService {
         newModel.setIcon(user.getIcon());
         newModel.setCountry(country);
 
-        userServerApi.updateUserInfo(newModel, new UserModelCallback(context, this));
+        userServerApi.updateUserInfo(newModel, token, developerId, new UserModelCallback(context, this));
 
     }
 
