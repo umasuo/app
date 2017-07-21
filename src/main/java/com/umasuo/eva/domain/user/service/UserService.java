@@ -20,6 +20,11 @@ public class UserService {
 
     private static final String TAG = "UserService";
 
+    /**
+     * 开发者注册后，发行设备时指定具体的developerID.
+     */
+    private static final String developerId = "developer1";
+
     private static UserService instance;
 
     /**
@@ -107,6 +112,30 @@ public class UserService {
     }
 
     /**
+     * 注册并自动登录.
+     * @param phone
+     * @param password
+     * @param smsCode
+     */
+    public void register(String phone, String password, String smsCode) {
+        userServerApi.register(phone, developerId, password, smsCode, new RegisterCallback(context, this));
+    }
+
+    /**
+     * login with password and phone.
+     *
+     * @param phone
+     * @param password
+     */
+    public void login(String phone, String password) {
+        userServerApi.login(phone, developerId, password, new SignInCallback(context, this));
+    }
+
+    public void resetPassword(String phone, String password, String smsCode) {
+
+    }
+
+    /**
      * 通过短信验证码的方式登录.
      *
      * @param phone
@@ -114,7 +143,7 @@ public class UserService {
      * @param code
      */
     public void signinWithSmsCode(String phone, String developerId, String code) {
-        userServerApi.signIn(phone, code, developerId, new UserSigninCallback(context, this));
+        userServerApi.signIn(phone, code, developerId, new SignInCallback(context, this));
     }
 
     /**

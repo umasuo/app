@@ -23,7 +23,7 @@ public class SignActivity extends FragmentActivity {
     private FragmentPagerAdapter signAdapter;
 
     //登录初始界面
-    SigninStarter signinStarter;
+    SignInStarter signinStarter;
 
     private List<FragmentRoot> pages = new ArrayList<>();
 
@@ -33,7 +33,7 @@ public class SignActivity extends FragmentActivity {
         setContentView(R.layout.sign);
         LogControl.debug(TAG, "SignActivity onCreate >>");
 
-        signinStarter = new SigninStarter();
+        signinStarter = new SignInStarter();
         signinStarter.setPreIndex(0);
 
         pages.add(signinStarter);

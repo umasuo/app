@@ -5,22 +5,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 
 /**
  * Created on 2017/7/7.
  * 用户登录界面
  */
-public class SigninWithPassword extends FragmentRoot implements View.OnClickListener {
+public class SignInWithPassword extends FragmentRoot implements View.OnClickListener {
 
     ImageView back;
-    Button signin;
+    TextView phoneText;
+    TextView passwordText;
     TextView smsSign;
     TextView forgetPwd;
+    Button submitBtn;
 
 
     // 以下是以此页面为入口的子页面
@@ -34,13 +39,16 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
 
         back = view.findViewById(R.id.personal_signin_back);
 
-        signin = view.findViewById(R.id.submit_btn);
+        submitBtn = view.findViewById(R.id.submit_btn);
+
+        phoneText = (EditText) view.findViewById(R.id.phone_text);
+        passwordText = (EditText) view.findViewById(R.id.password_text);
 
         smsSign = view.findViewById(R.id.signin_sms_text);
         forgetPwd = view.findViewById(R.id.forgot_password_text);
 
         back.setOnClickListener(this);
-        signin.setOnClickListener(this);
+        submitBtn.setOnClickListener(this);
         smsSign.setOnClickListener(this);
         forgetPwd.setOnClickListener(this);
 
@@ -61,7 +69,7 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
                 break;
             }
             case R.id.submit_btn: {
-                // TODO: 17/7/10 登录
+                login();
                 break;
             }
             case R.id.signin_sms_text: {
@@ -83,5 +91,21 @@ public class SigninWithPassword extends FragmentRoot implements View.OnClickList
                 break;
             }
         }
+    }
+
+    /**
+     * login with phone and password
+     *
+     * @return
+     */
+    private void login() {
+        String phone = phoneText.getText().toString();
+        String password = passwordText.getText().toString();
+        if (phone.isEmpty() || password.isEmpty()) {
+            Toast.makeText(getContext(), "手机号或者密码不能为空!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        UserService.getInstance(getContext()).login(phone, password);
     }
 }

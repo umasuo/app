@@ -18,8 +18,9 @@ public class UserModel implements Serializable {
 
     /**
      * Developer id.
+     * For Eva app, it's developerId should be the same.
      */
-    private String developerId;
+    private String developerId = "developer1";
 
     /**
      * User's email. unique on this platform.

@@ -1,10 +1,13 @@
 package com.umasuo.eva.infra.api.user;
 
 import com.umasuo.eva.domain.user.dto.QuickSignIn;
+import com.umasuo.eva.domain.user.dto.RegisterModel;
+import com.umasuo.eva.domain.user.dto.SignIn;
 import com.umasuo.eva.domain.user.dto.SignInResult;
 import com.umasuo.eva.domain.user.dto.UserModel;
-import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.domain.user.service.RegisterCallback;
 import com.umasuo.eva.infra.api.ServiceCaller;
+import com.umasuo.eva.infra.log.LogControl;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,6 +92,45 @@ public class UserCloudApi extends ServiceCaller {
     }
 
     /**
+     * login with password and phone.
+     *
+     * @param phone
+     * @param developerId
+     * @param password
+     * @param callback
+     */
+    public void login(String phone, String developerId, String password, Callback<SignInResult> callback) {
+        SignIn signIn = new SignIn(phone, developerId, password);
+        LogControl.debug("SignIn", signIn.toString());
+
+        Call<SignInResult> caller = service.login(signIn);
+
+        //异步发起请求，所有的网络请求都需要异步发起请求
+        caller.enqueue(callback);
+    }
+
+    /**
+     * 登录的API.
+     *
+     * @param phone
+     * @param developerId
+     * @param password
+     * @param smsCode
+     * @param callback
+     */
+    public void register(String phone, String developerId, String password, String smsCode, Callback<SignInResult> callback) {
+        //todo 检查各个参数的值
+        RegisterModel registerModel = new RegisterModel(phone, developerId, password, smsCode);
+        LogControl.debug("RegisterModel", registerModel.toString());
+
+        Call<SignInResult> caller = service.register(registerModel);
+
+        //异步发起请求，所有的网络请求都需要异步发起请求
+        caller.enqueue(callback);
+    }
+
+
+    /**
      * 更新用户信息
      */
     public void updateInfo() {
@@ -111,5 +153,11 @@ public class UserCloudApi extends ServiceCaller {
 
         @POST("/v1/users/signin")
         Call<SignInResult> quickSignIn(@Body QuickSignIn quickSignIn);
+
+        @POST("/v1/users/register")
+        Call<SignInResult> register(@Body RegisterModel register);
+
+        @POST("/v1/users/login")
+        Call<SignInResult> login(@Body SignIn signIn);
     }
 }

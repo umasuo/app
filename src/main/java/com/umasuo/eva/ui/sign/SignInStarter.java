@@ -14,14 +14,14 @@ import com.umasuo.eva.infra.log.LogControl;
  * Created on 2017/7/7.
  * 用户未登录的界面
  */
-public class SigninStarter extends FragmentRoot implements View.OnClickListener {
+public class SignInStarter extends FragmentRoot implements View.OnClickListener {
 
-    private String TAG = "SigninStarter";
+    private String TAG = "SignInStarter";
 
     Button signinBtn;
-    Button signupBtn;
+    Button registerBtn;
 
-    SigninWithPassword signinWithPassword;
+    SignInWithPassword signinWithPassword;
     Register register;
 
     @Override
@@ -29,10 +29,10 @@ public class SigninStarter extends FragmentRoot implements View.OnClickListener 
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_starter, container, false);
         signinBtn = (Button) view.findViewById(R.id.signin_btn);
-        signupBtn = (Button) view.findViewById(R.id.register_btn);
+        registerBtn = (Button) view.findViewById(R.id.register_btn);
 
         signinBtn.setOnClickListener(this);
-        signupBtn.setOnClickListener(this);
+        registerBtn.setOnClickListener(this);
         return view;
     }
 
@@ -49,7 +49,7 @@ public class SigninStarter extends FragmentRoot implements View.OnClickListener 
                 //显示登录界面
                 LogControl.debug(TAG, "sign");
                 if (signinWithPassword == null) {
-                    signinWithPassword = new SigninWithPassword();
+                    signinWithPassword = new SignInWithPassword();
                     signinWithPassword.setPreIndex(0);
                     signinWithPassword.setIndex(((SignActivity) this.getContext()).addFragment(signinWithPassword));
                 }
