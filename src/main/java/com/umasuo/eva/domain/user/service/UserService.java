@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.domain.user.dto.mapper.UserMapper;
+import com.umasuo.eva.infra.api.user.UserCloudApi;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.UserEntity;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.infra.api.user.UserCloudApi;
 
 /**
  * Created by umasuo on 17/7/8.
@@ -168,6 +168,13 @@ public class UserService {
     }
 
     /**
+     * 退出登录.
+     */
+    public void signOut() {
+        userServerApi.signOut(user.getUserId(), token, developerId, new SignOutCallback(context, this));
+    }
+
+    /**
      * 删除用户信息表.
      */
     public void deleteTable() {
@@ -176,5 +183,9 @@ public class UserService {
 
     public Context getContext() {
         return context;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

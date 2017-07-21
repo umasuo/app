@@ -71,8 +71,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
 
         activity = (MainActivity) getContext();
         userService = UserService.getInstance(activity);
-        //init data
-        initUserData();
         return view;
     }
 
@@ -81,6 +79,7 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         if (activity != null) {
             LogControl.debug(TAG, "onShow >>>");
             activity.showBottom();
+            initUserData();
         }
     }
 

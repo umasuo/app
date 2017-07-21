@@ -32,7 +32,7 @@ public class UserModelCallback implements Callback<UserModel> {
             //请求成功
             LogControl.debug("UserCloudApi", " sign Success");
             UserModel userModel = response.body();
-
+            userModel.setToken(userService.getToken());
             // 保存数据到数据库
             userService.saveUser(userModel);
             LogControl.debug(TAG, "userModel: " + userModel.toString());
@@ -42,7 +42,7 @@ public class UserModelCallback implements Callback<UserModel> {
                     new Runnable() {
                         @Override
                         public void run() {
-                            ((MainActivity) context).showPage(2);
+                            ((MainActivity) context).showPage(3);
                         }
                     }
             );

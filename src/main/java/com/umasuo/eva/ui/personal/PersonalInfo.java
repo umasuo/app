@@ -33,7 +33,8 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
     private EditText userAge;
     private EditText userCountry;
     private EditText userSignature;
-    private Button userPassword;
+    private Button updatePassword;
+    private Button signOutBtn;
     private Button submitBtn;
 
     @Override
@@ -51,13 +52,15 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         userAge = (EditText) view.findViewById(R.id.user_age);
         userCountry = (EditText) view.findViewById(R.id.user_country);
         userSignature = (EditText) view.findViewById(R.id.user_signature);
-        userPassword = (Button) view.findViewById(R.id.update_password_btn);
+        updatePassword = (Button) view.findViewById(R.id.update_password_btn);
+        signOutBtn = (Button) view.findViewById(R.id.sign_out_btn);
 
         submitBtn = (Button) view.findViewById(R.id.submit_btn);
 
         backBtn.setOnClickListener(this);
         headerIcon.setOnClickListener(this);
-        userPassword.setOnClickListener(this);
+        updatePassword.setOnClickListener(this);
+        signOutBtn.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
 
         userName.addTextChangedListener(this);
@@ -118,9 +121,16 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
                 LogControl.debug(TAG, "Change user's password ");
                 break;
             }
+            case R.id.sign_out_btn: {
+                signOut();
+                break;
+            }
         }
     }
 
+    /**
+     * 更新用户信息.
+     */
     private void updateUserInfo() {
         String email = userEmail.getText().toString();
         String phone = userPhone.getText().toString();
@@ -129,6 +139,13 @@ public class PersonalInfo extends FragmentRoot implements View.OnClickListener, 
         String name = userName.getText().toString();
         String signature = userSignature.getText().toString();
         UserService.getInstance(getContext()).updateUser(email, phone, age, country, name, signature);
+    }
+
+    /**
+     * 退出登录.
+     */
+    private void signOut() {
+        UserService.getInstance(getContext()).signOut();
     }
 
     /**

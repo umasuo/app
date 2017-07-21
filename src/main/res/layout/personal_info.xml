@@ -136,12 +136,26 @@
         android:typeface="monospace" />
 
     <Button
+        android:id="@+id/sign_out_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:text="退出登录"
+        android:textSize="@dimen/setting_title_size"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <Button
         android:id="@+id/submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50px"
         android:layout_marginRight="50px"
         android:enabled="false"
-        android:text="确定" />
+        android:text="确定"
+        android:textSize="@dimen/setting_title_size"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 
 </LinearLayout>

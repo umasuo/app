@@ -8,10 +8,12 @@ import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.infra.api.ServiceCaller;
 import com.umasuo.eva.infra.log.LogControl;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -133,8 +135,12 @@ public class UserCloudApi extends ServiceCaller {
     /**
      * 更新用户信息
      */
-    public void updateInfo() {
+    public void signOut(String userId, String token, String developerId, Callback<ResponseBody> callback) {
 
+        Call<ResponseBody> caller = service.signout(userId, token, developerId, userId);
+
+        //异步发起请求，所有的网络请求都需要异步发起请求
+        caller.enqueue(callback);
     }
 
     /**
@@ -159,5 +165,8 @@ public class UserCloudApi extends ServiceCaller {
 
         @POST("/v1/users/login")
         Call<SignInResult> login(@Body SignIn signIn);
+
+        @DELETE("/v1/users/{id}/signout")
+        Call<ResponseBody> signout(@Header("userId") String userId, @Header("authorization") String token, @Header("developerId") String developerId, @Path("id") String id);
     }
 }
