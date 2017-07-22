@@ -22,4 +22,9 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="spinner_style">
+        <item name="android:background">@drawable/button_gray_bg</item>
+        <item name="android:paddingLeft">5dip</item>
+    </style>
 </resources>

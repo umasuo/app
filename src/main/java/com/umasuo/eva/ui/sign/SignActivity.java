@@ -23,7 +23,9 @@ public class SignActivity extends FragmentActivity {
     private FragmentPagerAdapter signAdapter;
 
     //登录初始界面
-    SignInStarter signinStarter;
+//    SignInStarter signinStarter;
+
+    SignInWithPassword signinWithPassword;
 
     private List<FragmentRoot> pages = new ArrayList<>();
 
@@ -33,10 +35,17 @@ public class SignActivity extends FragmentActivity {
         setContentView(R.layout.sign);
         LogControl.debug(TAG, "SignActivity onCreate >>");
 
-        signinStarter = new SignInStarter();
-        signinStarter.setPreIndex(0);
+//        signinStarter = new SignInStarter();
+//        signinStarter.setPreIndex(0);
+//
+//        pages.add(signinStarter);
 
-        pages.add(signinStarter);
+
+        signinWithPassword = new SignInWithPassword();
+        signinWithPassword.setPreIndex(0);
+//        signinWithPassword.setIndex(this.addFragment(signinWithPassword));
+        pages.add(signinWithPassword);
+
 
         signAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

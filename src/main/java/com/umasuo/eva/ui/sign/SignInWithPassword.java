@@ -20,7 +20,7 @@ import com.umasuo.eva.infra.FragmentRoot;
  */
 public class SignInWithPassword extends FragmentRoot implements View.OnClickListener {
 
-    ImageView back;
+//    ImageView back;
     TextView phoneText;
     TextView passwordText;
     TextView smsSign;
@@ -37,7 +37,7 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_password, container, false);
 
-        back = view.findViewById(R.id.personal_signin_back);
+//        back = view.findViewById(R.id.personal_signin_back);
 
         submitBtn = view.findViewById(R.id.submit_btn);
 
@@ -47,7 +47,7 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
         smsSign = view.findViewById(R.id.signin_sms_text);
         forgetPwd = view.findViewById(R.id.forgot_password_text);
 
-        back.setOnClickListener(this);
+//        back.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
         smsSign.setOnClickListener(this);
         forgetPwd.setOnClickListener(this);
@@ -64,10 +64,10 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
     public void onClick(View view) {
         SignActivity activity = (SignActivity) this.getContext();
         switch (view.getId()) {
-            case R.id.personal_signin_back: {
-                activity.replaceFragment(preIndex);
-                break;
-            }
+//            case R.id.personal_signin_back: {
+//                activity.replaceFragment(preIndex);
+//                break;
+//            }
             case R.id.submit_btn: {
                 login();
                 break;
