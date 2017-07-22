@@ -14,8 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
+import com.umasuo.eva.infra.mqtt.MqttClient;
 import com.umasuo.eva.ui.WaitingPage;
 import com.umasuo.eva.ui.device.DeviceCenter;
 import com.umasuo.eva.ui.personal.PersonalCenter;
@@ -31,6 +33,7 @@ import java.util.List;
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private String TAG = "MainActivity";
+    private static MainActivity instance;
 
     private MainViewPager viewPager;
     private LinearLayout bottomMenu;
@@ -82,6 +85,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.main);
         initView();
         initEvent();
+
+        instance = this;
+        initMqtt();
     }
 
     private void initView() {
@@ -154,6 +160,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalImage.setOnClickListener(this);
         personalLayout.setOnClickListener(this);
         personalText.setOnClickListener(this);
+    }
+
+    /**
+     * 连接MQTT. 如果网络失败，或者什么的，那么就显示错误信息，提示用户打开网络设置.
+     */
+    private void initMqtt() {
+        UserService userService = UserService.getInstance(this);
+//        MqttClient.getInstance(userService.getUser().getUserId(), userService.getToken()).startListen();
+        MqttClient.getInstance("umasuo", "password").startListen();
     }
 
     /**
@@ -320,5 +335,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             finish();
             System.exit(0);
         }
+    }
+
+    public static MainActivity getInstance() {
+        return instance;
     }
 }

@@ -11,34 +11,35 @@ import org.fusesource.mqtt.client.QoS;
  * mqtt client, used to receive and send message to device.
  */
 public class MqttClient {
+    // static instance
+    private static MqttClient client;
 
-    private MqttConfig config;
+    //    private String host = "broker.evacloud.cn";
+    private String host = "192.168.1.19";
+    private int port = 1883;
+    private String username;
+    private String password;
 
     private MQTT mqtt;
+    private BlockingConnection connection;
 
-    BlockingConnection connection;
-
-    public MqttClient(String userId, String token) {
-        this.config = new MqttConfig();
-        config.setPassword(token);
-        config.setUsername(userId);
-        try {
-            mqtt = new MQTT();
-            mqtt.setHost(config.getHost(), config.getPort());
-            mqtt.setUserName(config.getUsername());
-            mqtt.setPassword(config.getPassword());
-        } catch (Exception e) {
-            LogControl.info("MQTT", "Connect to broker failed.");
+    public static MqttClient getInstance(String userId, String token) {
+        if (client == null) {
+            client = new MqttClient(userId, token);
         }
+        return client;
     }
 
-    public MqttClient(MqttConfig config) {
-        this.config = config;
+    public MqttClient(String userId, String token) {
+        this.username = userId;
+        this.password = token;
         try {
             mqtt = new MQTT();
-            mqtt.setHost(config.getHost(), config.getPort());
-            mqtt.setUserName(config.getUsername());
-            mqtt.setPassword(config.getPassword());
+            mqtt.setClientId(username);
+            mqtt.setHost(host, port);
+            mqtt.setUserName(username);
+            mqtt.setPassword(password);
+            mqtt.setKeepAlive((short) 600);
         } catch (Exception e) {
             LogControl.info("MQTT", "Connect to broker failed.");
         }
@@ -49,10 +50,13 @@ public class MqttClient {
      *
      * @return
      */
-    public BlockingConnection getConnect() {
+    public BlockingConnection getConnect() throws Exception {
         //连接或者重新连接
         if (connection == null || !connection.isConnected()) {
             connection = mqtt.blockingConnection();
+        }
+        if (!connection.isConnected()) {
+            connection.connect();
         }
         return connection;
     }
@@ -72,6 +76,17 @@ public class MqttClient {
             LogControl.info("MQTT", "Publish message failed.");
             // TODO: 17/7/20 retry??
             return false;
+        }
+    }
+
+    public void startListen() {
+        try {
+            //todo 这个也应该放到独立的线程里面去
+            MessageListener listener = new MessageListener(getConnect());
+            listener.start();
+        } catch (Exception e) {
+            // TODO: 17/7/22 处理异常
+            e.printStackTrace();
         }
     }
 }

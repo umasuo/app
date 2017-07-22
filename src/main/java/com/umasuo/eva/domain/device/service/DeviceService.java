@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.umasuo.eva.domain.device.dto.DeviceModel;
+import com.umasuo.eva.infra.api.device.DeviceCloudApi;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.DeviceEntity;
-import com.umasuo.eva.infra.api.device.DeviceCloudApi;
 
 import java.util.List;
 
@@ -49,10 +49,7 @@ public class DeviceService {
      * @return
      */
     public static DeviceService getInstance(Context context) {
-        if (instance == null) {
-            instance = new DeviceService(context);
-        } else if (!context.equals(instance.getContext())) {
-            //切换了context，需要重新加载, // TODO: 17/7/10 待优化
+        if (instance == null || !context.equals(instance.getContext())) {
             instance = new DeviceService(context);
         }
         return instance;

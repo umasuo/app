@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.device.DeviceMessageHandler;
+import com.umasuo.eva.domain.device.service.DeviceService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.DeviceListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
@@ -30,8 +32,9 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     private ImageView devices_add;
     private ListView deviceItemList;
     private List<Map<String, Object>> mdata;
-    MainActivity activity;
+    private MainActivity activity;
     private SelectDeviceType selectDeviceType;
+    private DeviceService deviceService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
