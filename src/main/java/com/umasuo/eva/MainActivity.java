@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.ui.WaitingPage;
+import com.umasuo.eva.ui.anim.ViewPagerScroller;
 import com.umasuo.eva.ui.device.DeviceCenter;
 import com.umasuo.eva.ui.personal.PersonalCenter;
 import com.umasuo.eva.ui.scene.SceneCenter;
@@ -133,6 +134,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         //todo 设置一下切换的动画，不要太快，调整得合适点
         viewPager.setAdapter(adapter);
+        ViewPagerScroller scroller = new ViewPagerScroller(this);
+        scroller.initViewPagerScroll(viewPager);
 
     }
 
@@ -236,7 +239,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     public void showFragment(Fragment firstFragment, Fragment secondFragment, boolean inStack) {
         transaction = getSupportFragmentManager().beginTransaction();
-
+        transaction.setCustomAnimations(0,0,0,0);
         if (inStack) {
             if (!secondFragment.isAdded()) {
                 transaction.add(R.id.main, secondFragment).hide(firstFragment).show(secondFragment).addToBackStack(null).commit();
