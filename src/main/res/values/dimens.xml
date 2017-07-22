@@ -77,4 +77,7 @@
     <dimen name="scene_editor_condition_icon_left">80px</dimen>
     <dimen name="scene_editor_task_icon_left">180px</dimen>
 
+    <!--选择条件界面-->
+    <dimen name="condition_device_height">130px</dimen>
+    <dimen name="condition_device_margin">30px</dimen>
 </resources>
