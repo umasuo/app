@@ -134,6 +134,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         //todo 设置一下切换的动画，不要太快，调整得合适点
         viewPager.setAdapter(adapter);
+        //四个主界面之间跳转，没有滑动效果
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.initViewPagerScroll(viewPager);
 
@@ -239,6 +240,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     public void showFragment(Fragment firstFragment, Fragment secondFragment, boolean inStack) {
         transaction = getSupportFragmentManager().beginTransaction();
+        //可通过此处，设置进入二级以下界面的动画效果，设置为0，则没有动画
         transaction.setCustomAnimations(0,0,0,0);
         if (inStack) {
             if (!secondFragment.isAdded()) {
