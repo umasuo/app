@@ -58,6 +58,8 @@
 
     <!--选择条件-->
     <string name="choose_condition">选择条件</string>
+    <string name="condition_device">设备</string>
+    <string name="condition_task_condition">选择执行任务的条件</string>
 
     <string-array name="country_arrays">
         <item>+86 中国</item>
