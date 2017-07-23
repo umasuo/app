@@ -256,7 +256,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void showFragment(Fragment firstFragment, Fragment secondFragment, boolean inStack) {
         transaction = getSupportFragmentManager().beginTransaction();
         //可通过此处，设置进入二级以下界面的动画效果，设置为0，则没有动画
-        transaction.setCustomAnimations(0,0,0,0);
+        transaction.setCustomAnimations(0, 0, 0, 0);
         if (inStack) {
             if (!secondFragment.isAdded()) {
                 transaction.add(R.id.main, secondFragment).hide(firstFragment).show(secondFragment).addToBackStack(null).commit();
@@ -310,9 +310,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * 将所有菜单图片还原.
      */
     private void resetImg() {
-        devicesImage.setBackgroundResource(R.drawable.first);
-        sceneImage.setBackgroundResource(R.drawable.second);
-        personalImage.setBackgroundResource(R.drawable.personal_center);
+        devicesImage.setBackgroundResource(R.drawable.device);
+        sceneImage.setBackgroundResource(R.drawable.scene_press);
+        personalImage.setBackgroundResource(R.drawable.personal_press);
     }
 
     /**

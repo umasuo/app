@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
-import com.umasuo.eva.domain.device.DeviceMessageHandler;
 import com.umasuo.eva.domain.device.service.DeviceService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.DeviceListAdapter;
@@ -101,29 +100,18 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_cz);
+        map.put("icon", R.drawable.device_img_px);
         map.put("name", getString(R.string.device_cz));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_kg);
+        map.put("icon", R.drawable.device_img_kg);
         map.put("name", getString(R.string.device_kg));
         list.add(map);
 
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_xy);
-        map.put("name", getString(R.string.device_xy));
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_bx);
-        map.put("name", getString(R.string.device_bx));
-        list.add(map);
-
-
-        map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_qt);
+        map.put("icon", R.drawable.device_icon_qt);
         map.put("name", getString(R.string.device_qt));
         list.add(map);
 

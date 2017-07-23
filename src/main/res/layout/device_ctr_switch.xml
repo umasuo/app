@@ -18,7 +18,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_top_icon_margin"
-            android:src="@drawable/left_arrow" />
+            android:src="@drawable/left_icon" />
 
         <TextView
             android:id="@+id/device_title"
@@ -48,6 +48,6 @@
             android:layout_height="240px"
             android:layout_gravity="center"
             android:layout_margin="20px"
-            android:src="@drawable/device_kg" />
+            android:src="@drawable/device_icon_kg" />
     </LinearLayout>
 </LinearLayout>

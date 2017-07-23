@@ -30,6 +30,6 @@
         android:layout_height="@dimen/device_type_arrow_height"
         android:layout_gravity="center_vertical"
         android:layout_marginRight="@dimen/device_type_arrow_marginRight"
-        android:background="@drawable/right_arrow" />
+        android:background="@drawable/right_icon" />
 
 </LinearLayout>

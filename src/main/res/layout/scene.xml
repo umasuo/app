@@ -31,7 +31,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_marginRight="@dimen/activity_top_marginRight"
-            android:background="@drawable/add" />
+            android:background="@drawable/add_icon_press" />
 
 
     </LinearLayout>

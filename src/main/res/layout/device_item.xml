@@ -13,7 +13,7 @@
         android:layout_height="240px"
         android:layout_gravity="center"
         android:layout_margin="20px"
-        android:background="@drawable/device_kg" />
+        android:background="@drawable/device_icon_kg" />
 
     <TextView
         android:id="@+id/device_name"

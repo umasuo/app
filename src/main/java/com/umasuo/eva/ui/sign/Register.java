@@ -33,7 +33,7 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.singin_register, container, false);
+        View view = inflater.inflate(R.layout.signin_register, container, false);
         signActivity = (SignActivity) getContext();
 
         initView(view);

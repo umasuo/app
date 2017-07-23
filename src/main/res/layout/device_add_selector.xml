@@ -21,7 +21,7 @@
             android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"
             android:layout_marginRight="@dimen/top_left_arrow_marginRight"
             android:layout_marginTop="@dimen/top_left_arrow_marginTop"
-            android:background="@drawable/left_arrow" />
+            android:background="@drawable/left_icon" />
 
         <TextView
             android:id="@+id/device_select_title"
@@ -41,7 +41,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_top_icon_margin"
-            android:background="@drawable/code_scan" />
+            android:background="@drawable/scan_icon_press" />
 
     </LinearLayout>
 

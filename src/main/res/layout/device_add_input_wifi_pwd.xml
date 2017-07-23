@@ -39,7 +39,6 @@
             android:layout_height="140px"
             android:layout_margin="40px"
             android:background="@drawable/corners_input"
-            android:drawableLeft="@drawable/lock"
             android:inputType="text" />
 
         <LinearLayout

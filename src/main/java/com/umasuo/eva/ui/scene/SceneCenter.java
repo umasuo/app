@@ -3,7 +3,6 @@ package com.umasuo.eva.ui.scene;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,19 +112,19 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.home);
 //        map.put("name", "到家");
-        map.put("model", new SceneModel("到家", R.drawable.home));
+        map.put("model", new SceneModel("到家", R.drawable.scene_icon_home));
         list.add(map);
 
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.leavehome);
 //        map.put("name", "离家");
-        map.put("model", new SceneModel("离家", R.drawable.leavehome));
+        map.put("model", new SceneModel("离家", R.drawable.scene_icon_leave));
         list.add(map);
 
         map = new HashMap<String, Object>();
 //        map.put("sceneIcon", R.drawable.getup);
 //        map.put("name", "起床");
-        map.put("model", new SceneModel("起床", R.drawable.getup));
+        map.put("model", new SceneModel("起床", R.drawable.scene_icon_getup));
         list.add(map);
 
         return list;

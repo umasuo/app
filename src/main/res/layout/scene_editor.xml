@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:id="@+id/editor_top"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/deviceTypeItemBgColor"
     android:orientation="vertical">
@@ -19,7 +19,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_top_icon_margin"
-            android:background="@drawable/left_arrow" />
+            android:background="@drawable/left_icon" />
 
         <TextView
             android:id="@+id/editor_title"
@@ -43,37 +43,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/corners_panel"
-            android:orientation="vertical"
-            android:layout_marginRight="@dimen/scene_editor_margin"
             android:layout_marginLeft="@dimen/scene_editor_margin"
-            >
+            android:layout_marginRight="@dimen/scene_editor_margin"
+            android:background="@drawable/corners_panel"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/scene_editor_margin"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/scene_editor_icon"
                     android:layout_width="@dimen/scene_editor_icon_width"
-                    android:layout_height="@dimen/scene_editor_icon_height"
-                    />
+                    android:layout_height="@dimen/scene_editor_icon_height" />
 
                 <TextView
                     android:id="@+id/scene_editor_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/scene_editor_margin"
                     android:layout_gravity="center"
-                    />
+                    android:layout_marginLeft="@dimen/scene_editor_margin" />
             </LinearLayout>
 
         </LinearLayout>
@@ -81,35 +78,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
-            android:orientation="horizontal"
-            android:background="@color/editorItemColor"
             android:layout_marginTop="@dimen/scene_editor_margin"
-            >
-            <ImageView
+            android:background="@color/editorItemColor"
+            android:orientation="horizontal">
+
+            <TextView
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:background="@drawable/first_condition"
-                android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginLeft="@dimen/scene_editor_margin"
+                android:background="@drawable/circle_icon"
+                android:gravity="center"
+                android:text="1" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/editor_add_condition"
-                android:layout_weight="1"
-                android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginLeft="@dimen/scene_editor_margin"
+                android:layout_weight="1"
+                android:text="@string/editor_add_condition" />
 
             <ImageView
                 android:id="@+id/editor_add_condition"
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:background="@drawable/add_scene"
-                android:layout_marginRight="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginRight="@dimen/scene_editor_margin"
+                android:background="@drawable/add_icon" />
 
         </LinearLayout>
 
@@ -117,18 +113,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/scene_editor_item_gap"
             android:background="@color/editorItemColor"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/editor_condition_icon"
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:layout_marginLeft="@dimen/scene_editor_condition_icon_left"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginLeft="@dimen/scene_editor_condition_icon_left" />
 
             <TextView
                 android:id="@+id/editor_current_condition"
@@ -136,78 +130,72 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/scene_editor_margin"
-                android:text="@string/editor_no_add_condition"
-                />
+                android:text="@string/editor_no_add_condition" />
 
             <ImageView
                 android:id="@+id/editor_change_condition"
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:layout_gravity="center_vertical"
-                />
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
-            android:orientation="horizontal"
-            android:background="@color/editorItemColor"
             android:layout_marginTop="@dimen/scene_editor_margin"
-            >
-            <ImageView
+            android:background="@color/editorItemColor"
+            android:orientation="horizontal">
+
+            <TextView
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:background="@drawable/second_condition"
-                android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginLeft="@dimen/scene_editor_margin"
+                android:background="@drawable/circle_icon"
+                android:gravity="center"
+                android:text="2" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/editor_add_task"
-                android:layout_weight="1"
-                android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginLeft="@dimen/scene_editor_margin"
+                android:layout_weight="1"
+                android:text="@string/editor_add_task" />
 
             <ImageView
                 android:id="@+id/editor_add_task"
                 android:layout_width="@dimen/scene_editor_icon_width"
                 android:layout_height="@dimen/scene_editor_icon_height"
-                android:background="@drawable/add_scene"
-                android:layout_marginRight="@dimen/scene_editor_margin"
                 android:layout_gravity="center_vertical"
-                />
+                android:layout_marginRight="@dimen/scene_editor_margin"
+                android:background="@drawable/add_icon" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="@dimen/scene_editor_item_gap"
             android:background="@color/editorItemColor"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/editor_current_task"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/scene_editor_item_height"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="@dimen/scene_editor_task_icon_left"
-                android:text="@string/editor_no_add_task"
-                />
+                android:gravity="center_vertical"
+                android:text="@string/editor_no_add_task" />
 
             <ListView
                 android:id="@+id/editor_list_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
         </LinearLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

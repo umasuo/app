@@ -88,22 +88,22 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.home);
+        map.put("icon", R.drawable.personal_icon_msg);
         map.put("name", "消息中心");
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.getup);
+        map.put("icon", R.drawable.personal_icon_faq);
         map.put("name", "常见问题");
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.getup);
+        map.put("icon", R.drawable.personal_icon_feedback);
         map.put("name", "意见反馈");
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.getup);
+        map.put("icon", R.drawable.personal_icon_about);
         map.put("name", "关于");
         list.add(map);
 

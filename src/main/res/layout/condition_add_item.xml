@@ -31,7 +31,7 @@
         android:layout_width="@dimen/device_type_arrow_width"
         android:layout_height="@dimen/device_type_arrow_height"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/right_arrow"
+        android:src="@drawable/right_icon"
         android:layout_marginLeft="@dimen/scene_item_icon_marginLeft"
         android:layout_marginRight="@dimen/scene_item_icon_marginRight" />
 

@@ -3,7 +3,7 @@
     <!-- 获得焦点但未按下时的背景图片 -->
     <item android:state_pressed="false" android:drawable="@drawable/button_blue_bg" />
     <!-- 按下时的背景图片 -->
-    <item android:state_pressed="true" android:drawable="@drawable/button_press" />
+    <item android:state_pressed="true" android:drawable="@drawable/button_blue_press" />
     <!-- 默认时的背景图片 -->
     <item android:drawable="@drawable/button_blue_bg" />
 </selector>

@@ -30,7 +30,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_top_icon_margin"
-            android:background="@drawable/add" />
+            android:background="@drawable/add_icon_press" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +47,7 @@
             android:layout_height="240px"
             android:layout_gravity="center"
             android:layout_margin="20px"
-            android:background="@drawable/device_xy" />
+            android:background="@drawable/scan_icon_press" />
 
         <TextView
             android:id="@+id/device_common_content"

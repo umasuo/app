@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
     android:background="@color/topBgColor"
-    android:gravity="center_vertical"
-    >
+    android:gravity="center_vertical">
 
     <ImageView
-        android:background="@drawable/first"
         android:layout_width="@dimen/activity_top_icon_width"
         android:layout_height="@dimen/activity_top_icon_height"
-        android:layout_marginLeft="@dimen/activity_top_marginLeft"
         android:layout_alignParentLeft="true"
-        />
+        android:layout_marginLeft="@dimen/activity_top_marginLeft"
+        android:src="@drawable/eva" />
 
 
     <ImageView
@@ -20,6 +18,5 @@
         android:layout_height="@dimen/activity_top_icon_height"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/activity_top_marginRight"
-        android:background="@drawable/add"
-        />
+        android:background="@drawable/add_icon_press" />
 </RelativeLayout>
