@@ -64,7 +64,7 @@ public class UserService {
      * 初始化的时候读取数据库
      */
     public UserService(Context context) {
-        dbHelper = new DatabaseHelper(context);
+        dbHelper = DatabaseHelper.getInstance(context);
         db = dbHelper.getReadableDatabase();
         // 如果数据表不存在，则创建表
         db.execSQL(UserEntity.CREATE_TABLE_SQL);

@@ -1,9 +1,7 @@
 package com.umasuo.eva.domain.user;
 
 import android.content.Context;
-import android.widget.Toast;
 
-import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.infra.mqtt.MqttMessage;
 import com.umasuo.eva.infra.mqtt.MqttMessageHandler;

@@ -9,13 +9,24 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private static DatabaseHelper instance;
+
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     //此APP只使用一个数据库
     public static final String DATABASE_NAME = "umasuo.eva";
 
+    private Context context;
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static DatabaseHelper getInstance(Context context) {
+        if (instance == null || instance.context.equals(context)) {
+            instance = new DatabaseHelper(context);
+        }
+        return instance;
     }
 
     @Override
