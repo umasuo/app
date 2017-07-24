@@ -1,90 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/activity_top_height"
-    android:background="@color/deviceTypeItemBgColor"
+    android:layout_height="match_parent"
+    android:background="@color/pageBgColor"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/personal_top_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_top_height"
-        android:background="@color/mainBackgroundColor"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/personal_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/activity_top_marginLeft"
-            android:layout_weight="3"
-            android:gravity="left"
-            android:text="@string/personalCenter"
-            android:textSize="@dimen/setting_title_size"
-            android:textStyle="bold"
-            android:typeface="monospace" />
-
-        <TextView
-            android:id="@+id/personal_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="@dimen/activity_top_marginRight"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="设置"
-            android:textSize="@dimen/setting_title_size"
-            android:textStyle="bold"
-            android:typeface="monospace" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/personal_info_summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/scene_item_icon_marginRight"
-        android:background="@drawable/corners_panel"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/personal_head_portrait"
-            android:layout_width="@dimen/head_portrait_width"
-            android:layout_height="@dimen/head_portrait_height"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/head_portrait_margin"
-            android:src="@drawable/eva" />
+        android:layout_height="520px"
+        android:background="@drawable/personal_bg"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/personal_top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_top_height"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/personal_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="160px"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/personalCenter"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/setting_title_size"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+            <TextView
+                android:id="@+id/personal_settings"
+                android:layout_width="160px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/activity_top_marginRight"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="编辑"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/setting_title_size"
+                android:textStyle="bold"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/personal_info_summary_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/setup_head_portrait" />
+
+            <ImageView
+                android:id="@+id/head_icon"
+                android:layout_width="@dimen/head_portrait_width"
+                android:layout_height="@dimen/head_portrait_height"
+                android:layout_gravity="center"
+                android:src="@drawable/eva" />
 
             <TextView
-                android:id="@+id/personal_info_summary_signature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/user_signature" />
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center"
+                android:text="用户名"
+                android:textColor="#FFFFFF" />
+
+
         </LinearLayout>
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/personal_listview"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:background="@color/mainBackgroundColor"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/personal_item_icon_width"
+            android:layout_height="@dimen/personal_item_icon_height"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/personal_item_icon_margin"
+            android:src="@drawable/personal_icon_msg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/device_type_icon_marginLeft"
+            android:layout_weight="1"
+            android:text="消息中心"
+            android:textColor="@color/deviceTypeItemColor"
+            android:textSize="@dimen/personal_item_name_size" />
+
+        <ImageView
+            android:layout_width="@dimen/personal_item_right_arrow_width"
+            android:layout_height="@dimen/personal_item_right_arrow_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+            android:background="@drawable/right_icon" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/scene_item_icon_marginRight"
-        android:background="@drawable/corners_panel"></ListView>
+        android:layout_marginTop="40px"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:background="@color/mainBackgroundColor"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/personal_item_icon_width"
+                android:layout_height="@dimen/personal_item_icon_height"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/personal_item_icon_margin"
+                android:src="@drawable/personal_icon_faq" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/device_type_icon_marginLeft"
+                android:layout_weight="1"
+                android:text="常见问题"
+                android:textColor="@color/deviceTypeItemColor"
+                android:textSize="@dimen/personal_item_name_size" />
+
+            <ImageView
+                android:layout_width="@dimen/personal_item_right_arrow_width"
+                android:layout_height="@dimen/personal_item_right_arrow_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+                android:background="@drawable/right_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:layout_marginTop="4px"
+            android:background="@color/mainBackgroundColor"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/personal_item_icon_width"
+                android:layout_height="@dimen/personal_item_icon_height"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/personal_item_icon_margin"
+                android:src="@drawable/personal_icon_feedback" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/device_type_icon_marginLeft"
+                android:layout_weight="1"
+                android:text="意见反馈"
+                android:textColor="@color/deviceTypeItemColor"
+                android:textSize="@dimen/personal_item_name_size" />
+
+            <ImageView
+                android:layout_width="@dimen/personal_item_right_arrow_width"
+                android:layout_height="@dimen/personal_item_right_arrow_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+                android:background="@drawable/right_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:layout_marginTop="4px"
+            android:background="@color/mainBackgroundColor"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/personal_left_icon"
+                android:layout_width="@dimen/personal_item_icon_width"
+                android:layout_height="@dimen/personal_item_icon_height"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/personal_item_icon_margin"
+                android:src="@drawable/personal_icon_about" />
+
+            <TextView
+                android:id="@+id/personal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/device_type_icon_marginLeft"
+                android:layout_weight="1"
+                android:text="关于"
+                android:textColor="@color/deviceTypeItemColor"
+                android:textSize="@dimen/personal_item_name_size" />
+
+            <ImageView
+                android:id="@+id/personal_right_arrow"
+                android:layout_width="@dimen/personal_item_right_arrow_width"
+                android:layout_height="@dimen/personal_item_right_arrow_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+                android:background="@drawable/right_icon" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180px"
+        android:layout_marginTop="40px"
+        android:background="@color/mainBackgroundColor"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/personal_item_icon_width"
+            android:layout_height="@dimen/personal_item_icon_height"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/personal_item_icon_margin"
+            android:src="@drawable/personal_setting_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/device_type_icon_marginLeft"
+            android:layout_weight="1"
+            android:text="设置"
+            android:textColor="@color/deviceTypeItemColor"
+            android:textSize="@dimen/personal_item_name_size" />
+
+        <ImageView
+            android:layout_width="@dimen/personal_item_right_arrow_width"
+            android:layout_height="@dimen/personal_item_right_arrow_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/device_type_arrow_marginRight"
+            android:background="@drawable/right_icon" />
+    </LinearLayout>
 
 </LinearLayout>

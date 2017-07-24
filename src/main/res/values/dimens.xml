@@ -64,8 +64,8 @@
     <dimen name="head_portrait_margin">40px</dimen>
     <dimen name="personal_type_item_height">120px</dimen>
 
-    <dimen name="personal_item_icon_height">120px</dimen>
-    <dimen name="personal_item_icon_width">120px</dimen>
+    <dimen name="personal_item_icon_height">66px</dimen>
+    <dimen name="personal_item_icon_width">66px</dimen>
     <dimen name="personal_item_icon_margin">40px</dimen>
     <dimen name="personal_item_name_size">50px</dimen>
     <dimen name="personal_item_right_arrow_height">60px</dimen>

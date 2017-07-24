@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
@@ -15,7 +14,6 @@ import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.dto.UserModel;
 import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
-import com.umasuo.eva.infra.adapter.PersonalAdapter;
 import com.umasuo.eva.infra.log.LogControl;
 
 import java.util.ArrayList;
@@ -31,7 +29,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
 
     private static final String TAG = "PersonalCenter";
 
-    private ListView personalList;
     private LinearLayout piSummary;
 
     private PersonalSettings personalSettings;
@@ -47,7 +44,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     // 登录的用户概要信息
     private ImageView headIcon;
     protected TextView userName;
-    private TextView userSignature;
     private TextView userSettings;
 
     @Override
@@ -55,17 +51,9 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.personal, container, false);
-        personalList = view.findViewById(R.id.personal_listview);
-        PersonalAdapter pAdapter = new PersonalAdapter(getContext(), getData());
-        personalList.setAdapter(pAdapter);
-        personalList.setOnItemClickListener(this);
 
-        piSummary = view.findViewById(R.id.personal_info_summary);
-        piSummary.setOnClickListener(this);
-
-        headIcon = (ImageView) view.findViewById(R.id.personal_head_portrait);
-        userName = (TextView) view.findViewById(R.id.personal_info_summary_name);
-        userSignature = (TextView) view.findViewById(R.id.personal_info_summary_signature);
+        headIcon = (ImageView) view.findViewById(R.id.head_icon);
+        userName = (TextView) view.findViewById(R.id.name);
         userSettings = (TextView) view.findViewById(R.id.personal_settings);
         userSettings.setOnClickListener(this);
 
@@ -122,10 +110,6 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
         } else {
             userName.setText(userModel.getName());//设置名字
         }
-
-        if (userModel.getSignature() != null) {
-            userSignature.setText(userModel.getSignature());
-        }
     }
 
     /**
@@ -137,26 +121,13 @@ public class PersonalCenter extends FragmentRoot implements AdapterView.OnItemCl
     public void onClick(View view) {
         LogControl.debug(TAG, "onClick");
         switch (view.getId()) {
-            case R.id.personal_info_summary: {
-                if (personalInfo == null) {
-                    personalInfo = new PersonalInfo();
-                    personalInfo.setPreIndex(index);
-                    personalInfo.setIndex(activity.getPagerSize());
-//                    personalInfo.setIndex(activity.addFragment(personalInfo));
-                }
-                activity.showFragment(this, personalInfo, true);
-//                activity.showPage(personalInfo.getIndex());
-                break;
-            }
             case R.id.personal_settings: {
                 if (personalSettings == null) {
                     personalSettings = new PersonalSettings();
                     personalSettings.setPreIndex(index);
                     personalSettings.setIndex(activity.getPagerSize());
-//                    personalSettings.setIndex(activity.addFragment(personalSettings));
                 }
                 activity.showFragment(this, personalSettings, true);
-//                activity.showPage(personalSettings.getIndex());
                 break;
             }
         }
