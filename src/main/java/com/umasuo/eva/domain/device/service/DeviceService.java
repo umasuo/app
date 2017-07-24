@@ -1,13 +1,17 @@
 package com.umasuo.eva.domain.device.service;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.umasuo.eva.domain.device.dto.DeviceModel;
+import com.umasuo.eva.domain.device.dto.mapper.DeviceMapper;
 import com.umasuo.eva.infra.api.device.DeviceCloudApi;
 import com.umasuo.eva.infra.database.DatabaseHelper;
 import com.umasuo.eva.infra.database.DeviceEntity;
+import com.umasuo.eva.infra.log.LogControl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +59,9 @@ public class DeviceService {
         return instance;
     }
 
+    /**
+     * 获取设备的token。
+     */
     public void getToken() {
 
     }
@@ -64,7 +71,7 @@ public class DeviceService {
      */
     public DeviceService(Context context) {
         // TODO: 17/7/11 这个需要优化
-        dbHelper = new DatabaseHelper(context);
+        dbHelper = DatabaseHelper.getInstance(context);
         db = dbHelper.getReadableDatabase();
         // 如果数据表不存在，则创建表
         db.execSQL(DeviceEntity.CREATE_TABLE_SQL);
@@ -78,5 +85,28 @@ public class DeviceService {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    /**
+     * 获取该用户已经绑定的所有设备.
+     *
+     * @return
+     */
+    public List<DeviceModel> getAllDevice() {
+        Cursor cursor = db.query(DeviceEntity.TABLE_NAME, DeviceEntity.projection, null, null, null, null, null);
+        cursor.moveToFirst();
+        List<DeviceModel> devices = new ArrayList<>();
+        
+        if (cursor.getCount() > 0) {
+            devices.add(DeviceMapper.toModel(cursor));
+        }
+
+        while (cursor.moveToNext()) {
+            devices.add(DeviceMapper.toModel(cursor));
+        }
+
+        //todo 发送网络请求，获取最新的绑定列表.
+        LogControl.debug(TAG, String.valueOf(devices.size()));
+        return devices;
     }
 }

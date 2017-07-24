@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract class ServiceCaller {
 
     protected static String API_URL = "http://user.evacloud.cn";
+//    protected static String API_URL = "http://192.168.1.22:8887";
 
     protected static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(API_URL)

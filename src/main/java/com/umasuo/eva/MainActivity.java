@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umasuo.eva.domain.device.service.DeviceService;
 import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
@@ -36,11 +37,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private static final String TAG = "MainActivity";
     //四个主页在界面上的index，其他地方要跳转都适用这几个数值, 而不是直接使用数字.
-    public static int DEVICE_INDEX = 0;
-    public static int SCENE_INDEX = 1;
-    public static int SIMULATOR_INDEX = 2;
-    public static int PERSONAL_INDEX = 3;
-    public static int WAITING_INDEX = 4;
+    public static final int DEVICE_INDEX = 0;
+    public static final int SCENE_INDEX = 1;
+    public static final int SIMULATOR_INDEX = 2;
+    public static final int PERSONAL_INDEX = 3;
+    public static final int WAITING_INDEX = 4;
+    public static final int DEVICE_NONE_INDEX = 5;
 
     private static MainActivity instance;
 
@@ -65,37 +67,30 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
 
     // 这个类里面只显示三个主入口，其他的入口交由不同的主入口去控制显示
-    FragmentRoot devicesFragment; // 0 保持不变
-    FragmentRoot sceneFragment; // 1 保持不变
-    FragmentRoot simulatorCenter; // 1 保持不变
-    FragmentRoot personalFragment; // 2 保持不变
-    FragmentRoot waitingPage; // 3 等待界面
+    DeviceCenter devicesFragment; // 0 保持不变
+    SceneCenter sceneFragment; // 1 保持不变
+    SimulatorCenter simulatorCenter; // 1 保持不变
+    PersonalCenter personalFragment; // 2 保持不变
+    WaitingPage waitingPage; // 3 等待界面
+    private NoneDevice noneDevice; // 没有设备的设备中心界面
 
     private List<FragmentRoot> pages = new ArrayList<>();
 
     FragmentPagerAdapter adapter;
     FragmentTransaction transaction;
 
-    //用来双击退出
-    private boolean isExit = false;
-    Handler exitHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            isExit = false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
+
+        instance = this;
+
         initView();
         initEvent();
 
-        instance = this;
         // TODO: 17/7/24 init mqtt
 //        initMqtt();
     }
@@ -139,6 +134,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         waitingPage.setIndex(WAITING_INDEX);
         pages.add(waitingPage);
 
+        noneDevice = new NoneDevice();
+        noneDevice.setIndex(DEVICE_NONE_INDEX);
+        pages.add(noneDevice);
+
         adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -158,7 +157,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         scroller.initViewPagerScroll(viewPager);
 
 
-        this.showPage(0);
+        this.showPage(DEVICE_INDEX);
     }
 
     private void initEvent() {
@@ -230,31 +229,47 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
-
         if (i >= 0 && i < 4) {
             switch (i) {
-                case 0:
+                case DEVICE_INDEX:
                     devicesImage.setBackgroundResource(R.drawable.device_press);
                     devicesText.setTextColor(getResources().getColor(R.color.mainColor));
+                    showDeviceCenter();
+                    pages.get(i).onShow();
                     break;
-                case 1:
+                case SCENE_INDEX:
                     sceneImage.setBackgroundResource(R.drawable.scene_press);
                     sceneText.setTextColor(getResources().getColor(R.color.mainColor));
+                    viewPager.setCurrentItem(i);
+                    pages.get(i).onShow();
                     break;
-                case 2:
+                case SIMULATOR_INDEX:
                     simulateImage.setBackgroundResource(R.drawable.simulator_press);
                     simulateText.setTextColor(getResources().getColor(R.color.mainColor));
+                    viewPager.setCurrentItem(i);
+                    pages.get(i).onShow();
                     break;
-                case 3:
+                case PERSONAL_INDEX:
                     personalImage.setBackgroundResource(R.drawable.personal_press);
                     personalText.setTextColor(getResources().getColor(R.color.mainColor));
+                    viewPager.setCurrentItem(i);
+                    pages.get(i).onShow();
                     break;
             }
-
-            viewPager.setCurrentItem(i);
         }
-        //显示登录初始界面
-        pages.get(i).onShow();
+        // 显示回调方法
+
+    }
+
+    /**
+     * 显示设备中心.
+     */
+    private void showDeviceCenter() {
+        if (DeviceService.getInstance(this).getAllDevice().isEmpty()) {
+            viewPager.setCurrentItem(DEVICE_NONE_INDEX);
+        } else {
+            viewPager.setCurrentItem(DEVICE_INDEX);
+        }
     }
 
     /**
@@ -266,7 +281,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public int addFragment(FragmentRoot fragment) {
         int index = this.pages.size();
         LogControl.debug(TAG, "add Fragment index = " + index);
-        pages.add(fragment);
+        if (!fragment.isAdded()) {
+            pages.add(fragment);
+        }
         adapter.notifyDataSetChanged();
         return index;
     }
@@ -371,6 +388,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             bottomMenu.setVisibility(View.GONE);
         }
     }
+
+
+    //用来双击退出
+    private boolean isExit = false;
+    Handler exitHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
 
     private void exit() {
         if (!isExit) {

@@ -36,12 +36,14 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     private DeviceService deviceService;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         LogControl.debug(TAG, "on create.");
         View view = inflater.inflate(R.layout.devices, container, false);
+        activity = (MainActivity) getContext();
 
         deviceAdd = (ImageView) view.findViewById(R.id.devices_add);
         deviceAdd.setOnClickListener(this);
@@ -53,12 +55,12 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         DeviceListAdapter adapter = new DeviceListAdapter(getContext(), mdata);
         deviceItemList.setAdapter(adapter);
         deviceItemList.setOnItemClickListener(this);
-        activity = (MainActivity) getContext();
-
-        // TODO: 17/7/11 读取数据库并发起网络请求去拉取最新的设备列表
-
-
         return view;
+    }
+
+
+    @Override
+    public void onShow() {
     }
 
     @Override

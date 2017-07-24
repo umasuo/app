@@ -11,6 +11,8 @@ public class DeviceEntity {
     public static final String DEVICE_ID = "device_id";
     public static final String OWNER_ID = "owner_id";
     public static final String DEVELOPER_ID = "developer_id";
+    public static final String PRODUCT_ID = "product_id";
+    public static final String UNION_ID = "union_id";
     public static final String DEVICE_TYPE = "device_type";
     public static final String NAME = "name";
 
@@ -20,6 +22,8 @@ public class DeviceEntity {
                     DEVICE_ID + " TEXT PRIMARY KEY," +
                     OWNER_ID + " TEXT," +
                     DEVELOPER_ID + " TEXT," +
+                    PRODUCT_ID + " TEXT," +
+                    UNION_ID + " TEXT," +
                     DEVICE_TYPE + " TEXT," +
                     NAME + " TEXT )";
 
@@ -29,6 +33,8 @@ public class DeviceEntity {
     public static final String[] projection = {
             DEVICE_ID,
             DEVELOPER_ID,
+            PRODUCT_ID,
+            UNION_ID,
             NAME,
             DEVICE_TYPE
     };

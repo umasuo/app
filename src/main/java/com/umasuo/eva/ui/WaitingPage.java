@@ -36,7 +36,7 @@ public class WaitingPage extends FragmentRoot {
         mRefreshAnim = AnimationUtils.loadAnimation(getContext(), R.anim.anim_rotate_refresh);
 
         activity = (MainActivity) getContext();
-        onShow();
+        
         return view;
     }
 

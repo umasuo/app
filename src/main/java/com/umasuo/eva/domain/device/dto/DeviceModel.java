@@ -9,9 +9,7 @@ public class DeviceModel implements Serializable {
      */
     private static final long serialVersionUID = 7285451484930726110L;
 
-
-    private String id;
-
+    private String deviceId;
     /**
      * 从系统批量获取的ID，用于唯一标志该设备。
      */
@@ -27,14 +25,14 @@ public class DeviceModel implements Serializable {
      */
     private String developerId;
 
-    private String deviceId;
+    private String name;
 
-    public String getId() {
-        return id;
+    public String getDeviceId() {
+        return deviceId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     public String getUnionId() {
@@ -61,22 +59,22 @@ public class DeviceModel implements Serializable {
         this.developerId = developerId;
     }
 
-    public String getDeviceId() {
-        return deviceId;
+    public String getName() {
+        return name;
     }
 
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "DeviceModel{" +
-                "id='" + id + '\'' +
+                "deviceId='" + deviceId + '\'' +
                 ", unionId='" + unionId + '\'' +
                 ", productId='" + productId + '\'' +
                 ", developerId='" + developerId + '\'' +
-                ", deviceId='" + deviceId + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
