@@ -22,9 +22,6 @@ public class SignActivity extends FragmentActivity {
     private SignPager signPager;
     private FragmentPagerAdapter signAdapter;
 
-    //登录初始界面、用来选择是登录还是注册。
-    SignInStarter signinStarter;
-
     SignInWithPassword signinWithPassword;
 
     private List<FragmentRoot> pages = new ArrayList<>();
@@ -34,17 +31,6 @@ public class SignActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign);
         LogControl.debug(TAG, "SignActivity onCreate >>");
-
-        signinStarter = new SignInStarter();
-        signinStarter.setPreIndex(0);
-
-        pages.add(signinStarter);
-
-
-//        signinWithPassword = new SignInWithPassword();
-//        signinWithPassword.setPreIndex(0);
-//        signinWithPassword.setIndex(this.addFragment(signinWithPassword));
-//        pages.add(signinWithPassword);
 
 
         signAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -61,6 +47,10 @@ public class SignActivity extends FragmentActivity {
 
         signPager = (SignPager) findViewById(R.id.sign_pager);
         signPager.setAdapter(signAdapter);
+
+        signinWithPassword = new SignInWithPassword();
+        signinWithPassword.setPreIndex(0);
+        signinWithPassword.setIndex(this.addFragment(signinWithPassword));
 
         //显示登录初始界面
         signPager.setCurrentItem(0);

@@ -29,7 +29,7 @@ public class SignInStarter extends FragmentRoot implements View.OnClickListener 
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_starter, container, false);
         signinBtn = (Button) view.findViewById(R.id.signin_btn);
-        registerBtn = (Button) view.findViewById(R.id.register_btn);
+        registerBtn = (Button) view.findViewById(R.id.register_text);
 
         signinBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
@@ -56,7 +56,7 @@ public class SignInStarter extends FragmentRoot implements View.OnClickListener 
                 ((SignActivity) this.getContext()).replaceFragment(signinWithPassword.getIndex());
                 break;
             }
-            case R.id.register_btn: {
+            case R.id.register_text: {
                 //显示注册界面
                 LogControl.debug(TAG, "register");
                 if (register == null) {

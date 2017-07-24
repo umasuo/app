@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,18 +18,20 @@ import com.umasuo.eva.infra.FragmentRoot;
  * 用户登录界面
  */
 public class SignInWithPassword extends FragmentRoot implements View.OnClickListener {
+    private static final String TAG = "SignInWithPassword";
 
-//    ImageView back;
-    TextView phoneText;
-    TextView passwordText;
-    TextView smsSign;
-    TextView forgetPwd;
-    Button submitBtn;
+    private TextView phoneText;
+    private TextView passwordText;
+    private TextView smsSign;
+    private TextView forgetPwd;
+    private Button submitBtn;
+    private TextView registerText;
 
 
     // 以下是以此页面为入口的子页面
     private SigninWithSms signinWithSms;
     private ForgotPassword forgotPassword;
+    private Register register;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,12 +47,13 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
 
         smsSign = view.findViewById(R.id.signin_sms_text);
         forgetPwd = view.findViewById(R.id.forgot_password_text);
+        registerText = view.findViewById(R.id.register_text);
 
 //        back.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
         smsSign.setOnClickListener(this);
         forgetPwd.setOnClickListener(this);
-
+        registerText.setOnClickListener(this);
         return view;
     }
 
@@ -64,10 +66,6 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
     public void onClick(View view) {
         SignActivity activity = (SignActivity) this.getContext();
         switch (view.getId()) {
-//            case R.id.personal_signin_back: {
-//                activity.replaceFragment(preIndex);
-//                break;
-//            }
             case R.id.submit_btn: {
                 login();
                 break;
@@ -88,6 +86,15 @@ public class SignInWithPassword extends FragmentRoot implements View.OnClickList
                     forgotPassword.setPreIndex(index);
                 }
                 activity.replaceFragment(forgotPassword.getIndex());
+                break;
+            }
+            case R.id.register_text: {
+                if (register == null) {
+                    register = new Register();
+                    register.setIndex(activity.addFragment(register));
+                    register.setPreIndex(index);
+                }
+                activity.replaceFragment(register.getIndex());
                 break;
             }
         }

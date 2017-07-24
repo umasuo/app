@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.service.UserService;
 import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * Created on 2017/7/7.
@@ -22,7 +24,9 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     private static final String TAG = "Register";
 
     private SignActivity signActivity;
+
     private Spinner countrySpinner;
+    private ImageView backImg;
     private EditText phoneText;
     private EditText passwordText;
     private EditText password2Text;
@@ -42,6 +46,7 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     }
 
     private void initView(View view) {
+        backImg = (ImageView) view.findViewById(R.id.back);
         countrySpinner = (Spinner) view.findViewById(R.id.country_spinner);
         phoneText = (EditText) view.findViewById(R.id.phone_text);
         passwordText = (EditText) view.findViewById(R.id.password_text);
@@ -52,6 +57,7 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     }
 
     private void initEvent() {
+        backImg.setOnClickListener(this);
         smsCodeBtn.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
     }
@@ -59,6 +65,9 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.back:
+                signActivity.replaceFragment(preIndex);
+                break;
             case R.id.sms_get_btn:
                 getSmsCode();
                 break;
@@ -71,14 +80,39 @@ public class Register extends FragmentRoot implements View.OnClickListener {
     /**
      * 获取注册用的sms code.
      */
+    /**
+     * 获取注册用的sms code.
+     */
     private void getSmsCode() {
         String phone = phoneText.getText().toString();
-        if (phone == null) {
-            // TODO: 17/7/21 用户没有输入手机号，不发送请求。
+        LogControl.debug(TAG, "Get sms code for: " + phone);
+        if (phone.isEmpty()) {
+            Toast.makeText(signActivity, "请输入手机号", Toast.LENGTH_SHORT).show();
         } else {
-            // TODO: 17/7/21 进入等待状态，请求返回之后再显示发送成功
-            UserService.getInstance(getContext()).getSmsCode(phone);
+            UserService.getInstance(signActivity).getSmsCode(phone);//调用业务逻辑服务，然后再在界面上进行更改.
+            smsCodeBtn.setText("发送成功");
+            smsCodeBtn.setEnabled(false);
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        this.sleep(60000);//等待60秒，然后重新更改为重新发送和可用
+                        signActivity.runOnUiThread(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        smsCodeBtn.setText("重新发送");
+                                        smsCodeBtn.setEnabled(true);
+                                    }
+                                }
+                        );
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
         }
+
     }
 
     /**
@@ -96,9 +130,8 @@ public class Register extends FragmentRoot implements View.OnClickListener {
         }
 
         if (!password.equals(password2)) {
-            // TODO: 17/7/21 两个密码要一样.
             Toast toast = new Toast(getContext());
-            toast.setText("两个密码得一样啊哥！");
+            toast.setText("两次输入的密码不匹");
             toast.setDuration(Toast.LENGTH_SHORT);
             toast.show();
             return;

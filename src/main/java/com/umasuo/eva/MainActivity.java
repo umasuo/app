@@ -88,7 +88,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initEvent();
 
         instance = this;
-        initMqtt();
+//        initMqtt();
     }
 
     private void initView() {

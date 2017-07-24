@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.user.service.UserService;
@@ -21,37 +22,35 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
 
     private static final String TAG = "SigninWithSms";
 
+    private SignActivity signActivity;
+
     private ImageView backBtn;
 
     private Button signin;
 
-    private Button getSmsCodeBtn;
+    private Button smsCodeBtn;
 
-    private EditText phone;
+    private EditText phoneText;
 
     private EditText smsCode;
-
-    private UserService userService;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signin_sms, container, false);
+        signActivity = (SignActivity) getContext();
 
         backBtn = (ImageView) view.findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
-        getSmsCodeBtn = (Button) view.findViewById(R.id.sms_get_btn);
-        getSmsCodeBtn.setOnClickListener(this);
+        smsCodeBtn = (Button) view.findViewById(R.id.sms_get_btn);
+        smsCodeBtn.setOnClickListener(this);
 
         signin = (Button) view.findViewById(R.id.submit_btn);
         signin.setOnClickListener(this);
 
-        phone = (EditText) view.findViewById(R.id.phone_text);
+        phoneText = (EditText) view.findViewById(R.id.phone_text);
         smsCode = (EditText) view.findViewById(R.id.sms_code);
-
-        userService = new UserService(getContext());
 
         return view;
     }
@@ -66,19 +65,20 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
                 break;
             }
             case R.id.submit_btn: {
-                String phoneText = phone.getText().toString();
+                String phoneText = this.phoneText.getText().toString();
                 String smsCodeText = smsCode.getText().toString();
                 // TODO: 17/7/18 更改开发者ID
-                userService.signinWithSmsCode(phoneText, smsCodeText, "developer1");
+                UserService.getInstance(signActivity).signinWithSmsCode(phoneText, smsCodeText, "developer1");
                 break;
             }
             case R.id.sms_get_btn: {
                 // 发起发送短信验证码请求
-                String phoneText = phone.getText().toString();
+                String phoneText = this.phoneText.getText().toString();
                 LogControl.debug(TAG, "Get sms code for: " + phoneText);
-                userService.getSmsCode(phoneText);//调用业务逻辑服务，然后再在界面上进行更改.
-                getSmsCodeBtn.setText("发送成功");
-                getSmsCodeBtn.setEnabled(false);
+
+                UserService.getInstance(signActivity).getSmsCode(phoneText);//调用业务逻辑服务，然后再在界面上进行更改.
+                smsCodeBtn.setText("发送成功");
+                smsCodeBtn.setEnabled(false);
                 new Thread() {
                     @Override
                     public void run() {
@@ -88,8 +88,8 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
                                     new Runnable() {
                                         @Override
                                         public void run() {
-                                            getSmsCodeBtn.setText("重新发送");
-                                            getSmsCodeBtn.setEnabled(true);
+                                            smsCodeBtn.setText("重新发送");
+                                            smsCodeBtn.setEnabled(true);
                                         }
                                     }
                             );
@@ -101,6 +101,41 @@ public class SigninWithSms extends FragmentRoot implements View.OnClickListener 
 
                 break;
             }
+        }
+
+    }
+
+    /**
+     * 获取注册用的sms code.
+     */
+    private void getSmsCode() {
+        String phone = phoneText.getText().toString();
+        LogControl.debug(TAG, "Get sms code for: " + phone);
+        if (phone.isEmpty()) {
+            Toast.makeText(signActivity, "请输入手机号", Toast.LENGTH_SHORT).show();
+        } else {
+            UserService.getInstance(signActivity).getSmsCode(phone);//调用业务逻辑服务，然后再在界面上进行更改.
+            smsCodeBtn.setText("发送成功");
+            smsCodeBtn.setEnabled(false);
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        this.sleep(60000);//等待60秒，然后重新更改为重新发送和可用
+                        signActivity.runOnUiThread(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        smsCodeBtn.setText("重新发送");
+                                        smsCodeBtn.setEnabled(true);
+                                    }
+                                }
+                        );
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
         }
 
     }

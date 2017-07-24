@@ -18,6 +18,9 @@
     <dimen name="activity_top_marginRight">40px</dimen>
     <dimen name="activity_top_marginLeft">20px</dimen>
 
+    <dimen name="input_height">150px</dimen>
+    <dimen name="input_margin_top">10px</dimen>
+
 
     <dimen name="activity_bottom_icon_width">70px</dimen>
     <dimen name="activity_bottom_icon_height">70px</dimen>

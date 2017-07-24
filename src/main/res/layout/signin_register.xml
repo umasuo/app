@@ -2,13 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/deviceTypeItemBgColor"
+    android:background="@color/mainBackgroundColor"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_top_height"
-        android:background="@color/topBgColor"
         android:orientation="horizontal">
 
         <ImageView
@@ -44,37 +43,49 @@
         <Spinner
             android:id="@+id/country_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/input_height"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
-            android:entries="@array/country_arrays" />
+            android:layout_marginTop="@dimen/input_margin_top"
+            android:background="@drawable/input_bg"
+            android:entries="@array/country_arrays"
+            android:paddingLeft="30px" />
 
         <EditText
             android:id="@+id/phone_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/input_height"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
+            android:layout_marginTop="@dimen/input_margin_top"
+            android:background="@drawable/input_bg"
             android:hint="手机号"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:paddingLeft="30px" />
 
         <EditText
             android:id="@+id/password_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/input_height"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
+            android:layout_marginTop="@dimen/input_margin_top"
+            android:background="@drawable/input_bg"
             android:hint="输入密码"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingLeft="30px" />
 
         <EditText
             android:id="@+id/password_repeat_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/input_height"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
+            android:layout_marginTop="@dimen/input_margin_top"
+            android:background="@drawable/input_bg"
             android:hint="重复密码"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingLeft="30px" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,30 +94,38 @@
 
             <EditText
                 android:id="@+id/sms_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/input_height"
                 android:layout_marginLeft="50px"
-                android:layout_marginRight="50px"
-                android:layout_weight="4"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="@dimen/input_margin_top"
+                android:layout_weight="5"
+                android:background="@drawable/input_bg"
                 android:hint="验证码"
-                android:inputType="text" />
+                android:inputType="text"
+                android:paddingLeft="30px" />
 
             <Button
                 android:id="@+id/sms_get_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50px"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/input_height"
+                android:layout_marginLeft="10px"
                 android:layout_marginRight="50px"
-                android:layout_weight="2"
+                android:layout_marginTop="@dimen/input_margin_top"
+                android:layout_weight="3"
+                android:background="@drawable/blue_button_item"
+                android:paddingLeft="30px"
                 android:text="获取" />
         </LinearLayout>
 
         <Button
             android:id="@+id/submit_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/input_height"
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px"
+            android:layout_marginTop="20px"
+            android:background="@drawable/blue_button_item"
             android:text="注册" />
     </LinearLayout>
 

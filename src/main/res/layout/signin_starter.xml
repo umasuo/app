@@ -19,18 +19,18 @@
         android:layout_marginLeft="50px"
         android:layout_marginRight="50px"
         android:layout_marginTop="30px"
-        android:background="@drawable/logo_button_item"
+        android:background="@drawable/blue_button_item"
         android:text="登录" />
 
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/register_text"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50px"
         android:layout_marginRight="50px"
         android:layout_marginTop="30px"
-        android:background="@drawable/logo_button_item"
+        android:background="@drawable/blue_button_item"
         android:text="注册" />
 
 
