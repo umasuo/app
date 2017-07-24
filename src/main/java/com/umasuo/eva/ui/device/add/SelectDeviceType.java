@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
@@ -33,16 +34,16 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
     private ImageView backBtn;
 
     private PowerUpDevice powerUpDevice;
-    private MainActivity mActivity;
+    private MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        mActivity = (MainActivity) this.getContext();
+        mainActivity = (MainActivity) this.getContext();
         View view = inflater.inflate(R.layout.device_add_selector, container, false);
 
-        backBtn = (ImageView) view.findViewById(R.id.device_select_back);
+        backBtn = (ImageView) view.findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
 
@@ -56,12 +57,15 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
 
     @Override
     public void onClick(View view) {
-//        Intent intent = new Intent();
-//        intent.setClassName(this.getContext(), "com.umasuo.eva.MainActivity");
-//        this.getContext().startActivity(intent);
-//        this.getActivity().overridePendingTransition(R.anim.choose_open, R.anim.choose_close);
-//        this.getActivity().finish();
-//        mActivity.getSupportFragmentManager().popBackStack();
+        switch (view.getId()) {
+            case R.id.back: {
+                mainActivity.popBackStack();
+                break;
+            }
+            case R.id.scan: {
+                Toast.makeText(mainActivity, "此功能敬请期待.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /**
@@ -77,20 +81,18 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         Map<String, Object> item = data.get(i);
         LogControl.debug(TAG, "click: " + i + ", name: " + item.get("title"));
         // 设置选中了的设备
-        // TODO: 17/7/10 添加数据
         if (powerUpDevice == null) {
             powerUpDevice = new PowerUpDevice();
             powerUpDevice.setPreIndex(index);
-            powerUpDevice.setIndex(mActivity.getPagerSize());
-            powerUpDevice.setIndex(mActivity.addFragment(powerUpDevice));
+            powerUpDevice.setIndex(mainActivity.getPagerSize());
+            powerUpDevice.setIndex(mainActivity.addFragment(powerUpDevice));
         }
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("model", (DeviceItem) item.get("model"));
         powerUpDevice.setArguments(bundle);
 
-//        mActivity.showPage(powerUpDevice.getIndex());
-        mActivity.showFragment(this, powerUpDevice, true);
+        mainActivity.showFragment(this, powerUpDevice, true);
     }
 
     /**
@@ -111,80 +113,76 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("照明", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("照明", R.drawable.device_icon_d));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("防丢器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("防丢器", R.drawable.device_icon_fdq));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("窗帘", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("窗帘", R.drawable.device_icon_cl));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("门锁", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("门锁", R.drawable.device_icon_ms));
         list.add(map);
 
         map = new HashMap<String, Object>();
         map.put("model", new DeviceItem("洗衣机", R.drawable.device_icon_xyj));
         list.add(map);
-//
-//        map = new HashMap<String, Object>();
-//        map.put("model", new DeviceItem("冰箱", R.drawable.device_icon));
-//        list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空调", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("空调", R.drawable.device_icon_kt));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空调扇", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("空调扇", R.drawable.device_icon_kts));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("风扇", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("风扇", R.drawable.device_icon_fs));
         list.add(map);
 
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("加湿器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("加湿器", R.drawable.device_icon_jsq));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("除湿机", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("除湿机", R.drawable.device_icon_csj));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("净水器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("净水器", R.drawable.device_icon_jsj));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("扫地机器人", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("扫地机器人", R.drawable.device_icon_sdjqr));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("微波炉", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("微波炉", R.drawable.device_icon_wbl));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("烤箱", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("烤箱", R.drawable.device_icon_kx));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("电饭煲", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("电饭煲", R.drawable.device_icon_dfb));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("热水器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("热水器", R.drawable.device_icon_rsq));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("取暖器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("取暖器", R.drawable.device_icon_qnj));
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空气净化器", R.drawable.device_icon_cz));
+        map.put("model", new DeviceItem("空气净化器", R.drawable.device_icon_jhq));
         list.add(map);
 
         map = new HashMap<String, Object>();

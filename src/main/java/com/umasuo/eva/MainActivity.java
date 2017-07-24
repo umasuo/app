@@ -257,7 +257,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     break;
             }
         }
-        // 显示回调方法
 
     }
 
@@ -267,6 +266,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void showDeviceCenter() {
         if (DeviceService.getInstance(this).getAllDevice().isEmpty()) {
             viewPager.setCurrentItem(DEVICE_NONE_INDEX);
+//            viewPager.setCurrentItem(DEVICE_INDEX);
         } else {
             viewPager.setCurrentItem(DEVICE_INDEX);
         }
@@ -336,13 +336,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     @Override
     public void onBackPressed() {
-//        int curIndex = viewPager.getCurrentItem();
-//        LogControl.debug(TAG,"onBackPressed curIndex ="+curIndex);
-
-
-//        FragmentRoot curFrag = pages.get(curIndex);
-//        showPage(curFrag.getPreIndex());
-
 
         //后面再优化，哪些fragment在popBackStack 或者改变跳转方式 不被销毁
         popBackStack();

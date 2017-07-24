@@ -28,7 +28,7 @@ public class NoneDevice extends FragmentRoot implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        LogControl.debug("NoneDevice", "on create.");
+        LogControl.debug(TAG, "on create.");
         View view = inflater.inflate(R.layout.device_none, container, false);
         activity = (MainActivity) getContext();
 
@@ -46,8 +46,8 @@ public class NoneDevice extends FragmentRoot implements View.OnClickListener {
     public void onClick(View view) {
         if (selectDeviceType == null) {
             selectDeviceType = new SelectDeviceType();
-            selectDeviceType.setIndex(activity.addFragment(selectDeviceType));
             selectDeviceType.setPreIndex(index);
+            selectDeviceType.setIndex(activity.getPagerSize());
         }
         activity.showFragment(this, selectDeviceType, true);
     }

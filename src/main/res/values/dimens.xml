@@ -27,9 +27,9 @@
     <dimen name="activity_bottom_height">180px</dimen>
     <dimen name="activity_bottom_text_size">36px</dimen>
 
-    <dimen name="device_type_height">200px</dimen>
-    <dimen name="device_type_icon_width">180px</dimen>
-    <dimen name="device_type_icon_height">180px</dimen>
+    <dimen name="device_type_height">160px</dimen>
+    <dimen name="device_type_icon_width">66px</dimen>
+    <dimen name="device_type_icon_height">66px</dimen>
     <dimen name="device_type_icon_marginLeft">30px</dimen>
     <dimen name="device_type_icon_marginRight">30px</dimen>
     <dimen name="device_type_arrow_height">60px</dimen>

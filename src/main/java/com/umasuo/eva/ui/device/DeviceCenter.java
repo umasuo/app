@@ -88,9 +88,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
             selectDeviceType = new SelectDeviceType();
             selectDeviceType.setPreIndex(index);
             selectDeviceType.setIndex(activity.getPagerSize());
-//            selectDeviceType.setIndex(activity.addFragment(selectDeviceType));
         }
-//        activity.showPage(selectDeviceType.getIndex());
         activity.showFragment(this, selectDeviceType, true);
 
     }
