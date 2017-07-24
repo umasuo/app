@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="@dimen/top_left_arrow_width"
-            android:layout_height="@dimen/top_left_arrow_height"
+            android:layout_width="80px"
+            android:layout_height="80px"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/top_left_arrow_marginBot"
             android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"

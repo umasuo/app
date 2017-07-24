@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackgroundColor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_height"
+        android:background="@color/mainBackgroundColor"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/top_left_arrow_marginBot"
+            android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"
+            android:layout_marginRight="@dimen/top_left_arrow_marginRight"
+            android:layout_marginTop="@dimen/top_left_arrow_marginTop"
+            android:src="@drawable/left_icon" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="80px"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="@string/about"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="360px"
+            android:layout_height="360px"
+            android:layout_gravity="center"
+            android:layout_marginTop="260px"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:gravity="center"
+            android:text="V1.0.0" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="120px"
+            android:background="@color/mainBackgroundColor"
+            android:text="Eva云平台是一个全球化的、易于使用的公有云平台。为智能硬件开发者或企业提供全生命周期、完整的智能化解决方案。"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
