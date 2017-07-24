@@ -28,12 +28,13 @@ import java.util.Map;
 public class DeviceCenter extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private static final String TAG = "DeviceCenter";
-    private ImageView devices_add;
+    private ImageView deviceAdd;
     private ListView deviceItemList;
     private List<Map<String, Object>> mdata;
     private MainActivity activity;
     private SelectDeviceType selectDeviceType;
     private DeviceService deviceService;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +43,8 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         LogControl.debug(TAG, "on create.");
         View view = inflater.inflate(R.layout.devices, container, false);
 
-        devices_add = (ImageView) view.findViewById(R.id.devices_add);
-        devices_add.setOnClickListener(this);
+        deviceAdd = (ImageView) view.findViewById(R.id.devices_add);
+        deviceAdd.setOnClickListener(this);
 
         //从服务器或本地数据库拉取数据
         mdata = getData();
@@ -55,6 +56,8 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         activity = (MainActivity) getContext();
 
         // TODO: 17/7/11 读取数据库并发起网络请求去拉取最新的设备列表
+
+
         return view;
     }
 

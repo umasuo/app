@@ -21,6 +21,7 @@ import com.umasuo.eva.infra.mqtt.MqttClient;
 import com.umasuo.eva.ui.WaitingPage;
 import com.umasuo.eva.ui.anim.ViewPagerScroller;
 import com.umasuo.eva.ui.device.DeviceCenter;
+import com.umasuo.eva.ui.device.NoneDevice;
 import com.umasuo.eva.ui.personal.PersonalCenter;
 import com.umasuo.eva.ui.scene.SceneCenter;
 import com.umasuo.eva.ui.simulator.SimulatorCenter;
@@ -95,6 +96,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initEvent();
 
         instance = this;
+        // TODO: 17/7/24 init mqtt
 //        initMqtt();
     }
 
@@ -119,18 +121,22 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         devicesFragment = new DeviceCenter();
         devicesFragment.setIndex(DEVICE_INDEX);
+        pages.add(devicesFragment);
+
         sceneFragment = new SceneCenter();
         sceneFragment.setIndex(SCENE_INDEX);
+        pages.add(sceneFragment);
+
         simulatorCenter = new SimulatorCenter();
         simulatorCenter.setIndex(SIMULATOR_INDEX);
+        pages.add(simulatorCenter);
+
         personalFragment = new PersonalCenter();
         personalFragment.setIndex(PERSONAL_INDEX);
+        pages.add(personalFragment);
+
         waitingPage = new WaitingPage();
         waitingPage.setIndex(WAITING_INDEX);
-        pages.add(devicesFragment);
-        pages.add(sceneFragment);
-        pages.add(simulatorCenter);
-        pages.add(personalFragment);
         pages.add(waitingPage);
 
         adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -150,6 +156,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         //四个主界面之间跳转，没有滑动效果
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.initViewPagerScroll(viewPager);
+
 
         this.showPage(0);
     }
@@ -223,6 +230,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * @param i
      */
     public void showPage(int i) {
+
         if (i >= 0 && i < 4) {
             switch (i) {
                 case 0:
@@ -242,6 +250,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     personalText.setTextColor(getResources().getColor(R.color.mainColor));
                     break;
             }
+
             viewPager.setCurrentItem(i);
         }
         //显示登录初始界面
