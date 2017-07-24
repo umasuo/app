@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
@@ -57,11 +56,9 @@ public class FeedbackListAdapter extends BaseAdapter {
         FeedbackListAdapter.ViewHolder holder;
         if (view == null) {
             holder = new FeedbackListAdapter.ViewHolder();
-            view = mInflater.inflate(R.layout.feedback_item, null);
-            holder.icon = (ImageView) view.findViewById(R.id.icon);
+            view = mInflater.inflate(R.layout.personal_feedback_item, null);
             holder.title = (TextView) view.findViewById(R.id.title);
             holder.date = (TextView) view.findViewById(R.id.date);
-            holder.status = (TextView) view.findViewById(R.id.status);
             holder.position = i;
             view.setTag(holder);
 
@@ -78,10 +75,8 @@ public class FeedbackListAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public ImageView icon;
         public TextView title;
         public TextView date;
-        public TextView status;
         public int position;
     }
 

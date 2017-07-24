@@ -11,7 +11,7 @@
     <color name="chooseDevicesBgColor">#FFF8DC</color>
     <color name="deviceTypeItemColor">#030303</color>
     <color name="deviceTypeItemBgColor">#F7F7F7</color>
-    <color name="itemDividerColor">#a7a7a7</color>
+    <color name="itemDividerColor">#c2c2c2</color>
 
     <color name="button">#006aff</color>
     <color name="editorItemColor">#eeeeee</color>

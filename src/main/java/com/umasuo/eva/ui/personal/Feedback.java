@@ -10,7 +10,6 @@ import android.widget.ListView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.feedback.dto.FeedbackModel;
-import com.umasuo.eva.domain.scene.dto.SceneModel;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.FeedbackListAdapter;
 import com.umasuo.eva.infra.log.LogControl;
@@ -35,9 +34,9 @@ public class Feedback extends FragmentRoot implements AdapterView.OnItemClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.feedback, container, false);
+        View view = inflater.inflate(R.layout.personal_feedback, container, false);
 
-        contents = (ListView) view.findViewById(R.id.feedback_content);
+        contents = (ListView) view.findViewById(R.id.feedback_list);
         contents.setAdapter(new FeedbackListAdapter(getContext(), getData()));
         contents.setOnItemClickListener(this);
 
@@ -68,15 +67,19 @@ public class Feedback extends FragmentRoot implements AdapterView.OnItemClickLis
      */
     private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
 
-        map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
 
         FeedbackModel feedbackModel = new FeedbackModel();
         feedbackModel.setTitle("这个反馈不行啊");
-
         map.put("model", feedbackModel);
         list.add(map);
+
+        Map<String, Object> map1 = new HashMap<String, Object>();
+        FeedbackModel feedbackModel1 = new FeedbackModel();
+        feedbackModel1.setTitle("我是一个测试的feedback啊！");
+        map1.put("model", feedbackModel1);
+        list.add(map1);
 
 
         return list;
