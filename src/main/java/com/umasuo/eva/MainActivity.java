@@ -33,7 +33,14 @@ import java.util.List;
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
-    private String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
+    //四个主页在界面上的index，其他地方要跳转都适用这几个数值, 而不是直接使用数字.
+    public static int DEVICE_INDEX = 0;
+    public static int SCENE_INDEX = 1;
+    public static int SIMULATOR_INDEX = 2;
+    public static int PERSONAL_INDEX = 3;
+    public static int WAITING_INDEX = 4;
+
     private static MainActivity instance;
 
     private MainViewPager viewPager;
@@ -111,15 +118,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         personalText = (TextView) findViewById(R.id.personalText);
 
         devicesFragment = new DeviceCenter();
-        devicesFragment.setIndex(0);
+        devicesFragment.setIndex(DEVICE_INDEX);
         sceneFragment = new SceneCenter();
-        sceneFragment.setIndex(1);
+        sceneFragment.setIndex(SCENE_INDEX);
         simulatorCenter = new SimulatorCenter();
-        simulatorCenter.setIndex(2);
+        simulatorCenter.setIndex(SIMULATOR_INDEX);
         personalFragment = new PersonalCenter();
-        personalFragment.setIndex(3);
+        personalFragment.setIndex(PERSONAL_INDEX);
         waitingPage = new WaitingPage();
-        waitingPage.setIndex(4);
+        waitingPage.setIndex(WAITING_INDEX);
         pages.add(devicesFragment);
         pages.add(sceneFragment);
         pages.add(simulatorCenter);
@@ -144,6 +151,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.initViewPagerScroll(viewPager);
 
+        this.showPage(0);
     }
 
     private void initEvent() {
@@ -205,7 +213,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 showPage(3);
                 break;
             default:
-
                 break;
         }
     }
@@ -217,6 +224,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     public void showPage(int i) {
         if (i >= 0 && i < 4) {
+            switch (i) {
+                case 0:
+                    devicesImage.setBackgroundResource(R.drawable.device_press);
+                    devicesText.setTextColor(getResources().getColor(R.color.mainColor));
+                    break;
+                case 1:
+                    sceneImage.setBackgroundResource(R.drawable.scene_press);
+                    sceneText.setTextColor(getResources().getColor(R.color.mainColor));
+                    break;
+                case 2:
+                    simulateImage.setBackgroundResource(R.drawable.simulator_press);
+                    simulateText.setTextColor(getResources().getColor(R.color.mainColor));
+                    break;
+                case 3:
+                    personalImage.setBackgroundResource(R.drawable.personal_press);
+                    personalText.setTextColor(getResources().getColor(R.color.mainColor));
+                    break;
+            }
             viewPager.setCurrentItem(i);
         }
         //显示登录初始界面
@@ -311,8 +336,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     private void resetImg() {
         devicesImage.setBackgroundResource(R.drawable.device);
-        sceneImage.setBackgroundResource(R.drawable.scene_press);
-        personalImage.setBackgroundResource(R.drawable.personal_press);
+        devicesText.setTextColor(getResources().getColor(R.color.black));
+
+        sceneImage.setBackgroundResource(R.drawable.scene);
+        sceneText.setTextColor(getResources().getColor(R.color.black));
+
+        simulateImage.setBackgroundResource(R.drawable.simulator);
+        simulateText.setTextColor(getResources().getColor(R.color.black));
+
+        personalImage.setBackgroundResource(R.drawable.personal);
+        personalText.setTextColor(getResources().getColor(R.color.black));
     }
 
     /**

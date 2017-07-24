@@ -66,7 +66,7 @@
             android:id="@+id/simulateImg"
             android:layout_width="@dimen/activity_bottom_icon_width"
             android:layout_height="@dimen/activity_bottom_icon_height"
-            android:background="@drawable/simulator_press" />
+            android:background="@drawable/simulator_menu" />
 
         <TextView
             android:id="@+id/simulateText"
