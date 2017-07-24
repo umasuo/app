@@ -3,7 +3,7 @@
     android:id="@+id/scene_main"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
-    android:background="@color/deviceTypeItemBgColor"
+    android:background="@color/mainBackgroundColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -40,8 +40,8 @@
         android:id="@+id/scene_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        ></ListView>
+        android:divider="@color/mainBackgroundColor"
+        android:dividerHeight="10px"></ListView>
 
 
 </LinearLayout>

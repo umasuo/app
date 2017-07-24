@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.umasuo.eva.R;
 import com.umasuo.eva.domain.scene.dto.SceneModel;
@@ -23,10 +24,12 @@ public class SceneListAdapter extends BaseAdapter {
     private String TAG = "SceneListAdapter";
 
     private LayoutInflater mInflater;
+    private Context context;
     private List<Map<String, Object>> mdata;
 
     public SceneListAdapter(Context context, List<Map<String, Object>> data) {
         mInflater = LayoutInflater.from(context);
+        this.context = context;
         mdata = data;
     }
 
@@ -59,9 +62,9 @@ public class SceneListAdapter extends BaseAdapter {
         if (view == null) {
             holder = new SceneListAdapter.ViewHolder();
             view = mInflater.inflate(R.layout.scene_item, null);
-            holder.sceneIcon = (ImageView) view.findViewById(R.id.scene_left_icon);
+            holder.sceneIcon = (ImageView) view.findViewById(R.id.scene_icon);
             holder.name = (TextView) view.findViewById(R.id.scene_name);
-            holder.actionBtn = (TextView) view.findViewById(R.id.scene_action_btn);
+            holder.actionBtn = (ImageView) view.findViewById(R.id.action_img);
             holder.position = i;
             holder.actionBtn.setOnClickListener(new SceneListAdapter.SceneActionOnClickListener(holder));
 
@@ -70,12 +73,10 @@ public class SceneListAdapter extends BaseAdapter {
         } else {
             holder = (SceneListAdapter.ViewHolder) view.getTag();
         }
-//        holder.sceneIcon.setBackgroundResource((Integer) mdata.get(i).get("sceneIcon"));
-//        holder.name.setText((String) mdata.get(i).get("name"));
 
-        SceneModel sModel = (SceneModel)(mdata.get(i).get("model"));
-        if(sModel != null) {
-            holder.sceneIcon.setBackgroundResource(sModel.getmSceneIconId());
+        SceneModel sModel = (SceneModel) (mdata.get(i).get("model"));
+        if (sModel != null) {
+            holder.sceneIcon.setImageDrawable(context.getResources().getDrawable(sModel.getmSceneIconId()));
             holder.name.setText(sModel.getmSceneName());
         }
         return view;
@@ -84,7 +85,7 @@ public class SceneListAdapter extends BaseAdapter {
     public static class ViewHolder {
         public ImageView sceneIcon;
         public TextView name;
-        public TextView actionBtn;
+        public ImageView actionBtn;
         public int position;
     }
 
@@ -102,6 +103,7 @@ public class SceneListAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             LogControl.debug(TAG, "action for scene: " + mviewHolder.position);
+            Toast.makeText(context, "已经执行场景: " + mviewHolder.name.getText().toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }

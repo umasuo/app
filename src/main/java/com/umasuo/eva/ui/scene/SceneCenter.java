@@ -1,6 +1,5 @@
 package com.umasuo.eva.ui.scene;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -34,20 +33,20 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     public List<Map<String, Object>> mdata;
 
     private SceneEditor editorFragment;
-    MainActivity activity;
+    private MainActivity activity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogControl.debug(TAG,"onCreate >>>");
+        LogControl.debug(TAG, "onCreate >>>");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LogControl.debug(TAG,"onCreateView >>>");
-        // TODO Auto-generated method stub
+        LogControl.debug(TAG, "onCreateView >>>");
         View view = inflater.inflate(R.layout.scene, container, false);
+        activity = (MainActivity) getContext();
 
         sceneList = (ListView) view.findViewById(R.id.scene_list);
         mdata = getData();
@@ -58,21 +57,10 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
         sceneAddBtn = (ImageView) view.findViewById(R.id.scene_add_btn);
         sceneAddBtn.setOnClickListener(this);
 
-        activity = (MainActivity) getContext();
+
         return view;
     }
 
-    @Override
-    public void onResume() {
-        LogControl.debug(TAG, "onResume");
-        super.onResume();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        LogControl.debug(TAG, "onAttach");
-        super.onAttach(context);
-    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -94,9 +82,10 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     public void onClick(View view) {
         LogControl.debug(TAG, "click: " + view.getId());
         switch (view.getId()) {
-            case R.id.scene_add_btn:
+            case R.id.scene_add_btn: {
                 LogControl.debug(TAG, "add new  scene");
                 break;
+            }
         }
     }
 
@@ -110,21 +99,19 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-//        map.put("sceneIcon", R.drawable.home);
-//        map.put("name", "到家");
         map.put("model", new SceneModel("到家", R.drawable.scene_icon_home));
         list.add(map);
 
         map = new HashMap<String, Object>();
-//        map.put("sceneIcon", R.drawable.leavehome);
-//        map.put("name", "离家");
         map.put("model", new SceneModel("离家", R.drawable.scene_icon_leave));
         list.add(map);
 
         map = new HashMap<String, Object>();
-//        map.put("sceneIcon", R.drawable.getup);
-//        map.put("name", "起床");
         map.put("model", new SceneModel("起床", R.drawable.scene_icon_getup));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("model", new SceneModel("休息", R.drawable.scene_icon_sleep));
         list.add(map);
 
         return list;
@@ -133,11 +120,10 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        LogControl.debug(TAG, "item: " + i + ", id: " + view.findViewById(R.id.scene_left_icon).getId());
-        if(editorFragment == null) {
+        LogControl.debug(TAG, "item: " + i + ", id: " + view.findViewById(R.id.scene_icon).getId());
+        if (editorFragment == null) {
             editorFragment = new SceneEditor();
             editorFragment.setPreIndex(index);
-//                editorFragment.setIndex(activity.addFragment(editorFragment));
             editorFragment.setIndex(activity.getPagerSize());
         }
         Bundle bundle = new Bundle();
@@ -145,8 +131,7 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
         bundle.putSerializable("model", (SceneModel) item.get("model"));
         editorFragment.setArguments(bundle);
 
-            activity.showFragment(this,editorFragment,true);
-//        activity.showPage(editorFragment.getIndex());
+        activity.showFragment(this, editorFragment, true);
 
     }
 }
