@@ -3,7 +3,7 @@
     android:id="@+id/editor_top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/deviceTypeItemBgColor"
+    android:background="@color/mainBackgroundColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -43,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/pageBgColor"
         android:orientation="vertical">
 
         <LinearLayout
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/scene_editor_margin"
             android:layout_marginRight="@dimen/scene_editor_margin"
+            android:layout_marginTop="40px"
             android:background="@drawable/corners_panel"
             android:orientation="vertical">
 
@@ -79,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
             android:layout_marginTop="@dimen/scene_editor_margin"
-            android:background="@color/editorItemColor"
+            android:background="@color/mainBackgroundColor"
             android:orientation="horizontal">
 
             <TextView
@@ -89,7 +91,8 @@
                 android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:background="@drawable/circle_icon"
                 android:gravity="center"
-                android:text="1" />
+                android:text="1"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -105,16 +108,17 @@
                 android:layout_height="@dimen/scene_editor_icon_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="@dimen/scene_editor_margin"
-                android:background="@drawable/add_icon" />
+                android:background="@drawable/add_blue_icon" />
 
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/no_condition"
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
             android:layout_marginTop="@dimen/scene_editor_item_gap"
-            android:background="@color/editorItemColor"
+            android:background="@color/mainBackgroundColor"
             android:orientation="horizontal">
 
             <ImageView
@@ -144,7 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/scene_editor_item_height"
             android:layout_marginTop="@dimen/scene_editor_margin"
-            android:background="@color/editorItemColor"
+            android:background="@color/mainBackgroundColor"
             android:orientation="horizontal">
 
             <TextView
@@ -154,7 +158,8 @@
                 android:layout_marginLeft="@dimen/scene_editor_margin"
                 android:background="@drawable/circle_icon"
                 android:gravity="center"
-                android:text="2" />
+                android:text="2"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -170,15 +175,16 @@
                 android:layout_height="@dimen/scene_editor_icon_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="@dimen/scene_editor_margin"
-                android:background="@drawable/add_icon" />
+                android:background="@drawable/add_blue_icon" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/no_task"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/scene_editor_item_gap"
-            android:background="@color/editorItemColor"
+            android:background="@color/mainBackgroundColor"
             android:orientation="vertical">
 
             <TextView

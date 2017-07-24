@@ -26,7 +26,7 @@
             android:typeface="monospace" />
 
         <ImageView
-            android:id="@+id/scene_add_btn"
+            android:id="@+id/add_btn"
             android:layout_width="@dimen/activity_top_icon_width"
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"

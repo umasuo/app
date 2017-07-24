@@ -28,11 +28,12 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
 
     private static final String TAG = "SceneCenter";
 
-    private ImageView sceneAddBtn;
+    private ImageView addBtn;
     private ListView sceneList;
-    public List<Map<String, Object>> mdata;
+    public List<Map<String, Object>> data;
 
     private SceneEditor editorFragment;
+    private SceneAdd sceneAdd;
     private MainActivity activity;
 
     @Override
@@ -49,13 +50,13 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
         activity = (MainActivity) getContext();
 
         sceneList = (ListView) view.findViewById(R.id.scene_list);
-        mdata = getData();
-        SceneListAdapter sAdapter = new SceneListAdapter(getContext(), mdata);
+        data = getData();
+        SceneListAdapter sAdapter = new SceneListAdapter(getContext(), data);
         sceneList.setAdapter(sAdapter);
         sceneList.setOnItemClickListener(this);
 
-        sceneAddBtn = (ImageView) view.findViewById(R.id.scene_add_btn);
-        sceneAddBtn.setOnClickListener(this);
+        addBtn = (ImageView) view.findViewById(R.id.add_btn);
+        addBtn.setOnClickListener(this);
 
 
         return view;
@@ -82,8 +83,13 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
     public void onClick(View view) {
         LogControl.debug(TAG, "click: " + view.getId());
         switch (view.getId()) {
-            case R.id.scene_add_btn: {
-                LogControl.debug(TAG, "add new  scene");
+            case R.id.add_btn: {
+                if (sceneAdd == null) {
+                    sceneAdd = new SceneAdd();
+                    sceneAdd.setIndex(activity.getPagerSize());
+                    sceneAdd.setPreIndex(index);
+                }
+                activity.showFragment(this, sceneAdd, true);
                 break;
             }
         }
@@ -127,7 +133,7 @@ public class SceneCenter extends FragmentRoot implements AdapterView.OnItemClick
             editorFragment.setIndex(activity.getPagerSize());
         }
         Bundle bundle = new Bundle();
-        HashMap<String, Object> item = (HashMap<String, Object>) mdata.get(i);
+        HashMap<String, Object> item = (HashMap<String, Object>) data.get(i);
         bundle.putSerializable("model", (SceneModel) item.get("model"));
         editorFragment.setArguments(bundle);
 

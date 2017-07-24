@@ -1,6 +1,5 @@
 package com.umasuo.eva.ui.scene;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
-import com.umasuo.eva.domain.scene.dto.SceneModel;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 
@@ -22,8 +20,8 @@ import com.umasuo.eva.infra.log.LogControl;
  * 智能场景中的编辑场景和新建场景界面
  */
 
-public class SceneEditor extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
-    private String TAG = "SceneEditor";
+public class SceneAdd extends FragmentRoot implements View.OnClickListener, AdapterView.OnItemClickListener {
+    private String TAG = "SceneAdd";
 
     private ImageView editor_back;
     private ImageView scene_editor_icon;
@@ -37,23 +35,29 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener, A
     private TextView editor_current_task;
     private ListView editor_list_task;
 
-    SceneModel sModel;
+//    SceneModel sModel;
 
-    private MainActivity mActivity;
+    private MainActivity mainActivity;
     Bundle bundle;
     private SceneCondition sceneAdd;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LogControl.debug(TAG, "onCreate >>>");
+
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LogControl.debug(TAG, "onCreateView >>> ");
-
-        bundle = getArguments();
-        sModel = (SceneModel) bundle.get("model");
-
         View view = inflater.inflate(R.layout.scene_editor, container, false);
+        mainActivity = (MainActivity) getActivity();
+
         initView(view);
-        mActivity = (MainActivity) getActivity();
         return view;
     }
 
@@ -68,10 +72,9 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener, A
         editor_back.setOnClickListener(this);
         scene_editor_icon = (ImageView) view.findViewById(R.id.scene_editor_icon);
         scene_editor_title = (TextView) view.findViewById(R.id.scene_editor_title);
-        if (sModel != null) {
-            scene_editor_icon.setBackgroundResource(sModel.getmSceneIconId());
-            scene_editor_title.setText(sModel.getmSceneName());
-        }
+        scene_editor_icon.setBackgroundResource(R.drawable.scene_icon_default);
+        scene_editor_title.setText("新建场景");
+
 
         editor_add_condition = (ImageView) view.findViewById(R.id.editor_add_condition);
         editor_add_condition.setOnClickListener(this);
@@ -95,15 +98,15 @@ public class SceneEditor extends FragmentRoot implements View.OnClickListener, A
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.editor_back:
-                mActivity.getSupportFragmentManager().popBackStack();
+                mainActivity.getSupportFragmentManager().popBackStack();
                 break;
             case R.id.editor_add_condition:
                 if (sceneAdd == null) {
                     sceneAdd = new SceneCondition();
                     sceneAdd.setPreIndex(index);
-                    sceneAdd.setIndex(mActivity.getPagerSize());
+                    sceneAdd.setIndex(mainActivity.getPagerSize());
                 }
-                mActivity.showFragment(this, sceneAdd, true);
+                mainActivity.showFragment(this, sceneAdd, true);
 
         }
     }
