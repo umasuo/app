@@ -85,7 +85,6 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
             powerUpDevice = new PowerUpDevice();
             powerUpDevice.setPreIndex(index);
             powerUpDevice.setIndex(mainActivity.getPagerSize());
-            powerUpDevice.setIndex(mainActivity.addFragment(powerUpDevice));
         }
 
         Bundle bundle = new Bundle();

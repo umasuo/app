@@ -1,6 +1,5 @@
 package com.umasuo.eva.ui.device.add;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +34,7 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
         mActivity = (MainActivity) getContext();
         bundle = getArguments();
         deviceItem = (DeviceItem) bundle.get("model");
-        LogControl.debug(TAG,"onCreateView name = "+deviceItem.getDeviceName());
+        LogControl.debug(TAG, "onCreateView name = " + deviceItem.getDeviceName());
 
         View view = inflater.inflate(R.layout.device_add_power_up, container, false);
         backBtn = (ImageView) view.findViewById(R.id.back);
@@ -51,7 +50,7 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.back:
                 // 回退
-                mActivity.showPage(preIndex);
+                mActivity.popBackStack();
                 break;
             case R.id.next_btn:
                 //下一步
@@ -59,39 +58,10 @@ public class PowerUpDevice extends FragmentRoot implements View.OnClickListener 
                     inputWifiPassword = new InputWifiPassword();
                     inputWifiPassword.setPreIndex(index);
                     inputWifiPassword.setIndex(mActivity.getPagerSize());
-//                    inputWifiPassword.setIndex(mActivity.addFragment(inputWifiPassword));
                 }
-//                mActivity.showPage(inputWifiPassword.getIndex());
-                mActivity.showFragment(this,inputWifiPassword,true);
+                mActivity.showFragment(this, inputWifiPassword, true);
         }
 
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        LogControl.debug(TAG, "attach");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        AddDeviceActivity activity = (AddDeviceActivity) getContext();
-//        LogControl.debug(TAG, "resume: " + activity.getSelectedDeviceName());
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-//        AddDeviceActivity activity = (AddDeviceActivity) getContext();
-//        LogControl.debug(TAG, "pause: " + activity.getSelectedDeviceName());
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-//        AddDeviceActivity activity = (AddDeviceActivity) getContext();
-//        LogControl.debug(TAG, "destroy: " + activity.getSelectedDeviceName());
-    }
 }

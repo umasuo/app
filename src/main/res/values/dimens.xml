@@ -54,7 +54,7 @@
     <dimen name="device_power_up_pic_width">400px</dimen>
     <dimen name="device_power_up_pic_margin">20px</dimen>
     <dimen name="device_power_up_btn_height">160px</dimen>
-    <dimen name="device_power_up_btn_marginSide">80px</dimen>
+    <dimen name="device_power_up_btn_marginSide">130px</dimen>
 
     <dimen name="ok_button_height">160px</dimen>
 
