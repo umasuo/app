@@ -332,6 +332,17 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
+     * pop 所有的非主界面.
+     */
+    public void popAll() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        while (count > 0) {
+            getSupportFragmentManager().popBackStack();
+            count--;
+        }
+    }
+
+    /**
      * 响应菜单的回退点击事件.
      */
     @Override

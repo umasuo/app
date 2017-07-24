@@ -11,87 +11,154 @@
         android:background="@color/mainBackgroundColor"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/top_left_arrow_width"
+            android:layout_height="@dimen/top_left_arrow_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/top_left_arrow_marginBot"
+            android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"
+            android:layout_marginRight="@dimen/top_left_arrow_marginRight"
+            android:layout_marginTop="@dimen/top_left_arrow_marginTop"
+            android:background="@drawable/left_icon" />
+
         <TextView
             android:id="@+id/connecting_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="设备激活中"
+            android:textColor="#2b2b2b"
+            android:textSize="@dimen/setting_title_size"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+
+        <TextView
+            android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="40px"
             android:layout_weight="1"
             android:gravity="right"
-            android:text="@string/cancel"
-            android:textColor="@color/deviceTypeItemColor"
+            android:text="取消"
+            android:textColor="#b2b2b2"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
 
     </LinearLayout>
 
-    <ProgressBar
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10px"
-        android:background="#dddddd"
-        android:max="100" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40px"
-        android:orientation="horizontal">
+        android:background="@drawable/bg"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="25px"
-            android:layout_weight="3"
-            android:gravity="left"
-            android:text="手机，路由器和设备尽量靠近" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25px"
+            android:layout_margin="40px"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/progress"
+            android:max="100" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="40%"
-            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40px"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25px"
+                android:layout_weight="3"
+                android:gravity="left"
+                android:text="手机，路由器和设备尽量靠近"
+                android:textColor="#b2b2b2" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40px"
-        android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="40%"
+                android:textSize="24sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="1. 找到设备"
-            android:textAlignment="center"
-            android:textSize="10sp" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="2. 设备激活"
-            android:textAlignment="center"
-            android:textSize="10sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40px"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="3. 绑定设备"
-            android:textAlignment="center"
-            android:textSize="10sp" />
+            <TextView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:background="@drawable/circle_icon"
+                android:gravity="center"
+                android:text="1"
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="找到设备"
+                android:textSize="10sp" />
+
+
+            <TextView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:background="@drawable/circle_icon"
+                android:gravity="center"
+                android:text="2"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="设备激活"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:background="@drawable/circle_icon"
+                android:gravity="center"
+                android:text="3"
+                android:textAlignment="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20px"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="绑定设备"
+                android:textSize="10sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

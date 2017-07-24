@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
@@ -16,7 +19,11 @@ public class ConnectingDevice extends FragmentRoot implements View.OnClickListen
 
     private static final String TAG = "ConnectingDevice";
 
-    MainActivity mainActivity;
+    private MainActivity mainActivity;
+
+    private ImageView backImg;
+    private TextView cancelText;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,11 +32,29 @@ public class ConnectingDevice extends FragmentRoot implements View.OnClickListen
 
         mainActivity = (MainActivity) getContext();
 
+        progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+        progressBar.setProgress(40);
+
+        backImg = (ImageView) view.findViewById(R.id.back);
+        backImg.setOnClickListener(this);
+
+        cancelText = (TextView) view.findViewById(R.id.cancel);
+        cancelText.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
         // TODO: 17/7/18 跳转到开始连接发包的界面
+        switch (view.getId()) {
+            case R.id.back: {
+                mainActivity.popBackStack();
+                break;
+            }
+            case R.id.cancel: {
+                mainActivity.popAll();
+            }
+        }
     }
 }

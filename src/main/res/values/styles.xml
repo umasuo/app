@@ -27,4 +27,5 @@
         <item name="android:background">@drawable/button_gray_bg</item>
         <item name="android:paddingLeft">5dip</item>
     </style>
+    
 </resources>
