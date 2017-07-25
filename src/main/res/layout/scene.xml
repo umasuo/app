@@ -3,7 +3,7 @@
     android:id="@+id/scene_main"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
-    android:background="@color/mainBackgroundColor"
+    android:background="@color/pageBgColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,8 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/activity_top_marginLeft"
+            android:layout_marginLeft="60px"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/intelligentScene"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
@@ -40,7 +41,8 @@
         android:id="@+id/scene_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/mainBackgroundColor"
+        android:layout_marginTop="20px"
+        android:divider="@color/pageBgColor"
         android:dividerHeight="10px"></ListView>
 
 

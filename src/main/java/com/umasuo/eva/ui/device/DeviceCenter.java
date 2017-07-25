@@ -103,7 +103,7 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         Map<String, Object> map;
 
         map = new HashMap<String, Object>();
-        map.put("icon", R.drawable.device_img_px);
+        map.put("icon", R.drawable.device_img_pc);
         map.put("name", getString(R.string.device_cz));
         list.add(map);
 

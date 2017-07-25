@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="mainBackgroundColor">#FFFFFF</color>
-    <color name="pageBgColor">#FAFAFA</color>
+    <color name="pageBgColor">#ececec</color>
     <color name="mainColor">#26a6ff</color>
     <color name="bottomTextColor">#030303</color>
     <color name="chooseDevicesBgColor">#FFF8DC</color>
