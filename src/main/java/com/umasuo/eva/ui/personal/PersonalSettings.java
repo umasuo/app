@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
@@ -19,6 +21,10 @@ public class PersonalSettings extends FragmentRoot implements View.OnClickListen
     private static final String TAG = "PersonalSettings";
     private MainActivity activity;
     private ImageView backImg;
+    private TextView saveText;
+
+
+    private Button signoutBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +35,14 @@ public class PersonalSettings extends FragmentRoot implements View.OnClickListen
         backImg = (ImageView) view.findViewById(R.id.back);
         backImg.setOnClickListener(this);
 
+
+        saveText = (TextView) view.findViewById(R.id.save);
+        saveText.setOnClickListener(this);
+
+
+        signoutBtn = (Button) view.findViewById(R.id.sign_out_btn);
+        signoutBtn.setOnClickListener(this);
+
         return view;
     }
 
@@ -38,5 +52,20 @@ public class PersonalSettings extends FragmentRoot implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back: {
+                activity.popBackStack();
+                break;
+            }
+            case R.id.save: {
+                //todo save settings
+                activity.popBackStack();
+                break;
+            }
+            case R.id.sign_out_btn: {
+                break;
+                // 退出登录，清空所有用户的信息和设置
+            }
+        }
     }
 }
