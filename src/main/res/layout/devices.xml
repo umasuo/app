@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/activity_top_height"
-    android:background="@color/deviceTypeItemBgColor"
+    android:background="@color/pageBgColor"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,7 +13,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/device_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -30,15 +29,15 @@
             android:layout_width="@dimen/activity_top_icon_width"
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_top_icon_margin"
-            android:background="@drawable/add_icon_press" />
+            android:layout_margin="40px"
+            android:src="@drawable/scan_icon" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/device_commons"
         android:layout_width="match_parent"
-        android:layout_height="400px"
-        android:layout_margin="40px"
+        android:layout_height="300px"
+        android:layout_margin="20px"
         android:background="@drawable/corners_panel"
         android:orientation="horizontal">
 
@@ -48,7 +47,7 @@
             android:layout_height="240px"
             android:layout_gravity="center"
             android:layout_margin="20px"
-            android:background="@drawable/scan_icon_press" />
+            android:src="@drawable/eva" />
 
         <TextView
             android:id="@+id/device_common_content"
@@ -57,7 +56,7 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="20px"
             android:layout_weight="1"
-            android:text="欢迎使用Eva"
+            android:text="欢迎使用Eva App"
             android:textSize="@dimen/setting_title_size"
             android:textStyle="bold"
             android:typeface="monospace" />
@@ -69,6 +68,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px"
-        android:divider="@color/deviceTypeItemBgColor"
-        android:dividerHeight="10px" />
+        android:background="@drawable/corners_panel"
+        android:divider="@color/mainBackgroundColor"
+        android:dividerHeight="1px" />
 </LinearLayout>

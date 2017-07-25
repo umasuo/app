@@ -57,7 +57,7 @@ public class DeviceListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.icon.setBackgroundResource((Integer) data.get(i).get("icon"));
+        holder.icon.setImageResource((Integer) data.get(i).get("icon"));
         holder.name.setText((String) data.get(i).get("name"));
         return view;
     }

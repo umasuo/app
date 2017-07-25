@@ -10,9 +10,8 @@ import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.log.LogControl;
 
 /**
- * 个人中心界面
+ * 体验中心界面，用于操作虚拟设备.
  */
-
 public class SimulatorCenter extends FragmentRoot implements View.OnClickListener {
 
     private static final String TAG = "PersonalCenter";

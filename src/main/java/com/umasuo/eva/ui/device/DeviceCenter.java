@@ -36,7 +36,6 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
     private DeviceService deviceService;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -112,6 +111,16 @@ public class DeviceCenter extends FragmentRoot implements View.OnClickListener, 
         map.put("name", getString(R.string.device_kg));
         list.add(map);
 
+
+        map = new HashMap<String, Object>();
+        map.put("icon", R.drawable.device_icon_qt);
+        map.put("name", getString(R.string.device_qt));
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("icon", R.drawable.device_icon_qt);
+        map.put("name", getString(R.string.device_qt));
+        list.add(map);
 
         map = new HashMap<String, Object>();
         map.put("icon", R.drawable.device_icon_qt);
