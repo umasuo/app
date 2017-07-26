@@ -44,10 +44,24 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/ssid_text"
+            android:layout_width="match_parent"
+            android:layout_height="140px"
+            android:layout_marginBottom="40px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:background="@drawable/input_bg"
+            android:hint="输入Wi-Fi名称"
+            android:inputType="text"
+            android:paddingLeft="30px"
+            android:visibility="visible" />
+
+        <EditText
             android:id="@+id/password_text"
             android:layout_width="match_parent"
             android:layout_height="140px"
-            android:layout_margin="40px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
             android:background="@drawable/input_bg"
             android:hint="输入Wi-Fi密码"
             android:inputType="text"

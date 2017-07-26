@@ -31,6 +31,7 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
 
     private ImageView backImg;
     private TextView curWifi;
+    private EditText ssidText;
     private EditText passwordEdit;
     private Button nextBtn;
     private MainActivity mainActivity;
@@ -54,6 +55,7 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
 
         curWifi = (TextView) view.findViewById(R.id.current_wifi_text);
         passwordEdit = (EditText) view.findViewById(R.id.password_text);
+        ssidText = (EditText) view.findViewById(R.id.ssid_text);
         nextBtn = (Button) view.findViewById(R.id.next_btn);
         nextBtn.setOnClickListener(this);
         getCurWifi();
@@ -75,10 +77,12 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
             ssid = wifiInfo.getSSID();
             curWifi.setText(curWifi.getText() + ": " + ssid);
             nextBtn.setEnabled(true);
-
+            ssidText.setVisibility(View.GONE);
             LogControl.debug(TAG, "SSID: " + ssid + ", ip: " + wifiInfo.getIpAddress());
         } else {
             nextBtn.setEnabled(false);
+            ssidText.setVisibility(View.VISIBLE);
+            curWifi.setVisibility(View.INVISIBLE);
             LogControl.debug(TAG, "Do not connected to wifi.");
         }
     }
@@ -101,6 +105,9 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
                 }
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("productType", productType);
+                if (ssid == null || ssid.isEmpty()) {
+                    ssid = ssidText.getText().toString();
+                }
                 bundle.putSerializable("ssid", ssid);
                 bundle.putSerializable("password", passwordEdit.getText().toString());
                 connectingDevice.setArguments(bundle);
