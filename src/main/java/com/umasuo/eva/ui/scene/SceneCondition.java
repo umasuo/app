@@ -30,6 +30,7 @@ public class SceneCondition extends FragmentRoot implements AdapterView.OnItemCl
     private List<Map<String, Object>> data;
     private ListView condition_list;
     private MainActivity activity;
+    private SceneConditionSettings conditionSettings;
 
     @Nullable
     @Override
@@ -90,12 +91,26 @@ public class SceneCondition extends FragmentRoot implements AdapterView.OnItemCl
         map.put("condition", "日落日出");
         list.add(map);
 
+        map = new HashMap<String, Object>();
+        map.put("condition", "设备");
+        list.add(map);
+
 
         return list;
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (conditionSettings == null) {
+            conditionSettings = new SceneConditionSettings();
+            conditionSettings.setPreIndex(index);
+            conditionSettings.setIndex(activity.getPagerSize());
+        }
+        Bundle bundle = new Bundle();
+        HashMap<String, Object> item = (HashMap<String, Object>) data.get(i);
+        bundle.putString("condition",item.get("condition").toString());
+        conditionSettings.setArguments(bundle);
 
+        activity.showFragment(this, conditionSettings, true);
     }
 }
