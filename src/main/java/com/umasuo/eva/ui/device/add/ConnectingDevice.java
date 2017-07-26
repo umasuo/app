@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.device.dto.ProductTypeModel;
 import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.infra.log.LogControl;
 
 /**
  * 添加设备第四步：给设备发送网络包.
@@ -25,12 +27,21 @@ public class ConnectingDevice extends FragmentRoot implements View.OnClickListen
     private TextView cancelText;
     private ProgressBar progressBar;
 
+    private ProductTypeModel productType;
+    private String ssid;
+    private String password;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.device_add_connecting, container, false);
-
         mainActivity = (MainActivity) getContext();
+
+        Bundle bundle = getArguments();
+        productType = (ProductTypeModel) bundle.get("productType");
+        ssid = (String) bundle.get("ssid");
+        password = (String) bundle.get("password");
+        LogControl.debug(TAG, "onCreateView name = " + productType.name);
 
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         progressBar.setProgress(40);

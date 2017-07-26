@@ -11,15 +11,13 @@ import android.widget.Toast;
 
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.device.dto.ProductTypeModel;
 import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.infra.adapter.SelectDeviceAdapter;
 import com.umasuo.eva.infra.log.LogControl;
-import com.umasuo.eva.ui.device.DeviceItem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -30,7 +28,7 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
     private String TAG = "SelectDeviceType";
 
     private ListView deviceList;
-    private List<Map<String, Object>> data;
+    private List<ProductTypeModel> data;
     private ImageView backBtn;
 
     private PowerUpDevice powerUpDevice;
@@ -78,8 +76,8 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Map<String, Object> item = data.get(i);
-        LogControl.debug(TAG, "click: " + i + ", name: " + item.get("title"));
+        ProductTypeModel productType = data.get(i);
+        LogControl.debug(TAG, "click: " + i + ", name: " + productType.name);
         // 设置选中了的设备
         if (powerUpDevice == null) {
             powerUpDevice = new PowerUpDevice();
@@ -88,7 +86,7 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
         }
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model", (DeviceItem) item.get("model"));
+        bundle.putSerializable("productType", productType);
         powerUpDevice.setArguments(bundle);
 
         mainActivity.showFragment(this, powerUpDevice, true);
@@ -99,94 +97,50 @@ public class SelectDeviceType extends FragmentRoot implements AdapterView.OnItem
      *
      * @return
      */
-    private List<Map<String, Object>> getData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
+    private List<ProductTypeModel> getData() {
+        List<ProductTypeModel> list = new ArrayList<ProductTypeModel>();
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("开关", R.drawable.device_icon_kg));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.SWITCH, R.drawable.device_icon_kg, "开关"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("插座", R.drawable.device_icon_cz));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.POWER_STRIP, R.drawable.device_icon_cz, "插座"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("照明", R.drawable.device_icon_d));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.BULB_WHITE, R.drawable.device_icon_d, "照明"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("防丢器", R.drawable.device_icon_fdq));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.GPRS, R.drawable.device_icon_fdq, "防丢器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("窗帘", R.drawable.device_icon_cl));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.CURTAIN, R.drawable.device_icon_cl, "窗帘"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("门锁", R.drawable.device_icon_ms));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.LOCK, R.drawable.device_icon_ms, "门锁"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("洗衣机", R.drawable.device_icon_xyj));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.WASHER, R.drawable.device_icon_xyj, "洗衣机"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空调", R.drawable.device_icon_kt));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.AIR_CONDITION, R.drawable.device_icon_kt, "空调"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空调扇", R.drawable.device_icon_kts));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.AIR_COOLER, R.drawable.device_icon_kts, "空调扇"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("风扇", R.drawable.device_icon_fs));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.AIR_FAN, R.drawable.device_icon_fs, "风扇"));
 
+        list.add(new ProductTypeModel(ProductTypeModel.HUMIDIFIER, R.drawable.device_icon_jsq, "加湿器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("加湿器", R.drawable.device_icon_jsq));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.DEHUMIDIFIER, R.drawable.device_icon_csj, "除湿机"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("除湿机", R.drawable.device_icon_csj));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.WATER_CLEANER, R.drawable.device_icon_jsj, "净水器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("净水器", R.drawable.device_icon_jsj));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.CLEAN_ROBOT, R.drawable.device_icon_sdjqr, "扫地机器人"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("扫地机器人", R.drawable.device_icon_sdjqr));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.MICROWAVE_OVEN, R.drawable.device_icon_wbl, "微波炉"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("微波炉", R.drawable.device_icon_wbl));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.OVEN, R.drawable.device_icon_kx, "烤箱"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("烤箱", R.drawable.device_icon_kx));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.COOKER, R.drawable.device_icon_dfb, "电饭煲"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("电饭煲", R.drawable.device_icon_dfb));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.WATER_HEATER, R.drawable.device_icon_rsq, "热水器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("热水器", R.drawable.device_icon_rsq));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.HEATER, R.drawable.device_icon_qnj, "取暖器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("取暖器", R.drawable.device_icon_qnj));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.AIR_CLEANER, R.drawable.device_icon_jhq, "空气净化器"));
 
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("空气净化器", R.drawable.device_icon_jhq));
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("model", new DeviceItem("其他", R.drawable.device_icon_qt));
-        list.add(map);
+        list.add(new ProductTypeModel(ProductTypeModel.OTHER, R.drawable.device_icon_qt, "其他"));
 
         return list;
     }

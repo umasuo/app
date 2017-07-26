@@ -20,7 +20,7 @@
             android:layout_marginLeft="@dimen/top_left_arrow_marginLeft"
             android:layout_marginRight="@dimen/top_left_arrow_marginRight"
             android:layout_marginTop="@dimen/top_left_arrow_marginTop"
-            android:background="@drawable/left_icon" />
+            android:src="@drawable/left_icon" />
 
         <TextView
             android:id="@+id/title"
@@ -45,7 +45,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="66px"
+            android:layout_marginBottom="66px"
+            android:layout_marginLeft="66px"
+            android:layout_marginRight="66px"
+            android:layout_marginTop="-66px"
             android:background="@drawable/bg"
             android:gravity="bottom"
             android:orientation="vertical">

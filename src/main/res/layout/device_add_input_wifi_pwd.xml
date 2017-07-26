@@ -37,7 +37,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/device_power_up_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40px"
@@ -45,6 +44,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/password_text"
             android:layout_width="match_parent"
             android:layout_height="140px"
             android:layout_margin="40px"

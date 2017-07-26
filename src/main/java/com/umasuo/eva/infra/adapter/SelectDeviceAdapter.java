@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.umasuo.eva.R;
+import com.umasuo.eva.domain.device.dto.ProductTypeModel;
 import com.umasuo.eva.ui.device.DeviceItem;
 
 import java.util.List;
@@ -21,10 +22,10 @@ public class SelectDeviceAdapter extends BaseAdapter {
     private String TAG = "SelectDeviceAdapter";
 
     private LayoutInflater inflater;
-    private List<Map<String, Object>> data;
+    private List<ProductTypeModel> data;
     private Context context;
 
-    public SelectDeviceAdapter(Context context, List<Map<String, Object>> data) {
+    public SelectDeviceAdapter(Context context, List<ProductTypeModel> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
         this.context = context;
@@ -60,9 +61,9 @@ public class SelectDeviceAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        DeviceItem item = (DeviceItem) data.get(i).get("model");
-        holder.img_left.setBackgroundResource(item.getDeviceIconId());
-        holder.text.setText(item.getDeviceName());
+        ProductTypeModel productType = data.get(i);
+        holder.img_left.setBackgroundResource(productType.iconId);
+        holder.text.setText(productType.name);
         return view;
     }
 
