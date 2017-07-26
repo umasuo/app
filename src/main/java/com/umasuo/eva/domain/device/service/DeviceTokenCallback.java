@@ -44,7 +44,7 @@ public class DeviceTokenCallback implements Callback<ResponseBody> {
             e.printStackTrace();
         }
         // 保存数据到数据库
-        deviceService.setToken(token);
+//        deviceService.setToken(token);
 
         LogControl.debug(TAG, "Device token: " + token);
 

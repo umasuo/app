@@ -30,7 +30,7 @@
             android:layout_height="@dimen/activity_top_icon_height"
             android:layout_gravity="center"
             android:layout_margin="40px"
-            android:src="@drawable/scan_icon" />
+            android:src="@drawable/add_icon" />
     </LinearLayout>
 
     <LinearLayout

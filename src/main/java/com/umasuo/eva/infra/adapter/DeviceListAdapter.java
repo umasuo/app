@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +53,7 @@ public class DeviceListAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.device_item, null);
             holder.icon = (ImageView) view.findViewById(R.id.device_icon);
             holder.name = (TextView) view.findViewById(R.id.device_name);
+            holder.option = (TextView) view.findViewById(R.id.option_btn);
             holder.position = i;
             view.setTag(holder);
         } else {
@@ -59,12 +61,15 @@ public class DeviceListAdapter extends BaseAdapter {
         }
         holder.icon.setImageResource((Integer) data.get(i).get("icon"));
         holder.name.setText((String) data.get(i).get("name"));
+        holder.id = (String) data.get(i).get("id");
         return view;
     }
 
     public static class ViewHolder {
         public ImageView icon;
         public TextView name;
+        public String id;
+        public TextView option;
         public int position;
     }
 

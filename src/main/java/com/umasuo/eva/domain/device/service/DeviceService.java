@@ -31,14 +31,13 @@ public class DeviceService {
     /**
      * 当前用户的设备列表.
      */
-    private static List<DeviceModel> devices;
+    private List<DeviceModel> devices;
 
     /**
      * 设备的配网token，每次启动APP都只有一个.
      */
     private String token;
 
-    //todo  这个是否需要共享一个呢？
     private DatabaseHelper dbHelper;
 
     //todo 这个是否需要共享一个呢？
@@ -60,13 +59,6 @@ public class DeviceService {
     }
 
     /**
-     * 获取设备的token。
-     */
-    public void getToken() {
-
-    }
-
-    /**
      * 初始化的时候读取数据库
      */
     public DeviceService(Context context) {
@@ -79,14 +71,6 @@ public class DeviceService {
         this.context = context;
     }
 
-    public Context getContext() {
-        return context;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     /**
      * 获取该用户已经绑定的所有设备.
      *
@@ -95,8 +79,8 @@ public class DeviceService {
     public List<DeviceModel> getAllDevice() {
         Cursor cursor = db.query(DeviceEntity.TABLE_NAME, DeviceEntity.projection, null, null, null, null, null);
         cursor.moveToFirst();
-        List<DeviceModel> devices = new ArrayList<>();
-        
+        devices = new ArrayList<>();
+
         if (cursor.getCount() > 0) {
             devices.add(DeviceMapper.toModel(cursor));
         }
@@ -107,6 +91,38 @@ public class DeviceService {
 
         //todo 发送网络请求，获取最新的绑定列表.
         LogControl.debug(TAG, String.valueOf(devices.size()));
+
+        // TODO: 17/7/26 假数据
+        DeviceModel cz = new DeviceModel();
+        cz.setName("插座");
+        cz.setDeviceId("asdasfa-d1asdavz-zxcqwdas");
+        cz.setProductTypeId("PowerStrip");
+
+        DeviceModel kg = new DeviceModel();
+        kg.setName("开关");
+        kg.setDeviceId("asdasfa-d1asdavz-zxcqwdasdas");
+        kg.setProductTypeId("switch");
+
+        devices.add(cz);
+        devices.add(kg);
+
+        return devices;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    /**
+     * 获取用户当前所有的设备。
+     *
+     * @return
+     */
+    public List<DeviceModel> getDevices() {
+        if (devices == null || devices.isEmpty()) {
+            return getAllDevice();
+        }
+
         return devices;
     }
 }
