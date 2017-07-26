@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -66,13 +67,16 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
     private void getCurWifi() {
         ConnectivityManager connMgr = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        WifiManager wifiManager = (WifiManager) getContext().getApplicationContext().getSystemService(getContext().getApplicationContext().WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+
         if (networkInfo.getState().equals(NetworkInfo.State.CONNECTED)) {
-            WifiManager wifiManager = (WifiManager) getContext().getApplicationContext().getSystemService(getContext().getApplicationContext().WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             ssid = wifiInfo.getSSID();
             curWifi.setText(curWifi.getText() + ": " + ssid);
             nextBtn.setEnabled(true);
-            LogControl.debug(TAG, "SSID: " + ssid);
+
+            LogControl.debug(TAG, "SSID: " + ssid + ", ip: " + wifiInfo.getIpAddress());
         } else {
             nextBtn.setEnabled(false);
             LogControl.debug(TAG, "Do not connected to wifi.");
@@ -87,6 +91,9 @@ public class InputWifiPassword extends FragmentRoot implements View.OnClickListe
                 break;
             }
             case R.id.next_btn: {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
                 if (connectingDevice == null) {
                     connectingDevice = new ConnectingDevice();
                     connectingDevice.setPreIndex(index);
