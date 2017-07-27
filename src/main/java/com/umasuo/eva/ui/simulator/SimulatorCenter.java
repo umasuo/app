@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.ui.device.contoller.BulbController;
 import com.umasuo.eva.ui.device.contoller.PowerStripController;
 import com.umasuo.eva.ui.device.contoller.SwitchController;
 
@@ -26,6 +27,9 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
     private ImageView switchImg;
     private SwitchController switchController;
 
+    private ImageView bulbImg;
+    private BulbController bulbController;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,6 +42,9 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
 
         switchImg = (ImageView) view.findViewById(R.id.switch_try_img);
         switchImg.setOnClickListener(this);
+
+        bulbImg = (ImageView) view.findViewById(R.id.bulb_try_img);
+        bulbImg.setOnClickListener(this);
         //init data
         return view;
     }
@@ -71,6 +78,18 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                 bundle.putBoolean("isSimulator", true);
                 switchController.setArguments(bundle);
                 mainActivity.showFragment(this, switchController, true);
+                break;
+            }
+            case R.id.bulb_try_img: {
+                if (bulbController == null) {
+                    bulbController = new BulbController();
+                    bulbController.setIndex(mainActivity.getPagerSize());
+                    bulbController.setPreIndex(index);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                bulbController.setArguments(bundle);
+                mainActivity.showFragment(this, bulbController, true);
                 break;
             }
         }
