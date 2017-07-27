@@ -5,7 +5,7 @@ import com.umasuo.eva.infra.enums.FeedbackType;
 import java.io.Serializable;
 import java.util.List;
 
-public class FeedbackModel implements Serializable{
+public class FeedbackModel implements Serializable {
 
     private static final long serialVersionUID = 8869700228132652929L;
     /**
