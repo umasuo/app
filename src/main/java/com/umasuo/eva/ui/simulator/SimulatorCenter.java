@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
-import com.umasuo.eva.infra.log.LogControl;
 import com.umasuo.eva.ui.device.contoller.PowerStripController;
+import com.umasuo.eva.ui.device.contoller.SwitchController;
 
 /**
  * 体验中心界面，用于操作虚拟设备.
@@ -23,6 +23,9 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
     private ImageView powerStrip;
     private PowerStripController powerStripController;
 
+    private ImageView switchImg;
+    private SwitchController switchController;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,8 +33,11 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
         View view = inflater.inflate(R.layout.simulator, container, false);
         mainActivity = (MainActivity) getContext();
 
-        powerStrip = (ImageView) view.findViewById(R.id.power_strip);
+        powerStrip = (ImageView) view.findViewById(R.id.power_strip_try_img);
         powerStrip.setOnClickListener(this);
+
+        switchImg = (ImageView) view.findViewById(R.id.switch_try_img);
+        switchImg.setOnClickListener(this);
         //init data
         return view;
     }
@@ -43,7 +49,7 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.power_strip: {
+            case R.id.power_strip_try_img: {
                 if (powerStripController == null) {
                     powerStripController = new PowerStripController();
                     powerStripController.setIndex(mainActivity.getPagerSize());
@@ -53,6 +59,18 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                 bundle.putBoolean("isSimulator", true);
                 powerStripController.setArguments(bundle);
                 mainActivity.showFragment(this, powerStripController, true);
+                break;
+            }
+            case R.id.switch_try_img: {
+                if (switchController == null) {
+                    switchController = new SwitchController();
+                    switchController.setIndex(mainActivity.getPagerSize());
+                    switchController.setPreIndex(index);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                switchController.setArguments(bundle);
+                mainActivity.showFragment(this, switchController, true);
                 break;
             }
         }
