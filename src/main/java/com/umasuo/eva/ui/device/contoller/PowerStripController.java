@@ -42,11 +42,20 @@ public class PowerStripController extends FragmentRoot implements View.OnClickLi
     //是否只是体验中心
     private boolean isSimulator = true;
 
+    private String deviceId;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         LogControl.debug(TAG, "on create.");
+        Bundle bundle = getArguments();
+        isSimulator = (boolean) bundle.get("isSimulator");
+        if (!isSimulator) {
+            //在非体验的情况下显示这个
+            deviceId = (String) bundle.get("deviceId");
+        }
+
         View view = inflater.inflate(R.layout.device_ctr_power_strip, container, false);
         mainActivity = (MainActivity) getContext();
 

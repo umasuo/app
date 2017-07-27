@@ -49,6 +49,9 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                     powerStripController.setIndex(mainActivity.getPagerSize());
                     powerStripController.setPreIndex(index);
                 }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                powerStripController.setArguments(bundle);
                 mainActivity.showFragment(this, powerStripController, true);
                 break;
             }
