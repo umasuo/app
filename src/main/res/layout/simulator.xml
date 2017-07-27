@@ -170,9 +170,10 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="260px"
+                        android:layout_height="240px"
                         android:layout_gravity="center"
-                        android:src="@drawable/device_img_d_light" />
+                        android:layout_marginTop="20px"
+                        android:src="@drawable/device_icon_xyj" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -180,10 +181,11 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="20px"
                         android:gravity="center"
-                        android:text="智能彩光灯"
+                        android:text="智能洗衣机"
                         android:textSize="58px" />
 
                     <ImageView
+                        android:id="@+id/washer_img"
                         android:layout_width="match_parent"
                         android:layout_height="120px"
                         android:layout_gravity="center"

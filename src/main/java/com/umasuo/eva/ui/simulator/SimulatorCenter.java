@@ -12,6 +12,7 @@ import com.umasuo.eva.infra.FragmentRoot;
 import com.umasuo.eva.ui.device.contoller.BulbController;
 import com.umasuo.eva.ui.device.contoller.PowerStripController;
 import com.umasuo.eva.ui.device.contoller.SwitchController;
+import com.umasuo.eva.ui.device.contoller.WasherController;
 
 /**
  * 体验中心界面，用于操作虚拟设备.
@@ -30,6 +31,10 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
     private ImageView bulbImg;
     private BulbController bulbController;
 
+    private ImageView washerImg;
+    private WasherController washerController;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +50,9 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
 
         bulbImg = (ImageView) view.findViewById(R.id.bulb_try_img);
         bulbImg.setOnClickListener(this);
+
+        washerImg = (ImageView) view.findViewById(R.id.washer_img);
+        washerImg.setOnClickListener(this);
         //init data
         return view;
     }
@@ -90,6 +98,18 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                 bundle.putBoolean("isSimulator", true);
                 bulbController.setArguments(bundle);
                 mainActivity.showFragment(this, bulbController, true);
+                break;
+            }
+            case R.id.washer_img: {
+                if (washerController == null) {
+                    washerController = new WasherController();
+                    washerController.setIndex(mainActivity.getPagerSize());
+                    washerController.setPreIndex(index);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                washerController.setArguments(bundle);
+                mainActivity.showFragment(this, washerController, true);
                 break;
             }
         }
