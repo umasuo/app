@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import com.umasuo.eva.MainActivity;
 import com.umasuo.eva.R;
 import com.umasuo.eva.infra.FragmentRoot;
+import com.umasuo.eva.ui.device.contoller.AirCleanerController;
 import com.umasuo.eva.ui.device.contoller.BulbController;
+import com.umasuo.eva.ui.device.contoller.MicrowaveOvenController;
 import com.umasuo.eva.ui.device.contoller.PowerStripController;
 import com.umasuo.eva.ui.device.contoller.SwitchController;
 import com.umasuo.eva.ui.device.contoller.WasherController;
@@ -31,6 +33,12 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
     private ImageView bulbImg;
     private BulbController bulbController;
 
+    private ImageView airCleanerImg;
+    private AirCleanerController airCleanerController;
+
+    private ImageView wblImg;
+    private MicrowaveOvenController wblController;
+
     private ImageView washerImg;
     private WasherController washerController;
 
@@ -51,8 +59,14 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
         bulbImg = (ImageView) view.findViewById(R.id.bulb_try_img);
         bulbImg.setOnClickListener(this);
 
+        airCleanerImg = (ImageView) view.findViewById(R.id.air_cleaner_try_img);
+        airCleanerImg.setOnClickListener(this);
+
         washerImg = (ImageView) view.findViewById(R.id.washer_img);
         washerImg.setOnClickListener(this);
+
+        wblImg = (ImageView) view.findViewById(R.id.wbl_try_img);
+        wblImg.setOnClickListener(this);
         //init data
         return view;
     }
@@ -100,6 +114,18 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                 mainActivity.showFragment(this, bulbController, true);
                 break;
             }
+            case R.id.air_cleaner_try_img: {
+                if (airCleanerController == null) {
+                    airCleanerController = new AirCleanerController();
+                    airCleanerController.setIndex(mainActivity.getPagerSize());
+                    airCleanerController.setPreIndex(index);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                airCleanerController.setArguments(bundle);
+                mainActivity.showFragment(this, airCleanerController, true);
+                break;
+            }
             case R.id.washer_img: {
                 if (washerController == null) {
                     washerController = new WasherController();
@@ -110,6 +136,18 @@ public class SimulatorCenter extends FragmentRoot implements View.OnClickListene
                 bundle.putBoolean("isSimulator", true);
                 washerController.setArguments(bundle);
                 mainActivity.showFragment(this, washerController, true);
+                break;
+            }
+            case R.id.wbl_try_img: {
+                if (wblController == null) {
+                    wblController = new MicrowaveOvenController();
+                    wblController.setIndex(mainActivity.getPagerSize());
+                    wblController.setPreIndex(index);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSimulator", true);
+                wblController.setArguments(bundle);
+                mainActivity.showFragment(this, wblController, true);
                 break;
             }
         }

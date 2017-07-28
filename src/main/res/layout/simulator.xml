@@ -148,6 +148,7 @@
                         android:textSize="58px" />
 
                     <ImageView
+                        android:id="@+id/air_cleaner_try_img"
                         android:layout_width="match_parent"
                         android:layout_height="120px"
                         android:layout_gravity="center"
