@@ -1,7 +1,6 @@
 package com.umasuo.eva.ui.personal;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +48,6 @@ public class FAQ extends FragmentRoot implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        activity.showPage(preIndex);
+        activity.popBackStack();
     }
 }

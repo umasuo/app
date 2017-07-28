@@ -1,7 +1,6 @@
 package com.umasuo.eva.ui.device.contoller;
 
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;

@@ -264,6 +264,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      * 显示设备中心.
      */
     private void showDeviceCenter() {
+        popAll();
         if (DeviceService.getInstance(this).getAllDevice().isEmpty()) {
             viewPager.setCurrentItem(DEVICE_NONE_INDEX);
 //            viewPager.setCurrentItem(DEVICE_INDEX);

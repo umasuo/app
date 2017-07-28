@@ -42,7 +42,8 @@ public class UserModelCallback implements Callback<UserModel> {
                     new Runnable() {
                         @Override
                         public void run() {
-                            ((MainActivity) context).showPage(3);
+                            // TODO: 17/7/28
+                            ((MainActivity) context).popBackStack();
                         }
                     }
             );
