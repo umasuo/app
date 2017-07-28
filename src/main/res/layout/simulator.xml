@@ -136,7 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="260px"
                         android:layout_gravity="center"
-                        android:src="@drawable/device_img_dc" />
+                        android:src="@drawable/device_ctr_img_jhq_icon" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -144,7 +144,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="20px"
                         android:gravity="center"
-                        android:text="单插"
+                        android:text="空气净化器"
                         android:textSize="58px" />
 
                     <ImageView
@@ -170,10 +170,9 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="240px"
+                        android:layout_height="260px"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20px"
-                        android:src="@drawable/device_icon_xyj" />
+                        android:src="@drawable/device_ctr_img_washer_icon" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -215,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="260px"
                         android:layout_gravity="center"
-                        android:src="@drawable/device_img_pc" />
+                        android:src="@drawable/device_ctr_img_pc_icon" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -252,7 +251,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="260px"
                         android:layout_gravity="center"
-                        android:src="@drawable/sad_icon" />
+                        android:src="@drawable/device_ctr_img_wbl_icon" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -260,14 +259,16 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="20px"
                         android:gravity="center"
-                        android:text="陆续添加中"
+                        android:text="智能微波炉"
                         android:textSize="58px" />
 
                     <ImageView
+                        android:id="@+id/wbl_try_img"
                         android:layout_width="match_parent"
                         android:layout_height="120px"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="40px" />
+                        android:layout_marginBottom="40px"
+                        android:src="@drawable/simulator_try_btn" />
 
                 </LinearLayout>
             </LinearLayout>
