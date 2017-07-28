@@ -267,7 +267,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         popAll();
         if (DeviceService.getInstance(this).getAllDevice().isEmpty()) {
             viewPager.setCurrentItem(DEVICE_NONE_INDEX);
-//            viewPager.setCurrentItem(DEVICE_INDEX);
         } else {
             viewPager.setCurrentItem(DEVICE_INDEX);
         }
